@@ -11,7 +11,7 @@ export default function ProductCard() {
                <Image src={cardImage} width={305} height={227} alt="Product image" className="py-2"></Image>
                <p className="text-center">Just an examplatory text, maybe as a short description, hehe, huhe, hee.</p>
                <h2 className="text-center py-1">From 3.99€</h2>
-               <button className="btn flex text-white bg-button-background border-none rounded-3xl my-3">View Details</button>
+               <button className="btn text-white bg-button-background border-none rounded-3xl my-3 w-40">View Details</button>
             </div>
          </div>
       </>

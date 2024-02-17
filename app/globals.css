@@ -19,3 +19,7 @@
 .bg-hero-section-image {
    background-image: url("/hero-section-image.png");
 }
+
+.bg-product-card {
+   background-color: rgba(188, 108, 37, 0.23);
+}

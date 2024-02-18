@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
    --foreground-rgb: 0, 0, 0;
@@ -22,4 +24,17 @@
 
 .bg-product-card {
    background-color: rgba(188, 108, 37, 0.23);
+}
+
+.yeseva-one-regular {
+   font-family: "Yeseva One", serif;
+   font-weight: 700;
+   font-style: normal;
+}
+
+.josefin-sans {
+   font-family: "Josefin Sans", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 100;
+   font-style: normal;
 }

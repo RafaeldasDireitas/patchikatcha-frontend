@@ -1,17 +1,16 @@
 import cardImage from "@/public/card-image-test.png";
 import Image from "next/image";
 
-export default function ProductCard() {
+export default function ProductCard({ title, tag, price, image }: any) {
    return (
       <>
          <div className="p-4 rounded-3xl bg-product-card w-96">
             <div className="flex flex-col items-center">
-               <h1 className="text-center py-1 text-2xl font-semibold">Title</h1>
-               <h2 className="text-center py-1 text-lg">Type</h2>
-               <Image src={cardImage} width={305} height={227} alt="Product image" className="py-2"></Image>
-               <p className="text-center">Just an examplatory text, maybe as a short description, hehe, huhe, hee.</p>
-               <h2 className="text-center py-1">From 3.99€</h2>
-               <button className="btn text-white bg-button-background border-none rounded-3xl my-3 w-40">View Details</button>
+               <h1 className="text-center py-1 text-2xl yeseva-one-regular text-light truncate w-80">{title}</h1>
+               <Image src={`${image}`} width={305} height={227} alt="Product image" className="py-2 rounded-3xl"></Image>
+               <h2 className="text-center py-1 text-lg josefin-sans font-semibold text-light">{tag}</h2>
+               <h2 className="text-center py-1 josefin-sans">{price}</h2>
+               <button className="btn text-white bg-button-background border-none rounded-3xl my-2 w-40">View Details</button>
             </div>
          </div>
       </>

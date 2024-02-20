@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard";
 import FetchNewProducts from "@/app/FetchNewProducts";
-import { NewProductsType } from "@/types/NewProductsType";
-import { ProductType } from "@/types/ProductType";
+import { ProductDataType } from "@/types/ProductDataType";
 
 export default function NewProducts() {
-   const [newProducts, setNewProducts] = useState<ProductType[]>();
+   const [newProducts, setNewProducts] = useState<ProductDataType[]>();
 
    useEffect(() => {
       FetchNewProducts({ setNewProducts });

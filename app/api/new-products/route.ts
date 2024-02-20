@@ -10,7 +10,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
       }
    });
 
-   const dataJson: NewProductsType = await data.json();
+   const dataJson = await data.json();
+
    const slicedData = dataJson.data.slice(0, 3);
 
    return NextResponse.json(slicedData);

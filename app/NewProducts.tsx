@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard";
 import FetchNewProducts from "@/app/FetchNewProducts";
 import { ProductDataType } from "@/types/ProductDataType";
+import Loading from "./components/Loading";
 
 export default function NewProducts() {
    const [newProducts, setNewProducts] = useState<ProductDataType[]>();
@@ -11,7 +12,7 @@ export default function NewProducts() {
    }, []);
 
    if (!newProducts) {
-      return <h1>gay</h1>;
+      return <Loading />;
    }
 
    return (

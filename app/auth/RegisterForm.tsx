@@ -1,3 +1,4 @@
+import { endpoints } from "@/endpoints/endpoints";
 import { useEffect, useState } from "react";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
@@ -20,7 +21,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    };
 
    const createUserAccount = async () => {
-      const createUser = await fetch("https://localhost:7065/api/Auth/register", {
+      const createUser = await fetch(endpoints.url + endpoints.register, {
          method: "POST",
          headers: {
             "Content-Type": "application/json"

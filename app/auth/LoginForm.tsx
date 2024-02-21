@@ -1,5 +1,7 @@
+import { endpoints } from "@/endpoints/endpoints";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function LoginForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -22,7 +24,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    };
 
    const checkUserAccount = async () => {
-      const createUser = await fetch("https://localhost:7065/api/Auth/login", {
+      const createUser = await fetch(endpoints.url + endpoints.login, {
          method: "POST",
          headers: {
             "Content-Type": "application/json"
@@ -38,6 +40,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
       globalStore.setJwtToken(responseData.jwtToken);
       globalStore.setIsAuthenticated(true);
       globalStore.setUserEmail(userData.email);
+      toast.success("You successfuly logged in!");
    };
 
    return (

@@ -16,8 +16,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
 
    const userData = {
       email: email,
-      password: password,
-      roles: ["User"]
+      password: password
    };
 
    const createUserAccount = async () => {

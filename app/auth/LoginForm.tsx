@@ -1,6 +1,8 @@
+import { useGlobalStore } from "@/zustand/globalstore";
 import { useState } from "react";
 
 export default function LoginForm({ setIsLoginForm }: any) {
+   const globalStore = useGlobalStore();
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
@@ -20,8 +22,11 @@ export default function LoginForm({ setIsLoginForm }: any) {
    };
 
    const checkUserAccount = async () => {
-      const createUser = await fetch("/api/signin", {
+      const createUser = await fetch("https://localhost:7065/api/Auth/login", {
          method: "POST",
+         headers: {
+            "Content-Type": "application/json"
+         },
          body: JSON.stringify(userData)
       });
 
@@ -30,8 +35,9 @@ export default function LoginForm({ setIsLoginForm }: any) {
       }
 
       const responseData = await createUser.json();
-      const session = await responseData.session;
-      console.log("Session: ", session);
+      globalStore.setJwtToken(responseData.jwtToken);
+      globalStore.setIsAuthenticated(true);
+      globalStore.setUserEmail(userData.email);
    };
 
    return (

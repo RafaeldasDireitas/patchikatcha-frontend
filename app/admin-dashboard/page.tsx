@@ -1,13 +1,41 @@
 "use client";
-import { useState } from "react";
+import { useGlobalStore } from "@/zustand/globalstore";
+import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
 
 export default function AdminDashboard() {
    const [publishProductId, setPublishProductId] = useState();
+   const [isAuthorized, setIsAuthorized] = useState(false);
+   const globalStore = useGlobalStore();
 
    const handlePublishProductId = (e: any) => {
       const productId = e.target.value;
       setPublishProductId(productId);
    };
+
+   useEffect(() => {
+      const verifyUserRole = async () => {
+         const verify = await fetch(`https://localhost:7065/api/Auth/verify-user-role?email=${globalStore.userEmail}`, {
+            method: "POST",
+            headers: {
+               Authorization: `Bearer ${globalStore.jwtToken}`
+            },
+            body: JSON.stringify(globalStore.userEmail)
+         });
+
+         if (!verify.ok) {
+            console.log("Something went wrong");
+         }
+
+         setIsAuthorized(true);
+      };
+
+      verifyUserRole();
+   }, []);
+
+   if (!isAuthorized) {
+      return <Loading />;
+   }
 
    console.log(publishProductId);
 

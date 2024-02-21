@@ -11,6 +11,7 @@ import {
    XMarkIcon
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
+import { useGlobalStore } from "@/zustand/globalstore";
 
 const products = [
    {
@@ -53,8 +54,15 @@ function classNames(...classes: any) {
    return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Navbar() {
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+   const globalStore = useGlobalStore();
+
+   const signOutHandler = () => {
+      globalStore.setIsAuthenticated(false);
+      globalStore.setJwtToken("");
+   };
 
    return (
       <header className="bg-white">
@@ -137,9 +145,15 @@ export default function Example() {
                </a>
             </Popover.Group>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-               <a href="/auth" className="text-sm font-semibold leading-6 text-light">
-                  Log in <span aria-hidden="true">&rarr;</span>
-               </a>
+               {globalStore.isAuthenticated ? (
+                  <a className="text-sm font-semibold leading-6 text-light" onClick={signOutHandler}>
+                     Sign Out
+                  </a>
+               ) : (
+                  <a href="/auth" className="text-sm font-semibold leading-6 text-light">
+                     Log in<span aria-hidden="true">&rarr;</span>
+                  </a>
+               )}
             </div>
          </nav>
          <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

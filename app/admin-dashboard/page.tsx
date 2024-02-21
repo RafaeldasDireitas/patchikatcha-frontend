@@ -2,11 +2,14 @@
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import { FetchVerifyUserRole } from "./FetchVerifyUserRole";
 
 export default function AdminDashboard() {
    const [publishProductId, setPublishProductId] = useState();
    const [isAuthorized, setIsAuthorized] = useState(false);
    const globalStore = useGlobalStore();
+   const jwtToken = globalStore.jwtToken;
+   const userEmail = globalStore.userEmail;
 
    const handlePublishProductId = (e: any) => {
       const productId = e.target.value;
@@ -14,23 +17,7 @@ export default function AdminDashboard() {
    };
 
    useEffect(() => {
-      const verifyUserRole = async () => {
-         const verify = await fetch(`https://localhost:7065/api/Auth/verify-user-role?email=${globalStore.userEmail}`, {
-            method: "POST",
-            headers: {
-               Authorization: `Bearer ${globalStore.jwtToken}`
-            },
-            body: JSON.stringify(globalStore.userEmail)
-         });
-
-         if (!verify.ok) {
-            console.log("Something went wrong");
-         }
-
-         setIsAuthorized(true);
-      };
-
-      verifyUserRole();
+      FetchVerifyUserRole({ jwtToken, userEmail, setIsAuthorized });
    }, []);
 
    if (!isAuthorized) {

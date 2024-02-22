@@ -1,5 +1,6 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
    const [email, setEmail] = useState("");
@@ -30,7 +31,11 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       });
 
       if (!createUser.ok) {
-         console.log("there was an error");
+         toast.error("There was a problem creating your account, try again.");
+      }
+
+      if (createUser.ok) {
+         toast.success("Account successfuly created.");
       }
    };
 

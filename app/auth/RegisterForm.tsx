@@ -1,10 +1,12 @@
-import { endpoints } from "@/endpoints/endpoints";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import FetchRegister from "./FetchRegister";
+import FetchEmailToken from "./FetchEmailToken";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
-   const [email, setEmail] = useState("");
+   const [email, setEmail] = useState("vaizard500@gmail.com");
    const [password, setPassword] = useState("");
+   const [redirectToVerifyEmail, setRedirectToVerifyEmail] = useState(false);
+   const [emailToken, setEmailToken] = useState("");
 
    const emailHandler = (e: any) => {
       const email = e.target.value;
@@ -22,20 +24,21 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    };
 
    const createUserAccount = async () => {
-      const createUser = await fetch(endpoints.url + endpoints.register, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json"
-         },
-         body: JSON.stringify(userData)
-      });
+      // await FetchRegister({ userData, setRedirectToVerifyEmail });
+      await FetchEmailToken({ email, setEmailToken });
 
-      if (!createUser.ok) {
-         toast.error("There was a problem creating your account, try again.");
+      if (emailToken.length !== 0) {
+         const send = await fetch("/api/send-email-verification", {
+            method: "POST",
+            headers: {
+               "Content-type": "application/json"
+            },
+            body: JSON.stringify(emailToken)
+         });
       }
 
-      if (createUser.ok) {
-         toast.success("Account successfuly created.");
+      if (redirectToVerifyEmail) {
+         window.location.href = `http://localhost:3000/auth/verify-email?email=${email}`;
       }
    };
 

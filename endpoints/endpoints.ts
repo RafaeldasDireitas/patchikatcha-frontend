@@ -3,5 +3,6 @@ export const endpoints = {
    newProducts: "/api/Product/new-products",
    register: "/api/Auth/register",
    login: "/api/Auth/login",
-   verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`
+   verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`,
+   grabEmailToken: (userEmail: any) => `/api/Auth/grab-email-token?email=${userEmail}`
 };

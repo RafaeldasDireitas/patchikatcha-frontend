@@ -23,24 +23,35 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       password: password
    };
 
-   const createUserAccount = async () => {
-      // await FetchRegister({ userData, setRedirectToVerifyEmail });
-      await FetchEmailToken({ email, setEmailToken });
-
-      if (emailToken.length !== 0) {
-         const send = await fetch("/api/send-email-verification", {
-            method: "POST",
-            headers: {
-               "Content-type": "application/json"
-            },
-            body: JSON.stringify(emailToken)
-         });
-      }
-
-      if (redirectToVerifyEmail) {
-         window.location.href = `http://localhost:3000/auth/verify-email?email=${email}`;
-      }
+   const emailData = {
+      emailToken: emailToken,
+      email: email
    };
+
+   const createUserAccount = async () => {
+      await FetchRegister({ userData, setRedirectToVerifyEmail });
+      await FetchEmailToken({ email, setEmailToken });
+      //the rest of the code is in the useEffect if you need to debug this
+   };
+
+   useEffect(() => {
+      if (emailToken) {
+         const sendData = async () => {
+            const send = await fetch("/api/send-email-verification", {
+               method: "POST",
+               headers: {
+                  "Content-type": "application/json"
+               },
+               body: JSON.stringify(emailData)
+            });
+
+            if (redirectToVerifyEmail) {
+               window.location.href = `http://localhost:3000/auth/confirm-email-warning?email=${email}`;
+            }
+         };
+         sendData();
+      }
+   }, [emailToken]);
 
    return (
       <>

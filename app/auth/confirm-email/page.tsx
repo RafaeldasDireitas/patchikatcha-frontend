@@ -1,7 +1,7 @@
 "use client";
-import { endpoints } from "@/endpoints/endpoints";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import FetchConfirmEmail from "./FetchConfirmEmail";
 
 export default function ConfirmEmail() {
    const params = useSearchParams();
@@ -9,15 +9,7 @@ export default function ConfirmEmail() {
    const token = params.get("token");
 
    useEffect(() => {
-      const confirmEmail = async () => {
-         const encodedToken = token?.replace(/ /g, "+");
-
-         const sendData = await fetch(endpoints.url + endpoints.confirmEmail(encodeURIComponent(encodedToken as unknown as string), userEmail), {
-            method: "PUT"
-         });
-      };
-
-      confirmEmail();
+      FetchConfirmEmail({ token, userEmail });
    }, []);
 
    return (

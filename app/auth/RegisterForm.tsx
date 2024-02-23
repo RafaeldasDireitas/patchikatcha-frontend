@@ -45,9 +45,9 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                body: JSON.stringify(emailData)
             });
 
-            // if (redirectToVerifyEmail) {
-            //    window.location.href = `http://localhost:3000/auth/confirm-email-warning?email=${email}`;
-            // }
+            if (redirectToVerifyEmail) {
+               window.location.href = `http://localhost:3000/auth/confirm-email-warning?email=${email}`;
+            }
          };
          sendData();
       }

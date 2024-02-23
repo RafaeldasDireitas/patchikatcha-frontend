@@ -8,19 +8,12 @@ export default function ConfirmEmail() {
    const userEmail = params.get("email");
    const token = params.get("token");
 
-   const emailData = {
-      userEmail: userEmail,
-      token: token
-   };
-
    useEffect(() => {
       const confirmEmail = async () => {
-         const sendData = await fetch(endpoints.url + endpoints.confirmEmail(token, userEmail), {
-            method: "PUT",
-            headers: {
-               "Content-type": "application/json"
-            },
-            body: JSON.stringify(emailData)
+         const encodedToken = token?.replace(/ /g, "+");
+
+         const sendData = await fetch(endpoints.url + endpoints.confirmEmail(encodeURIComponent(encodedToken as unknown as string), userEmail), {
+            method: "PUT"
          });
       };
 

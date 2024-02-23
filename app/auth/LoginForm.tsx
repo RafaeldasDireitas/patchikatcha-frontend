@@ -2,11 +2,16 @@ import { endpoints } from "@/endpoints/endpoints";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useState } from "react";
 import { toast } from "sonner";
+import FetchLogin from "./FetchLogin";
 
 export default function LoginForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+
+   const setJwtToken = globalStore.setJwtToken;
+   const setIsAuthenticated = globalStore.setIsAuthenticated;
+   const setUserEmail = globalStore.setUserEmail;
 
    const emailHandler = (e: any) => {
       const email = e.target.value;
@@ -21,26 +26,6 @@ export default function LoginForm({ setIsLoginForm }: any) {
    const userData = {
       email: email,
       password: password
-   };
-
-   const checkUserAccount = async () => {
-      const createUser = await fetch(endpoints.url + endpoints.login, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json"
-         },
-         body: JSON.stringify(userData)
-      });
-
-      if (!createUser.ok) {
-         console.log("there was an error");
-      }
-
-      const responseData = await createUser.json();
-      globalStore.setJwtToken(responseData.jwtToken);
-      globalStore.setIsAuthenticated(true);
-      globalStore.setUserEmail(userData.email);
-      toast.success("You successfuly logged in!");
    };
 
    return (
@@ -84,7 +69,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                   </div>
                   <button
                      type="button"
-                     onClick={checkUserAccount}
+                     onClick={() => FetchLogin({ userData, setJwtToken, setIsAuthenticated, setUserEmail })}
                      className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                      Login to your account

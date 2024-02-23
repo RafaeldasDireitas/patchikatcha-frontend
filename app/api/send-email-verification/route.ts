@@ -5,6 +5,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
    const { emailToken, email } = await req.json();
    const apiKey = "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";
 
+   console.log(emailToken);
+
    const apiInstance = new TransactionalEmailsApi();
    const sendSmtpEmail = new SendSmtpEmail();
 

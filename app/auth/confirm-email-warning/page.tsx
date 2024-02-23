@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 export default function VerifyEmail() {
    const params = useSearchParams();
    const userEmail = params.get("email");
-   console.log(params);
 
    return (
       <>

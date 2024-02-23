@@ -16,7 +16,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
    sendSmtpEmail.to = [{ email: email, name: "sample-name" }];
    sendSmtpEmail.replyTo = { email: "example@brevo.com", name: "sample-name" };
    sendSmtpEmail.headers = { "Some-Custom-Name": "unique-id-1234" };
-   sendSmtpEmail.params = { parameter: "My param value", subject: "lol", token: emailToken };
+   sendSmtpEmail.params = { email: email, token: emailToken };
 
    apiInstance.sendTransacEmail(sendSmtpEmail);
 

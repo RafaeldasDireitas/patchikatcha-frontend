@@ -3,7 +3,7 @@ import FetchRegister from "./FetchRegister";
 import FetchEmailToken from "./FetchEmailToken";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
-   const [email, setEmail] = useState("vaizard500@gmail.com");
+   const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [redirectToVerifyEmail, setRedirectToVerifyEmail] = useState(false);
    const [emailToken, setEmailToken] = useState("");

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
    return (
-      <html lang="en" className="bg-white min-h-screen text-black flex flex-col">
+      <html lang="en" className="bg-body-background min-h-screen text-black flex flex-col">
          <body>
             <Toaster expand visibleToasts={1} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }}></Toaster>
             <Hydrate>{children}</Hydrate>

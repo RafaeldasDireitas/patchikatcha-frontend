@@ -12,6 +12,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import { useGlobalStore } from "@/zustand/globalstore";
+import cart from "@/public/Bag_alt_light.png";
+import Image from "next/image";
 
 const products = [
    {
@@ -145,22 +147,55 @@ export default function Navbar() {
                </a>
             </Popover.Group>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+               <div className="drawer-end">
+                  <input id="my-drawer-4" type="checkbox" className="drawer-toggle absolute" />
+                  {/* Page content here */}
+                  <label htmlFor="my-drawer-4">
+                     <div className="relative">
+                        <Image
+                           src={cart}
+                           width={24}
+                           height={24}
+                           alt="No cart found"
+                           className="mx-2 hover:cursor-pointer hover:scale-110 duration-200"
+                        />
+                        <h1 className="absolute left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
+                           0
+                        </h1>
+                     </div>
+                  </label>
+                  <div className="drawer-side">
+                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+
+                     <ul className="menu p-4 w-80 min-h-full bg-white text-base-content">
+                        <div>
+                           <h1 className="text-3xl text-left">Your cart</h1>
+                        </div>
+                     </ul>
+                  </div>
+               </div>
                {globalStore.isAuthenticated ? (
                   <a className="text-sm font-semibold leading-6 text-light" onClick={signOutHandler}>
                      Sign Out
                   </a>
                ) : (
-                  <a href="/auth" className="text-sm font-semibold leading-6 text-light">
-                     Log in<span aria-hidden="true">&rarr;</span>
-                  </a>
+                  <>
+                     <a href="/auth" className="text-sm font-semibold leading-6 text-light mx-2">
+                        Log in<span aria-hidden="true"></span>
+                     </a>
+                     <a href="/auth" className="text-sm font-semibold leading-6 text-light mx-2">
+                        Sign up<span aria-hidden="true"></span>
+                     </a>
+                  </>
                )}
             </div>
          </nav>
          <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
             <div className="fixed inset-0 z-10" />
+
             <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                <div className="flex items-center justify-between">
-                  <a>Patchi Katcha</a>
+                  <a className="text-light">Patchi Katcha</a>
                   <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(false)}>
                      <span className="sr-only">Close menu</span>
                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -207,9 +242,40 @@ export default function Navbar() {
                               Sign Out
                            </a>
                         ) : (
-                           <a href="/auth" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light">
-                              Log in
-                           </a>
+                           <>
+                              <a href="/auth" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light">
+                                 Log in
+                              </a>
+                              <a href="/auth" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light">
+                                 Sign up
+                              </a>
+                              <div className="flex lg:hidden drawer-end">
+                                 <input id="my-drawer-4-mobile" type="checkbox" className="drawer-toggle absolute" />
+                                 {/* Page content here */}
+                                 <label htmlFor="my-drawer-4-mobile">
+                                    <div className="relative">
+                                       <Image
+                                          src={cart}
+                                          width={24}
+                                          height={24}
+                                          alt="No cart found"
+                                          className="mx-2 hover:cursor-pointer hover:scale-110 duration-200"
+                                       />
+                                       <h1 className="absolute left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
+                                          0
+                                       </h1>
+                                    </div>
+                                 </label>
+                                 <div className="drawer-side right-0">
+                                    <label htmlFor="my-drawer-4-mobile" aria-label="close sidebar" className="drawer-overlay"></label>
+                                    <ul className="menu p-4 w-80 min-h-full bg-white">
+                                       <div>
+                                          <h1 className="text-3xl text-left">Your cart</h1>
+                                       </div>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </>
                         )}
                      </div>
                   </div>

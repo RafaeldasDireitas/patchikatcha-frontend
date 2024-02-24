@@ -9,7 +9,8 @@ const config: Config = {
             "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))"
          },
          backgroundColor: {
-            "button-background": "#BC6C25"
+            "button-background": "#BC6C25",
+            "body-background": "#ffedd8"
          },
          textColor: {
             light: "#BC6C25"

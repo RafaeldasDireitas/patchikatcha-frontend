@@ -168,6 +168,10 @@ export default function Navbar() {
                         <div>
                            <h1 className="text-3xl text-left">Your cart</h1>
                         </div>
+                        <div className="flex flex-row p-4">
+                           <button className="btn btn-square w-30 h-30 btn-lg bg-slate-600"></button>
+                           <h1 className="px-2 text-lg">Epic Galaxy Hoodie</h1>
+                        </div>
                      </ul>
                   </div>
                </div>

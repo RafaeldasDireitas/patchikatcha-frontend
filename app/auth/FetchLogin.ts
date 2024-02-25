@@ -1,5 +1,6 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 export default async function FetchLogin({ userData, setJwtToken, setIsAuthenticated, setUserEmail }: any) {
    const createUser = await fetch(endpoints.url + endpoints.login, {
@@ -15,8 +16,8 @@ export default async function FetchLogin({ userData, setJwtToken, setIsAuthentic
    }
 
    const responseData = await createUser.json();
+   toast.success("You successfuly logged in!");
    setJwtToken(responseData.jwtToken);
    setIsAuthenticated(true);
    setUserEmail(userData.email);
-   toast.success("You successfuly logged in!");
 }

@@ -63,11 +63,6 @@ export default function Navbar() {
 
    const globalStore = useGlobalStore();
 
-   const signOutHandler = () => {
-      globalStore.setIsAuthenticated(false);
-      globalStore.setJwtToken("");
-   };
-
    return (
       <header className="bg-white">
          <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -177,7 +172,7 @@ export default function Navbar() {
                   </div>
                </div>
                {globalStore.isAuthenticated ? (
-                  <Link href={"/profile"}>
+                  <Link href={globalStore.isAuthenticated ? "/profile" : "/auth"}>
                      <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-100 relative">
                         <Image src={user} width={26} height={26} alt="User icon"></Image>
                         <button className="absolute btn btn-circle bg-green-500 hover:bg-green-500 w-3 min-h-0 max-h-3 left-3.5 -bottom-0.5"></button>
@@ -242,9 +237,7 @@ export default function Navbar() {
                      </div>
                      <div className="py-6">
                         {globalStore.isAuthenticated ? (
-                           <a className="text-sm font-semibold leading-6 text-light" onClick={signOutHandler}>
-                              Sign Out
-                           </a>
+                           <a className="text-sm font-semibold leading-6 text-light">Sign Out</a>
                         ) : (
                            <>
                               <a href="/auth" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light">

@@ -6,7 +6,7 @@ export const useGlobalStore = create<GlobalStateManagement>()(
    persist(
       (set) => ({
          jwtToken: "" as string,
-         isAuthenticated: false as boolean,
+         isAuthenticated: true as boolean,
          userEmail: "" as string,
 
          setJwtToken(response: string) {

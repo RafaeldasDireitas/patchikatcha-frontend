@@ -71,7 +71,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       <>
          <div className="flex flex-row">
             <div className="w-1/3 bg-body-background min-h-screen items-center flex justify-center">
-               <Image src={turtle} width={200} height={200} alt="No turtle found..."></Image>
+               <Image src={turtle} width={400} height={400} alt="No turtle found..."></Image>
             </div>
 
             <div className="w-2/3 bg-white min-h-screen items-center flex flex-col justify-center">
@@ -81,7 +81,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                   <input
                      type="text"
                      placeholder="example@email.com"
-                     className="input input-bordered rounded-full max-w-[500px] my-2 input-warning w-full bg-white josefin-sans"
+                     className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
                      id="email"
                      onChange={emailHandler}
                      value={email}
@@ -90,7 +90,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                   <input
                      type="password"
                      placeholder="Password"
-                     className="input input-bordered rounded-full max-w-[500px] my-2 input-warning w-full bg-white josefin-sans"
+                     className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
                      onChange={passwordHandler}
                      value={password}
                      id="password"
@@ -98,7 +98,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                   <input
                      type="password"
                      placeholder="Confirm password"
-                     className="input input-bordered rounded-full max-w-[500px] my-2 input-warning w-full bg-white josefin-sans"
+                     className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
                      onChange={confirmPasswordHandler}
                      value={confirmPassword}
                      id="password"

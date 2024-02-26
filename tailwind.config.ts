@@ -14,6 +14,9 @@ const config: Config = {
          },
          textColor: {
             light: "#BC6C25"
+         },
+         borderColor: {
+            "border-light": "#BC6C25"
          }
       }
    },

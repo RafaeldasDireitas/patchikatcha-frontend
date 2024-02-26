@@ -1,4 +1,3 @@
-import cardImage from "@/public/card-image-test.png";
 import Image from "next/image";
 
 export default function ProductCard({ title, tag, price, image }: any) {

@@ -3,6 +3,7 @@ import ProductCard from "./components/ProductCard";
 import FetchNewProducts from "@/app/FetchNewProducts";
 import { ProductDataType } from "@/types/ProductDataType";
 import Loading from "./components/Loading";
+import Link from "next/link";
 
 export default function NewProducts() {
    const [newProducts, setNewProducts] = useState<ProductDataType[]>();
@@ -24,13 +25,15 @@ export default function NewProducts() {
                const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
 
                return (
-                  <ProductCard
-                     key={key}
-                     title={product.title}
-                     tag={product.tags[0]}
-                     price={formattedPrice}
-                     image={product.images[0].src}
-                  ></ProductCard>
+                  <Link href={{ pathname: `http://localhost:3000/product/${product.title}`, query: { productId: product.id } }}>
+                     <ProductCard
+                        key={key}
+                        title={product.title}
+                        tag={product.tags[0]}
+                        price={formattedPrice}
+                        image={product.images[0].src}
+                     ></ProductCard>
+                  </Link>
                );
             })}
          </div>

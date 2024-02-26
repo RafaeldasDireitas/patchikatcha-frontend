@@ -164,7 +164,7 @@ export default function Navbar() {
                   <div className="drawer-side z-50">
                      <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
 
-                     <ul className="menu p-4 w-80 min-h-full bg-body-background">
+                     <ul className="menu p-4 w-96 min-h-full bg-body-background">
                         <div>
                            <h1 className="text-3xl text-left">Your cart</h1>
                         </div>
@@ -176,7 +176,7 @@ export default function Navbar() {
                   </div>
                </div>
                {globalStore.isAuthenticated ? (
-                  <Link href={globalStore.isAuthenticated ? "/profile" : "/auth"}>
+                  <Link href={"/profile"}>
                      <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-100 relative">
                         <Image src={user} width={26} height={26} alt="User icon"></Image>
                         <button className="absolute btn btn-circle bg-green-500 hover:bg-green-500 w-3 min-h-0 max-h-3 left-3.5 -bottom-0.5"></button>
@@ -269,7 +269,7 @@ export default function Navbar() {
                                  </label>
                                  <div className="drawer-side right-0">
                                     <label htmlFor="my-drawer-4-mobile" aria-label="close sidebar" className="drawer-overlay"></label>
-                                    <ul className="menu p-4 w-80 min-h-full bg-body-background">
+                                    <ul className="menu p-4 w-96 min-h-full bg-body-background">
                                        <div>
                                           <h1 className="text-3xl text-left">Your cart</h1>
                                        </div>

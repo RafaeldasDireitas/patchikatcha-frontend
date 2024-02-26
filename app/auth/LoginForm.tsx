@@ -48,7 +48,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                <input
                   type="text"
                   placeholder="example@email.com"
-                  className="input input-bordered rounded-full max-w-[500px] my-2 input-warning w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
                   id="email"
                   onChange={emailHandler}
                   value={email}
@@ -57,7 +57,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered rounded-full max-w-[500px] my-2 input-warning w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
                   onChange={passwordHandler}
                   value={password}
                   id="password"

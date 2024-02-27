@@ -1,6 +1,7 @@
 export const endpoints = {
    url: "https://localhost:7065",
    newProducts: "/api/Product/new-products",
+   publishProduct: "/api/Product/publish-product",
    register: "/api/Auth/register",
    login: "/api/Auth/login",
    verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`,

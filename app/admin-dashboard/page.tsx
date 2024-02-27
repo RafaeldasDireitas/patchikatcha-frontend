@@ -3,17 +3,19 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { FetchVerifyUserRole } from "./FetchVerifyUserRole";
+import { toast } from "sonner";
+import { endpoints } from "@/endpoints/endpoints";
 
 export default function AdminDashboard() {
-   const [publishProductId, setPublishProductId] = useState();
+   const [productId, setProductId] = useState("");
    const [isAuthorized, setIsAuthorized] = useState(false);
    const globalStore = useGlobalStore();
    const jwtToken = globalStore.jwtToken;
    const userEmail = globalStore.userEmail;
 
-   const handlePublishProductId = (e: any) => {
+   const handleProductId = (e: any) => {
       const productId = e.target.value;
-      setPublishProductId(productId);
+      setProductId(productId);
    };
 
    useEffect(() => {
@@ -24,18 +26,26 @@ export default function AdminDashboard() {
       return <Loading />;
    }
 
-   console.log(publishProductId);
-
    const publishProduct = async () => {
-      const sendData = await fetch("/api/publish-product", {
+      const sendData = await fetch(endpoints.url + endpoints.publishProduct, {
          method: "POST",
-         body: JSON.stringify(publishProductId)
+         headers: {
+            Authorization: `Bearer ${jwtToken}`,
+            "Content-Type": "application/json"
+         },
+         body: JSON.stringify(productId)
       });
 
+      console.log(sendData.text());
+
       if (sendData.ok) {
-         console.log("Data sent");
+         toast.success("Product published!");
+      } else {
+         toast.error("There was an error publishing the product.");
       }
    };
+
+   ("65dd2d08b69d70e9650ae724");
 
    return (
       <div className="flex min-h-screen items-center justify-center">
@@ -43,8 +53,8 @@ export default function AdminDashboard() {
             <h1 className="my-1 text-center text-xl">Publish product</h1>
             <input
                type="text"
-               onChange={handlePublishProductId}
-               value={publishProductId}
+               onChange={handleProductId}
+               value={productId}
                placeholder="Product Id"
                className="input input-bordered input-warning w-full max-w-xs my-1 bg-white"
                id="publish"

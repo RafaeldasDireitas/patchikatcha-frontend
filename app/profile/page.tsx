@@ -1,5 +1,6 @@
 "use client";
 import { useGlobalStore } from "@/zustand/globalstore";
+import { toast } from "sonner";
 
 export default function Profile() {
    const globalStore = useGlobalStore();
@@ -7,6 +8,8 @@ export default function Profile() {
    const signOutHandler = () => {
       globalStore.setIsAuthenticated(false);
       globalStore.setJwtToken("");
+      toast.success("You successfuly logged out.");
+      setTimeout((window.location.href = "/auth"), 2000);
    };
    return (
       <>

@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import { FetchVerifyUserRole } from "./FetchVerifyUserRole";
 import { toast } from "sonner";
 import { endpoints } from "@/endpoints/endpoints";
+import FetchPublishProduct from "./FetchPublishProduct";
 
 export default function AdminDashboard() {
    const [productId, setProductId] = useState("");
@@ -26,26 +27,9 @@ export default function AdminDashboard() {
       return <Loading />;
    }
 
-   const publishProduct = async () => {
-      const sendData = await fetch(endpoints.url + endpoints.publishProduct, {
-         method: "POST",
-         headers: {
-            Authorization: `Bearer ${jwtToken}`,
-            "Content-Type": "application/json"
-         },
-         body: JSON.stringify(productId)
-      });
-
-      console.log(sendData.text());
-
-      if (sendData.ok) {
-         toast.success("Product published!");
-      } else {
-         toast.error("There was an error publishing the product.");
-      }
+   const publishProduct = () => {
+      FetchPublishProduct({ jwtToken, productId });
    };
-
-   ("65dd2d08b69d70e9650ae724");
 
    return (
       <div className="flex min-h-screen items-center justify-center">

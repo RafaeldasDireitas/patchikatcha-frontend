@@ -4,9 +4,10 @@ import FetchNewProducts from "@/app/FetchNewProducts";
 import { ProductDataType } from "@/types/ProductDataType";
 import Loading from "./components/Loading";
 import Link from "next/link";
+import { ProductType } from "@/types/ProductType";
 
 export default function NewProducts() {
-   const [newProducts, setNewProducts] = useState<ProductDataType[]>();
+   const [newProducts, setNewProducts] = useState<ProductType[]>();
 
    useEffect(() => {
       FetchNewProducts({ setNewProducts });
@@ -25,7 +26,7 @@ export default function NewProducts() {
                const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
 
                return (
-                  <Link href={{ pathname: `http://localhost:3000/product/${product.title}`, query: { productId: product.id } }}>
+                  <Link href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
                      <ProductCard
                         key={key}
                         title={product.title}

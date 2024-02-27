@@ -12,12 +12,14 @@ export default async function FetchLogin({ userData, setJwtToken, setIsAuthentic
    });
 
    if (!createUser.ok) {
-      console.log("there was an error");
+      toast.error("Credentials are wrong, try again.");
    }
 
-   const responseData = await createUser.json();
-   toast.success("You successfuly logged in!");
-   setJwtToken(responseData.jwtToken);
-   setIsAuthenticated(true);
-   setUserEmail(userData.email);
+   if (createUser.ok) {
+      const responseData = await createUser.json();
+      toast.success("You successfuly logged in!");
+      setJwtToken(responseData.jwtToken);
+      setIsAuthenticated(true);
+      setUserEmail(userData.email);
+   }
 }

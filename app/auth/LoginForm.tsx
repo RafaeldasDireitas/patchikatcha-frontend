@@ -14,10 +14,11 @@ export default function LoginForm({ setIsLoginForm }: any) {
 
    const setJwtToken = globalStore.setJwtToken;
    const setIsAuthenticated = globalStore.setIsAuthenticated;
+   const isAuthenticated = globalStore.isAuthenticated;
    const setUserEmail = globalStore.setUserEmail;
 
-   if (globalStore.isAuthenticated) {
-      setTimeout(redirect(process.env.NEXT_PUBLIC_BASE_URL as string), 2000);
+   if (isAuthenticated) {
+      redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
    }
 
    const emailHandler = (e: any) => {

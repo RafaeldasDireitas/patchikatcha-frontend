@@ -26,7 +26,7 @@ export default function NewProducts() {
                const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
 
                return (
-                  <Link href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
+                  <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
                      <ProductCard
                         key={key}
                         title={product.title}

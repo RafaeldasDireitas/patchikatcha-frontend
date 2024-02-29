@@ -1,16 +1,26 @@
 "use client";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { toast } from "sonner";
+import IsNotAuthenticated from "./IsNotAuthenticated";
+import { redirect } from "next/navigation";
 
 export default function Profile() {
    const globalStore = useGlobalStore();
+   const setIsAuthenticated = globalStore.setIsAuthenticated;
+   const isAuthenticated = globalStore.isAuthenticated;
+   const setJwtToken = globalStore.setJwtToken;
 
    const signOutHandler = () => {
-      globalStore.setIsAuthenticated(false);
-      globalStore.setJwtToken("");
+      setIsAuthenticated(false);
+      setJwtToken("");
       toast.success("You successfuly logged out.");
-      setTimeout((window.location.href = "/auth"), 2000);
+      redirect((window.location.href = "/auth"));
    };
+
+   if (!isAuthenticated) {
+      return <IsNotAuthenticated />;
+   }
+
    return (
       <>
          <h1>User profile</h1>

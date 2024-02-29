@@ -1,6 +1,6 @@
 export default function IsNotAuthenticated() {
    setTimeout(() => {
-      window.location.href = "/";
+      window.location.href = "/auth";
    }, 5000);
    return (
       <>

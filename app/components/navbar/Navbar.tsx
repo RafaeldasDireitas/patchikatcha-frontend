@@ -16,6 +16,7 @@ import cart from "@/public/Bag_alt_light.png";
 import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
+import Cart from "../cart/Cart";
 
 const products = [
    {
@@ -161,19 +162,7 @@ export default function Navbar() {
                         </h1>
                      </div>
                   </label>
-                  <div className="drawer-side z-50">
-                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-
-                     <ul className="menu p-4 w-96 min-h-full bg-body-background">
-                        <div>
-                           <h1 className="text-3xl text-left">Your cart</h1>
-                        </div>
-                        <div className="flex flex-row p-4">
-                           <button className="btn btn-square w-30 h-30 btn-lg bg-slate-600"></button>
-                           <h1 className="px-2 text-lg">Epic Galaxy Hoodie</h1>
-                        </div>
-                     </ul>
-                  </div>
+                  <Cart></Cart>
                </div>
                {globalStore.isAuthenticated ? (
                   <Link href={"/profile"}>

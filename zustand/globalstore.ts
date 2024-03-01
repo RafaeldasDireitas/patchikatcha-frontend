@@ -1,3 +1,4 @@
+import { CartType } from "@/types/CartType";
 import { GlobalStateManagement } from "@/types/StateManagement";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -8,6 +9,7 @@ export const useGlobalStore = create<GlobalStateManagement>()(
          jwtToken: "" as string,
          isAuthenticated: false as boolean,
          userEmail: "" as string,
+         cart: [] as CartType[],
 
          setJwtToken(response: string) {
             return set({

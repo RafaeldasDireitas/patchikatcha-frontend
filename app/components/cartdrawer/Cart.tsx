@@ -1,22 +1,10 @@
 "use client";
 import { useGlobalStore } from "@/zustand/globalstore";
 import CartProduct from "./CartProduct";
-import { CartType } from "@/types/CartType";
 
 export default function Cart() {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
-
-   console.log(cart);
-
-   const cartData: CartType = {
-      id: 0,
-      name: "Epic ee",
-      description: "lpol",
-      price: 4.99,
-      price_id: "aijdaiwopda",
-      quantity: 1
-   };
 
    return (
       <div className="drawer-side z-50">
@@ -27,22 +15,27 @@ export default function Cart() {
                <h1 className="text-3xl text-left">Your cart</h1>
             </div>
             {cart &&
-               cart.map((product, key) => {
+               cart.map((product, index) => {
                   return (
-                     <>
-                        <div key={key}>
-                           <CartProduct />
-                        </div>
-                     </>
+                     <div key={index}>
+                        <CartProduct
+                           name={product.name}
+                           description={product.description}
+                           price={product.price}
+                           price_id={"aodjao"}
+                           image={product.image}
+                           quantity={product.quantity}
+                           index={product.index}
+                           product_id={product.product_id}
+                        ></CartProduct>
+                     </div>
                   );
                })}
-            <button className="btn" onClick={() => globalStore.setCart(cartData)}>
-               hello
-            </button>
-            <button className="btn" onClick={() => globalStore.removeFromCart(0)}>
-               Remove
-            </button>
-            <div className="flex flex-col"></div>
+            <div className="flex flex-col">
+               <h2>Subtotal</h2>
+               <hr></hr>
+               <button className="btn bg-button-background border-none text-white my-8">View Cart</button>
+            </div>
          </ul>
       </div>
    );

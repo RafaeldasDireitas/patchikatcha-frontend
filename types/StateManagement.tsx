@@ -9,5 +9,5 @@ export type GlobalStateManagement = {
    setIsAuthenticated: (response: any) => void;
    setUserEmail: (response: any) => void;
    setCart: (response: CartType) => void;
-   removeFromCart: (response: number) => void;
+   removeFromCart: (productId: number) => void;
 };

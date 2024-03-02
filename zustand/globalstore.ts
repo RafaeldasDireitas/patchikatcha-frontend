@@ -29,14 +29,28 @@ export const useGlobalStore = create<GlobalStateManagement>()(
          },
 
          setCart(response: CartType) {
-            set((state) => ({
-               cart: [...state.cart, response]
-            }));
+            set((state) => {
+               const existingIndex = state.cart.findIndex((product) => product.name === response.name);
+
+               if (existingIndex !== -1) {
+                  const updatedCart = [...state.cart];
+                  updatedCart[existingIndex] = {
+                     ...updatedCart[existingIndex],
+                     quantity: updatedCart[existingIndex].quantity + response.quantity
+                  };
+
+                  return { cart: updatedCart };
+               } else {
+                  return {
+                     cart: [...state.cart, { ...response, index: state.cart.length }]
+                  };
+               }
+            });
          },
 
-         removeFromCart(productId: number) {
+         removeFromCart(productIndex: number) {
             set((state) => ({
-               cart: [...state.cart.filter((product) => product.id !== productId)]
+               cart: [...state.cart.filter((product) => product.index !== productIndex)]
             }));
          }
       }),

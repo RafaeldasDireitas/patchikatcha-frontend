@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import { useGlobalStore } from "@/zustand/globalstore";
-import cart from "@/public/Bag_alt_light.png";
+import cartImage from "@/public/Bag_alt_light.png";
 import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,6 +63,7 @@ export default function Navbar() {
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
    const globalStore = useGlobalStore();
+   const cart = globalStore.cart;
 
    return (
       <header className="bg-white">
@@ -151,14 +152,14 @@ export default function Navbar() {
                   <label htmlFor="my-drawer-4">
                      <div className="relative">
                         <Image
-                           src={cart}
+                           src={cartImage}
                            width={24}
                            height={24}
                            alt="No cart found"
                            className="mx-2 hover:cursor-pointer hover:scale-110 duration-200"
                         />
                         <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
-                           1
+                           {cart.length}
                         </h1>
                      </div>
                   </label>
@@ -245,7 +246,7 @@ export default function Navbar() {
                                  <label htmlFor="my-drawer-4-mobile">
                                     <div className="relative">
                                        <Image
-                                          src={cart}
+                                          src={cartImage}
                                           width={24}
                                           height={24}
                                           alt="No cart found"

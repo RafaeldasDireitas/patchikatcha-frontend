@@ -16,7 +16,7 @@ import cart from "@/public/Bag_alt_light.png";
 import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
-import Cart from "../cart/Cart";
+import Cart from "../cartdrawer/Cart";
 
 const products = [
    {

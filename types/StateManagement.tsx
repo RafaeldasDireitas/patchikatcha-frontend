@@ -8,4 +8,6 @@ export type GlobalStateManagement = {
    setJwtToken: (response: any) => void;
    setIsAuthenticated: (response: any) => void;
    setUserEmail: (response: any) => void;
+   setCart: (response: CartType) => void;
+   removeFromCart: (response: number) => void;
 };

@@ -26,6 +26,18 @@ export const useGlobalStore = create<GlobalStateManagement>()(
             return set({
                userEmail: response
             });
+         },
+
+         setCart(response: CartType) {
+            set((state) => ({
+               cart: [...state.cart, response]
+            }));
+         },
+
+         removeFromCart(productId: number) {
+            set((state) => ({
+               cart: [...state.cart.filter((product) => product.id !== productId)]
+            }));
          }
       }),
       { name: "global-store" }

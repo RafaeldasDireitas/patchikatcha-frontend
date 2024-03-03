@@ -17,6 +17,7 @@ import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "../cartdrawer/Cart";
+import { CartType } from "@/types/CartType";
 
 const products = [
    {
@@ -64,6 +65,9 @@ export default function Navbar() {
 
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
+   const cartQuantity = cart.reduce((accumulator, currentProduct) => {
+      return accumulator + currentProduct.quantity;
+   }, 0);
 
    return (
       <header className="bg-white">
@@ -159,7 +163,7 @@ export default function Navbar() {
                            className="mx-2 hover:cursor-pointer hover:scale-110 duration-200"
                         />
                         <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
-                           {cart.length}
+                           {cartQuantity}
                         </h1>
                      </div>
                   </label>

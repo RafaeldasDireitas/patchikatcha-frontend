@@ -9,10 +9,13 @@ export default function Profile() {
    const setIsAuthenticated = globalStore.setIsAuthenticated;
    const isAuthenticated = globalStore.isAuthenticated;
    const setJwtToken = globalStore.setJwtToken;
+   const setUserEmail = globalStore.setUserEmail;
 
    const signOutHandler = () => {
       setIsAuthenticated(false);
       setJwtToken("");
+      setUserEmail("");
+
       toast.success("You successfuly logged out.");
       redirect((window.location.href = "/auth"));
    };

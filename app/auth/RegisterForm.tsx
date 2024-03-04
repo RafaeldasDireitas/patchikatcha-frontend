@@ -60,7 +60,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
             });
 
             if (redirectToVerifyEmail) {
-               window.location.href = `http://localhost:3000/auth/confirm-email-warning?email=${email}`;
+               window.location.href = `/auth/confirm-email-warning`;
             }
          };
          sendData();

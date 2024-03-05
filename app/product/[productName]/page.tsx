@@ -25,7 +25,7 @@ export default function ProductName({ params }: any) {
    }
 
    const addToCart = async () => {
-      const grabIds = await fetch("https://localhost:7065/api/Stripe/grab-price-id?productId=65dd2d08b69d70e9650ae724");
+      const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`);
 
       const priceId = await grabIds.text();
 

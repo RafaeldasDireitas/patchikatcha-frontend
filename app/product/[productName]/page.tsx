@@ -1,5 +1,4 @@
 "use client";
-import { endpoints } from "@/endpoints/endpoints";
 import { ProductType } from "@/types/ProductType";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,23 +20,23 @@ export default function ProductName({ params }: any) {
       FetchGrabProduct({ productId, setProduct });
    }, []);
 
-   if (!product) {
-      return <Loading></Loading>;
+   if (!product || !productId) {
+      return <Loading />;
    }
 
-   const addToCart = () => {
-      if (globalStore.cart.some((cartProduct) => cartProduct.name === product.title)) {
-         console.log("found");
-      }
+   const addToCart = async () => {
+      const grabIds = await fetch("https://localhost:7065/api/Stripe/grab-price-id?productId=65dd2d08b69d70e9650ae724");
+
+      const priceId = await grabIds.text();
 
       globalStore.setCart({
          name: product.title,
          description: product.description,
          price: product?.variants[0]?.price,
-         price_id: "aoijdioa",
+         price_id: priceId,
          image: product?.images[0].src,
          quantity: 1,
-         product_id: productId ?? ""
+         product_id: productId
       });
 
       toast.success("Added to cart!");

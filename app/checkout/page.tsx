@@ -4,6 +4,7 @@ import { EmbeddedCheckoutProvider, EmbeddedCheckout } from "@stripe/react-stripe
 import { useEffect, useState } from "react";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { CartType } from "@/types/CartType";
+import FetchCreateCheckoutSession from "./FetchCreateCheckoutSession";
 
 const stripePromise = loadStripe("pk_test_51Onkz6Lwv2BbZpNwCznBgyiBZjWKIEQUJZPyyzbaLha0vf4Eu55o9h7fN0O9jMotkYsR6kgZtSYLq4lcbkntkRaD00g5Dird6V");
 
@@ -23,23 +24,8 @@ export default function Checkout() {
       productId: product.product_id
    }));
 
-   console.log(checkoutObject);
-
    useEffect(() => {
-      const fetchSession = async () => {
-         const dataSession = await fetch(`https://localhost:7065/api/Stripe/create-checkout-session?userEmail=${userEmail}`, {
-            method: "POST",
-            headers: {
-               "Content-Type": "application/json"
-            },
-            body: JSON.stringify(checkoutObject)
-         });
-
-         const data = await dataSession.json();
-         setClientSecret(data);
-      };
-
-      fetchSession();
+      FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret });
    }, []);
 
    if (!userEmail) {

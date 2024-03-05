@@ -25,8 +25,7 @@ export default function ProductName({ params }: any) {
    }
 
    const addToCart = async () => {
-      const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`);
-
+      const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
       const priceId = await grabIds.text();
 
       globalStore.setCart({

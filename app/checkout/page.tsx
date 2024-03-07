@@ -1,6 +1,6 @@
 "use client";
 import { loadStripe } from "@stripe/stripe-js";
-import { EmbeddedCheckoutProvider, EmbeddedCheckout, AddressElement } from "@stripe/react-stripe-js";
+import { EmbeddedCheckoutProvider, EmbeddedCheckout } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { CartType } from "@/types/CartType";

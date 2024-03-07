@@ -35,7 +35,8 @@ export default function ProductName({ params }: any) {
          price_id: priceId,
          image: product?.images[0].src,
          quantity: 1,
-         product_id: productId
+         product_id: productId,
+         variant_id: product.variants[0].id
       });
 
       toast.success("Added to cart!");

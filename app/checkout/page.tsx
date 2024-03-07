@@ -21,7 +21,8 @@ export default function Checkout() {
       priceId: product.price_id,
       image: product.image,
       quantity: product.quantity,
-      productId: product.product_id
+      productId: product.product_id,
+      variantId: product.variant_id
    }));
 
    useEffect(() => {

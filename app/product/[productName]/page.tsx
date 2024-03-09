@@ -47,6 +47,8 @@ export default function ProductName({ params }: any) {
       toast.success("Added to cart!");
    };
 
+   console.log(product);
+
    return (
       <>
          <div className="p-12">
@@ -72,15 +74,16 @@ export default function ProductName({ params }: any) {
 
                   <h2 className="my-2 josefin-sans" dangerouslySetInnerHTML={{ __html: product.description }}></h2>
                   <h1 className="text-2xl text-light yeseva-one-regular">Size:</h1>
-                  {/* <div className="flex flex-row flex-wrap my-2">
-                     {productVariants?.map((variant, key) => {
+                  <div className="flex flex-row flex-wrap my-2">
+                     {/* {productVariants?.map((variant, key) => {
                         return (
                            <button className="btn ml-1 my-1 w-40 josefin-sans bg-button-background border-none text-white" key={key}>
                               {variant.title}
                            </button>
                         );
-                     })}
-                  </div> */}
+                     })} */}
+                     <button className="btn">{product.variants[0].title}</button>
+                  </div>
                </div>
             </div>
          </div>

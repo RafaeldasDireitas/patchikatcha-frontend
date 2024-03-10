@@ -44,7 +44,7 @@ type ValuesType = {
    title: string;
 };
 
-type VariantsType = {
+export type VariantsType = {
    id: number;
    sku: string;
    cost: number;

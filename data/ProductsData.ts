@@ -9,5 +9,6 @@ export const ProductsData: Record<string, number> = {
    "Heather Grey": 2294,
    Black: 2288,
    Red: 2302,
-   Anthracite: 2287
+   Anthracite: 2287,
+   White: 521
 };

@@ -7,7 +7,7 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import Loading from "@/app/components/Loading";
 import { toast } from "sonner";
 import Image from "next/image";
-import { ProductsData } from "@/data/productsData";
+import { ProductsData } from "@/data/ProductsData";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -64,6 +64,8 @@ export default function ProductName({ params }: any) {
    const colorsName = uniqueColorsId.map((colorId: number) => {
       return Object.keys(ProductsData).find((key: any) => ProductsData[key] === colorId);
    });
+
+   console.log(productVariants);
 
    const addToCart = async () => {
       const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
@@ -132,7 +134,7 @@ export default function ProductName({ params }: any) {
 
                         return (
                            <button
-                              className="btn ml-1 my-1 w-20 josefin-sans bg-button-background border-none text-white"
+                              className="btn ml-1 my-1 w-24 josefin-sans bg-button-background border-none text-white"
                               key={colorId}
                               onClick={() => setColorId(colorId)}
                            >

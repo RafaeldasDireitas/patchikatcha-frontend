@@ -30,6 +30,7 @@ export default function Checkout() {
    }, []);
 
    console.log(clientSecret);
+   console.log(cart[0].variant_id);
 
    if (!userEmail) {
       return (

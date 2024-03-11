@@ -8,6 +8,11 @@ export default async function FetchGrabProduct({ productId, setProduct }: any) {
       }
    });
 
-   const data = await product.json();
-   setProduct(data);
+   if (product.ok) {
+      const data = await product.json();
+      setProduct(data);
+      return true;
+   }
+
+   return false;
 }

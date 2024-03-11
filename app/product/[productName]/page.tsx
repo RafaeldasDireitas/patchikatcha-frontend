@@ -7,17 +7,13 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import Loading from "@/app/components/Loading";
 import { toast } from "sonner";
 import Image from "next/image";
+import { ProductsData } from "@/data/productsData";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
    const [quantity, setQuantity] = useState(0);
-   const [availableSizes, setAvailableSizes] = useState([
-      {
-         title: "",
-         id: 0
-      }
-   ]);
-   const [availableColors, setAvailableColors] = useState([]);
+   const [sizeId, setSizeId] = useState(0);
+   const [colorId, setColorId] = useState(0);
    const globalStore = useGlobalStore();
 
    const searchParams = useSearchParams();
@@ -27,7 +23,9 @@ export default function ProductName({ params }: any) {
 
    useEffect(() => {
       FetchGrabProduct({ productId, setProduct });
-   }, []);
+      console.log("Size id: " + sizeId);
+      console.log("Color id: " + colorId);
+   }, [sizeId, colorId]);
 
    const incrementQuantity = () => {
       if (quantity >= 10) {
@@ -52,11 +50,22 @@ export default function ProductName({ params }: any) {
    const sideImages = product.images.slice(0, 5);
    const defaultImage = product.images.find((product) => product.is_default === true);
    const mainImage = defaultImage?.src;
+
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
-   const sizes = productVariants.map((size) => size.options[0]);
-   const colors = productVariants.flatMap((color) => [...availableColors, color.options[0]]);
-   console.log(productVariants);
-   console.log(sizes);
+
+   const sizesId = productVariants.map((product) => product.options[1]);
+   const uniqueSizesId = sizesId.filter((value, index) => sizesId.indexOf(value) === index);
+   const sizesName = sizesId.map((sizeId: number) => {
+      return Object.keys(ProductsData).find((key: any) => ProductsData[key] === sizeId);
+   });
+   const uniqueSizesName = sizesName.filter((value, index) => sizesName.indexOf(value) === index);
+
+   const colorsId = productVariants.map((product) => product.options[0]);
+   const uniqueColorsId = colorsId.filter((value, index) => colorsId.indexOf(value) === index);
+   const colorsName = colorsId.map((colorId: number) => {
+      return Object.keys(ProductsData).find((key: any) => ProductsData[key] === colorId);
+   });
+   const uniqueColorsName = colorsName.filter((value, index) => colorsName.indexOf(value) === index);
 
    const addToCart = async () => {
       const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
@@ -75,8 +84,6 @@ export default function ProductName({ params }: any) {
 
       toast.success("Added to cart!");
    };
-
-   console.log(product);
 
    return (
       <>
@@ -105,10 +112,16 @@ export default function ProductName({ params }: any) {
 
                   <h1 className="text-2xl text-light yeseva-one-regular">Sizes:</h1>
                   <div className="flex flex-row flex-wrap my-2">
-                     {product.options[1].values.map((value, key) => {
+                     {uniqueSizesName.map((sizeName, key) => {
+                        const sizeId = uniqueSizesId[key];
+
                         return (
-                           <button className="btn ml-1 my-1 w-20 josefin-sans bg-button-background border-none text-white" key={key}>
-                              {value.title}
+                           <button
+                              className="btn ml-1 my-1 w-20 josefin-sans bg-button-background border-none text-white"
+                              key={sizeId}
+                              onClick={() => setSizeId(sizeId)}
+                           >
+                              {sizeName}
                            </button>
                         );
                      })}
@@ -116,10 +129,16 @@ export default function ProductName({ params }: any) {
 
                   <h1 className="text-2xl text-light yeseva-one-regular">Colors:</h1>
                   <div className="flex flex-row flex-wrap my-2">
-                     {product.options[0].values.map((value, key) => {
+                     {uniqueColorsName.map((colorName, key) => {
+                        const colorId = uniqueColorsId[key];
+
                         return (
-                           <button className="btn ml-1 my-1 w-20 josefin-sans bg-button-background border-none text-white" key={key}>
-                              {value.title}
+                           <button
+                              className="btn ml-1 my-1 w-20 josefin-sans bg-button-background border-none text-white"
+                              key={colorId}
+                              onClick={() => setColorId(colorId)}
+                           >
+                              {colorName}
                            </button>
                         );
                      })}

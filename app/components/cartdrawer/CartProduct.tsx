@@ -13,7 +13,7 @@ export default function CartProduct({ name, description, price, price_id, quanti
       <div className="flex flex-row p-4">
          <div className="flex flex-col">
             <Link href={{ pathname: `/product/${name}`, query: { productId: product_id } }}>
-               <Image src={image} width={100} height={100} alt="Product image"></Image>
+               <Image className="rounded-xl hover:scale-110 duration-200" src={image} width={100} height={100} alt="Product image"></Image>
             </Link>
          </div>
          <div className="flex flex-col px-2">

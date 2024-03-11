@@ -7,8 +7,11 @@ export const ProductsData: Record<string, number> = {
    "2XL": 18,
    Navy: 2297,
    "Heather Grey": 2294,
-   Black: 2288,
-   Red: 2302,
+   Black: 418,
+   Red: 423,
+   Royal: 425,
    Anthracite: 2287,
-   White: 521
+   White: 521,
+   Ash: 451,
+   Gold: 438
 };

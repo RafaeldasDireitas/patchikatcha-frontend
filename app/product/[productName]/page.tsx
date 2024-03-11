@@ -55,17 +55,15 @@ export default function ProductName({ params }: any) {
 
    const sizesId = productVariants.map((product) => product.options[1]);
    const uniqueSizesId = sizesId.filter((value, index) => sizesId.indexOf(value) === index);
-   const sizesName = sizesId.map((sizeId: number) => {
+   const sizesName = uniqueSizesId.map((sizeId: number) => {
       return Object.keys(ProductsData).find((key: any) => ProductsData[key] === sizeId);
    });
-   const uniqueSizesName = sizesName.filter((value, index) => sizesName.indexOf(value) === index);
 
    const colorsId = productVariants.map((product) => product.options[0]);
    const uniqueColorsId = colorsId.filter((value, index) => colorsId.indexOf(value) === index);
-   const colorsName = colorsId.map((colorId: number) => {
+   const colorsName = uniqueColorsId.map((colorId: number) => {
       return Object.keys(ProductsData).find((key: any) => ProductsData[key] === colorId);
    });
-   const uniqueColorsName = colorsName.filter((value, index) => colorsName.indexOf(value) === index);
 
    const addToCart = async () => {
       const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
@@ -112,7 +110,7 @@ export default function ProductName({ params }: any) {
 
                   <h1 className="text-2xl text-light yeseva-one-regular">Sizes:</h1>
                   <div className="flex flex-row flex-wrap my-2">
-                     {uniqueSizesName.map((sizeName, key) => {
+                     {sizesName.map((sizeName, key) => {
                         const sizeId = uniqueSizesId[key];
 
                         return (
@@ -129,7 +127,7 @@ export default function ProductName({ params }: any) {
 
                   <h1 className="text-2xl text-light yeseva-one-regular">Colors:</h1>
                   <div className="flex flex-row flex-wrap my-2">
-                     {uniqueColorsName.map((colorName, key) => {
+                     {colorsName.map((colorName, key) => {
                         const colorId = uniqueColorsId[key];
 
                         return (

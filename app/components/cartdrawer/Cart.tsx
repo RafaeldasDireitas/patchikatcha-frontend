@@ -24,6 +24,8 @@ export default function Cart() {
                            price={product.price}
                            price_id={"aodjao"}
                            image={product.image}
+                           size={product.size}
+                           color={product.color}
                            quantity={product.quantity}
                            index={product.index}
                            product_id={product.product_id}

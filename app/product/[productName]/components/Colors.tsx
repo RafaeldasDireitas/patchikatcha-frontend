@@ -1,4 +1,5 @@
 import { ProductsData } from "@/data/ProductsData";
+import { useEffect, useState } from "react";
 
 export default function Colors({ setColorId, productVariants }: any) {
    const colorsId = productVariants.map((product: any) => (product.options[0].toString().length >= 3 ? product.options[0] : product.options[1])); //FOR SOME REASON PRINTIFY CHANGES THE ORDER OF THE ARRAY
@@ -6,6 +7,17 @@ export default function Colors({ setColorId, productVariants }: any) {
    const colorsName = uniqueColorsId.map((colorId: number) => {
       return Object.keys(ProductsData).find((key: any) => ProductsData[key] === colorId);
    });
+
+   const [isFocused, setIsFocused] = useState<number>(uniqueColorsId[0]);
+
+   useEffect(() => {
+      setColorId(uniqueColorsId[0]);
+   }, []);
+
+   const handleColorClick = (colorId: number) => {
+      setColorId(colorId);
+      setIsFocused(colorId);
+   };
 
    return (
       <>
@@ -16,9 +28,11 @@ export default function Colors({ setColorId, productVariants }: any) {
 
                return (
                   <button
-                     className="btn ml-1 my-1 w-24 josefin-sans bg-button-background border-none text-white"
+                     className={`btn ml-1 my-1 w-20 josefin-sans ${
+                        colorId === isFocused ? "bg-button-focused" : ""
+                     } bg-button-background border-none text-white`}
                      key={colorId}
-                     onClick={() => setColorId(colorId)}
+                     onClick={() => handleColorClick(colorId)}
                   >
                      {colorName}
                   </button>

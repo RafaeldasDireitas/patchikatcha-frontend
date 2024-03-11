@@ -10,6 +10,7 @@ const config: Config = {
          },
          backgroundColor: {
             "button-background": "#BC6C25",
+            "button-focused": "#6A381F",
             "body-background": "#ffedd8"
          },
          textColor: {

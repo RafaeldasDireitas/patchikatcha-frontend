@@ -1,9 +1,13 @@
 "use client";
+import { ProductsData } from "@/data/ProductsData";
+import { CartType } from "@/types/CartType";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CartProduct({ name, description, price, price_id, quantity, image, index, product_id }: any) {
+export default function CartProduct({ name, description, price, price_id, quantity, image, index, product_id, size, color }: any) {
    const formattedPrice = (price / 100).toFixed(2) + " €";
+   const sizeName = Object.keys(ProductsData).find((key: any) => ProductsData[key] === size);
+   const colorName = Object.keys(ProductsData).find((key: any) => ProductsData[key] == color);
 
    return (
       <div className="flex flex-row p-4">
@@ -14,8 +18,10 @@ export default function CartProduct({ name, description, price, price_id, quanti
          </div>
          <div className="flex flex-col px-2">
             <h1 className="text-lg">{name}</h1>
-            <p>{formattedPrice}</p>
+            <p>Price: {formattedPrice}</p>
             <p>Quantity: {quantity}</p>
+            <p>Size: {sizeName}</p>
+            <p>Color: {colorName}</p>
          </div>
       </div>
    );

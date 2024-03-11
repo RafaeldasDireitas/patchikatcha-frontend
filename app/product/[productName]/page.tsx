@@ -18,8 +18,8 @@ import AddToCart from "./components/AddToCart";
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
    const [quantity, setQuantity] = useState<number>(1);
-   const [sizeId, setSizeId] = useState<number>(17);
-   const [colorId, setColorId] = useState<number>(451);
+   const [sizeId, setSizeId] = useState<number>(0);
+   const [colorId, setColorId] = useState<number>(0);
    const globalStore = useGlobalStore();
 
    const searchParams = useSearchParams();
@@ -62,8 +62,8 @@ export default function ProductName({ params }: any) {
    }
 
    const addToCart = async () => {
-      const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
-      const priceId = await grabIds.text();
+      const grabPriceId = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
+      const priceId = await grabPriceId.text();
 
       globalStore.setCart({
          name: product.title,
@@ -72,11 +72,11 @@ export default function ProductName({ params }: any) {
          price_id: priceId,
          image: product?.images[0].src,
          quantity: quantity,
+         size: sizeId,
+         color: colorId,
          product_id: productId,
          variant_id: variantId ?? 0
       });
-
-      console.log(variantId);
 
       toast.success("Added to cart!");
    };

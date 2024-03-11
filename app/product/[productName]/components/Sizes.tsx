@@ -1,4 +1,5 @@
 import { ProductsData } from "@/data/ProductsData";
+import { useEffect, useState } from "react";
 
 export default function Sizes({ setSizeId, productVariants }: any) {
    const sizesId = productVariants.map((product: any) => (product.options[0].toString().length >= 3 ? product.options[1] : product.options[0])); //FOR SOME REASON PRINTIFY CHANGES THE ORDER OF THE ARRAY
@@ -6,6 +7,17 @@ export default function Sizes({ setSizeId, productVariants }: any) {
    const sizesName = uniqueSizesId.map((sizeId: number) => {
       return Object.keys(ProductsData).find((key: any) => ProductsData[key] === sizeId);
    });
+
+   const [isFocused, setIsFocused] = useState<number>(uniqueSizesId[0]);
+
+   useEffect(() => {
+      setSizeId(uniqueSizesId[0]);
+   }, []);
+
+   const handleSizeClick = (sizeId: number) => {
+      setSizeId(sizeId);
+      setIsFocused(sizeId);
+   };
 
    return (
       <>
@@ -16,9 +28,11 @@ export default function Sizes({ setSizeId, productVariants }: any) {
 
                return (
                   <button
-                     className="btn ml-1 my-1 w-20 josefin-sans bg-button-background border-none text-white"
+                     className={`btn ml-1 my-1 w-20 josefin-sans ${
+                        sizeId === isFocused ? "bg-button-focused" : ""
+                     } bg-button-background border-none text-white`}
                      key={sizeId}
-                     onClick={() => setSizeId(sizeId)}
+                     onClick={() => handleSizeClick(sizeId)}
                   >
                      {sizeName}
                   </button>

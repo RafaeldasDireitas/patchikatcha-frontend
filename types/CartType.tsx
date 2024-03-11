@@ -3,6 +3,8 @@ export type CartType = {
    name: string;
    description: string;
    quantity: number;
+   size: number;
+   color: number;
    image: string;
    price: number;
    price_id: string;

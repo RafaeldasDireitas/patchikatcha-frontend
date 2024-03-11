@@ -13,22 +13,23 @@ import Title from "./components/Title";
 import Colors from "./components/Colors";
 import Quantity from "./components/Quantity";
 import Images from "./components/Images";
+import AddToCart from "./components/AddToCart";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
-   const [quantity, setQuantity] = useState(0);
-   const [sizeId, setSizeId] = useState(0);
-   const [colorId, setColorId] = useState(0);
+   const [quantity, setQuantity] = useState<number>(1);
+   const [sizeId, setSizeId] = useState<number>(17);
+   const [colorId, setColorId] = useState<number>(451);
    const globalStore = useGlobalStore();
 
    const searchParams = useSearchParams();
    const productName = params.productName;
-
    const productId = searchParams.get("productId");
+   let variantId = 0;
 
    useEffect(() => {
       FetchGrabProduct({ productId, setProduct });
-   }, []);
+   }, [sizeId, colorId]);
 
    const incrementQuantity = () => {
       if (quantity >= 10) {
@@ -39,7 +40,7 @@ export default function ProductName({ params }: any) {
    };
 
    const decrementQuantity = () => {
-      if (quantity <= 0) {
+      if (quantity <= 1) {
          return;
       } else {
          setQuantity(quantity - 1);
@@ -52,7 +53,13 @@ export default function ProductName({ params }: any) {
 
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
 
-   console.log(product);
+   const matchingVariant = productVariants.find((variant) => {
+      return variant.options.includes(colorId) && variant.options.includes(sizeId);
+   });
+
+   if (matchingVariant) {
+      variantId = matchingVariant.id;
+   }
 
    const addToCart = async () => {
       const grabIds = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
@@ -64,10 +71,12 @@ export default function ProductName({ params }: any) {
          price: product?.variants[0]?.price,
          price_id: priceId,
          image: product?.images[0].src,
-         quantity: 1,
+         quantity: quantity,
          product_id: productId,
-         variant_id: product.variants[0].id
+         variant_id: variantId ?? 0
       });
+
+      console.log(variantId);
 
       toast.success("Added to cart!");
    };
@@ -89,6 +98,8 @@ export default function ProductName({ params }: any) {
                <Colors setColorId={setColorId} productVariants={productVariants}></Colors>
 
                <Quantity quantity={quantity} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}></Quantity>
+
+               <AddToCart addToCart={addToCart}></AddToCart>
             </div>
          </div>
       </div>

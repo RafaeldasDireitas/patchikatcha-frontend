@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
 import Navbar from "@/app/components/navbar/Navbar";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import { useGlobalStore } from "@/zustand/globalstore";
 
 export default function Hydrate({ children }: { children: ReactNode }) {

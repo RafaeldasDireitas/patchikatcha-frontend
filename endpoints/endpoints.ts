@@ -7,5 +7,6 @@ export const endpoints = {
    verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`,
    grabEmailToken: (userEmail: any) => `/api/Auth/grab-email-token?email=${userEmail}`,
    confirmEmail: (token: any, userEmail: any) => `/api/Auth/confirm-email?token=${token}&email=${userEmail}`,
-   grabProduct: (productId: any) => `/api/Product/grab-product?productId=${productId}`
+   grabProduct: (productId: any) => `/api/Product/grab-product?productId=${productId}`,
+   grabOrders: (orderId: any) => `/api/Product/grab-user-orders?orderId=${orderId}`
 };

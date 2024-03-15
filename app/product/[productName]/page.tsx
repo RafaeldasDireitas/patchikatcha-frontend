@@ -14,6 +14,7 @@ import Colors from "./components/Colors";
 import Quantity from "./components/Quantity";
 import Images from "./components/Images";
 import AddToCart from "./components/AddToCart";
+import { endpoints } from "@/endpoints/endpoints";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -24,8 +25,11 @@ export default function ProductName({ params }: any) {
 
    const searchParams = useSearchParams();
    const productName = params.productName;
+   const decodedProductName = decodeURIComponent(productName);
    const productId = searchParams.get("productId");
-   let variantId = 0;
+   let variantId = 0; //app enters a loop if its a state
+
+   document.title = decodedProductName;
 
    useEffect(() => {
       FetchGrabProduct({ productId, setProduct });
@@ -62,7 +66,7 @@ export default function ProductName({ params }: any) {
    }
 
    const addToCart = async () => {
-      const grabPriceId = await fetch(`https://localhost:7065/api/Stripe/grab-price-id?productId=${productId}`); //no need to make a separate file for this
+      const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
       const priceId = await grabPriceId.text();
 
       globalStore.setCart({

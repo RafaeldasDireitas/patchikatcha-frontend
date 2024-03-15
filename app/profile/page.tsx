@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import FetchOrders from "./FetchOrders";
 import { OrderType } from "@/types/OrderType";
 import Order from "./components/Order";
+import Link from "next/link";
 
 export default function Profile() {
    const [orders, setOrders] = useState<OrderType>();
@@ -54,6 +55,9 @@ export default function Profile() {
                Click here for order details
             </a>
             <Order orderId={orders?.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
+            <Link href={"/auth/change-password"}>
+               <p>Change password</p>
+            </Link>
          </div>
       </>
    );

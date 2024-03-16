@@ -9,5 +9,6 @@ export const endpoints = {
    confirmEmail: (token: any, userEmail: any) => `/api/Auth/confirm-email?token=${token}&email=${userEmail}`,
    grabProduct: (productId: any) => `/api/Product/grab-product?productId=${productId}`,
    grabOrders: (orderId: any) => `/api/Order/grab-user-orders?orderId=${orderId}`,
-   grabPriceId: (productId: any) => `/api/Stripe/grab-price-id?productId=${productId}`
+   grabPriceId: (productId: any) => `/api/Stripe/grab-price-id?productId=${productId}`,
+   grabPasswordToken: (userEmail: any) => `/api/Auth/grab-password-token?userEmail=${userEmail}`
 };

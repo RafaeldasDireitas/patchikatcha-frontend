@@ -68,59 +68,54 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    }, [emailToken]);
 
    return (
-      <>
-         <div className="flex flex-row">
-            <div className="w-1/3 bg-body-background min-h-screen items-center flex justify-center">
-               <Image src={turtle} width={400} height={400} alt="No turtle found..."></Image>
-            </div>
+      <div className="flex flex-row">
+         <div className="w-1/3 bg-body-background min-h-screen items-center flex justify-center">
+            <Image src={turtle} width={400} height={400} alt="No turtle found..."></Image>
+         </div>
 
-            <div className="w-2/3 bg-white min-h-screen items-center flex flex-col justify-center">
-               <div className="w-[500px] flex flex-col justify-center">
-                  <h1 className="text-light text-3xl text-start yeseva-one-regular">Sign up</h1>
-                  <p className="text-start my-2 josefin-sans">Create an account to keep track of your orders.</p>
-                  <input
-                     type="text"
-                     placeholder="example@email.com"
-                     className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
-                     id="email"
-                     onChange={emailHandler}
-                     value={email}
-                     required
-                  />
-                  <input
-                     type="password"
-                     placeholder="Password"
-                     className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
-                     onChange={passwordHandler}
-                     value={password}
-                     id="password"
-                  />
-                  <input
-                     type="password"
-                     placeholder="Confirm password"
-                     className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
-                     onChange={confirmPasswordHandler}
-                     value={confirmPassword}
-                     id="password"
-                  />
-                  <div className="flex flex-col items-end">
-                     <button
-                        className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans"
-                        onClick={createUserAccount}
-                     >
-                        Sign up
-                     </button>
-                  </div>
-                  <p className="my-1 josefin-sans">
-                     Already have an account? Log in{" "}
-                     <span className="underline text-light hover:cursor-pointer josefin-sans" onClick={() => setIsLoginForm(true)}>
-                        here
-                     </span>
-                     .
-                  </p>
+         <div className="w-2/3 bg-white min-h-screen items-center flex flex-col justify-center">
+            <div className="w-[500px] flex flex-col justify-center">
+               <h1 className="text-light text-3xl text-start yeseva-one-regular">Sign up</h1>
+               <p className="text-start my-2 josefin-sans">Create an account to keep track of your orders.</p>
+               <input
+                  type="text"
+                  placeholder="example@email.com"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  id="email"
+                  onChange={emailHandler}
+                  value={email}
+                  required
+               />
+               <input
+                  type="password"
+                  placeholder="Password"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  onChange={passwordHandler}
+                  value={password}
+                  id="password"
+               />
+               <input
+                  type="password"
+                  placeholder="Confirm password"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  onChange={confirmPasswordHandler}
+                  value={confirmPassword}
+                  id="password"
+               />
+               <div className="flex flex-col items-end">
+                  <button className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans" onClick={createUserAccount}>
+                     Sign up
+                  </button>
                </div>
+               <p className="my-1 josefin-sans">
+                  Already have an account? Log in{" "}
+                  <span className="underline text-light hover:cursor-pointer josefin-sans" onClick={() => setIsLoginForm(true)}>
+                     here
+                  </span>
+                  .
+               </p>
             </div>
          </div>
-      </>
+      </div>
    );
 }

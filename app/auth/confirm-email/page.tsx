@@ -15,14 +15,12 @@ export default function ConfirmEmail() {
    }, []);
 
    return (
-      <>
-         <div className="flex flex-col min-h-screen items-center justify-center">
-            <Image src={turtle} width={200} height={200} alt="No turtle found"></Image>
-            <h1 className="text-2xl text-light font-bold">Your Email has been verified successfully!</h1>
-            <p className="my-4">
-               You can now close this window or <span className="underline text-light hover:cursor-pointer">return to our products</span>.
-            </p>
-         </div>
-      </>
+      <div className="flex flex-col min-h-screen items-center justify-center">
+         <Image src={turtle} width={200} height={200} alt="No turtle found"></Image>
+         <h1 className="text-2xl text-light font-bold">Your Email has been verified successfully!</h1>
+         <p className="my-4">
+            You can now close this window or <span className="underline text-light hover:cursor-pointer">return to our products</span>.
+         </p>
+      </div>
    );
 }

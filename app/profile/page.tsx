@@ -45,20 +45,18 @@ export default function Profile() {
    }, []);
 
    return (
-      <>
-         <div className="p-12">
-            <h1>User profile</h1>
-            <button className="btn" onClick={signOutHandler}>
-               Sign out
-            </button>
-            <a href={orders?.printify_connect.url} target="_blank">
-               Click here for order details
-            </a>
-            <Order orderId={orders?.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
-            <Link href={"/auth/change-password"}>
-               <p>Change password</p>
-            </Link>
-         </div>
-      </>
+      <div className="p-12">
+         <h1>User profile</h1>
+         <button className="btn" onClick={signOutHandler}>
+            Sign out
+         </button>
+         <a href={orders?.printify_connect.url} target="_blank">
+            Click here for order details
+         </a>
+         <Order orderId={orders?.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
+         <Link href={"/auth/change-password-warning"}>
+            <p>Change password</p>
+         </Link>
+      </div>
    );
 }

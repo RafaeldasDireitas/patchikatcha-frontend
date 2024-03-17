@@ -6,6 +6,7 @@ import FetchLogin from "./FetchLogin";
 import turtle from "@/public/turtle.png";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -79,7 +80,11 @@ export default function LoginForm({ setIsLoginForm }: any) {
                   .
                </p>
                <p className="my-1 josefin-sans">
-                  Forgot your password? Reset it <span className="underline text-light hover:cursor-pointer josefin-sans">here</span>.
+                  Forgot your password? Reset it{" "}
+                  <span className="underline text-light hover:cursor-pointer josefin-sans">
+                     <Link href={"/auth/change-password-warning"}>here</Link>
+                  </span>
+                  .
                </p>
             </div>
          </div>

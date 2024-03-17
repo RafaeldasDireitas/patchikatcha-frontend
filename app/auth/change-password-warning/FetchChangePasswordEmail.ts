@@ -1,7 +1,7 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 
-export default async function FetchChangePassword({ userEmail }: any) {
+export default async function FetchChangePasswordEmail({ userEmail }: any) {
    const fetchToken = await fetch(endpoints.url + endpoints.grabPasswordToken(userEmail));
 
    const passwordToken = await fetchToken.text();
@@ -19,6 +19,12 @@ export default async function FetchChangePassword({ userEmail }: any) {
          },
          body: JSON.stringify(passwordData)
       });
+
+      toast.success("Email sent.");
+
+      setTimeout(() => {
+         window.location.href = "/auth";
+      }, 5000);
    } else {
       toast.error("There was an error, try again.");
    }

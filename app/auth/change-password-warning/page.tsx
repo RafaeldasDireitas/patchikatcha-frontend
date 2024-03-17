@@ -1,7 +1,6 @@
 "use client";
-import { endpoints } from "@/endpoints/endpoints";
 import { useState } from "react";
-import FetchChangePassword from "./FetchChangePassword";
+import FetchChangePasswordEmail from "./FetchChangePasswordEmail";
 
 export default function ChangePassword() {
    const [userEmail, setUserEmail] = useState<string>();
@@ -21,7 +20,7 @@ export default function ChangePassword() {
             onChange={emailHandler}
             value={userEmail}
          />
-         <button className="btn w-40 bg-button-background text-white border-none" onClick={() => FetchChangePassword({ userEmail })}>
+         <button className="btn w-40 bg-button-background text-white border-none" onClick={() => FetchChangePasswordEmail({ userEmail })}>
             Submit
          </button>
       </div>

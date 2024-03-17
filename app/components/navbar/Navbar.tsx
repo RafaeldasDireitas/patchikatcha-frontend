@@ -10,6 +10,8 @@ import {
    SquaresPlusIcon,
    XMarkIcon
 } from "@heroicons/react/24/outline";
+import skirt from "@/public/skirt.png";
+import pullover from "@/public/pullover- (6).png";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import { useGlobalStore } from "@/zustand/globalstore";
 import cartImage from "@/public/Bag_alt_light.png";
@@ -17,38 +19,19 @@ import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "../cartdrawer/Cart";
-import { CartType } from "@/types/CartType";
 
 const products = [
    {
-      name: "Analytics",
-      description: "Get a better understanding of your traffic",
+      name: "Men's Clothing",
+      description: "",
       href: "#",
-      icon: ChartPieIcon
+      icon: pullover
    },
    {
-      name: "Engagement",
-      description: "Speak directly to your customers",
+      name: "Women's Clothing",
+      description: "",
       href: "#",
-      icon: CursorArrowRaysIcon
-   },
-   {
-      name: "Security",
-      description: "Your customers’ data will be safe and secure",
-      href: "#",
-      icon: FingerPrintIcon
-   },
-   {
-      name: "Integrations",
-      description: "Connect with third-party tools",
-      href: "#",
-      icon: SquaresPlusIcon
-   },
-   {
-      name: "Automations",
-      description: "Build strategic funnels that will convert",
-      href: "#",
-      icon: ArrowPathIcon
+      icon: skirt
    }
 ];
 const callsToAction = [
@@ -90,7 +73,7 @@ export default function Navbar() {
             <Popover.Group className="hidden lg:flex lg:gap-x-12">
                <Popover className="relative">
                   <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-light">
-                     Product
+                     Categories
                      <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                   </Popover.Button>
 
@@ -111,7 +94,7 @@ export default function Navbar() {
                                  className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                               >
                                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                                    <Image src={item.icon} width={25} height={25} alt="No icon found"></Image>
                                  </div>
                                  <div className="flex-auto">
                                     <a href={item.href} className="block font-semibold text-gray-900">
@@ -205,7 +188,7 @@ export default function Navbar() {
                            {({ open }: any) => (
                               <>
                                  <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-light">
-                                    Product
+                                    Categories
                                     <ChevronDownIcon className={classNames(open ? "rotate-180" : "", "h-5 w-5 flex-none")} aria-hidden="true" />
                                  </Disclosure.Button>
                                  <Disclosure.Panel className="mt-2 space-y-2">

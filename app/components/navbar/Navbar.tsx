@@ -1,15 +1,7 @@
 "use client";
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
-import {
-   ArrowPathIcon,
-   Bars3Icon,
-   ChartPieIcon,
-   CursorArrowRaysIcon,
-   FingerPrintIcon,
-   SquaresPlusIcon,
-   XMarkIcon
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import skirt from "@/public/skirt.png";
 import pullover from "@/public/pullover- (6).png";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
@@ -24,13 +16,13 @@ const products = [
    {
       name: "Men's Clothing",
       description: "",
-      href: "#",
+      href: "/categories/men",
       icon: pullover
    },
    {
       name: "Women's Clothing",
       description: "",
-      href: "#",
+      href: "/categories/women",
       icon: skirt
    }
 ];
@@ -104,18 +96,6 @@ export default function Navbar() {
                                     <p className="mt-1 text-gray-600">{item.description}</p>
                                  </div>
                               </div>
-                           ))}
-                        </div>
-                        <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                           {callsToAction.map((item) => (
-                              <a
-                                 key={item.name}
-                                 href={item.href}
-                                 className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                              >
-                                 <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                                 {item.name}
-                              </a>
                            ))}
                         </div>
                      </Popover.Panel>
@@ -192,7 +172,7 @@ export default function Navbar() {
                                     <ChevronDownIcon className={classNames(open ? "rotate-180" : "", "h-5 w-5 flex-none")} aria-hidden="true" />
                                  </Disclosure.Button>
                                  <Disclosure.Panel className="mt-2 space-y-2">
-                                    {[...products, ...callsToAction].map((item) => (
+                                    {products.map((item) => (
                                        <Disclosure.Button
                                           key={item.name}
                                           as="a"

@@ -28,7 +28,7 @@ export default function Colors({ setColorId, productVariants }: any) {
 
                return (
                   <button
-                     className={`btn ml-1 my-1 w-20 josefin-sans ${
+                     className={`btn mx-1 my-1 w-20 josefin-sans ${
                         colorId === isFocused ? "bg-button-focused" : ""
                      } bg-button-background border-none text-white`}
                      key={colorId}

@@ -1,5 +1,4 @@
 export default function Order({ orderId, createdAt, totalPrice, status, address }: any) {
-   console.log(orderId);
    return (
       <>
          <div className="p-8 w-1/3 bg-button-focused text-white rounded-xl">

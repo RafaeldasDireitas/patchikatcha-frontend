@@ -13,7 +13,7 @@ export default function Images({ product }: any) {
 
    return (
       <>
-         <div className="flex flex-col mr-7 max-h-96 overflow-auto">
+         <div className="flex flex-col max-h-96 overflow-auto">
             {sideImages.map((image: any, key: number) => {
                return (
                   <Image
@@ -28,7 +28,7 @@ export default function Images({ product }: any) {
                );
             })}
          </div>
-         <div>{mainImage && <Image className="rounded-xl" src={mainImage} width={1000} height={1000} alt="No image found" />}</div>
+         {mainImage && <Image className="rounded-xl max-w-[380px] max-h-[380px]" src={mainImage} width={380} height={380} alt="No image found" />}
       </>
    );
 }

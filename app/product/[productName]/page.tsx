@@ -87,10 +87,10 @@ export default function ProductName({ params }: any) {
 
    return (
       <div className="p-12">
-         <div className="flex flex-row">
+         <div className="flex flex-row gap-10">
             <Images product={product}></Images>
 
-            <div className="flex flex-col ml-20">
+            <div className="flex flex-col">
                <Title product={product}></Title>
 
                <Tags product={product}></Tags>

@@ -6,10 +6,6 @@ export default async function FetchOrders({ orderId, jwtToken }: any) {
       headers: {
          "Content-Type": "application/json",
          Authorization: `Bearer ${jwtToken}`
-      },
-      cache: "force-cache",
-      next: {
-         revalidate: 3600
       }
    });
 

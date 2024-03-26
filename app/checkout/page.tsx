@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { CartType } from "@/types/CartType";
 import FetchCreateCheckoutSession from "./FetchCreateCheckoutSession";
+import FetchSessionStatus from "./FetchSessionStatus";
 
 const stripePromise = loadStripe("pk_test_51Onkz6Lwv2BbZpNwCznBgyiBZjWKIEQUJZPyyzbaLha0vf4Eu55o9h7fN0O9jMotkYsR6kgZtSYLq4lcbkntkRaD00g5Dird6V");
 
 export default function Checkout() {
    const [clientSecret, setClientSecret] = useState("");
+   const [clientId, setClientId] = useState("");
    const globalStore = useGlobalStore();
    const userEmail = globalStore.userEmail;
    const cart: CartType[] = globalStore.cart;
@@ -22,15 +24,13 @@ export default function Checkout() {
       image: product.image,
       quantity: product.quantity,
       productId: product.product_id,
-      variantId: product.variant_id
+      variantId: product.variant_id,
+      country: product.country
    }));
 
    useEffect(() => {
-      FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret });
+      FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret, setClientId });
    }, []);
-
-   console.log(clientSecret);
-   console.log(cart[0].variant_id);
 
    if (!userEmail) {
       return (
@@ -43,6 +43,9 @@ export default function Checkout() {
    return (
       <>
          <div id="checkout">
+            <button className="btn" onClick={() => FetchSessionStatus({ clientId })}>
+               Session Status Data
+            </button>
             {clientSecret && (
                <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
                   <EmbeddedCheckout />

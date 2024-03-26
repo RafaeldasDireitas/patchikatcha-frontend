@@ -1,4 +1,9 @@
-export default async function FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret }: any) {
+type clientData = {
+   clientSecret: string;
+   clientId: string;
+};
+
+export default async function FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret, setClientId }: any) {
    const dataSession = await fetch(`https://localhost:7065/api/Stripe/create-checkout-session?userEmail=${userEmail}`, {
       method: "POST",
       headers: {
@@ -7,6 +12,7 @@ export default async function FetchCreateCheckoutSession({ userEmail, checkoutOb
       body: JSON.stringify(checkoutObject)
    });
 
-   const data = await dataSession.json();
-   setClientSecret(data);
+   const data: clientData = await dataSession.json();
+   setClientSecret(data.clientSecret);
+   setClientId(data.clientId);
 }

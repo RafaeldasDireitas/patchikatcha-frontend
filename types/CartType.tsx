@@ -10,4 +10,5 @@ export type CartType = {
    price_id: string;
    product_id: string;
    variant_id: number;
+   country: string;
 };

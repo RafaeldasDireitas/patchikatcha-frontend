@@ -75,12 +75,14 @@ export default function Profile() {
             const address = order.address_to.address1;
 
             return (
-               <div key={key}>
-                  <a href={order.printify_connect.url} target="_blank">
-                     Click here for order details
-                  </a>
-                  <Order orderId={order.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
-               </div>
+               <>
+                  <div key={key}>
+                     <a href={order.printify_connect.url} target="_blank">
+                        Click here for order details
+                     </a>
+                     <Order orderId={order.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
+                  </div>
+               </>
             );
          })}
       </div>

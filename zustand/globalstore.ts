@@ -1,5 +1,6 @@
 import { CartType } from "@/types/CartType";
 import { GlobalStateManagement } from "@/types/StateManagement";
+import { UserDataType } from "@/types/UserDataType";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -10,6 +11,7 @@ export const useGlobalStore = create<GlobalStateManagement>()(
          isAuthenticated: false as boolean,
          userEmail: "" as string,
          cart: [] as CartType[],
+         userGeo: {} as UserDataType,
 
          setJwtToken(response: string) {
             return set({
@@ -25,6 +27,16 @@ export const useGlobalStore = create<GlobalStateManagement>()(
          setUserEmail(response: string) {
             return set({
                userEmail: response
+            });
+         },
+
+         setUserGeo(response: UserDataType) {
+            return set({
+               userGeo: {
+                  userCountry: response.userCountry,
+                  countryName: response.countryName,
+                  currency: response.currency
+               }
             });
          },
 

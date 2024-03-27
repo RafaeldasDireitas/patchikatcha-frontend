@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
+import CountryModal from "./components/CountryModal/CountryModal";
 
 const inter = Inter({ subsets: ["latin"] });
 

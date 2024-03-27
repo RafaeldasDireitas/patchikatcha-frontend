@@ -38,10 +38,10 @@ function classNames(...classes: any) {
 
 export default function Navbar() {
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-   const [userCountry, setUserCountry] = useState("");
 
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
+
    const cartQuantity = cart.reduce((accumulator, currentProduct) => {
       return accumulator + currentProduct.quantity;
    }, 0);
@@ -150,23 +150,6 @@ export default function Navbar() {
                      </Link>
                   </>
                )}
-            </div>
-            <div className="dropdown fixed">
-               <div tabIndex={0} role="button" className="btn m-1">
-                  {userCountry}
-               </div>
-               <ul
-                  tabIndex={0}
-                  className="dropdown-content z-[1] max-h-56 max-w-56 text-white flex flex-row overflow-y-scroll menu p-2 shadow bg-base-100 rounded-box w-52"
-               >
-                  {countries.countries.country.map((country, key) => (
-                     <div key={key} className="w-full">
-                        <li>
-                           <a onClick={() => setUserCountry(country.countryName)}>{country.countryName}</a>
-                        </li>
-                     </div>
-                  ))}
-               </ul>
             </div>
          </nav>
          <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

@@ -79,8 +79,7 @@ export default function ProductName({ params }: any) {
          size: sizeId,
          color: colorId,
          product_id: productId,
-         variant_id: variantId ?? 0,
-         country: "DE"
+         variant_id: variantId ?? 0
       });
 
       toast.success("Added to cart!");

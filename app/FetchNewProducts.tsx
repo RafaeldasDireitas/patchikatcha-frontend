@@ -5,7 +5,6 @@ export default async function NewProducts({ setNewProducts }: any) {
       const newProducts = await fetch(endpoints.url + endpoints.newProducts);
 
       const data = await newProducts.json();
-      console.log(data);
       setNewProducts(data);
    } catch (error) {
       console.error(error);

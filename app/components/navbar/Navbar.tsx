@@ -38,8 +38,7 @@ function classNames(...classes: any) {
 
 export default function Navbar() {
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-   console.log(countries.countries.country[0]);
+   const [userCountry, setUserCountry] = useState("");
 
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
@@ -154,7 +153,7 @@ export default function Navbar() {
             </div>
             <div className="dropdown fixed">
                <div tabIndex={0} role="button" className="btn m-1">
-                  Click
+                  {userCountry}
                </div>
                <ul
                   tabIndex={0}
@@ -163,7 +162,7 @@ export default function Navbar() {
                   {countries.countries.country.map((country, key) => (
                      <div key={key} className="w-full">
                         <li>
-                           <a>{country.countryName}</a>
+                           <a onClick={() => setUserCountry(country.countryName)}>{country.countryName}</a>
                         </li>
                      </div>
                   ))}

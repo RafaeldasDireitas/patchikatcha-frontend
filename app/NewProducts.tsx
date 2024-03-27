@@ -23,6 +23,9 @@ export default function NewProducts() {
          <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
             {newProducts.data.map((product, key) => {
                const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
+               const filteredImages = product.images.filter((image) => image.is_default === true);
+
+               console.log(filteredImages);
 
                return (
                   <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
@@ -31,7 +34,7 @@ export default function NewProducts() {
                         title={product.title}
                         tag={product.tags[0]}
                         price={formattedPrice}
-                        image={product.images[0].src}
+                        image={product?.images[0]?.src}
                      ></ProductCard>
                   </Link>
                );

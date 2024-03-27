@@ -5,9 +5,10 @@ import { ProductDataType } from "@/types/ProductDataType";
 import Loading from "./components/Loading";
 import Link from "next/link";
 import { ProductType } from "@/types/ProductType";
+import { NewProductsType } from "@/types/NewProductsType";
 
 export default function NewProducts() {
-   const [newProducts, setNewProducts] = useState<ProductType[]>();
+   const [newProducts, setNewProducts] = useState<NewProductsType>();
 
    useEffect(() => {
       FetchNewProducts({ setNewProducts });
@@ -22,11 +23,8 @@ export default function NewProducts() {
          <h1 className="text-3xl lg:text-start text-center text-light font-bold">New Products</h1>
          <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
          <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
-            {newProducts.map((product, key) => {
+            {newProducts.data.map((product, key) => {
                const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
-               const filteredImages = product.images.filter((image) => image.is_default === true);
-
-               console.log(filteredImages);
 
                return (
                   <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
@@ -35,7 +33,7 @@ export default function NewProducts() {
                         title={product.title}
                         tag={product.tags[0]}
                         price={formattedPrice}
-                        image={product?.images[0]?.src}
+                        image={product.images[0].src}
                      ></ProductCard>
                   </Link>
                );

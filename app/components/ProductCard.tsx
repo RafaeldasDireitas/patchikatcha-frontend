@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function ProductCard({ title, tag, price, image }: any) {
-   console.log(image);
    return (
       <>
          <div className="p-4 rounded-3xl bg-product-card w-96 shadow-lg hover:shadow-2xl hover:scale-105 duration-200">

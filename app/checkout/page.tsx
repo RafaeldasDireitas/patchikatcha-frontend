@@ -43,9 +43,6 @@ export default function Checkout() {
    return (
       <>
          <div id="checkout">
-            <button className="btn" onClick={() => FetchSessionStatus({ clientId })}>
-               Session Status Data
-            </button>
             {clientSecret && (
                <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
                   <EmbeddedCheckout />

@@ -11,6 +11,7 @@ import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "../cartdrawer/Cart";
+import countries from "@/data/countries.json";
 
 const products = [
    {
@@ -37,6 +38,8 @@ function classNames(...classes: any) {
 
 export default function Navbar() {
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+   console.log(countries.countries.country[0]);
 
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
@@ -148,6 +151,23 @@ export default function Navbar() {
                      </Link>
                   </>
                )}
+            </div>
+            <div className="dropdown fixed">
+               <div tabIndex={0} role="button" className="btn m-1">
+                  Click
+               </div>
+               <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] max-h-56 max-w-56 text-white flex flex-row overflow-y-scroll menu p-2 shadow bg-base-100 rounded-box w-52"
+               >
+                  {countries.countries.country.map((country, key) => (
+                     <div key={key} className="w-full">
+                        <li>
+                           <a>{country.countryName}</a>
+                        </li>
+                     </div>
+                  ))}
+               </ul>
             </div>
          </nav>
          <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

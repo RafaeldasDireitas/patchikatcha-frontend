@@ -19,6 +19,7 @@ export default function Checkout() {
    const cart: CartType[] = globalStore.cart;
 
    const checkoutObject = cart.map((product) => ({
+      index: product.index,
       name: product.name,
       description: product.description,
       price: product.price,
@@ -27,6 +28,8 @@ export default function Checkout() {
       quantity: product.quantity,
       productId: product.product_id,
       variantId: product.variant_id,
+      firstItem: product.first_item,
+      additionalItems: product.additional_items,
       userGeo: {
          userCountry: userGeo.userCountry,
          currency: userGeo.currency

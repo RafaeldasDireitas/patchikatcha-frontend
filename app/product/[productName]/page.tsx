@@ -15,13 +15,21 @@ import Quantity from "./components/Quantity";
 import Images from "./components/Images";
 import AddToCart from "./components/AddToCart";
 import { endpoints } from "@/endpoints/endpoints";
+import FetchShippingRate from "./FetchShippingRate";
+import { ShippingRateType } from "@/types/ShippingRateType";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
    const [quantity, setQuantity] = useState<number>(1);
    const [sizeId, setSizeId] = useState<number>(0);
    const [colorId, setColorId] = useState<number>(0);
+   const [blueprintId, setBlueprintId] = useState<number>(0);
+   const [printProviderId, setPrintProviderId] = useState<number>(0);
+   const [shippingRate, setShippingRate] = useState<ShippingRateType>();
+   const [isProductGrabbed, setIsProductGrabbed] = useState(false);
    const globalStore = useGlobalStore();
+   const userGeo = globalStore.userGeo;
+   const userCountry = userGeo.userCountry;
 
    const searchParams = useSearchParams();
    const productName = params.productName;
@@ -32,7 +40,11 @@ export default function ProductName({ params }: any) {
    document.title = decodedProductName;
 
    useEffect(() => {
-      FetchGrabProduct({ productId, setProduct });
+      FetchGrabProduct({ productId, setProduct, setBlueprintId, setPrintProviderId, setIsProductGrabbed });
+
+      if (isProductGrabbed) {
+         FetchShippingRate(blueprintId, printProviderId, setShippingRate);
+      }
    }, [sizeId, colorId]);
 
    const incrementQuantity = () => {
@@ -55,6 +67,8 @@ export default function ProductName({ params }: any) {
       return <Loading />;
    }
 
+   const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
+
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
 
    const matchingVariant = productVariants.find((variant) => {
@@ -66,24 +80,32 @@ export default function ProductName({ params }: any) {
    }
 
    const addToCart = async () => {
-      const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
-      const priceId = await grabPriceId.text();
+      if (!findCountryShippingRate) {
+         toast.error("There was an error, try again");
+      } else {
+         const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
+         const priceId = await grabPriceId.text();
 
-      globalStore.setCart({
-         name: product.title,
-         description: product.description,
-         price: product?.variants[0]?.price,
-         price_id: priceId,
-         image: product?.images[0].src,
-         quantity: quantity,
-         size: sizeId,
-         color: colorId,
-         product_id: productId,
-         variant_id: variantId ?? 0
-      });
+         globalStore.setCart({
+            name: product.title,
+            description: product.description,
+            price: product?.variants[0]?.price,
+            price_id: priceId,
+            image: product?.images[0].src,
+            quantity: quantity,
+            size: sizeId,
+            color: colorId,
+            product_id: productId,
+            variant_id: variantId ?? 0,
+            first_item: findCountryShippingRate.first_item.cost,
+            additional_items: findCountryShippingRate.additional_items.cost
+         });
 
-      toast.success("Added to cart!");
+         toast.success("Added to cart!");
+      }
    };
+
+   console.log(findCountryShippingRate);
 
    return (
       <div className="p-12">

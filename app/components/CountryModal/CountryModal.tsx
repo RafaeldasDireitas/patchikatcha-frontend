@@ -1,36 +1,56 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import countries from "@/data/countries.json";
 import { useGlobalStore } from "@/zustand/globalstore";
-import CountryDropDown from "./CountryDropdown";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function CountryModal() {
-   const [isOpen, setIsOpen] = useState(false);
+   const router = useRouter();
+   const [isOpen, setIsOpen] = useState(true);
    const globalStore = useGlobalStore();
    const userGeo = globalStore.userGeo;
 
-   const toggleModal = () => {
-      setIsOpen(!isOpen);
+   const handleUserGeoData = (country: any) => {
+      globalStore.setUserGeo({
+         userCountry: country.countryCode,
+         countryName: country.countryName,
+         currency: country.currencyCode
+      });
+
+      toast.success("Your country was selected!");
+
+      location.reload();
    };
 
-   useEffect(() => {
-      if (userGeo) {
-         const modal: any = document.getElementById("country_modal");
-         modal.showModal();
-      }
-   }, []);
-
    return (
-      <dialog id="country_modal" className="modal">
-         <div className="modal-box text-white bg-button-background">
-            <h3 className="font-bold text-lg">Hello!</h3>
-            <div className="flex flex-col">
-               <CountryDropDown />
+      <>
+         {isOpen ? (
+            <div className="dropdown dropdown-left fixed top-20 right-2">
+               <div className="absolute -top-1 -right-1">
+                  <button className="btn btn-circle bg-button-background min-h-0 w-6 h-6" onClick={() => setIsOpen(!isOpen)}></button>
+               </div>
+               <div tabIndex={0} role="button" className="btn m-1">
+                  {userGeo.countryName} - {userGeo.currency}
+               </div>
+               <ul
+                  tabIndex={0}
+                  className="dropdown-content fixed z-[1] max-h-96 max-w-56 text-white flex flex-row overflow-y-scroll menu p-2 shadow bg-base-100 rounded-box w-52"
+               >
+                  {countries.countries.country.map((country, key) => (
+                     <div key={key} className="w-full">
+                        <li>
+                           <a onClick={() => handleUserGeoData(country)}>{country.countryName}</a>
+                        </li>
+                     </div>
+                  ))}
+               </ul>
             </div>
-            <div className="modal-action">
-               <form method="dialog">{/* if there is a button in form, it will close the modal */}</form>
+         ) : (
+            <div className="fixed top-20 right-2">
+               <button className="btn btn-circle bg-button-background min-h-0 w-6 h-6" onClick={() => setIsOpen(!isOpen)}></button>
             </div>
-         </div>
-      </dialog>
+         )}
+      </>
    );
 }

@@ -1,7 +1,7 @@
 "use client";
 import countries from "@/data/countries.json";
-import { UserDataType } from "@/types/UserDataType";
 import { useGlobalStore } from "@/zustand/globalstore";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -47,16 +47,19 @@ export default function CountryDropDown() {
                return (
                   <>
                      <button
-                        className={`btn bg-white border-none text-black ${focusButton === country.countryCode ? "focus:bg-button-background" : ""}`}
+                        className={`btn p-0 bg-white border-none text-black ${
+                           focusButton === country.countryCode ? "focus:bg-button-background" : ""
+                        }`}
                         onClick={() => handleOnCountryClick(country)}
                      >
+                        <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found"></Image>
                         {country.countryName}
                      </button>
                   </>
                );
             })}
          </div>
-         <button className="btn" onClick={handleUserGeoData}>
+         <button className="btn my-2" onClick={handleUserGeoData}>
             Confirm country!
          </button>
       </>

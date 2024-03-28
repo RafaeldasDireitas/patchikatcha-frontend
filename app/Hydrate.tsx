@@ -26,7 +26,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
          {isHydrated ? (
             <>
                <Navbar />
-               {<CountryModal />}
+               {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
                <main>
                   <div>{children}</div>
                </main>

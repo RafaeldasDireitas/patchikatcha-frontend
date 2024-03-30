@@ -17,6 +17,7 @@ import AddToCart from "./components/AddToCart";
 import { endpoints } from "@/endpoints/endpoints";
 import FetchShippingRate from "./FetchShippingRate";
 import { ShippingRateType } from "@/types/ShippingRateType";
+import useFindMineValue from "@/lib/useFindMinValue";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -36,6 +37,7 @@ export default function ProductName({ params }: any) {
    const decodedProductName = decodeURIComponent(productName);
    const productId = searchParams.get("productId");
    let variantId = 0; //app enters a loop if its a state
+   let shippingCosts: number[] = [];
 
    document.title = decodedProductName;
 
@@ -47,27 +49,15 @@ export default function ProductName({ params }: any) {
       }
    }, [sizeId, colorId]);
 
-   const incrementQuantity = () => {
-      if (quantity >= 10) {
-         toast.error("You cannot add more than 10 products!");
-      } else {
-         setQuantity(quantity + 1);
-      }
-   };
-
-   const decrementQuantity = () => {
-      if (quantity <= 1) {
-         return;
-      } else {
-         setQuantity(quantity - 1);
-      }
-   };
-
    if (!product || !productId) {
       return <Loading />;
    }
 
    const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
+
+   shippingRate?.profiles.map((profile) => shippingCosts.push(profile.first_item.cost)); //grab shipping prices
+
+   const lowestShippingRate = useFindMineValue(shippingCosts);
 
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
 
@@ -86,26 +76,26 @@ export default function ProductName({ params }: any) {
          const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
          const priceId = await grabPriceId.text();
 
-         globalStore.setCart({
-            name: product.title,
-            description: product.description,
-            price: product?.variants[0]?.price,
-            price_id: priceId,
-            image: product?.images[0].src,
-            quantity: quantity,
-            size: sizeId,
-            color: colorId,
-            product_id: productId,
-            variant_id: variantId ?? 0,
-            first_item: findCountryShippingRate.first_item.cost,
-            additional_items: findCountryShippingRate.additional_items.cost
-         });
+         if (lowestShippingRate) {
+            globalStore.setCart({
+               name: product.title,
+               description: product.description,
+               price: product?.variants[0]?.price - lowestShippingRate,
+               price_id: priceId,
+               image: product?.images[0].src,
+               quantity: quantity,
+               size: sizeId,
+               color: colorId,
+               product_id: productId,
+               variant_id: variantId ?? 0,
+               first_item: findCountryShippingRate.first_item.cost,
+               additional_items: findCountryShippingRate.additional_items.cost
+            });
 
-         toast.success("Added to cart!");
+            toast.success("Added to cart!");
+         }
       }
    };
-
-   console.log(findCountryShippingRate);
 
    return (
       <div className="p-12">
@@ -113,19 +103,20 @@ export default function ProductName({ params }: any) {
             <Images product={product}></Images>
 
             <div className="flex flex-col">
-               <Title product={product}></Title>
+               <Title product={product} />
 
-               <Tags product={product}></Tags>
+               <Tags product={product} />
 
-               <Description product={product}></Description>
+               <Description product={product} />
 
-               <Sizes productVariants={productVariants} setSizeId={setSizeId}></Sizes>
+               <Sizes productVariants={productVariants} setSizeId={setSizeId} />
 
-               <Colors setColorId={setColorId} productVariants={productVariants}></Colors>
+               <Colors setColorId={setColorId} productVariants={productVariants} />
 
-               <Quantity quantity={quantity} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}></Quantity>
+               <Quantity quantity={quantity} setQuantity={setQuantity} />
 
-               <AddToCart addToCart={addToCart}></AddToCart>
+               <AddToCart addToCart={addToCart} />
+               {lowestShippingRate && product?.variants[28]?.price - lowestShippingRate}
             </div>
          </div>
       </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import FetchLogin from "./FetchLogin";
 import turtle from "@/public/turtle.png";
+import star from "@/public/star.png";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -40,7 +41,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    return (
       <div className="flex flex-row">
          <div className="w-1/3 bg-body-background min-h-screen items-center flex justify-center">
-            <Image src={turtle} width={200} height={200} alt="No turtle found..."></Image>
+            <Image src={star} width={300} height={300} alt="No turtle found..."></Image>
          </div>
 
          <div className="w-2/3 bg-white min-h-screen items-center flex flex-col justify-center">

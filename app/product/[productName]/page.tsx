@@ -31,6 +31,7 @@ export default function ProductName({ params }: any) {
    const globalStore = useGlobalStore();
    const userGeo = globalStore.userGeo;
    const userCountry = userGeo.userCountry;
+   const portugalIva = 23.0 / 100;
 
    const searchParams = useSearchParams();
    const productName = params.productName;
@@ -38,6 +39,7 @@ export default function ProductName({ params }: any) {
    const productId = searchParams.get("productId");
    let variantId = 0; //app enters a loop if its a state
    let shippingCosts: number[] = [];
+   let productPrice;
 
    document.title = decodedProductName;
 
@@ -58,6 +60,13 @@ export default function ProductName({ params }: any) {
    shippingRate?.profiles.map((profile) => shippingCosts.push(profile.first_item.cost)); //grab shipping prices
 
    const lowestShippingRate = useFindMineValue(shippingCosts);
+
+   const findProductPrice = product.variants.find((variant) => variant.is_enabled === true);
+   productPrice = findProductPrice?.price;
+   const basePrice = productPrice && lowestShippingRate && productPrice - lowestShippingRate;
+   const ivaAmount = basePrice && basePrice * portugalIva;
+   const totalPrice = basePrice && ivaAmount && basePrice + ivaAmount;
+   console.log(ivaAmount);
 
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
 
@@ -116,7 +125,7 @@ export default function ProductName({ params }: any) {
                <Quantity quantity={quantity} setQuantity={setQuantity} />
 
                <AddToCart addToCart={addToCart} />
-               {lowestShippingRate && product?.variants[28]?.price - lowestShippingRate}
+               {totalPrice}
             </div>
          </div>
       </div>

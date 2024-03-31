@@ -31,13 +31,12 @@ export default function ProductName({ params }: any) {
    const globalStore = useGlobalStore();
    const userGeo = globalStore.userGeo;
    const userCountry = userGeo.userCountry;
-   const portugalIva = 23.0 / 100;
 
    const searchParams = useSearchParams();
    const productName = params.productName;
    const decodedProductName = decodeURIComponent(productName);
    const productId = searchParams.get("productId");
-   let variantId = 0; //app enters a loop if its a state
+   let variantId = product?.variants[0].id; //app enters a loop if its a state
    let shippingCosts: number[] = [];
 
    document.title = decodedProductName;
@@ -57,8 +56,6 @@ export default function ProductName({ params }: any) {
    const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
 
    shippingRate?.profiles.map((profile) => shippingCosts.push(profile.first_item.cost)); //grab shipping prices
-
-   const lowestShippingRate = useFindMineValue(shippingCosts);
 
    const productPrice = product.variants.find((variant) => variant.is_enabled === true);
 
@@ -85,11 +82,11 @@ export default function ProductName({ params }: any) {
          const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
          const priceId = await grabPriceId.text();
 
-         if (lowestShippingRate) {
+         if (basePrice) {
             globalStore.setCart({
                name: product.title,
                description: product.description,
-               price: product?.variants[0]?.price,
+               price: basePrice,
                price_id: priceId,
                image: product?.images[0].src,
                quantity: quantity,

@@ -24,7 +24,15 @@ export default function NewProducts() {
          <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
          <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
             {newProducts.data.map((product, key) => {
-               const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
+               const productPrice = product.variants.find((variant) => variant.is_enabled === true);
+
+               const productIVA = productPrice && productPrice.price * 0.23;
+
+               const basePrice = productPrice && productIVA && productPrice.price + productIVA;
+
+               console.log(basePrice);
+
+               const formattedPrice = basePrice && (basePrice / 100).toFixed(2) + " €";
 
                return (
                   <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>

@@ -21,24 +21,30 @@ export default function Sizes({ setSizeId, productVariants }: any) {
 
    return (
       <>
-         <h1 className="text-2xl text-light yeseva-one-regular">Sizes:</h1>
-         <div className="flex flex-row flex-wrap my-2">
-            {sizesName.map((sizeName: any, key: number) => {
-               const sizeId = uniqueSizesId[key];
+         {productVariants.length > 1 ? (
+            <>
+               <h1 className="text-2xl text-light yeseva-one-regular">Sizes:</h1>
+               <div className="flex flex-row flex-wrap my-2">
+                  {sizesName.map((sizeName: any, key: number) => {
+                     const sizeId = uniqueSizesId[key];
 
-               return (
-                  <button
-                     className={`btn ml-1 my-1 w-20 josefin-sans ${
-                        sizeId === isFocused ? "bg-button-focused" : ""
-                     } bg-button-background border-none text-white`}
-                     key={sizeId}
-                     onClick={() => handleSizeClick(sizeId)}
-                  >
-                     {sizeName}
-                  </button>
-               );
-            })}
-         </div>
+                     return (
+                        <button
+                           className={`btn ml-1 my-1 w-20 josefin-sans ${
+                              sizeId === isFocused ? "bg-button-focused" : ""
+                           } bg-button-background border-none text-white`}
+                           key={sizeId}
+                           onClick={() => handleSizeClick(sizeId)}
+                        >
+                           {sizeName}
+                        </button>
+                     );
+                  })}
+               </div>
+            </>
+         ) : (
+            <></>
+         )}
       </>
    );
 }

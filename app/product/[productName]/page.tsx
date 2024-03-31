@@ -39,7 +39,6 @@ export default function ProductName({ params }: any) {
    const productId = searchParams.get("productId");
    let variantId = 0; //app enters a loop if its a state
    let shippingCosts: number[] = [];
-   let productPrice;
 
    document.title = decodedProductName;
 
@@ -61,12 +60,13 @@ export default function ProductName({ params }: any) {
 
    const lowestShippingRate = useFindMineValue(shippingCosts);
 
-   const findProductPrice = product.variants.find((variant) => variant.is_enabled === true);
-   productPrice = findProductPrice?.price;
-   const basePrice = productPrice && lowestShippingRate && productPrice - lowestShippingRate;
-   const ivaAmount = basePrice && basePrice * portugalIva;
-   const totalPrice = basePrice && ivaAmount && basePrice + ivaAmount;
-   console.log(ivaAmount);
+   const productPrice = product.variants.find((variant) => variant.is_enabled === true);
+
+   const productIVA = productPrice && productPrice.price * 0.23;
+
+   const basePrice = productPrice && productIVA && productPrice.price + productIVA;
+
+   const formattedPrice = basePrice && (basePrice / 100).toFixed(2) + " €";
 
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
 
@@ -89,7 +89,7 @@ export default function ProductName({ params }: any) {
             globalStore.setCart({
                name: product.title,
                description: product.description,
-               price: product?.variants[0]?.price - lowestShippingRate,
+               price: product?.variants[0]?.price,
                price_id: priceId,
                image: product?.images[0].src,
                quantity: quantity,
@@ -125,7 +125,7 @@ export default function ProductName({ params }: any) {
                <Quantity quantity={quantity} setQuantity={setQuantity} />
 
                <AddToCart addToCart={addToCart} />
-               {totalPrice}
+               {formattedPrice}
             </div>
          </div>
       </div>

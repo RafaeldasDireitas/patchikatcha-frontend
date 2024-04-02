@@ -30,8 +30,6 @@ export default function NewProducts() {
 
                const basePrice = productPrice && productIVA && productPrice.price + productIVA;
 
-               console.log(basePrice);
-
                const formattedPrice = basePrice && (basePrice / 100).toFixed(2) + " €";
 
                return (

@@ -11,7 +11,8 @@ import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "../cartdrawer/Cart";
-import countries from "@/data/countries.json";
+import patchi from "@/public/Patchi.svg";
+import pacthipng from "@/public/patchi-png.png";
 
 const products = [
    {
@@ -49,9 +50,9 @@ export default function Navbar() {
    return (
       <header className="bg-white">
          <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-            <div className="flex lg:flex-1">
-               <a className="text-light" href="/">
-                  Patchi Katcha
+            <div className="flex lg:flex-1 ">
+               <a href="/" className="hover:cursor-pointer hover:scale-110 duration-200">
+                  <Image src={pacthipng} width={50} height={50} alt="No icon found"></Image>
                </a>
             </div>
             <div className="flex lg:hidden">
@@ -157,7 +158,9 @@ export default function Navbar() {
 
             <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                <div className="flex items-center justify-between">
-                  <a className="text-light">Patchi Katcha</a>
+                  <a className="text-light" href="/">
+                     <Image src={pacthipng} width={50} height={50} alt="No icon found"></Image>
+                  </a>
                   <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(false)}>
                      <span className="sr-only">Close menu</span>
                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />

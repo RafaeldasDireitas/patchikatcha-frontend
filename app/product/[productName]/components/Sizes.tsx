@@ -23,8 +23,8 @@ export default function Sizes({ setSizeId, productVariants }: any) {
       <>
          {productVariants.length > 1 ? (
             <>
-               <h1 className="text-2xl text-light yeseva-one-regular">Sizes:</h1>
-               <div className="flex flex-row flex-wrap my-2">
+               <h1 className="text-2xl text-light yeseva-one-regular text-center lg:text-start">Sizes:</h1>
+               <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
                   {sizesName.map((sizeName: any, key: number) => {
                      const sizeId = uniqueSizesId[key];
 

@@ -18,7 +18,7 @@ export default function Quantity({ quantity, setQuantity }: any) {
    };
 
    return (
-      <div className="flex justify-end">
+      <div className="flex justify-center lg:justify-end m-2">
          <div className="w-40 rounded-xl flex items-center justify-start bg-button-background">
             <button className="flex items-center justify-start p-2 hover:scale-110 duration-150" onClick={decrementQuantity}>
                <svg

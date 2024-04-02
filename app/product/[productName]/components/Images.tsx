@@ -13,11 +13,11 @@ export default function Images({ product }: any) {
 
    return (
       <>
-         <div className="flex flex-col max-h-96 overflow-auto">
+         <div className="flex flex-col max-h-96 lg:overflow-y-auto overflow-x-auto">
             {sideImages.map((image: any, key: number) => {
                return (
                   <Image
-                     className="my-1 rounded-xl hover:scale-110 hover:cursor-pointer duration-200"
+                     className="hidden lg:block my-1 rounded-xl hover:scale-110 hover:cursor-pointer duration-200"
                      key={key}
                      src={image.src}
                      width={200}
@@ -28,7 +28,9 @@ export default function Images({ product }: any) {
                );
             })}
          </div>
-         {mainImage && <Image className="rounded-xl max-w-[380px] max-h-[380px]" src={mainImage} width={380} height={380} alt="No image found" />}
+         {mainImage && (
+            <Image className="rounded-xl max-w-[380px] max-h-[380px] justify-center" src={mainImage} width={380} height={380} alt="No image found" />
+         )}
       </>
    );
 }

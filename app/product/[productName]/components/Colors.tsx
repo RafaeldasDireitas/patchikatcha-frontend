@@ -23,8 +23,8 @@ export default function Colors({ setColorId, productVariants }: any) {
       <>
          {productVariants.length > 1 ? (
             <>
-               <h1 className="text-2xl text-light yeseva-one-regular">Colors:</h1>
-               <div className="flex flex-row flex-wrap my-2">
+               <h1 className="text-2xl text-light yeseva-one-regular text-center lg:text-start">Colors:</h1>
+               <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
                   {colorsName.map((colorName: any, key: number) => {
                      const colorId = uniqueColorsId[key];
 

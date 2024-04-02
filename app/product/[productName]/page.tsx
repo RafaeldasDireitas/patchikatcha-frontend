@@ -104,25 +104,27 @@ export default function ProductName({ params }: any) {
    };
 
    return (
-      <div className="p-12">
-         <div className="flex flex-row gap-10">
-            <Images product={product}></Images>
+      <div className="bg-body-background">
+         <div className="m-12 bg-white rounded-xl">
+            <div className="flex flex-row gap-10 p-12">
+               <Images product={product}></Images>
 
-            <div className="flex flex-col">
-               <Title product={product} />
+               <div className="flex flex-col">
+                  <Title product={product} />
 
-               <Tags product={product} />
+                  <Tags product={product} />
 
-               <Description product={product} />
+                  <Description product={product} />
 
-               <Sizes productVariants={productVariants} setSizeId={setSizeId} />
+                  <Sizes productVariants={productVariants} setSizeId={setSizeId} />
 
-               <Colors setColorId={setColorId} productVariants={productVariants} />
+                  <Colors setColorId={setColorId} productVariants={productVariants} />
 
-               <Quantity quantity={quantity} setQuantity={setQuantity} />
+                  <Quantity quantity={quantity} setQuantity={setQuantity} />
 
-               <AddToCart addToCart={addToCart} />
-               {formattedPrice}
+                  <AddToCart addToCart={addToCart} />
+                  {formattedPrice}
+               </div>
             </div>
          </div>
       </div>

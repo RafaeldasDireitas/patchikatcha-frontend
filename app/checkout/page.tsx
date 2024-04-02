@@ -36,6 +36,16 @@ export default function Checkout() {
       }
    }));
 
+   if (!cart) {
+      return (
+         <div>
+            <div className="flex min-h-screen items-center justify-center">
+               <h1>You must have items in your cart!</h1>
+            </div>
+         </div>
+      );
+   }
+
    useEffect(() => {
       FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret, setClientId });
    }, []);

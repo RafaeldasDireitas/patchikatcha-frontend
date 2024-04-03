@@ -19,6 +19,7 @@ import FetchShippingRate from "./FetchShippingRate";
 import { ShippingRateType } from "@/types/ShippingRateType";
 import useFindMineValue from "@/lib/useFindMinValue";
 import DetailedDescription from "./components/DetailedDescription";
+import ImageDescription from "./ImageDescription";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -106,14 +107,12 @@ export default function ProductName({ params }: any) {
 
    return (
       <div className="bg-body-background">
-         <div className="lg:m-12 bg-white rounded-xl">
-            <div className="flex lg:flex-row flex-col gap-10 lg:p-12">
+         <div className="lg:m-12 bg-white rounded-xl max-w-[1920px]">
+            <div className="flex lg:flex-row flex-col gap-6 lg:p-12">
                <Images product={product}></Images>
 
                <div className="flex flex-col">
                   <Title product={product} />
-
-                  <Tags product={product} />
 
                   <Description product={product} />
 
@@ -128,8 +127,9 @@ export default function ProductName({ params }: any) {
                </div>
             </div>
 
-            <div className="m-12">
+            <div className="lg:m-12 p-2 gap-6 flex lg:flex-row flex-col">
                <DetailedDescription product={product} />
+               <ImageDescription product={product}></ImageDescription>
             </div>
          </div>
       </div>

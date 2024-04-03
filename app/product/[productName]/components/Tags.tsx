@@ -1,14 +1,19 @@
+import { ProductType } from "@/types/ProductType";
+
 export default function Tags({ product }: any) {
+   const firstTag = product.tags.slice(0, 1);
+
    return (
       <>
          <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
-            {product.tags.map((tag: any, key: number) => {
+            {/* {product.tags.map((tag: string[], key: number) => {
                return (
-                  <button className="btn mx-1 my-1 josefin-sans bg-button-background border-none text-white" key={key}>
-                     {tag}
-                  </button>
+                  <div>
+                     <h1 className="josefin-sans text-xl text-dark">{firstTag}</h1>
+                  </div>
                );
-            })}
+            })} */}
+            {firstTag}
          </div>
       </>
    );

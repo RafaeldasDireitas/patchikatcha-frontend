@@ -11,10 +11,12 @@ const config: Config = {
          backgroundColor: {
             "button-background": "#BC6C25",
             "button-focused": "#6A381F",
-            "body-background": "#ffedd8"
+            "body-background": "#ffedd8",
+            "button-light-focus": "#F0DDCD"
          },
          textColor: {
-            light: "#BC6C25"
+            light: "#BC6C25",
+            dark: "#6A381F"
          },
          borderColor: {
             "border-light": "#BC6C25"

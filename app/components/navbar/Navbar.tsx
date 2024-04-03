@@ -11,21 +11,22 @@ import user from "@/public/User_cicrle_light.png";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "../cartdrawer/Cart";
-import patchi from "@/public/Patchi.svg";
+import tshirt from "@/public/t-shirt.png";
+import hoodie from "@/public/sweatshirt.png";
 import pacthipng from "@/public/patchi-png.png";
 
 const products = [
    {
-      name: "Men's Clothing",
+      name: "Hoodies",
       description: "",
-      href: "/categories/men",
-      icon: pullover
+      href: "/categories/hoodies",
+      icon: hoodie
    },
    {
-      name: "Women's Clothing",
+      name: "T-shirts",
       description: "",
-      href: "/categories/women",
-      icon: skirt
+      href: "/categories/tshirts",
+      icon: tshirt
    }
 ];
 const callsToAction = [
@@ -203,7 +204,9 @@ export default function Navbar() {
                      </div>
                      <div className="py-6">
                         {globalStore.isAuthenticated ? (
-                           <a className="text-sm font-semibold leading-6 text-light">Sign Out</a>
+                           <>
+                              <a className="text-sm font-semibold leading-6 text-light">Sign Out</a>
+                           </>
                         ) : (
                            <>
                               <a href="/auth" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light">

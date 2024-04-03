@@ -30,9 +30,11 @@ export default function Sizes({ setSizeId, productVariants }: any) {
 
                      return (
                         <button
-                           className={`btn ml-1 my-1 w-20 josefin-sans ${
-                              sizeId === isFocused ? "bg-button-focused" : ""
-                           } bg-button-background border-none text-white`}
+                           className={`btn ml-1 my-1 w-16 josefin-sans ${
+                              sizeId === isFocused
+                                 ? "bg-button-light-focus text-black border-none hover:bg-button-focused"
+                                 : "bg-button-background border-none text-white hover:bg-button-focused"
+                           }`}
                            key={sizeId}
                            onClick={() => handleSizeClick(sizeId)}
                         >

@@ -19,8 +19,11 @@ export default function Quantity({ quantity, setQuantity }: any) {
 
    return (
       <div className="flex justify-center lg:justify-end m-2">
-         <div className="w-40 rounded-xl flex items-center justify-start bg-button-background">
-            <button className="flex items-center justify-start p-2 hover:scale-110 duration-150" onClick={decrementQuantity}>
+         <div className="w-36 rounded-xl flex items-center bg-button-background">
+            <button
+               className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-lg"
+               onClick={decrementQuantity}
+            >
                <svg
                   className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +42,10 @@ export default function Quantity({ quantity, setQuantity }: any) {
                <h1 className="text-white josefin-sans">{quantity}</h1>
             </div>
 
-            <button className="flex items-center justify-end p-2" onClick={incrementQuantity}>
+            <button
+               className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-lg"
+               onClick={incrementQuantity}
+            >
                <svg
                   className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"

@@ -42,13 +42,7 @@ export default function CategoriesMen() {
 
                   return (
                      <Link key={key} href={{ pathname: `/product/${hoodie.title}`, query: { productId: hoodie.id } }}>
-                        <ProductCard
-                           key={key}
-                           title={hoodie.title}
-                           tag={hoodie.tags[0]}
-                           price={formattedPrice}
-                           image={hoodie.images[0].src}
-                        ></ProductCard>
+                        <ProductCard key={key} title={hoodie.title} price={formattedPrice} image={hoodie.images[0].src}></ProductCard>
                      </Link>
                   );
                })}

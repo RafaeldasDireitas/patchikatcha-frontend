@@ -26,9 +26,9 @@ export default function Categories() {
    return (
       <>
          <div className="flex justify-center">
-            <h1 className="text-3xl lg:text-start text-center text-light font-bold">Our Categories:</h1>
+            <h1 className="text-3xl lg:text-start text-center text-dark font-bold yeseva-one-regular">Our Categories:</h1>
          </div>
-         <div className="flex lg:flex-row flex-col gap-6 justify-center my-8">
+         <div className="flex lg:flex-row flex-col gap-6 justify-center items-center my-8">
             {categories.map((category, key) => {
                return (
                   <>
@@ -37,7 +37,7 @@ export default function Categories() {
                            <div
                               tabIndex={0}
                               role="button"
-                              className="btn m-1 w-40 h-36 bg-white hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200"
+                              className="btn m-1 w-40 h-36 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200"
                            >
                               {category.name}
                            </div>
@@ -52,7 +52,7 @@ export default function Categories() {
                            </ul>
                         </div>
                      ) : (
-                        <button className="btn m-1 w-40 h-36 bg-white hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
+                        <button className="btn m-1 w-40 h-36 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
                            {category.name}
                         </button>
                      )}

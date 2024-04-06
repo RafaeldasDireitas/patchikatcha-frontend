@@ -106,7 +106,7 @@ export default function ProductName({ params }: any) {
    };
 
    return (
-      <div className="bg-body-background">
+      <div className="bg-white">
          <div className="lg:m-12 bg-white rounded-xl max-w-[1920px]">
             <div className="flex lg:flex-row flex-col gap-6 lg:p-12">
                <Images product={product}></Images>

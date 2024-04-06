@@ -1,7 +1,7 @@
 import { endpoints } from "@/endpoints/endpoints";
 
-export default async function FetchHoodies({ limit, pageNumber, setProducts }: any) {
-   const fetchHoodies = await fetch(endpoints.url + endpoints.grabAllProducts(limit, pageNumber), {
+export default async function FetchHoodies({ limit, pageNumber, setHoodies }: any) {
+   const fetchHoodies = await fetch(endpoints.url + endpoints.grabCategoryProducts(limit, pageNumber, "Hoodies"), {
       method: "GET",
       headers: {
          "Content-type": "application/json"
@@ -10,5 +10,5 @@ export default async function FetchHoodies({ limit, pageNumber, setProducts }: a
 
    const grabHoodies = await fetchHoodies.json();
 
-   setProducts(grabHoodies);
+   setHoodies(grabHoodies);
 }

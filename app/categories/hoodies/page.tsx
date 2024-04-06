@@ -7,25 +7,39 @@ import ProductCard from "@/app/components/ProductCard";
 import Loading from "@/app/components/Loading";
 
 type Hoodies = {
-   current_page: number;
-   data: ProductDataType[];
-   from: number;
+   blueprint_id: number;
+   id: string;
+   title: string;
+   variants: [
+      {
+         cost: number;
+         quantity: number;
+         price: number;
+         is_enabled: boolean;
+      }
+   ];
+   images: [
+      {
+         src: string;
+         is_default: boolean;
+      }
+   ];
 };
 
 export default function CategoriesMen() {
-   const [products, setProducts] = useState<Hoodies>();
+   const [hoodies, setHoodies] = useState<Hoodies[]>();
    const limit = 15;
    const pageNumber = 1;
 
-   const hoodies = products?.data.filter((product) => product.tags.includes("Hoodies"));
+   // const hoodies = products?.data.filter((product) => product.tags.includes("Hoodies"));
 
    useEffect(() => {
-      FetchHoodies({ limit, pageNumber, setProducts });
+      FetchHoodies({ limit, pageNumber, setHoodies });
    }, []);
 
-   if (!hoodies) {
-      return <Loading />;
-   }
+   // if (!hoodies) {
+   //    return <Loading />;
+   // }
 
    return (
       <div className="lg:p-12 py-8 flex flex-col items-center">

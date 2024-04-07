@@ -1,14 +1,15 @@
 "use client";
 import { useGlobalStore } from "@/zustand/globalstore";
 import CartProduct from "./CartProduct";
+import Link from "next/link";
 
-export default function Cart() {
+export default function Cart({ htmlFor }: any) {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
 
    return (
-      <div className="drawer-side z-50">
-         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+      <div className="drawer-side z-50 right-0">
+         <label htmlFor={htmlFor} aria-label="close sidebar" className="drawer-overlay"></label>
 
          <ul className="menu p-4 w-80 min-h-full bg-body-background">
             <div>
@@ -33,10 +34,21 @@ export default function Cart() {
                      </div>
                   );
                })}
-            <div className="flex flex-col">
+            <div className="flex flex-col my-2">
                <h2>Subtotal</h2>
                <hr></hr>
-               <button className="btn bg-button-background border-none text-white my-8">View Cart</button>
+               <div className="flex flex-col items-center gap-y-3">
+                  <Link href={"/patchi-cart"}>
+                     <button className="btn mt-3 btn-circle bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                        View Cart
+                     </button>
+                  </Link>
+                  <Link href={"/checkout"}>
+                     <button className="btn btn-circle bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                        Checkout
+                     </button>
+                  </Link>
+               </div>
             </div>
          </ul>
       </div>

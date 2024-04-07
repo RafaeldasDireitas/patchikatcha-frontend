@@ -134,7 +134,7 @@ export default function Navbar() {
                         </h1>
                      </div>
                   </label>
-                  <Cart></Cart>
+                  <Cart htmlFor="my-drawer-4"></Cart>
                </div>
                {globalStore.isAuthenticated ? (
                   <Link href={"/profile"}>
@@ -232,14 +232,7 @@ export default function Navbar() {
                                        </h1>
                                     </div>
                                  </label>
-                                 <div className="drawer-side right-0">
-                                    <label htmlFor="my-drawer-4-mobile" aria-label="close sidebar" className="drawer-overlay"></label>
-                                    <ul className="menu p-4 w-96 min-h-full bg-body-background">
-                                       <div>
-                                          <h1 className="text-3xl text-left">Your cart</h1>
-                                       </div>
-                                    </ul>
-                                 </div>
+                                 <Cart htmlFor="my-drawer-4-mobile"></Cart>
                               </div>
                            </>
                         )}

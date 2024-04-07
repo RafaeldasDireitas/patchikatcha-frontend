@@ -122,7 +122,7 @@ export default function ProductName({ params }: any) {
 
                   <Colors setColorId={setColorId} productVariants={productVariants} />
 
-                  <Quantity quantity={quantity} setQuantity={setQuantity} />
+                  <Quantity quantity={quantity} setQuantity={setQuantity} width="w-36" />
 
                   <AddToCart addToCart={addToCart} />
                   {formattedPrice}

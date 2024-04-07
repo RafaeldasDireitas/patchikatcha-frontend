@@ -43,7 +43,7 @@ export default function Categories() {
                               role="button"
                               className="btn flex flex-col m-1 w-60 h-56 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200"
                            >
-                              <Image src={category.icon} width={80} height={80} alt="No image found"></Image>
+                              <Image className="w-20 h-20" src={category.icon} width={80} height={80} alt="No image found"></Image>
                               {category.name}
                            </div>
                            <ul tabIndex={0} className="dropdown-content z-[1] menu my-1 shadow bg-white rounded-lg w-44">
@@ -58,7 +58,7 @@ export default function Categories() {
                         </div>
                      ) : (
                         <div className="btn flex flex-col m-1 w-60 h-56 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
-                           <Image src={category.icon} width={80} height={80} alt="No image found"></Image>
+                           <Image className="w-20 h-20" src={category.icon} width={80} height={80} alt="No image found"></Image>
                            {category.name}
                         </div>
                      )}

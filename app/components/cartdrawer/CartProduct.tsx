@@ -10,7 +10,7 @@ export default function CartProduct({ name, description, price, price_id, quanti
    const colorName = Object.keys(ProductsData).find((key: any) => ProductsData[key] == color);
 
    return (
-      <div className="flex flex-row p-4">
+      <div className="flex flex-row p-1 py-8">
          <div className="flex flex-col">
             <Link href={{ pathname: `/product/${name}`, query: { productId: product_id } }}>
                <Image className="rounded-xl hover:scale-110 duration-200" src={image} width={100} height={100} alt="Product image"></Image>

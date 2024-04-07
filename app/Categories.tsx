@@ -1,8 +1,12 @@
 import Link from "next/link";
+import bear from "@/public/category_bear.png";
+import frog from "@/public/category_frog.png";
+import ribbon from "@/public/category_ribbon.png";
+import Image, { StaticImageData } from "next/image";
 
 type CategoriesType = {
    name: string;
-   icon: string;
+   icon: StaticImageData;
    content?: string[];
 };
 
@@ -10,16 +14,16 @@ export default function Categories() {
    const categories: CategoriesType[] = [
       {
          name: "New",
-         icon: ""
+         icon: bear
       },
       {
          name: "Clothing",
-         icon: "",
+         icon: frog,
          content: ["Hoodies", "T-shirts"]
       },
       {
          name: "Accessories",
-         icon: ""
+         icon: ribbon
       }
    ];
 
@@ -37,8 +41,9 @@ export default function Categories() {
                            <div
                               tabIndex={0}
                               role="button"
-                              className="btn m-1 w-40 h-36 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200"
+                              className="btn flex flex-col m-1 w-60 h-56 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200"
                            >
+                              <Image src={category.icon} width={80} height={80} alt="No image found"></Image>
                               {category.name}
                            </div>
                            <ul tabIndex={0} className="dropdown-content z-[1] menu my-1 shadow bg-white rounded-lg w-44">
@@ -52,9 +57,10 @@ export default function Categories() {
                            </ul>
                         </div>
                      ) : (
-                        <button className="btn m-1 w-40 h-36 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
+                        <div className="btn flex flex-col m-1 w-60 h-56 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
+                           <Image src={category.icon} width={80} height={80} alt="No image found"></Image>
                            {category.name}
-                        </button>
+                        </div>
                      )}
                   </>
                );

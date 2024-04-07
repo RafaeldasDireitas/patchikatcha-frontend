@@ -105,6 +105,8 @@ export default function ProductName({ params }: any) {
       }
    };
 
+   console.log(product);
+
    return (
       <div className="bg-white">
          <div className="lg:m-12 bg-white rounded-xl max-w-[1920px]">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import turtle from "@/public/turtle.png";
+import bearPyjama from "@/public/bear_pyjama_party.png";
 
 export default function Hero() {
    return (
@@ -27,7 +28,7 @@ export default function Hero() {
                   </div>
                </div>
                <div className="hidden lg:flex">
-                  <Image src={turtle} width={450} height={450} alt="Epic turtle" />
+                  <Image src={bearPyjama} width={500} height={500} alt="Epic turtle" />
                </div>
             </div>
          </section>

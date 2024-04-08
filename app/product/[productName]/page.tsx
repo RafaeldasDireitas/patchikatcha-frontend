@@ -8,7 +8,6 @@ import Loading from "@/app/components/Loading";
 import { toast } from "sonner";
 import Sizes from "./components/Sizes";
 import Description from "./components/Description";
-import Tags from "./components/Tags";
 import Title from "./components/Title";
 import Colors from "./components/Colors";
 import Quantity from "./components/Quantity";
@@ -17,7 +16,6 @@ import AddToCart from "./components/AddToCart";
 import { endpoints } from "@/endpoints/endpoints";
 import FetchShippingRate from "./FetchShippingRate";
 import { ShippingRateType } from "@/types/ShippingRateType";
-import useFindMineValue from "@/lib/useFindMinValue";
 import DetailedDescription from "./components/DetailedDescription";
 import ImageDescription from "./ImageDescription";
 
@@ -54,6 +52,22 @@ export default function ProductName({ params }: any) {
    if (!product || !productId) {
       return <Loading />;
    }
+
+   const incrementQuantity = () => {
+      if (quantity >= 10) {
+         toast.error("You cannot add more than 10 products!");
+      } else {
+         setQuantity(quantity + 1);
+      }
+   };
+
+   const decrementQuantity = () => {
+      if (quantity <= 1) {
+         return;
+      } else {
+         setQuantity(quantity - 1);
+      }
+   };
 
    const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
 
@@ -105,8 +119,6 @@ export default function ProductName({ params }: any) {
       }
    };
 
-   console.log(product);
-
    return (
       <div className="bg-white">
          <div className="lg:m-12 bg-white rounded-xl max-w-[1920px]">
@@ -122,7 +134,7 @@ export default function ProductName({ params }: any) {
 
                   <Colors setColorId={setColorId} productVariants={productVariants} />
 
-                  <Quantity quantity={quantity} setQuantity={setQuantity} width="w-36" />
+                  <Quantity quantity={quantity} decrementQuantity={decrementQuantity} incrementQuantity={incrementQuantity} width="w-36" />
 
                   <AddToCart addToCart={addToCart} />
                   {formattedPrice}

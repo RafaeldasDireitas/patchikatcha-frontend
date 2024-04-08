@@ -1,7 +1,6 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
 import Navbar from "@/app/components/navbar/Navbar";
-import Footer from "./components/Footer";
 import { useGlobalStore } from "@/zustand/globalstore";
 import CountryModal from "./components/CountryModal/CountryModal";
 
@@ -27,10 +26,9 @@ export default function Hydrate({ children }: { children: ReactNode }) {
             <>
                <Navbar />
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
-               <main>
+               <main className="flex-grow">
                   <div>{children}</div>
                </main>
-               <Footer />
             </>
          ) : (
             <Navbar />

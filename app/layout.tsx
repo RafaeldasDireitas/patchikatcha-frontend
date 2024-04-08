@@ -4,6 +4,7 @@ import "./globals.css";
 import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
 import CountryModal from "./components/CountryModal/CountryModal";
+import Footer from "./Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,9 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
    return (
       <html lang="en" className="bg-white min-h-screen text-black flex flex-col">
-         <body>
+         <body className="min-h-screen flex flex-col justify-between">
             <Toaster expand visibleToasts={1} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }}></Toaster>
             <Hydrate>{children}</Hydrate>
+            <Footer />
          </body>
       </html>
    );

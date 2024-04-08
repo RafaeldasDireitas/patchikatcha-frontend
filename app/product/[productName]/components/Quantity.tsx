@@ -1,22 +1,4 @@
-import { toast } from "sonner";
-
-export default function Quantity({ quantity, setQuantity, width }: any) {
-   const incrementQuantity = () => {
-      if (quantity >= 10) {
-         toast.error("You cannot add more than 10 products!");
-      } else {
-         setQuantity(quantity + 1);
-      }
-   };
-
-   const decrementQuantity = () => {
-      if (quantity <= 1) {
-         return;
-      } else {
-         setQuantity(quantity - 1);
-      }
-   };
-
+export default function Quantity({ quantity, width, decrementQuantity, incrementQuantity }: any) {
    return (
       <div className="flex justify-center lg:justify-end m-2">
          <div className={`${width} rounded-xl flex items-center bg-button-background`}>

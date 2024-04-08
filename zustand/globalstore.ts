@@ -66,7 +66,7 @@ export const useGlobalStore = create<GlobalStateManagement>()(
 
          removeFromCart(productIndex: number) {
             set((state) => ({
-               cart: [...state.cart.filter((product) => product.index !== productIndex)]
+               cart: state.cart.filter((product) => product.index !== productIndex).map((product, index) => ({ ...product, index }))
             }));
          }
       }),

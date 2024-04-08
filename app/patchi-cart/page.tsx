@@ -19,7 +19,7 @@ export default function PatchiCart() {
    }
 
    return (
-      <div className="lg:m-24">
+      <div className="lg:m-20">
          <div className="flex flex-col lg:flex-row">
             <div className="flex flex-col lg:w-1/2">
                <h1 className="text-3xl text-dark yeseva-one-regular text-center lg:text-start">Patchi Cart</h1>
@@ -30,17 +30,25 @@ export default function PatchiCart() {
                <div>
                   {cart.map((product, key: number) => {
                      return (
-                        <CartProductCard
-                           key={product.index}
-                           image={product.image}
-                           name={product.name}
-                           basePrice={product.base_price}
-                           price={totalPrice}
-                           size={product.size}
-                           color={product.color}
-                           quantity={product.quantity}
-                           index={product.index}
-                        ></CartProductCard>
+                        <div key={key}>
+                           <CartProductCard
+                              image={product.image}
+                              name={product.name}
+                              basePrice={product.base_price}
+                              price={totalPrice}
+                              size={product.size}
+                              color={product.color}
+                              quantity={product.quantity}
+                              index={product.index}
+                           >
+                              <button
+                                 className="btn rounded-xl w-40 border-none bg-button-background hover:bg-red-800 text-white josefin-sans mt-2 items-center"
+                                 onClick={() => product.index !== undefined && globalStore.removeFromCart(product.index)}
+                              >
+                                 Remove
+                              </button>
+                           </CartProductCard>
+                        </div>
                      );
                   })}
                </div>
@@ -49,16 +57,6 @@ export default function PatchiCart() {
                <CheckoutCard totalPrice={totalPrice}></CheckoutCard>
             </div>
          </div>
-         {/* <div className="flex flex-col lg:mt-40 lg:w-1/2">
-            <h1 className="text-3xl text-dark josefin-sans">Detailed description:</h1>
-            <p className="mt-2 text-black josefin-sans">
-               Here is a very very very very long description with like all the details very epic okay okay very epic very long. Here is a very very
-               very very long description with like all the details very epic okay okay very epic very long. Here is a very very very very long
-               description with like all the details very epic okay okay very epic very long. Here is a very very very very long description with like
-               all the details very epic okay okay very epic very long. Here is a very very very very long description with like all the details very
-               epic okay okay very epic very long.{" "}
-            </p>
-         </div> */}
       </div>
    );
 }

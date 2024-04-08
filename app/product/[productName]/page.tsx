@@ -92,6 +92,8 @@ export default function ProductName({ params }: any) {
       variantId = matchingVariant.id;
    }
 
+   console.log(product);
+
    const addToCart = async () => {
       if (!findCountryShippingRate) {
          toast.error("There was an error, try again");

@@ -6,7 +6,7 @@ export default function CheckoutCard({ totalPrice }: any) {
    const formattedPrice = (totalPrice / 100).toFixed(2) + " €";
 
    return (
-      <div className="mx-auto w-96 bg-white shadow-lg rounded-xl lg:fixed lg:top-60">
+      <div className="mx-auto w-96 bg-white shadow-lg rounded-xl lg:fixed lg:top-52">
          <div className="flex flex-col p-8">
             <div className="flex justify-center">
                <Image src={turtle} width={150} height={150} alt="No image found"></Image>
@@ -32,9 +32,7 @@ export default function CheckoutCard({ totalPrice }: any) {
                </div>
                <div className="flex justify-center mt-2">
                   <Link href={"/checkout"}>
-                     <button className="btn w-64 bg-button-background hover:bg-button-focused border-none text-white  josefin-sans">
-                        Go to payment page!
-                     </button>
+                     <button className="btn w-64 bg-button-background hover:bg-button-focused border-none text-white  josefin-sans">Checkout</button>
                   </Link>
                </div>
             </div>

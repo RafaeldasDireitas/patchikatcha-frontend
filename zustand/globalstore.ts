@@ -51,7 +51,8 @@ export const useGlobalStore = create<GlobalStateManagement>()(
 
                   updatedCart[existingIndex] = {
                      ...updatedCart[existingIndex],
-                     quantity: updatedCart[existingIndex].quantity + response.quantity
+                     quantity: updatedCart[existingIndex].quantity + response.quantity,
+                     price: response.price
                   };
 
                   return { cart: updatedCart };

@@ -2,10 +2,22 @@
 import { useGlobalStore } from "@/zustand/globalstore";
 import CartProductCard from "./components/CartProductCard";
 import CheckoutCard from "./components/CheckoutCard";
+import { useEffect } from "react";
 
 export default function PatchiCart() {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
+   let totalPrice = 0;
+
+   cart.forEach((product) => {
+      totalPrice = totalPrice + product.price;
+   });
+
+   //    useEffect(() => {
+   //       cart.forEach((product) => {
+   //          totalPrice = totalPrice + product.price;
+   //       });
+   //    }, [cart]);
 
    return (
       <div className="m-24">
@@ -19,9 +31,10 @@ export default function PatchiCart() {
 
                      return (
                         <CartProductCard
+                           key={key}
                            image={product.image}
                            name={product.name}
-                           price={formattedPrice}
+                           price={product.price}
                            size={product.size}
                            color={product.color}
                            quantity={product.quantity}
@@ -32,7 +45,7 @@ export default function PatchiCart() {
                </div>
             </div>
             <div className="m-24">
-               <CheckoutCard></CheckoutCard>
+               <CheckoutCard totalPrice={totalPrice}></CheckoutCard>
             </div>
          </div>
       </div>

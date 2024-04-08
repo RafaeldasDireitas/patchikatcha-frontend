@@ -6,12 +6,15 @@ import { toast } from "sonner";
 
 export default function CartProductCard({ image, name, price, size, color, quantity, index }: any) {
    const globalStore = useGlobalStore();
+   const formattedPrice = (price / 100).toFixed(2) + " €";
 
    const incrementQuantity = () => {
       if (quantity >= 10) {
          toast.error("You cannot add more than 10 products!");
       } else {
-         globalStore.setCart({ ...globalStore.cart[index], quantity: +1 });
+         const updatedQuantity = quantity + 1;
+         const updatedPrice = updatedQuantity * price; // Calculate the new price based on the updated quantity
+         globalStore.setCart({ ...globalStore.cart[index], quantity: +1, price: updatedPrice });
       }
    };
 
@@ -19,7 +22,9 @@ export default function CartProductCard({ image, name, price, size, color, quant
       if (quantity <= 1) {
          return;
       } else {
-         globalStore.setCart({ ...globalStore.cart[index], quantity: -1 });
+         const updatedQuantity = quantity - 1;
+         const updatedPrice = updatedQuantity * price; // Calculate the new price based on the updated quantity
+         globalStore.setCart({ ...globalStore.cart[index], quantity: -1, price: updatedPrice });
       }
    };
 
@@ -32,7 +37,7 @@ export default function CartProductCard({ image, name, price, size, color, quant
             </div>
             <div>
                <h1 className="text-2xl text-light font-bold">{name}</h1>
-               <h2>{price} + Shipping</h2>
+               <h2>{formattedPrice} + Shipping</h2>
                <h2>Size: {size}</h2>
                <h2>Color: {color}</h2>
             </div>

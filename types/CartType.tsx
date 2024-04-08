@@ -6,6 +6,7 @@ export type CartType = {
    size: number;
    color: number;
    image: string;
+   base_price: number;
    price: number;
    price_id: string;
    product_id: string;

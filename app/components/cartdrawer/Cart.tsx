@@ -35,7 +35,6 @@ export default function Cart({ htmlFor }: any) {
                   );
                })}
             <div className="flex flex-col my-2">
-               <h2>Subtotal</h2>
                <hr></hr>
                <div className="flex flex-col items-center gap-y-3">
                   <Link href={"/patchi-cart"}>

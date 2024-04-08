@@ -26,6 +26,12 @@
    background-color: rgba(188, 108, 37, 0.23);
 }
 
+hr {
+   color: #bc6c25;
+   background-color: #bc6c25;
+   border-color: #bc6c25;
+}
+
 .yeseva-one-regular {
    font-family: "Yeseva One", serif;
    font-weight: 700;

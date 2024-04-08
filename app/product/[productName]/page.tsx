@@ -18,6 +18,7 @@ import FetchShippingRate from "./FetchShippingRate";
 import { ShippingRateType } from "@/types/ShippingRateType";
 import DetailedDescription from "./components/DetailedDescription";
 import ImageDescription from "./ImageDescription";
+import Categories from "@/app/Categories";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -102,7 +103,8 @@ export default function ProductName({ params }: any) {
             globalStore.setCart({
                name: product.title,
                description: product.description,
-               price: basePrice,
+               base_price: basePrice,
+               price: basePrice * quantity,
                price_id: priceId,
                image: product?.images[0].src,
                quantity: quantity,
@@ -144,6 +146,9 @@ export default function ProductName({ params }: any) {
             <div className="lg:m-12 p-2 gap-6 flex lg:flex-row flex-col">
                <DetailedDescription product={product} />
                <ImageDescription product={product}></ImageDescription>
+            </div>
+            <div>
+               <Categories></Categories>
             </div>
          </div>
       </div>

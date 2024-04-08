@@ -12,5 +12,5 @@ export type GlobalStateManagement = {
    setUserEmail: (response: any) => void;
    setUserGeo: (response: any) => void;
    setCart: (response: CartType) => void;
-   removeFromCart: (productId: number) => void;
+   removeFromCart: (productIndex: number) => void;
 };

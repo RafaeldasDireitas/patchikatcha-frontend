@@ -7,12 +7,18 @@ import { persist } from "zustand/middleware";
 export const useGlobalStore = create<GlobalStateManagement>()(
    persist(
       (set) => ({
+         userId: "" as string,
          jwtToken: "" as string,
          isAuthenticated: false as boolean,
          userEmail: "" as string,
          cart: [] as CartType[],
          userGeo: {} as UserDataType,
 
+         setUserId(response: string) {
+            return set({
+               userId: response
+            });
+         },
          setJwtToken(response: string) {
             return set({
                jwtToken: response

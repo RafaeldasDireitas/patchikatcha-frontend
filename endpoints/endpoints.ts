@@ -1,3 +1,5 @@
+import { CartType } from "@/types/CartType";
+
 export const endpoints = {
    url: "https://localhost:7065",
    newProducts: "/api/Product/new-products",
@@ -16,5 +18,6 @@ export const endpoints = {
    grabShippingRate: (blueprintId: any, printProviderId: any) => `/api/Blueprint/get-blueprint/${blueprintId}/${printProviderId}`,
    grabAllProducts: (limit: any, pageNumber: any) => `/api/Product/grab-all-products?limit=${limit}&pageNumber=${pageNumber}`,
    grabCategoryProducts: (limit: any, pageNumber: any, productTag: any) =>
-      `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`
+      `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`,
+   createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`
 };

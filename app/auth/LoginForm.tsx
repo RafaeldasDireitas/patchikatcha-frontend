@@ -14,6 +14,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
+   const setUserId = globalStore.setUserId;
    const setJwtToken = globalStore.setJwtToken;
    const setIsAuthenticated = globalStore.setIsAuthenticated;
    const isAuthenticated = globalStore.isAuthenticated;
@@ -68,7 +69,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                <div className="flex flex-col items-end">
                   <button
                      className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans"
-                     onClick={() => FetchLogin({ userData, setJwtToken, setIsAuthenticated, setUserEmail })}
+                     onClick={() => FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail })}
                   >
                      Log in
                   </button>

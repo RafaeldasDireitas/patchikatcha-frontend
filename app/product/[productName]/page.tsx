@@ -19,6 +19,8 @@ import { ShippingRateType } from "@/types/ShippingRateType";
 import DetailedDescription from "./components/DetailedDescription";
 import ImageDescription from "./ImageDescription";
 import Categories from "@/app/Categories";
+import { CartType } from "@/types/CartType";
+import FetchCreateCart from "./FetchCreateCart";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -105,8 +107,8 @@ export default function ProductName({ params }: any) {
             globalStore.setCart({
                name: product.title,
                description: product.description,
-               base_price: basePrice,
-               price: basePrice * quantity,
+               base_price: Math.trunc(basePrice),
+               price: Math.trunc(basePrice * quantity),
                price_id: priceId,
                image: product?.images[0].src,
                quantity: quantity,
@@ -117,6 +119,27 @@ export default function ProductName({ params }: any) {
                first_item: findCountryShippingRate.first_item.cost,
                additional_items: findCountryShippingRate.additional_items.cost
             });
+
+            const userId = globalStore.userId;
+
+            const cart = {
+               userId: userId,
+               name: product.title,
+               description: product.description,
+               basePrice: Math.trunc(basePrice),
+               price: Math.trunc(basePrice * quantity),
+               priceId: priceId,
+               image: product?.images[0].src,
+               quantity: quantity,
+               size: sizeId,
+               color: colorId,
+               productId: productId,
+               variantId: variantId ?? 0,
+               firstItem: findCountryShippingRate.first_item.cost,
+               additionalItems: findCountryShippingRate.additional_items.cost
+            };
+
+            FetchCreateCart({ userId, cart });
 
             toast.success("Added to cart!");
          }

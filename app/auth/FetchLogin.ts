@@ -2,7 +2,7 @@ import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
 
-export default async function FetchLogin({ userData, setJwtToken, setIsAuthenticated, setUserEmail }: any) {
+export default async function FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail }: any) {
    const createUser = await fetch(endpoints.url + endpoints.login, {
       method: "POST",
       headers: {
@@ -19,6 +19,7 @@ export default async function FetchLogin({ userData, setJwtToken, setIsAuthentic
       const responseData = await createUser.json();
       toast.success("You successfuly logged in!");
       setJwtToken(responseData.jwtToken);
+      setUserId(responseData.userId);
       setIsAuthenticated(true);
       setUserEmail(userData.email);
    }

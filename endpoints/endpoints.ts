@@ -19,5 +19,7 @@ export const endpoints = {
    grabAllProducts: (limit: any, pageNumber: any) => `/api/Product/grab-all-products?limit=${limit}&pageNumber=${pageNumber}`,
    grabCategoryProducts: (limit: any, pageNumber: any, productTag: any) =>
       `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`,
-   createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`
+   createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`,
+   updateCart: (userId: any) => `/api/Cart/update-cart?userId=${userId}`,
+   removeCart: (userId: any) => `/api/Cart/remove-cart?userId=${userId}`
 };

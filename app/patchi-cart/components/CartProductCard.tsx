@@ -6,9 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import FetchUpdateCartDatabase from "../FetchUpdateCartDatabase";
 
-export default function CartProductCard({ productId, image, name, basePrice, price, size, color, quantity, index, children }: any) {
+export default function CartProductCard({ productId, image, name, description, basePrice, price, priceId, size, color, quantity, index, additionalItems, firstItem, variantId, children }: any) {
    const globalStore = useGlobalStore();
+   const cart = globalStore.cart;
+   const userId = globalStore.userId;
+   const jwtToken = globalStore.jwtToken;
    const translateSize = Object.keys(ProductsData).find((product: any) => ProductsData[product] === size);
    const translateColor = Object.keys(ProductsData).find((product: any) => ProductsData[product] === color);
    const [formattedPrice, setFormattedPrice] = useState<string>("");
@@ -17,31 +21,49 @@ export default function CartProductCard({ productId, image, name, basePrice, pri
    const [isIncrementButtonDisabled, setIsIncrementButtonDisabled] = useState<boolean>(false);
 
    useEffect(() => {
-      if (index !== undefined && globalStore.cart[index]) {
-         const priceInEuro = (globalStore.cart[index].price / 100).toFixed(2);
+      if (index !== undefined && cart[index]) {
+         const priceInEuro = (cart[index].price / 100).toFixed(2);
          setFormattedPrice(priceInEuro + " €");
       }
 
-      if (globalStore.cart[index].quantity === 1) {
-         const formattedShippingPrice = (globalStore.cart[index].first_item / 100).toFixed(2);
+      if (cart[index].quantity === 1) {
+         const formattedShippingPrice = (cart[index].first_item / 100).toFixed(2);
          setShippingCost(formattedShippingPrice);
       }
 
-      if (globalStore.cart[index].quantity > 1) {
-         const formattedShippingPrice = (
-            (globalStore.cart[index].first_item + globalStore.cart[index].additional_items * (quantity - 1)) /
-            100
-         ).toFixed(2);
+      if (cart[index].quantity > 1) {
+         const formattedShippingPrice = ((cart[index].first_item + cart[index].additional_items * (quantity - 1)) / 100).toFixed(2);
          setShippingCost(formattedShippingPrice);
       }
-   }, [index, globalStore.cart]);
+   }, [index, cart]);
+
+   console.log(cart[index]);
 
    const incrementQuantity = async () => {
       if (quantity > 9) {
          toast.error("You cannot add more than 10 products!");
       } else {
+         const updatedQuantity = quantity + 1;
          setIsIncrementButtonDisabled(true);
-         globalStore.setCart({ ...globalStore.cart[index], quantity: +1, price: basePrice * (globalStore.cart[index].quantity + 1) }); // quantity + 1 because it grabs the previous quantity from globalStore
+         FetchUpdateCartDatabase({
+            userId,
+            cart: {
+               name,
+               description,
+               basePrice,
+               price,
+               priceId,
+               image,
+               quantity: updatedQuantity,
+               size,
+               color,
+               productId,
+               variantId,
+               firstItem,
+               additionalItems
+            }
+         });
+         globalStore.setCart({ ...cart[index], quantity: +1, price: basePrice * (cart[index].quantity + 1) }); // quantity + 1 because it grabs the previous quantity from globalStore
          setTimeout(() => {
             setIsIncrementButtonDisabled(false);
          }, 500);
@@ -52,8 +74,31 @@ export default function CartProductCard({ productId, image, name, basePrice, pri
       if (quantity <= 1) {
          return;
       } else {
+         const updatedQuantity = quantity - 1;
          setIsDecrementButtonDisabled(true);
-         globalStore.setCart({ ...globalStore.cart[index], quantity: -1, price: basePrice * (globalStore.cart[index].quantity - 1) }); // quantity - 1 because it grabs the previous quantity from globalStore
+
+         if (userId && jwtToken) {
+            FetchUpdateCartDatabase({
+               userId,
+               cart: {
+                  name,
+                  description,
+                  basePrice,
+                  price,
+                  priceId,
+                  image,
+                  quantity: updatedQuantity,
+                  size,
+                  color,
+                  productId,
+                  variantId,
+                  firstItem,
+                  additionalItems
+               }
+            });
+         }
+
+         globalStore.setCart({ ...cart[index], quantity: -1, price: basePrice * (cart[index].quantity - 1) }); // quantity - 1 because it grabs the previous quantity from globalStore
          setTimeout(() => {
             setIsDecrementButtonDisabled(false);
          }, 500);

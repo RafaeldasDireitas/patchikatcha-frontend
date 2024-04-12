@@ -4,10 +4,13 @@ import CartProductCard from "./components/CartProductCard";
 import CheckoutCard from "./components/CheckoutCard";
 import { useEffect } from "react";
 import Loading from "../components/Loading";
+import FetchRemoveCartDatabase from "./FetchRemoveCartDatabase";
 
 export default function PatchiCart() {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
+   const jwtToken = globalStore.jwtToken;
+   const userId = globalStore.userId;
    let totalPrice = 0;
    let totalShipping = 0;
 
@@ -24,6 +27,16 @@ export default function PatchiCart() {
          totalShipping = totalShipping + product.first_item + product.additional_items * (product.quantity - 1);
       }
    });
+
+   const removeCart = async (index: any, name: any, description: any, image: any, base_price: any, price: any, additional_items: any, first_item: any, variant_id: any, price_id: any, product_id: any, quantity: any, size: any, color: any) => {
+      globalStore.removeFromCart(index);
+      if (userId && jwtToken) {
+         FetchRemoveCartDatabase({
+            userId,
+            cart: { name, description, image, basePrice: base_price, price, additionalItems: additional_items, firstItem: first_item, variantId: variant_id, priceId: price_id, productId: product_id, quantity, size, color }
+         });
+      }
+   };
 
    return (
       <div className="lg:m-20">
@@ -43,8 +56,13 @@ export default function PatchiCart() {
                                  productId={product.product_id}
                                  image={product.image}
                                  name={product.name}
+                                 description={product.description}
                                  basePrice={product.base_price}
+                                 additionalItems={product.additional_items}
+                                 firstItem={product.first_item}
+                                 variantId={product.variant_id}
                                  price={totalPrice}
+                                 priceId={product.price_id}
                                  size={product.size}
                                  color={product.color}
                                  quantity={product.quantity}
@@ -52,7 +70,24 @@ export default function PatchiCart() {
                               >
                                  <button
                                     className="btn rounded-xl w-40 border-none bg-button-background hover:bg-red-800 text-white josefin-sans mt-2 items-center"
-                                    onClick={() => product.index !== undefined && globalStore.removeFromCart(product.index)}
+                                    onClick={() =>
+                                       removeCart(
+                                          product.index,
+                                          product.name,
+                                          product.description,
+                                          product.image,
+                                          product.base_price,
+                                          product.price,
+                                          product.additional_items,
+                                          product.first_item,
+                                          product.variant_id,
+                                          product.price_id,
+                                          product.product_id,
+                                          product.quantity,
+                                          product.size,
+                                          product.color
+                                       )
+                                    }
                                  >
                                     Remove
                                  </button>

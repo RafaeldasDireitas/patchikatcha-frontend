@@ -13,6 +13,8 @@ export default function CartProductCard({ productId, image, name, basePrice, pri
    const translateColor = Object.keys(ProductsData).find((product: any) => ProductsData[product] === color);
    const [formattedPrice, setFormattedPrice] = useState<string>("");
    const [shippingCost, setShippingCost] = useState<string>("");
+   const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] = useState<boolean>(false);
+   const [isIncrementButtonDisabled, setIsIncrementButtonDisabled] = useState<boolean>(false);
 
    useEffect(() => {
       if (index !== undefined && globalStore.cart[index]) {
@@ -34,19 +36,27 @@ export default function CartProductCard({ productId, image, name, basePrice, pri
       }
    }, [index, globalStore.cart]);
 
-   const incrementQuantity = () => {
-      if (quantity >= 10) {
+   const incrementQuantity = async () => {
+      if (quantity > 9) {
          toast.error("You cannot add more than 10 products!");
       } else {
+         setIsIncrementButtonDisabled(true);
          globalStore.setCart({ ...globalStore.cart[index], quantity: +1, price: basePrice * (globalStore.cart[index].quantity + 1) }); // quantity + 1 because it grabs the previous quantity from globalStore
+         setTimeout(() => {
+            setIsIncrementButtonDisabled(false);
+         }, 500);
       }
    };
 
-   const decrementQuantity = () => {
+   const decrementQuantity = async () => {
       if (quantity <= 1) {
          return;
       } else {
+         setIsDecrementButtonDisabled(true);
          globalStore.setCart({ ...globalStore.cart[index], quantity: -1, price: basePrice * (globalStore.cart[index].quantity - 1) }); // quantity - 1 because it grabs the previous quantity from globalStore
+         setTimeout(() => {
+            setIsDecrementButtonDisabled(false);
+         }, 500);
       }
    };
 
@@ -58,7 +68,14 @@ export default function CartProductCard({ productId, image, name, basePrice, pri
                   <Link href={`/product/${name}?productId=${productId}`}>
                      <Image src={image} width={120} height={120} className="hover:scale-110 duration-200" alt="No image found"></Image>
                   </Link>
-                  <Quantity width="w-28" quantity={quantity} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}></Quantity>
+                  <Quantity
+                     width="w-28"
+                     quantity={quantity}
+                     incrementQuantity={incrementQuantity}
+                     isDecrementButtonDisabled={isDecrementButtonDisabled}
+                     isIncrementButtonDisabled={isIncrementButtonDisabled}
+                     decrementQuantity={decrementQuantity}
+                  ></Quantity>
                </div>
                <div className="flex flex-col">
                   <h1 className="text-2xl text-light text-center lg:text-start font-bold">{name}</h1>

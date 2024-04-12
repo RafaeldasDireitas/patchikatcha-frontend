@@ -1,10 +1,18 @@
-export default function Quantity({ quantity, width, decrementQuantity, incrementQuantity }: any) {
+export default function Quantity({
+   quantity,
+   width,
+   decrementQuantity,
+   incrementQuantity,
+   isDecrementButtonDisabled,
+   isIncrementButtonDisabled
+}: any) {
    return (
       <div className="flex justify-center lg:justify-end m-2">
          <div className={`${width} rounded-xl flex items-center bg-button-background`}>
             <button
                className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-l-xl"
                onClick={decrementQuantity}
+               disabled={isDecrementButtonDisabled}
             >
                <svg
                   className="w-5 h-5 text-white"
@@ -27,6 +35,7 @@ export default function Quantity({ quantity, width, decrementQuantity, increment
             <button
                className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-r-xl"
                onClick={incrementQuantity}
+               disabled={isIncrementButtonDisabled}
             >
                <svg
                   className="w-5 h-5 text-white"

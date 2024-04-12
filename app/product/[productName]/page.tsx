@@ -24,6 +24,7 @@ import FetchCreateCart from "./FetchCreateCart";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
+   const [addedToCart, setAddedToCart] = useState<boolean>(false);
    const [quantity, setQuantity] = useState<number>(1);
    const [sizeId, setSizeId] = useState<number>(0);
    const [colorId, setColorId] = useState<number>(0);
@@ -56,22 +57,6 @@ export default function ProductName({ params }: any) {
       return <Loading />;
    }
 
-   const incrementQuantity = () => {
-      if (quantity >= 10) {
-         toast.error("You cannot add more than 10 products!");
-      } else {
-         setQuantity(quantity + 1);
-      }
-   };
-
-   const decrementQuantity = () => {
-      if (quantity <= 1) {
-         return;
-      } else {
-         setQuantity(quantity - 1);
-      }
-   };
-
    const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
 
    shippingRate?.profiles.map((profile) => shippingCosts.push(profile.first_item.cost)); //grab shipping prices
@@ -98,12 +83,14 @@ export default function ProductName({ params }: any) {
 
    const addToCart = async () => {
       if (!findCountryShippingRate) {
-         toast.error("There was an error, try again");
+         toast.error("You clicked too fast, try again!");
       } else {
+         setAddedToCart(true);
          const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
          const priceId = await grabPriceId.text();
+         const findCart = globalStore.cart.find((cart) => cart.name === product.title && cart.size === sizeId && cart.color === colorId);
 
-         if (basePrice) {
+         if (basePrice && !findCart) {
             globalStore.setCart({
                name: product.title,
                description: product.description,
@@ -120,28 +107,32 @@ export default function ProductName({ params }: any) {
                additional_items: findCountryShippingRate.additional_items.cost
             });
 
-            const userId = globalStore.userId;
+            if (globalStore.userId && globalStore.jwtToken) {
+               const userId = globalStore.userId;
 
-            const cart = {
-               userId: userId,
-               name: product.title,
-               description: product.description,
-               basePrice: Math.trunc(basePrice),
-               price: Math.trunc(basePrice * quantity),
-               priceId: priceId,
-               image: product?.images[0].src,
-               quantity: quantity,
-               size: sizeId,
-               color: colorId,
-               productId: productId,
-               variantId: variantId ?? 0,
-               firstItem: findCountryShippingRate.first_item.cost,
-               additionalItems: findCountryShippingRate.additional_items.cost
-            };
+               const cart = {
+                  userId: userId,
+                  name: product.title,
+                  description: product.description,
+                  basePrice: Math.trunc(basePrice),
+                  price: Math.trunc(basePrice * quantity),
+                  priceId: priceId,
+                  image: product?.images[0].src,
+                  quantity: quantity,
+                  size: sizeId,
+                  color: colorId,
+                  productId: productId,
+                  variantId: variantId ?? 0,
+                  firstItem: findCountryShippingRate.first_item.cost,
+                  additionalItems: findCountryShippingRate.additional_items.cost
+               };
 
-            FetchCreateCart({ userId, cart });
+               FetchCreateCart({ userId, cart });
+            }
 
             toast.success("Added to cart!");
+         } else {
+            toast.error("Item already added to cart");
          }
       }
    };
@@ -161,9 +152,8 @@ export default function ProductName({ params }: any) {
 
                   <Colors setColorId={setColorId} productVariants={productVariants} />
 
-                  <Quantity quantity={quantity} decrementQuantity={decrementQuantity} incrementQuantity={incrementQuantity} width="w-36" />
+                  <AddToCart addToCart={addToCart} addedToCart={addedToCart} />
 
-                  <AddToCart addToCart={addToCart} />
                   {formattedPrice}
                </div>
             </div>

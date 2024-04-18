@@ -13,6 +13,19 @@ import FetchOrders from "./FetchOrders";
 import Loading from "../components/Loading";
 
 export default function Profile() {
+   const test = [
+      {
+         userCountry: "PT",
+         countryName: "Portugal",
+         currency: "EUR"
+      },
+      {
+         userCountry: "DE",
+         countryName: "Germany",
+         currency: "EUR"
+      }
+   ];
+
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
    const [idsGrabbed, setIdsGrabbed] = useState(false);
    const [orders, setOrders] = useState<OrderType[]>([]);
@@ -21,6 +34,7 @@ export default function Profile() {
    const setIsAuthenticated = globalStore.setIsAuthenticated;
    const setJwtToken = globalStore.setJwtToken;
    const setUserEmail = globalStore.setUserEmail;
+   const setUserGeo = globalStore.setUserGeo;
    const isAuthenticated = globalStore.isAuthenticated;
    const jwtToken = globalStore.jwtToken;
    const userEmail = globalStore.userEmail;
@@ -32,6 +46,14 @@ export default function Profile() {
 
       toast.success("You successfuly logged out.");
       redirect((window.location.href = "/auth"));
+   };
+
+   const changeCountry = (country: any) => {
+      setUserGeo({
+         userCountry: country.userCountry,
+         countryName: country.countryName,
+         currency: country.currency
+      });
    };
 
    if (!isAuthenticated) {
@@ -83,6 +105,14 @@ export default function Profile() {
                      <Order orderId={order.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
                   </div>
                </>
+            );
+         })}
+
+         {test.map((country, key) => {
+            return (
+               <button onClick={() => changeCountry(country)} key={key} className="btn">
+                  {country.countryName}
+               </button>
             );
          })}
       </div>

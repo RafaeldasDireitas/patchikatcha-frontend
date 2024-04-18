@@ -11,5 +11,6 @@ export default async function FetchShippingRate(blueprintId: any, printProviderI
    if (shippingRate.ok) {
       const shippingRateData = await shippingRate.json();
       setShippingRate(shippingRateData);
+      return true;
    }
 }

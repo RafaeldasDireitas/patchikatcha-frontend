@@ -104,7 +104,9 @@ export default function ProductName({ params }: any) {
                product_id: productId,
                variant_id: variantId ?? 0,
                first_item: findCountryShippingRate.first_item.cost,
-               additional_items: findCountryShippingRate.additional_items.cost
+               additional_items: findCountryShippingRate.additional_items.cost,
+               blueprint_id: product.blueprint_id,
+               print_provider_id: product.print_provider_id
             });
 
             if (globalStore.userId && globalStore.jwtToken) {

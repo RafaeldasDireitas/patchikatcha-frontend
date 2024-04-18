@@ -13,4 +13,6 @@ export type CartType = {
    variant_id: number;
    first_item: number;
    additional_items: number;
+   blueprint_id: number;
+   print_provider_id: number;
 };

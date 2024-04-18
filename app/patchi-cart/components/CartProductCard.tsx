@@ -37,8 +37,6 @@ export default function CartProductCard({ productId, image, name, description, b
       }
    }, [index, cart]);
 
-   console.log(cart[index]);
-
    const incrementQuantity = async () => {
       if (quantity > 9) {
          toast.error("You cannot add more than 10 products!");

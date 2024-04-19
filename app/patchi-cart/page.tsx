@@ -2,50 +2,15 @@
 import { useGlobalStore } from "@/zustand/globalstore";
 import CartProductCard from "./components/CartProductCard";
 import CheckoutCard from "./components/CheckoutCard";
-import { useEffect, useState } from "react";
-import Loading from "../components/Loading";
 import FetchRemoveCartDatabase from "./FetchRemoveCartDatabase";
-import FetchShippingRate from "../product/[productName]/FetchShippingRate";
-import { ShippingRateType } from "@/types/ShippingRateType";
 
 export default function PatchiCart() {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
    const jwtToken = globalStore.jwtToken;
    const userId = globalStore.userId;
-   const userCountry = globalStore.userGeo.userCountry;
-   const [shippingRate, setShippingRate] = useState<ShippingRateType>();
-   const [isShippingRateFetched, setIsShippingRateFetched] = useState<boolean>(false);
    let totalPrice = 0;
    let totalShipping = 0;
-
-   useEffect(() => {
-      cart.map(async (product) => {
-         const isFetched = await FetchShippingRate(product.blueprint_id, product.print_provider_id, setShippingRate);
-
-         if (isFetched) {
-            setIsShippingRateFetched(true);
-         }
-      });
-   }, []);
-
-   useEffect(() => {
-      if (isShippingRateFetched) {
-         cart.forEach((product) => {
-            console.log("appi triggered");
-
-            const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile: any) => profile.countries.includes(userCountry));
-
-            console.log("product arrived: ", findCountryShippingRate);
-
-            console.log("found shipping");
-            if (findCountryShippingRate) {
-               globalStore.setCart({ ...product, first_item: findCountryShippingRate.first_item.cost, additional_items: findCountryShippingRate.additional_items.cost });
-               console.log("done");
-            }
-         });
-      }
-   }, [isShippingRateFetched]);
 
    cart.forEach((product) => {
       totalPrice = totalPrice + product.price;

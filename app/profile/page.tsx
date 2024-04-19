@@ -11,6 +11,7 @@ import FetchOrdersId from "./FetchOrdersId";
 import { OrderIdType } from "@/types/OrderIdType";
 import FetchOrders from "./FetchOrders";
 import Loading from "../components/Loading";
+import FetchUpdateCartDatabase from "../patchi-cart/FetchUpdateCartDatabase";
 
 export default function Profile() {
    const test = [
@@ -36,6 +37,7 @@ export default function Profile() {
    const setUserEmail = globalStore.setUserEmail;
    const setUserGeo = globalStore.setUserGeo;
    const isAuthenticated = globalStore.isAuthenticated;
+   const userId = globalStore.userId;
    const jwtToken = globalStore.jwtToken;
    const userEmail = globalStore.userEmail;
 
@@ -48,7 +50,7 @@ export default function Profile() {
       redirect((window.location.href = "/auth"));
    };
 
-   const changeCountry = (country: any) => {
+   const changeCountry = async (country: any) => {
       setUserGeo({
          userCountry: country.userCountry,
          countryName: country.countryName,

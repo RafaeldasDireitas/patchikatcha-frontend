@@ -21,6 +21,7 @@ import ImageDescription from "./ImageDescription";
 import Categories from "@/app/Categories";
 import { CartType } from "@/types/CartType";
 import FetchCreateCart from "./FetchCreateCart";
+import ProductPrice from "./components/ProductPrice";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -147,6 +148,7 @@ export default function ProductName({ params }: any) {
 
                <div className="flex flex-col">
                   <Title product={product} />
+                  <ProductPrice formattedPrice={formattedPrice} />
 
                   <Description product={product} />
 
@@ -155,8 +157,6 @@ export default function ProductName({ params }: any) {
                   <Colors setColorId={setColorId} productVariants={productVariants} />
 
                   <AddToCart addToCart={addToCart} addedToCart={addedToCart} />
-
-                  {formattedPrice}
                </div>
             </div>
 

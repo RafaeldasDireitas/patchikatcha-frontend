@@ -127,7 +127,9 @@ export default function ProductName({ params }: any) {
                   productId: productId,
                   variantId: variantId ?? 0,
                   firstItem: findCountryShippingRate.first_item.cost,
-                  additionalItems: findCountryShippingRate.additional_items.cost
+                  additionalItems: findCountryShippingRate.additional_items.cost,
+                  blueprintId: product.blueprint_id,
+                  printProviderId: product.print_provider_id
                };
 
                FetchCreateCart({ userId, cart });
@@ -150,7 +152,7 @@ export default function ProductName({ params }: any) {
                   <Title product={product} />
                   <ProductPrice formattedPrice={formattedPrice} />
 
-                  <Description product={product} />
+                  {/* <Description product={product} /> */}
 
                   <Sizes productVariants={productVariants} setSizeId={setSizeId} />
 

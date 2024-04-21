@@ -17,9 +17,9 @@ export const endpoints = {
    grabPasswordToken: (userEmail: any) => `/api/Auth/grab-password-token?userEmail=${userEmail}`,
    grabShippingRate: (blueprintId: any, printProviderId: any) => `/api/Blueprint/get-blueprint/${blueprintId}/${printProviderId}`,
    grabAllProducts: (limit: any, pageNumber: any) => `/api/Product/grab-all-products?limit=${limit}&pageNumber=${pageNumber}`,
-   grabCategoryProducts: (limit: any, pageNumber: any, productTag: any) =>
-      `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`,
+   grabCategoryProducts: (limit: any, pageNumber: any, productTag: any) => `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`,
    createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`,
    updateCart: (userId: any) => `/api/Cart/update-cart?userId=${userId}`,
+   updateCartShipping: (userId: any) => `/api/Cart/update-cart-shipping?userId=${userId}`,
    removeCart: (userId: any) => `/api/Cart/remove-cart?userId=${userId}`
 };

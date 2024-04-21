@@ -17,7 +17,7 @@ export default function CartProduct({ name, description, price, price_id, quanti
             </Link>
          </div>
          <div className="flex flex-col px-2">
-            <h1 className="text-lg">{name}</h1>
+            <h1 className="text-lg text-light josefin-sans">{name}</h1>
             <p>Price: {formattedPrice}</p>
             <p>Quantity: {quantity}</p>
             <p>Size: {sizeName}</p>

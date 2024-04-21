@@ -48,9 +48,7 @@ export const useGlobalStore = create<GlobalStateManagement>()(
 
          setCart(response: CartType) {
             set((state) => {
-               const existingIndex = state.cart.findIndex(
-                  (product) => product.name === response.name && product.size === response.size && product.color == response.color
-               );
+               const existingIndex = state.cart.findIndex((product) => product.name === response.name && product.size === response.size && product.color == response.color);
 
                if (existingIndex !== -1) {
                   const updatedCart = [...state.cart];
@@ -58,7 +56,9 @@ export const useGlobalStore = create<GlobalStateManagement>()(
                   updatedCart[existingIndex] = {
                      ...updatedCart[existingIndex],
                      quantity: updatedCart[existingIndex].quantity + response.quantity,
-                     price: response.price
+                     price: response.price,
+                     first_item: response.first_item,
+                     additional_items: response.additional_items
                   };
 
                   return { cart: updatedCart };

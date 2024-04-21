@@ -121,7 +121,7 @@ export default function CartProductCard({ productId, image, name, description, b
                   ></Quantity>
                </div>
                <div className="flex flex-col">
-                  <h1 className="text-2xl text-light text-center lg:text-start font-bold">{name}</h1>
+                  <h1 className="text-2xl text-light text-center lg:text-start josefin-sans">{name}</h1>
                   <h2 className="text-center text-lg lg:text-start">
                      {formattedPrice} + {shippingCost} € (Shipping)
                   </h2>

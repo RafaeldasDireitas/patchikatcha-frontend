@@ -11,7 +11,9 @@ import FetchOrdersId from "./FetchOrdersId";
 import { OrderIdType } from "@/types/OrderIdType";
 import FetchOrders from "./FetchOrders";
 import Loading from "../components/Loading";
-import FetchUpdateCartDatabase from "../patchi-cart/FetchUpdateCartDatabase";
+import FetchUpdateCartShippingDatabase from "./FetchUpdateCartShippingDatabase";
+import { BlueprintType } from "@/types/BlueprintType";
+import { ProfilesType } from "@/types/ProfilesType";
 
 export default function Profile() {
    const test = [
@@ -28,7 +30,7 @@ export default function Profile() {
    ];
 
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
-   const [idsGrabbed, setIdsGrabbed] = useState(false);
+   const [idsGrabbed, setIdsGrabbed] = useState<boolean>(false);
    const [orders, setOrders] = useState<OrderType[]>([]);
 
    const globalStore = useGlobalStore();
@@ -37,6 +39,7 @@ export default function Profile() {
    const setUserEmail = globalStore.setUserEmail;
    const setUserGeo = globalStore.setUserGeo;
    const isAuthenticated = globalStore.isAuthenticated;
+   const cart = globalStore.cart;
    const userId = globalStore.userId;
    const jwtToken = globalStore.jwtToken;
    const userEmail = globalStore.userEmail;
@@ -55,6 +58,22 @@ export default function Profile() {
          userCountry: country.userCountry,
          countryName: country.countryName,
          currency: country.currency
+      });
+
+      let cartBlueprint: BlueprintType[] = [];
+
+      cart.forEach((product) => {
+         cartBlueprint = [...cartBlueprint, { blueprintId: product.blueprint_id, printProviderId: product.print_provider_id, userCountryCode: country.userCountry }];
+      });
+
+      const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, cartBlueprint });
+
+      cart.forEach((product) => {
+         const findMatch = profileList.find((profile) => profile.first_item.cost !== product.first_item);
+
+         if (findMatch) {
+            globalStore.setCart({ ...product, first_item: findMatch.first_item.cost, additional_items: findMatch.additional_items.cost });
+         }
       });
    };
 

@@ -2,12 +2,11 @@
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import skirt from "@/public/skirt.png";
-import pullover from "@/public/pullover- (6).png";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import { useGlobalStore } from "@/zustand/globalstore";
 import cartImage from "@/public/Bag_alt_light.png";
 import user from "@/public/User_cicrle_light.png";
+import favorite from "@/public/Favorite_light.png";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "../cartdrawer/Cart";
@@ -57,11 +56,7 @@ export default function Navbar() {
                </a>
             </div>
             <div className="flex lg:hidden">
-               <button
-                  type="button"
-                  className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                  onClick={() => setMobileMenuOpen(true)}
-               >
+               <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(true)}>
                   <span className="sr-only">Open main menu</span>
                   <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                </button>
@@ -85,10 +80,7 @@ export default function Navbar() {
                      <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                         <div className="p-4">
                            {products.map((item) => (
-                              <div
-                                 key={item.name}
-                                 className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                              >
+                              <div key={item.name} className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
                                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                     <Image src={item.icon} width={25} height={25} alt="No icon found"></Image>
                                  </div>
@@ -117,21 +109,18 @@ export default function Navbar() {
                </a>
             </Popover.Group>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+               <Link href={"/wishlist"}>
+                  <div>
+                     <Image src={favorite} width={24} height={24} alt="No favorite found" className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                  </div>
+               </Link>
                <div className="drawer-end">
                   <input id="my-drawer-4" type="checkbox" className="drawer-toggle absolute" />
                   {/* Page content here */}
                   <label htmlFor="my-drawer-4">
                      <div className="relative">
-                        <Image
-                           src={cartImage}
-                           width={24}
-                           height={24}
-                           alt="No cart found"
-                           className="mx-2 hover:cursor-pointer hover:scale-110 duration-200"
-                        />
-                        <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
-                           {cartQuantity}
-                        </h1>
+                        <Image src={cartImage} width={24} height={24} alt="No cart found" className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                        <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">{cartQuantity}</h1>
                      </div>
                   </label>
                   <Cart htmlFor="my-drawer-4"></Cart>
@@ -179,12 +168,7 @@ export default function Navbar() {
                                  </Disclosure.Button>
                                  <Disclosure.Panel className="mt-2 space-y-2">
                                     {products.map((item) => (
-                                       <Disclosure.Button
-                                          key={item.name}
-                                          as="a"
-                                          href={item.href}
-                                          className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                       >
+                                       <Disclosure.Button key={item.name} as="a" href={item.href} className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                           {item.name}
                                        </Disclosure.Button>
                                     ))}
@@ -220,16 +204,8 @@ export default function Navbar() {
                                  {/* Page content here */}
                                  <label htmlFor="my-drawer-4-mobile">
                                     <div className="relative">
-                                       <Image
-                                          src={cartImage}
-                                          width={24}
-                                          height={24}
-                                          alt="No cart found"
-                                          className="mx-2 hover:cursor-pointer hover:scale-110 duration-200"
-                                       />
-                                       <h1 className="absolute left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
-                                          0
-                                       </h1>
+                                       <Image src={cartImage} width={24} height={24} alt="No cart found" className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                                       <h1 className="absolute left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">0</h1>
                                     </div>
                                  </label>
                                  <Cart htmlFor="my-drawer-4-mobile"></Cart>

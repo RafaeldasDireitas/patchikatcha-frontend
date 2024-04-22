@@ -9,6 +9,8 @@ export default function PatchiCart() {
    const cart = globalStore.cart;
    const jwtToken = globalStore.jwtToken;
    const userId = globalStore.userId;
+   const userCountry = globalStore.userGeo.userCountry;
+   const currency = globalStore.userGeo.currency;
    let totalPrice = 0;
    let totalShipping = 0;
 
@@ -31,7 +33,7 @@ export default function PatchiCart() {
       if (userId && jwtToken) {
          FetchRemoveCartDatabase({
             userId,
-            cart: { name, description, image, basePrice: base_price, price, additionalItems: additional_items, firstItem: first_item, variantId: variant_id, priceId: price_id, productId: product_id, quantity, size, color }
+            cart: { name, description, image, basePrice: base_price, price, additionalItems: additional_items, firstItem: first_item, variantId: variant_id, priceId: price_id, productId: product_id, quantity, size, color, userCountry, currency }
          });
       }
    };

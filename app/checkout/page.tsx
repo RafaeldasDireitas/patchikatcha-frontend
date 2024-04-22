@@ -15,6 +15,7 @@ export default function Checkout() {
    const [clientId, setClientId] = useState("");
    const globalStore = useGlobalStore();
    const userEmail = globalStore.userEmail;
+   const userId = globalStore.userId;
    const userGeo: UserDataType = globalStore.userGeo;
    const cart: CartType[] = globalStore.cart;
 
@@ -47,7 +48,7 @@ export default function Checkout() {
    }
 
    useEffect(() => {
-      FetchCreateCheckoutSession({ userEmail, checkoutObject, setClientSecret, setClientId });
+      FetchCreateCheckoutSession({ userEmail, userId, setClientSecret, setClientId });
    }, []);
 
    if (!userEmail) {

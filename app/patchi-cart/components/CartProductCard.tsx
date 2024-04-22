@@ -12,6 +12,8 @@ export default function CartProductCard({ productId, image, name, description, b
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
    const userId = globalStore.userId;
+   const userCountry = globalStore.userGeo.userCountry;
+   const currency = globalStore.userGeo.currency;
    const jwtToken = globalStore.jwtToken;
    const translateSize = Object.keys(ProductsData).find((product: any) => ProductsData[product] === size);
    const translateColor = Object.keys(ProductsData).find((product: any) => ProductsData[product] === color);
@@ -58,7 +60,9 @@ export default function CartProductCard({ productId, image, name, description, b
                productId,
                variantId,
                firstItem,
-               additionalItems
+               additionalItems,
+               userCountry,
+               currency
             }
          });
          globalStore.setCart({ ...cart[index], quantity: +1, price: basePrice * (cart[index].quantity + 1) }); // quantity + 1 because it grabs the previous quantity from globalStore
@@ -91,7 +95,9 @@ export default function CartProductCard({ productId, image, name, description, b
                   productId,
                   variantId,
                   firstItem,
-                  additionalItems
+                  additionalItems,
+                  userCountry,
+                  currency
                }
             });
          }

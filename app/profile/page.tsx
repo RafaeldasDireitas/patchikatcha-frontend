@@ -68,9 +68,8 @@ export default function Profile() {
 
       const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, cartBlueprint });
 
-      cart.forEach((product, index) => {
+      cart.forEach((product) => {
          const findMatch = profileList.find((profile) => profile.variant_ids.includes(product.variant_id));
-         console.log(findMatch);
 
          if (findMatch) {
             globalStore.setCart({ ...product, first_item: findMatch.first_item.cost, additional_items: findMatch.additional_items.cost, quantity: 0 });

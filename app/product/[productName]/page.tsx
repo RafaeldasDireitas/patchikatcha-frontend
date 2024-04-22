@@ -112,6 +112,8 @@ export default function ProductName({ params }: any) {
 
             if (globalStore.userId && globalStore.jwtToken) {
                const userId = globalStore.userId;
+               const userCountry = globalStore.userGeo.userCountry;
+               const currency = globalStore.userGeo.currency;
 
                const cart = {
                   userId: userId,
@@ -129,7 +131,9 @@ export default function ProductName({ params }: any) {
                   firstItem: findCountryShippingRate.first_item.cost,
                   additionalItems: findCountryShippingRate.additional_items.cost,
                   blueprintId: product.blueprint_id,
-                  printProviderId: product.print_provider_id
+                  printProviderId: product.print_provider_id,
+                  userCountry: userCountry,
+                  currency: currency
                };
 
                FetchCreateCart({ userId, cart });

@@ -68,11 +68,12 @@ export default function Profile() {
 
       const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, cartBlueprint });
 
-      cart.forEach((product) => {
-         const findMatch = profileList.find((profile) => profile.first_item.cost !== product.first_item);
+      cart.forEach((product, index) => {
+         const findMatch = profileList.find((profile) => profile.variant_ids.includes(product.variant_id));
+         console.log(findMatch);
 
          if (findMatch) {
-            globalStore.setCart({ ...product, first_item: findMatch.first_item.cost, additional_items: findMatch.additional_items.cost });
+            globalStore.setCart({ ...product, first_item: findMatch.first_item.cost, additional_items: findMatch.additional_items.cost, quantity: 0 });
          }
       });
    };

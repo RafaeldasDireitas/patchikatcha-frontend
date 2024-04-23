@@ -8,9 +8,15 @@ import { toast } from "sonner";
 export default function RegisterForm({ setIsLoginForm }: any) {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+   const [username, setUsername] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
    const [redirectToVerifyEmail, setRedirectToVerifyEmail] = useState(false);
    const [emailToken, setEmailToken] = useState("");
+
+   const usernameHandler = (e: any) => {
+      const username = e.target.value;
+      setUsername(username);
+   };
 
    const emailHandler = (e: any) => {
       const email = e.target.value;
@@ -28,6 +34,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    };
 
    const userData = {
+      username: username,
       email: email,
       password: password
    };
@@ -77,6 +84,15 @@ export default function RegisterForm({ setIsLoginForm }: any) {
             <div className="w-[500px] flex flex-col justify-center">
                <h1 className="text-light text-3xl text-start yeseva-one-regular">Sign up</h1>
                <p className="text-start my-2 josefin-sans">Create an account to keep track of your orders.</p>
+               <input
+                  type="text"
+                  placeholder="Username"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  id="username"
+                  onChange={usernameHandler}
+                  value={username}
+                  required
+               />
                <input
                   type="text"
                   placeholder="example@email.com"

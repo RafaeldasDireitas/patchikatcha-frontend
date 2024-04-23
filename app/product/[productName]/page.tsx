@@ -17,7 +17,7 @@ import { endpoints } from "@/endpoints/endpoints";
 import FetchShippingRate from "./FetchShippingRate";
 import { ShippingRateType } from "@/types/ShippingRateType";
 import DetailedDescription from "./components/DetailedDescription";
-import ImageDescription from "./ImageDescription";
+import ImageDescription from "./components/ImageDescription";
 import Categories from "@/app/Categories";
 import { CartType } from "@/types/CartType";
 import FetchCreateCart from "./FetchCreateCart";

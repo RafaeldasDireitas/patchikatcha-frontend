@@ -1,7 +1,7 @@
 "use client";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { toast } from "sonner";
-import IsNotAuthenticated from "./IsNotAuthenticated";
+import IsNotAuthenticated from "../components/IsNotAuthenticated";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import { OrderType } from "@/types/OrderType";

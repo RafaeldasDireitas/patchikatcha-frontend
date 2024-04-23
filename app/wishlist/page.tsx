@@ -4,8 +4,8 @@ import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import FetchWishlist from "./FetchWishlist";
 import { WishlistType } from "@/types/WishlistType";
-import Loading from "../components/Loading";
-import Image from "next/image";
+import Link from "next/link";
+import IsNotAuthenticated from "../components/IsNotAuthenticated";
 
 export default function Wishlist() {
    const [wishlist, setWishlist] = useState<WishlistType[]>();
@@ -15,7 +15,7 @@ export default function Wishlist() {
    const jwtToken = globalStore.jwtToken;
 
    if (!userId && !jwtToken) {
-      return <Loading />;
+      return <IsNotAuthenticated />;
    }
 
    useEffect(() => {
@@ -25,8 +25,20 @@ export default function Wishlist() {
    }, [userId, jwtToken]);
 
    return (
-      <div className="p-12">
-         <ProductCard title={"epic"}></ProductCard>
+      <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
+         {wishlist &&
+            wishlist.map((product, key) => {
+               const formattedPrice = (product.price / 100).toFixed(2) + " €";
+               const formattedTitle = decodeURIComponent(product.title);
+
+               return (
+                  <div>
+                     <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+                        <ProductCard title={formattedTitle} price={formattedPrice} image={product.image}></ProductCard>
+                     </Link>
+                  </div>
+               );
+            })}
       </div>
    );
 }

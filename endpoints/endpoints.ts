@@ -21,5 +21,9 @@ export const endpoints = {
    createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`,
    updateCart: (userId: any) => `/api/Cart/update-cart?userId=${userId}`,
    updateCartShipping: (userId: any) => `/api/Cart/update-cart-shipping?userId=${userId}`,
-   removeCart: (userId: any) => `/api/Cart/remove-cart?userId=${userId}`
+   removeCart: (userId: any) => `/api/Cart/remove-cart?userId=${userId}`,
+   grabWishlist: (userId: any) => `/api/Wishlist/grab-wishlist?userId=${userId}`,
+   createWishlist: (userId: any) => `/api/Wishlist/create-wishlist?userId=${userId}`,
+   removeWishlist: (userId: any, productId: any) => `/api/Wishlist/remove-wishlist?userId=${userId}&productId=${productId}`,
+   isWishlisted: (userId: any, productId: any) => `/api/Wishlist/is-wishlisted?userId=${userId}&productId=${productId}`
 };

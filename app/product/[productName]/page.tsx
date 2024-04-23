@@ -22,6 +22,7 @@ import Categories from "@/app/Categories";
 import { CartType } from "@/types/CartType";
 import FetchCreateCart from "./FetchCreateCart";
 import ProductPrice from "./components/ProductPrice";
+import Wishlist from "./components/Wishlist";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -36,6 +37,7 @@ export default function ProductName({ params }: any) {
    const globalStore = useGlobalStore();
    const userGeo = globalStore.userGeo;
    const userCountry = userGeo.userCountry;
+   const userId = globalStore.userId;
 
    const searchParams = useSearchParams();
    const productName = params.productName;
@@ -153,7 +155,10 @@ export default function ProductName({ params }: any) {
                <Images product={product}></Images>
 
                <div className="flex flex-col">
-                  <Title product={product} />
+                  <div className="flex flex-row gap-4">
+                     <Title product={product} />
+                     <Wishlist userId={userId} title={productName} price={basePrice} image={product.images[0].src} productId={productId} />
+                  </div>
                   <ProductPrice formattedPrice={formattedPrice} />
 
                   {/* <Description product={product} /> */}

@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import Navbar from "@/app/components/navbar/Navbar";
 import { useGlobalStore } from "@/zustand/globalstore";
 import CountryModal from "./components/CountryModal/CountryModal";
+import Script from "next/script";
 
 export default function Hydrate({ children }: { children: ReactNode }) {
    const [isHydrated, setIsHydrated] = useState(false);
@@ -27,6 +28,15 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                <Navbar />
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
                <main className="flex-grow">
+                  <div className="gtranslate_wrapper"></div>
+                  <Script
+                     dangerouslySetInnerHTML={{
+                        __html: `
+            window.gtranslateSettings = {"default_language": "en", "languages":["en","fr","de","it","es", "pt"]};
+          `
+                     }}
+                  />
+                  <Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer />
                   <div>{children}</div>
                </main>
             </>

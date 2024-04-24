@@ -23,6 +23,7 @@ import { CartType } from "@/types/CartType";
 import FetchCreateCart from "./FetchCreateCart";
 import ProductPrice from "./components/ProductPrice";
 import Wishlist from "./components/Wishlist";
+import Review from "./components/Review";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -155,7 +156,7 @@ export default function ProductName({ params }: any) {
                <Images product={product}></Images>
 
                <div className="flex flex-col">
-                  <div className="flex flex-row gap-4">
+                  <div className="flex flex-row justify-center lg:justify-start gap-4">
                      <Title product={product} />
                      <Wishlist userId={userId} title={productName} price={basePrice} image={product.images[0].src} productId={productId} />
                   </div>
@@ -175,9 +176,11 @@ export default function ProductName({ params }: any) {
                <DetailedDescription product={product} />
                <ImageDescription product={product}></ImageDescription>
             </div>
+            <hr className="my-2" />
             <div>
-               <Categories></Categories>
+               <Review productId={productId} />
             </div>
+            <hr className="my-2" />
          </div>
       </div>
    );

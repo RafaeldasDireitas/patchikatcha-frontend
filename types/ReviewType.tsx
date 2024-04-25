@@ -3,6 +3,6 @@ export type ReviewType = {
    title: string;
    comment: string;
    rating: number;
-   createdAt: string;
+   createdAt: Date;
    username: string;
 };

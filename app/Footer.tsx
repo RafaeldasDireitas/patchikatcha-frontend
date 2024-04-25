@@ -1,38 +1,36 @@
+import Image from "next/image";
+import pacthipng from "@/public/patchi-png.png";
+
 export default function Footer() {
    return (
       <>
-         <footer className="bg-button-background">
-            <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-               <span className="text-sm text-white sm:text-center justify-center flex">
-                  © 2024{" "}
-                  <a href="https://flowbite.com/" className="hover:underline text-white">
-                     PatchiKatcha™
-                  </a>
-                  . All Rights Reserved.
-               </span>
-               <ul className="flex flex-wrap items-center justify-center mt-3 text-sm font-medium text-black sm:mt-0">
-                  <li>
-                     <a href="#" className=" hover:underline me-4 md:me-6 text-white">
-                        About
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" className="hover:underline me-4 md:me-6 text-white">
-                        Privacy Policy
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" className="hover:underline me-4 md:me-6 text-white">
-                        Licensing
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" className="hover:underline text-white">
-                        Contact
-                     </a>
-                  </li>
-               </ul>
-            </div>
+         <footer className="footer p-10 bg-button-background text-white">
+            <aside>
+               <a href="/" className="hover:cursor-pointer hover:scale-110 duration-200">
+                  <Image src={pacthipng} width={50} height={50} alt="No icon found"></Image>
+               </a>
+               <p>Patchi Katcha Ltd.</p>
+            </aside>
+            <nav>
+               <h6 className="footer-title">Services</h6>
+               <a className="link link-hover">Branding</a>
+               <a className="link link-hover">Design</a>
+               <a className="link link-hover">Marketing</a>
+               <a className="link link-hover">Advertisement</a>
+            </nav>
+            <nav>
+               <h6 className="footer-title">Company</h6>
+               <a className="link link-hover">About us</a>
+               <a className="link link-hover">Contact</a>
+               <a className="link link-hover">Jobs</a>
+               <a className="link link-hover">Press kit</a>
+            </nav>
+            <nav>
+               <h6 className="footer-title">Legal</h6>
+               <a className="link link-hover">Terms of use</a>
+               <a className="link link-hover">Privacy policy</a>
+               <a className="link link-hover">Cookie policy</a>
+            </nav>
          </footer>
       </>
    );

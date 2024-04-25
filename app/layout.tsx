@@ -3,10 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
-import CountryModal from "./components/CountryModal/CountryModal";
 import Footer from "./Footer";
-import Script from "next/script";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 

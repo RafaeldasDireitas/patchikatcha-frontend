@@ -9,10 +9,12 @@ import AddATitle from "./components/AddATitle";
 import Comment from "./components/Comment";
 import { useGlobalStore } from "@/zustand/globalstore";
 import FetchCreateReview from "./FetchCreateReview";
+import IsNotAuthenticated from "@/app/components/IsNotAuthenticated";
 
 export default function ReviewProduct({ params }: any) {
    const globalStore = useGlobalStore();
    const userId = globalStore.userId;
+   const jwtToken = globalStore.jwtToken;
 
    const productId = params.productId;
    const [product, setProduct] = useState<ProductType>();
@@ -58,6 +60,10 @@ export default function ReviewProduct({ params }: any) {
 
    if (!product) {
       return <Loading />;
+   }
+
+   if (!jwtToken && !userId) {
+      return <IsNotAuthenticated />;
    }
 
    return (

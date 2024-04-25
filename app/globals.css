@@ -44,3 +44,7 @@ hr {
    font-weight: 300;
    font-style: normal;
 }
+
+.tox .tox-tbtn svg {
+   fill: #bc6c25 !important;
+}

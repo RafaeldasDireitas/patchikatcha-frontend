@@ -6,9 +6,20 @@ import { ProductType } from "@/types/ProductType";
 import Loading from "@/app/components/Loading";
 import star from "@/public//star.png";
 import Rating from "./components/Rating";
+import AddATitle from "./components/AddATitle";
+import Comment from "./components/Comment";
+import { useGlobalStore } from "@/zustand/globalstore";
+import FetchCreateReview from "./FetchCreateReview";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function ReviewProduct({ params }: any) {
+   const globalStore = useGlobalStore();
+   const userId = globalStore.userId;
+
+   const productId = params.productId;
    const [product, setProduct] = useState<ProductType>();
+   const [title, setTitle] = useState("");
+   const [comment, setComment] = useState("");
    const [isChecked, setIsChecked] = useState({
       isChecked1: true,
       isChecked2: false,
@@ -18,7 +29,16 @@ export default function ReviewProduct({ params }: any) {
    });
    const [rating, setRating] = useState(1);
 
-   const productId = params.productId;
+   const review = {
+      title: title,
+      productId: productId,
+      applicationUserId: userId,
+      comment: comment,
+      rating: rating,
+      createdAt: new Date().toISOString()
+   };
+
+   console.log(comment);
 
    const checkRating = (rating: number) => {
       setIsChecked({
@@ -30,6 +50,10 @@ export default function ReviewProduct({ params }: any) {
       });
 
       setRating(rating);
+   };
+
+   const createReview = () => {
+      FetchCreateReview({ review });
    };
 
    useEffect(() => {
@@ -50,6 +74,15 @@ export default function ReviewProduct({ params }: any) {
             </div>
             <hr />
             <Rating checkRating={checkRating} isChecked={isChecked} />
+            <hr />
+            <AddATitle title={title} setTitle={setTitle} />
+            <hr />
+            <Comment comment={comment} setComment={setComment} />
+            <div className="flex justify-end my-2">
+               <button onClick={createReview} className="btn text-white bg-button-background hover:bg-button-focused border-none rounded-3xl my-2 w-40">
+                  Submit review!
+               </button>
+            </div>
          </div>
       </>
    );

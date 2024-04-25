@@ -176,11 +176,12 @@ export default function ProductName({ params }: any) {
                <DetailedDescription product={product} />
                <ImageDescription product={product}></ImageDescription>
             </div>
-            <hr className="my-2" />
+
+            <hr />
+
             <div>
                <Review productId={productId} />
             </div>
-            <hr className="my-2" />
          </div>
       </div>
    );

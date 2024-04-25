@@ -7,6 +7,7 @@ export const endpoints = {
    register: "/api/Auth/register",
    login: "/api/Auth/login",
    changePassword: "/api/Auth/change-password",
+   createReview: "/api/Review/create-review",
    verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`,
    grabEmailToken: (userEmail: any) => `/api/Auth/grab-email-token?email=${userEmail}`,
    confirmEmail: (token: any, userEmail: any) => `/api/Auth/confirm-email?token=${token}&email=${userEmail}`,
@@ -25,5 +26,6 @@ export const endpoints = {
    grabWishlist: (userId: any) => `/api/Wishlist/grab-wishlist?userId=${userId}`,
    createWishlist: (userId: any) => `/api/Wishlist/create-wishlist?userId=${userId}`,
    removeWishlist: (userId: any, productId: any) => `/api/Wishlist/remove-wishlist?userId=${userId}&productId=${productId}`,
-   isWishlisted: (userId: any, productId: any) => `/api/Wishlist/is-wishlisted?userId=${userId}&productId=${productId}`
+   isWishlisted: (userId: any, productId: any) => `/api/Wishlist/is-wishlisted?userId=${userId}&productId=${productId}`,
+   grab3Reviews: (productId: any) => `/api/Review/grab-3-reviews?productId=${productId}`
 };

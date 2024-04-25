@@ -20,7 +20,6 @@ export default function Comment({ comment, setComment }: any) {
                      color_default_foreground: "red",
                      toolbar: "undo redo | blocks fontsize | bold italic underline strikethrough | align lineheight | numlist bullist indent outdent | removeformat"
                   }}
-                  initialValue="Review"
                   onEditorChange={handleComment}
                />
             </div>{" "}

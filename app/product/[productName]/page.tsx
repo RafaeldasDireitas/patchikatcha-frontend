@@ -179,7 +179,7 @@ export default function ProductName({ params }: any) {
 
             <hr />
 
-            <div>
+            <div className="lg:m-12 p-2">
                <Review productId={productId} />
             </div>
          </div>

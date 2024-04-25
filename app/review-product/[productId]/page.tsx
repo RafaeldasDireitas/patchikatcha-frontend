@@ -4,13 +4,11 @@ import { useEffect, useState } from "react";
 import FetchProduct from "./FetchProduct";
 import { ProductType } from "@/types/ProductType";
 import Loading from "@/app/components/Loading";
-import star from "@/public//star.png";
 import Rating from "./components/Rating";
 import AddATitle from "./components/AddATitle";
 import Comment from "./components/Comment";
 import { useGlobalStore } from "@/zustand/globalstore";
 import FetchCreateReview from "./FetchCreateReview";
-import { Editor } from "@tinymce/tinymce-react";
 
 export default function ReviewProduct({ params }: any) {
    const globalStore = useGlobalStore();
@@ -37,8 +35,6 @@ export default function ReviewProduct({ params }: any) {
       rating: rating,
       createdAt: new Date().toISOString()
    };
-
-   console.log(comment);
 
    const checkRating = (rating: number) => {
       setIsChecked({

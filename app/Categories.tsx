@@ -35,43 +35,30 @@ export default function Categories() {
          <div className="flex lg:flex-row flex-col gap-6 justify-center items-center my-8">
             {categories.map((category, key) => {
                return (
-                  <>
+                  <div key={key}>
                      {category.content ? (
-                        <>
-                           <div
-                              key={key}
-                              className="btn flex flex-col m-1 hover:cursor-default w-60 h-56 opacity-100 group bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200"
-                           >
-                              <div className="absolute text-white lg:opacity-0 opacity-100 group-hover:opacity-100 group-hover:z-50">
-                                 <ul>
-                                    {category.content.map((content, key) => {
-                                       return (
-                                          <Link key={key} href={{ pathname: `/categories/${content.toLowerCase()}` }}>
-                                             <li className="py-1 mx-2 hover:underline hover:cursor-pointer hover:scale-105 duration-200">
-                                                {content}
-                                             </li>
-                                          </Link>
-                                       );
-                                    })}
-                                 </ul>
-                              </div>
-                              <Image
-                                 className="w-20 h-20 lg:group-hover:opacity-0 lg:opacity-100 opacity-0"
-                                 src={category.icon}
-                                 width={80}
-                                 height={80}
-                                 alt="No image found"
-                              ></Image>
-                              <h1 className="group-hover:opacity-0 lg:opacity-100 opacity-0">{category.name}</h1>
+                        <div className="btn flex flex-col m-1 hover:cursor-default w-60 h-56 opacity-100 group bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
+                           <div className="absolute text-white lg:opacity-0 opacity-100 group-hover:opacity-100 group-hover:z-50">
+                              <ul>
+                                 {category.content.map((content, key) => {
+                                    return (
+                                       <Link key={key} href={{ pathname: `/categories/${content.toLowerCase()}` }}>
+                                          <li className="py-1 mx-2 hover:underline hover:cursor-pointer hover:scale-105 duration-200">{content}</li>
+                                       </Link>
+                                    );
+                                 })}
+                              </ul>
                            </div>
-                        </>
+                           <Image className="w-20 h-20 lg:group-hover:opacity-0 lg:opacity-100 opacity-0" src={category.icon} width={80} height={80} alt="No image found"></Image>
+                           <h1 className="group-hover:opacity-0 lg:opacity-100 opacity-0">{category.name}</h1>
+                        </div>
                      ) : (
                         <div className="btn flex flex-col m-1 w-60 h-56 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
                            <Image className="w-20 h-20" src={category.icon} width={80} height={80} alt="No image found"></Image>
                            <h1>{category.name}</h1>
                         </div>
                      )}
-                  </>
+                  </div>
                );
             })}
          </div>

@@ -44,7 +44,7 @@ export default function PatchiCart() {
             <div className="flex flex-col lg:w-1/2">
                <h1 className="text-3xl text-dark yeseva-one-regular text-center lg:text-start">Patchi Cart</h1>
                <p className="josefin-sans text-center lg:text-start">Please note that each item will be shipped individually.</p>
-               <div className="lg:m-24 m-6 lg:hidden block">
+               <div className="lg:m-24 lg:hidden block">
                   <CheckoutCard totalPrice={totalPrice} totalShipping={totalShipping}></CheckoutCard>
                </div>
                <div>

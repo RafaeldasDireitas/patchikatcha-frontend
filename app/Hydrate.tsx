@@ -32,10 +32,11 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                   <Script
                      dangerouslySetInnerHTML={{
                         __html: `
-            window.gtranslateSettings = {"default_language": "en", "languages":["en","fr","de","it","es", "pt"]};
-          `
+         window.gtranslateSettings = {"default_language":"en","languages":["en","fr","de","it","es", "pt"],"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right"};
+      `
                      }}
-                  />
+                  ></Script>
+
                   <Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer />
                   <div>{children}</div>
                </main>

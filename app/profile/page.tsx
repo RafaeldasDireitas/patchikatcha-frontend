@@ -14,6 +14,8 @@ import Loading from "../components/Loading";
 import FetchUpdateCartShippingDatabase from "./FetchUpdateCartShippingDatabase";
 import { BlueprintType } from "@/types/BlueprintType";
 import { ProfilesType } from "@/types/ProfilesType";
+import { ReviewType } from "@/types/ReviewType";
+import FetchGrabUserReviews from "./FetchGrabUserReviews";
 
 export default function Profile() {
    const test = [
@@ -32,6 +34,7 @@ export default function Profile() {
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
    const [idsGrabbed, setIdsGrabbed] = useState<boolean>(false);
    const [orders, setOrders] = useState<OrderType[]>([]);
+   const [userReviews, setUserReviews] = useState<ReviewType[]>();
 
    const globalStore = useGlobalStore();
    const setIsAuthenticated = globalStore.setIsAuthenticated;
@@ -88,6 +91,7 @@ export default function Profile() {
    useEffect(() => {
       if (jwtToken && !idsGrabbed) {
          FetchOrdersId({ userEmail, setOrdersId, setIdsGrabbed });
+         FetchGrabUserReviews({ userId, setUserReviews });
       }
 
       if (idsGrabbed) {

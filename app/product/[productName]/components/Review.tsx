@@ -1,18 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
-import FetchGrabReviews from "../FetchGrabReviews";
+import FetchGrabReviews from "../FetchGrabProductReviews";
 import { ReviewType } from "@/types/ReviewType";
 import Link from "next/link";
 import Loading from "@/app/components/Loading";
 import Image from "next/image";
 import star from "@/public/star.png";
 import profile from "@/public/user-icon.svg";
+import FetchGrabProductReviews from "../FetchGrabProductReviews";
 
 export default function Review({ productId }: any) {
    const [reviews, setReviews] = useState<ReviewType[]>();
 
    useEffect(() => {
-      FetchGrabReviews({ productId, setReviews, limit: 3 });
+      FetchGrabProductReviews({ productId, setReviews, limit: 3 });
    }, []);
 
    if (!reviews) {
@@ -20,7 +21,7 @@ export default function Review({ productId }: any) {
    }
 
    const loadAlLReviews = () => {
-      FetchGrabReviews({ productId, setReviews, limit: 50 });
+      FetchGrabProductReviews({ productId, setReviews, limit: 50 });
    };
 
    const averageRating = reviews.reduce((total, review) => total + review.rating, 0) / reviews.length;

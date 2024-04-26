@@ -1,7 +1,7 @@
 import { endpoints } from "@/endpoints/endpoints";
 
-export default async function FetchGrabReviews({ productId, setReviews, limit }: any) {
-   const grabReviews = await fetch(endpoints.url + endpoints.grabReviews(productId, limit), {
+export default async function FetchGrabProductReviews({ productId, setReviews, limit }: any) {
+   const grabReviews = await fetch(endpoints.url + endpoints.grabProductReviews(productId, limit), {
       method: "GET",
       headers: {
          "Content-type": "application/json"

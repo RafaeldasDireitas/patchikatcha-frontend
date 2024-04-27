@@ -13,7 +13,7 @@ const config: Config = {
             "light-button-background": "#F0DDCD",
             "button-focused": "#6A381F",
             "body-background": "#ffedd8",
-            "button-light-focus": "#F0DDCD"
+            "button-light-focus": "#ffedd8"
          },
          textColor: {
             light: "#BC6C25",

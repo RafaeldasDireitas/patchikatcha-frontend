@@ -39,6 +39,7 @@ export default function ProductName({ params }: any) {
    const userGeo = globalStore.userGeo;
    const userCountry = userGeo.userCountry;
    const userId = globalStore.userId;
+   const jwtToken = globalStore.jwtToken;
 
    const searchParams = useSearchParams();
    const productName = params.productName;
@@ -83,9 +84,12 @@ export default function ProductName({ params }: any) {
       variantId = matchingVariant.id;
    }
 
-   console.log(product);
-
    const addToCart = async () => {
+      if (!jwtToken && !userId) {
+         toast.error("You must be logged in to add products!");
+         return;
+      }
+
       if (!findCountryShippingRate) {
          toast.error("You clicked too fast, try again!");
       } else {
@@ -148,6 +152,8 @@ export default function ProductName({ params }: any) {
          }
       }
    };
+
+   console.log(product);
 
    return (
       <div className="bg-white">

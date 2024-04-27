@@ -16,6 +16,7 @@ import { BlueprintType } from "@/types/BlueprintType";
 import { ProfilesType } from "@/types/ProfilesType";
 import { ReviewType } from "@/types/ReviewType";
 import FetchGrabUserReviews from "./FetchGrabUserReviews";
+import { CartType } from "@/types/CartType";
 
 export default function Profile() {
    const test = [
@@ -42,6 +43,7 @@ export default function Profile() {
    const setJwtToken = globalStore.setJwtToken;
    const setUserEmail = globalStore.setUserEmail;
    const setUserGeo = globalStore.setUserGeo;
+   const setCart = globalStore.setCart;
    const isAuthenticated = globalStore.isAuthenticated;
    const cart = globalStore.cart;
    const userId = globalStore.userId;

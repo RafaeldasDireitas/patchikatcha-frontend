@@ -48,7 +48,7 @@ export default function Navbar() {
    }, 0);
 
    return (
-      <header className="bg-white">
+      <header className="bg-button-light-focus">
          <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div className="flex lg:flex-1 ">
                <a href="/" className="hover:cursor-pointer hover:scale-110 duration-200">

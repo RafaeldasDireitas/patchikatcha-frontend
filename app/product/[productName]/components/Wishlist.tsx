@@ -60,7 +60,7 @@ export default function Wishlist({ userId, title, price, image, productId }: any
             {isWishlisted ? (
                <>
                   {/* <Image onClick={removeWishlist} className="hover:scale-110 duration-200 cursor-pointer" src={heart_full} width={40} height={40} alt="heart" /> */}
-                  <button onClick={removeWishlist} className="btn w-96 btn-circle hover:bg-button-focused bg-body-background border-none text-white">
+                  <button onClick={removeWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white bg-transparent border-2 border-border-light text-light">
                      Added to wishlist!
                   </button>
                </>

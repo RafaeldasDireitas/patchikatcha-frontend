@@ -52,7 +52,7 @@ export default function Review({ productId }: any) {
                      <div key={key} className="flex flex-col my-4">
                         <div className="flex flex-row justify-center lg:justify-start my-2">
                            <Image src={profile} width={30} height={30} alt="No bear found"></Image>
-                           <h1 className="text-xl">{review.username}</h1>
+                           <h1 className="text-xl m-plus-rounded-1c-regular">{review.username}</h1>
                         </div>
 
                         <div className="flex justify-center lg:justify-start">
@@ -63,11 +63,11 @@ export default function Review({ productId }: any) {
                            {[...Array(review.rating)].map((review, key) => {
                               return <Image key={key} src={star} width={30} height={30} alt="No star found"></Image>;
                            })}
-                           <h1 className="font-bold text-dark mx-2">{review.title}</h1>
+                           <h1 className="font-bold text-dark mx-2 m-plus-rounded-1c-regular">{review.title}</h1>
                         </div>
 
                         <div className="flex flex-row justify-center lg:justify-start">
-                           <p dangerouslySetInnerHTML={{ __html: review.comment }}></p>
+                           <p className="quicksand" dangerouslySetInnerHTML={{ __html: review.comment }}></p>
                         </div>
                      </div>
                   );

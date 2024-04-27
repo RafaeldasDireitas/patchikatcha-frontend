@@ -30,11 +30,7 @@ export default function Checkout() {
       productId: product.product_id,
       variantId: product.variant_id,
       firstItem: product.first_item,
-      additionalItems: product.additional_items,
-      userGeo: {
-         userCountry: userGeo.userCountry,
-         currency: userGeo.currency
-      }
+      additionalItems: product.additional_items
    }));
 
    if (!cart) {

@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Varela+Round&display=swap");
 
 :root {
    --foreground-rgb: 0, 0, 0;
@@ -42,6 +46,25 @@ hr {
    font-family: "Josefin Sans", sans-serif;
    font-optical-sizing: auto;
    font-weight: 300;
+   font-style: normal;
+}
+
+.quicksand {
+   font-family: "Quicksand", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 100;
+   font-style: normal;
+}
+
+.m-plus-rounded-1c-regular {
+   font-family: "M PLUS Rounded 1c", sans-serif;
+   font-weight: 600;
+   font-style: normal;
+}
+
+.mali-medium {
+   font-family: "Mali", cursive;
+   font-weight: 500;
    font-style: normal;
 }
 

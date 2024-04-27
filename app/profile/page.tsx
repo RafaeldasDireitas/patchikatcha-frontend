@@ -38,6 +38,7 @@ export default function Profile() {
 
    const globalStore = useGlobalStore();
    const setIsAuthenticated = globalStore.setIsAuthenticated;
+   const setUserId = globalStore.setUserId;
    const setJwtToken = globalStore.setJwtToken;
    const setUserEmail = globalStore.setUserEmail;
    const setUserGeo = globalStore.setUserGeo;
@@ -49,6 +50,7 @@ export default function Profile() {
 
    const signOutHandler = () => {
       setIsAuthenticated(false);
+      setUserId("");
       setJwtToken("");
       setUserEmail("");
 

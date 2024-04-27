@@ -12,6 +12,7 @@ export default async function FetchCreateReview({ review }: any) {
 
    if (createReview.ok) {
       toast.success("Review submitted!");
+      window.location.href = "/";
       return;
    }
 

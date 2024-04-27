@@ -1,8 +1,8 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { CartType } from "@/types/CartType";
 
-export default async function FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail }: any) {
+export default async function FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart }: any) {
    const createUser = await fetch(endpoints.url + endpoints.login, {
       method: "POST",
       headers: {
@@ -22,5 +22,17 @@ export default async function FetchLogin({ userData, setUserId, setJwtToken, set
       setUserId(responseData.userId);
       setIsAuthenticated(true);
       setUserEmail(userData.email);
+
+      // const grabUserCart = await fetch(endpoints.url + endpoints.grabUserCart(responseData.userId), {
+      //    method: "GET",
+      //    headers: {
+      //       "Content-type": "application/json"
+      //    }
+      // });
+
+      // const grabUserCartJson: CartType[] = await grabUserCart.json();
+      // console.log(grabUserCartJson);
+      // setCart("");
+      // setCart(grabUserCartJson);
    }
 }

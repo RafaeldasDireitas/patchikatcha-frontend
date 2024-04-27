@@ -158,7 +158,6 @@ export default function ProductName({ params }: any) {
                <div className="flex flex-col">
                   <div className="flex flex-row justify-center lg:justify-start gap-4">
                      <Title product={product} />
-                     <Wishlist userId={userId} title={productName} price={basePrice} image={product.images[0].src} productId={productId} />
                   </div>
                   <ProductPrice formattedPrice={formattedPrice} />
 
@@ -169,6 +168,8 @@ export default function ProductName({ params }: any) {
                   <Colors setColorId={setColorId} productVariants={productVariants} />
 
                   <AddToCart addToCart={addToCart} addedToCart={addedToCart} />
+
+                  <Wishlist userId={userId} title={productName} price={basePrice} image={product.images[0].src} productId={productId} />
                </div>
             </div>
 

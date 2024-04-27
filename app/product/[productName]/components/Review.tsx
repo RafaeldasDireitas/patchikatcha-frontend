@@ -10,30 +10,33 @@ import profile from "@/public/user-icon.svg";
 import FetchGrabProductReviews from "../FetchGrabProductReviews";
 
 export default function Review({ productId }: any) {
+   const [allReviews, setAllReviews] = useState<ReviewType[]>();
    const [reviews, setReviews] = useState<ReviewType[]>();
 
    useEffect(() => {
-      FetchGrabProductReviews({ productId, setReviews, limit: 3 });
+      FetchGrabProductReviews({ productId, setReviews, setAllReviews, limit: 50 });
    }, []);
 
-   if (!reviews) {
+   if (!reviews || !allReviews) {
       return <Loading />;
    }
 
    const loadAlLReviews = () => {
-      FetchGrabProductReviews({ productId, setReviews, limit: 50 });
+      setReviews(allReviews);
    };
 
-   const averageRating = reviews.reduce((total, review) => total + review.rating, 0) / reviews.length;
+   console.log(allReviews);
+   console.log(reviews);
+
+   const averageRating = allReviews.reduce((total, review) => total + review.rating, 0) / allReviews.length;
 
    return (
       <>
-         <h1 className="text-3xl text-dark josefin-sans text-center lg:text-start">Main reviews:</h1>
          <div className="flex lg:flex-row flex-col text-center lg:text-start">
             <div className="lg:w-1/2">
                <div className="flex flex-col my-4">
-                  <h1>{averageRating.toFixed(1)} out of 5</h1>
-                  <h1>{reviews.length} global reviews</h1>
+                  <h1>{averageRating < 5 ? averageRating.toFixed(1) : 5} out of 5</h1>
+                  <h1>{allReviews.length} global reviews</h1>
 
                   <div className="flex my-2 justify-center lg:justify-start">
                      <Link href={`/review-product/${productId}`}>
@@ -60,7 +63,7 @@ export default function Review({ productId }: any) {
                            {[...Array(review.rating)].map((review, key) => {
                               return <Image key={key} src={star} width={30} height={30} alt="No star found"></Image>;
                            })}
-                           <h1 className="font-bold">{review.title}</h1>
+                           <h1 className="font-bold text-dark mx-2">{review.title}</h1>
                         </div>
 
                         <div className="flex flex-row justify-center lg:justify-start">

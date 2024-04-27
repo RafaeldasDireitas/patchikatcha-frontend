@@ -1,6 +1,7 @@
 "use client";
 import message from "@/public/Message_light.svg";
 import send from "@/public/Send_hor_light.svg";
+import placeholder from "@/public/turtle.png";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -31,27 +32,13 @@ export default function Newsletter() {
    };
 
    return (
-      <div className="flex flex-col items-center m-2 gap-y-4">
+      <div className="flex flex-col items-center justify-center gap-y-4 bg-body-background h-60 ">
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold yeseva-one-regular">Sign up for our Newsletter!</h1>
-         <p className="josefin-sans">Stay up to date with new products and announcements!</p>
+         <p className="josefin-sans">Be the first one to know about new designs, special events or promotional code.</p>
          <label className="flex flex-row input rounded-full bg-white gap-2 border-border-light focus-within:border-border-light border-2">
             <Image src={message} width={30} height={30} alt="No icon found"></Image>
-            <input
-               className="bg-white w-56 josefin-sans"
-               onChange={handleEmail}
-               value={email}
-               placeholder="Enter your email"
-               type="email"
-               id="email"
-            ></input>
-            <Image
-               src={send}
-               onClick={sendEmail}
-               className="hover:cursor-pointer hover:scale-110 duration-200"
-               width={30}
-               height={30}
-               alt="No icon found"
-            ></Image>
+            <input className="bg-white w-56 josefin-sans" onChange={handleEmail} value={email} placeholder="Enter your email" type="email" id="email"></input>
+            <Image src={send} onClick={sendEmail} className="hover:cursor-pointer hover:scale-110 duration-200" width={30} height={30} alt="No icon found"></Image>
          </label>
       </div>
    );

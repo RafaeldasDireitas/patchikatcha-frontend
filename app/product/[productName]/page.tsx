@@ -114,8 +114,6 @@ export default function ProductName({ params }: any) {
 
             if (globalStore.userId && globalStore.jwtToken) {
                const userId = globalStore.userId;
-               const userCountry = globalStore.userGeo.userCountry;
-               const currency = globalStore.userGeo.currency;
 
                const cart = {
                   userId: userId,

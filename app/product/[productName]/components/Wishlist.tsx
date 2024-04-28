@@ -60,14 +60,14 @@ export default function Wishlist({ userId, title, price, image, productId }: any
             {isWishlisted ? (
                <>
                   {/* <Image onClick={removeWishlist} className="hover:scale-110 duration-200 cursor-pointer" src={heart_full} width={40} height={40} alt="heart" /> */}
-                  <button onClick={removeWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white bg-transparent border-2 border-border-light text-light">
+                  <button onClick={removeWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white hover:border-none bg-transparent border-2 border-border-light text-light">
                      Added to wishlist!
                   </button>
                </>
             ) : (
                <>
                   {/* <Image onClick={createWishlist} className="hover:scale-110 duration-200 cursor-pointer" src={heart_empty} width={40} height={40} alt="heart" /> */}
-                  <button onClick={createWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white bg-transparent border-2 border-border-light text-light">
+                  <button onClick={createWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white hover:border-none bg-transparent border-2 border-border-light text-light">
                      Add to wishlist
                   </button>
                </>

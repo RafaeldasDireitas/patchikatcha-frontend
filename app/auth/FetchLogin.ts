@@ -41,7 +41,6 @@ export default async function FetchLogin({ userData, setUserId, setJwtToken, set
       });
 
       const responseData = await createUser.json();
-      console.log(cart);
 
       const grabUserCart = await fetch(endpoints.url + endpoints.grabUserCart(responseData.userId, userCountry), {
          method: "PUT",

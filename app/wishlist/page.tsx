@@ -20,7 +20,7 @@ export default function Wishlist() {
 
    useEffect(() => {
       if (userId && jwtToken) {
-         FetchWishlist({ userId, setWishlist });
+         FetchWishlist({ userId, jwtToken, setWishlist });
       }
    }, [userId, jwtToken]);
 

@@ -51,7 +51,7 @@ export default function ReviewProduct({ params }: any) {
    };
 
    const createReview = () => {
-      FetchCreateReview({ review });
+      FetchCreateReview({ review, jwtToken });
    };
 
    useEffect(() => {

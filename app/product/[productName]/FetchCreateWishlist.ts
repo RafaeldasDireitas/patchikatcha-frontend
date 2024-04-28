@@ -1,11 +1,12 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 
-export default async function FetchCreateWishlist({ userId, wishlist, isWishlisted, setIsWishlisted, setIsClickable }: any) {
+export default async function FetchCreateWishlist({ userId, jwtToken, wishlist, isWishlisted, setIsWishlisted, setIsClickable }: any) {
    const createWishlist = await fetch(endpoints.url + endpoints.createWishlist(userId), {
       method: "POST",
       headers: {
-         "Content-type": "application/json"
+         "Content-type": "application/json",
+         Authorization: `Bearer ${jwtToken}`
       },
       body: JSON.stringify(wishlist)
    });

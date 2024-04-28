@@ -74,7 +74,7 @@ export default function Profile() {
          cartBlueprint = [...cartBlueprint, { blueprintId: product.blueprint_id, printProviderId: product.print_provider_id, userCountryCode: country.userCountry }];
       });
 
-      const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, cartBlueprint });
+      const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, jwtToken, cartBlueprint });
 
       cart.forEach((product) => {
          const findMatch = profileList.find((profile) => profile.variant_ids.includes(product.variant_id));
@@ -95,8 +95,8 @@ export default function Profile() {
 
    useEffect(() => {
       if (jwtToken && !idsGrabbed) {
-         FetchOrdersId({ userEmail, setOrdersId, setIdsGrabbed });
-         FetchGrabUserReviews({ userId, setUserReviews });
+         FetchOrdersId({ userEmail, jwtToken, setOrdersId, setIdsGrabbed });
+         FetchGrabUserReviews({ userId, jwtToken, setUserReviews });
       }
 
       if (idsGrabbed) {

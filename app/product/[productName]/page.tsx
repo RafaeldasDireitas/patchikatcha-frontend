@@ -132,7 +132,7 @@ export default function ProductName({ params }: any) {
                   printProviderId: product.print_provider_id
                };
 
-               FetchCreateCart({ userId, cart });
+               FetchCreateCart({ userId, jwtToken, cart });
             }
 
             toast.success("Added to cart!");

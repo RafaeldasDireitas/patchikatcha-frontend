@@ -26,7 +26,7 @@ export default function Wishlist({ userId, title, price, image, productId }: any
 
    useEffect(() => {
       if (userId && jwtToken) {
-         FetchIsWishListed({ userId, productId, jwtToken, setIsWishlisted });
+         FetchIsWishListed({ userId, jwtToken, productId, setIsWishlisted });
       }
    }, [userId, jwtToken]);
 
@@ -39,7 +39,7 @@ export default function Wishlist({ userId, title, price, image, productId }: any
       }
 
       setIsClickable(false);
-      await FetchCreateWishlist({ userId, wishlist, isWishlisted, setIsWishlisted, setIsClickable });
+      await FetchCreateWishlist({ userId, jwtToken, wishlist, isWishlisted, setIsWishlisted, setIsClickable });
    };
 
    const removeWishlist = async () => {
@@ -51,7 +51,7 @@ export default function Wishlist({ userId, title, price, image, productId }: any
       }
 
       setIsClickable(false);
-      await FetchRemoveWishlist({ userId, productId, isWishlisted, setIsWishlisted, setIsClickable });
+      await FetchRemoveWishlist({ userId, jwtToken, productId, isWishlisted, setIsWishlisted, setIsClickable });
    };
 
    return (

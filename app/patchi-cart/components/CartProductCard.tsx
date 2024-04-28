@@ -22,9 +22,6 @@ export default function CartProductCard({ productId, image, name, description, b
    const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] = useState<boolean>(false);
    const [isIncrementButtonDisabled, setIsIncrementButtonDisabled] = useState<boolean>(false);
 
-   console.log("first item" + firstItem);
-   console.log("additional" + additionalItems);
-
    useEffect(() => {
       if (index !== undefined && cart[index]) {
          const priceInEuro = (cart[index].price / 100).toFixed(2);
@@ -50,6 +47,7 @@ export default function CartProductCard({ productId, image, name, description, b
          setIsIncrementButtonDisabled(true);
          FetchUpdateCartDatabase({
             userId,
+            jwtToken,
             cart: {
                name,
                description,
@@ -85,6 +83,7 @@ export default function CartProductCard({ productId, image, name, description, b
          if (userId && jwtToken) {
             FetchUpdateCartDatabase({
                userId,
+               jwtToken,
                cart: {
                   name,
                   description,

@@ -1,13 +1,16 @@
+import { endpoints } from "@/endpoints/endpoints";
+
 type clientData = {
    clientSecret: string;
    clientId: string;
 };
 
-export default async function FetchCreateCheckoutSession({ userEmail, userId, setClientSecret, setClientId }: any) {
-   const dataSession = await fetch(`https://localhost:7065/api/Stripe/create-checkout-session?userEmail=${userEmail}&userId=${userId}`, {
+export default async function FetchCreateCheckoutSession({ userId, jwtToken, setClientSecret, setClientId }: any) {
+   const dataSession = await fetch(endpoints.url + endpoints.createCheckoutSession(userId), {
       method: "POST",
       headers: {
-         "Content-Type": "application/json"
+         "Content-type": "application/json",
+         Authorization: `Bearer ${jwtToken}`
       },
       body: JSON.stringify("")
    });

@@ -7,6 +7,7 @@ import { CartType } from "@/types/CartType";
 import FetchCreateCheckoutSession from "./FetchCreateCheckoutSession";
 import FetchSessionStatus from "./FetchSessionStatus";
 import { UserDataType } from "@/types/UserDataType";
+import IsNotAuthenticated from "../components/IsNotAuthenticated";
 
 const stripePromise = loadStripe("pk_test_51Onkz6Lwv2BbZpNwCznBgyiBZjWKIEQUJZPyyzbaLha0vf4Eu55o9h7fN0O9jMotkYsR6kgZtSYLq4lcbkntkRaD00g5Dird6V");
 
@@ -16,6 +17,7 @@ export default function Checkout() {
    const globalStore = useGlobalStore();
    const userEmail = globalStore.userEmail;
    const userId = globalStore.userId;
+   const jwtToken = globalStore.jwtToken;
    const userGeo: UserDataType = globalStore.userGeo;
    const cart: CartType[] = globalStore.cart;
 
@@ -44,15 +46,11 @@ export default function Checkout() {
    }
 
    useEffect(() => {
-      FetchCreateCheckoutSession({ userEmail, userId, setClientSecret, setClientId });
+      FetchCreateCheckoutSession({ userId, jwtToken, setClientSecret, setClientId });
    }, []);
 
-   if (!userEmail) {
-      return (
-         <div className="flex min-h-screen items-center justify-center">
-            <h1>You must be logged in!</h1>
-         </div>
-      );
+   if (!userEmail || !userId) {
+      return <IsNotAuthenticated />;
    }
 
    return (

@@ -1,11 +1,12 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 
-export default async function FetchCreateReview({ review }: any) {
+export default async function FetchCreateReview({ review, jwtToken }: any) {
    const createReview = await fetch(endpoints.url + endpoints.createReview, {
       method: "POST",
       headers: {
-         "Content-type": "application/json"
+         "Content-type": "application/json",
+         Authorization: `Bearer ${jwtToken}`
       },
       body: JSON.stringify(review)
    });

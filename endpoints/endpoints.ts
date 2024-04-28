@@ -8,6 +8,7 @@ export const endpoints = {
    login: "/api/Auth/login",
    changePassword: "/api/Auth/change-password",
    createReview: "/api/Review/create-review",
+   createCheckoutSession: (userId: any) => `/api/Stripe/create-checkout-session?userId=${userId}`,
    updateUserCountry: (userId: any, newCountry: any) => `/api/Auth/update-user-country?userId=${userId}&newCountry=${newCountry}`,
    verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`,
    grabEmailToken: (userEmail: any) => `/api/Auth/grab-email-token?email=${userEmail}`,

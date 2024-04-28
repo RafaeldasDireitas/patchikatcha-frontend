@@ -33,6 +33,7 @@ export default function PatchiCart() {
       if (userId && jwtToken) {
          FetchRemoveCartDatabase({
             userId,
+            jwtToken,
             cart: { name, description, image, basePrice: base_price, price, additionalItems: additional_items, firstItem: first_item, variantId: variant_id, priceId: price_id, productId: product_id, quantity, size, color, userCountry, currency }
          });
       }
@@ -50,7 +51,6 @@ export default function PatchiCart() {
                <div>
                   {cart.length !== 0 ? (
                      cart.map((product, key: number) => {
-                        console.log(product);
                         return (
                            <div key={key}>
                               <CartProductCard

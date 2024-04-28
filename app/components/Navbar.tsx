@@ -82,7 +82,7 @@ export default function Navbar() {
                   return (
                      <div className="flex flex-row mx-4 my-2 text-white">
                         <h1>{category.title}</h1>
-                        <BiDownArrowAlt size={20} className="mt-1 mx-1" />
+                        <BiDownArrowAlt size={25} className="mx-1" />
                      </div>
                   );
                })}

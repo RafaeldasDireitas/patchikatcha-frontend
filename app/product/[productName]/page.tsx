@@ -20,6 +20,8 @@ import FetchCreateCart from "./FetchCreateCart";
 import ProductPrice from "./components/ProductPrice";
 import Wishlist from "./components/Wishlist";
 import Review from "./components/Review";
+import Skeleton from "@/app/components/Skeleton";
+import ProductLoading from "./components/ProductLoading";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -55,7 +57,7 @@ export default function ProductName({ params }: any) {
    }, [sizeId, colorId]);
 
    if (!product || !productId) {
-      return <Loading />;
+      return <ProductLoading />;
    }
 
    const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
@@ -140,11 +142,9 @@ export default function ProductName({ params }: any) {
       }
    };
 
-   console.log(product);
-
    return (
       <div className="bg-white">
-         <div className="lg:m-12 bg-white rounded-xl max-w-[1920px]">
+         <div className="lg:m-12 bg-white rounded-xl">
             <div className="flex lg:flex-row flex-col gap-6 lg:p-12">
                <Images product={product}></Images>
 

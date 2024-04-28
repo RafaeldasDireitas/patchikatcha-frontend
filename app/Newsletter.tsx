@@ -1,6 +1,7 @@
 "use client";
 import message from "@/public/Message_light.svg";
 import send from "@/public/Send_hor_light.svg";
+import newsletter from "@/public/newsletter_image.png";
 import { newsLetterValidation } from "@/zod/zod";
 import Image from "next/image";
 import { useState } from "react";
@@ -33,9 +34,10 @@ export default function Newsletter() {
    };
 
    return (
-      <div className="flex flex-col items-center justify-center gap-y-4 bg-body-background h-60 ">
+      <div className="flex flex-col items-center justify-center gap-y-4 bg-body-background h-60 relative">
+         <Image className="hidden lg:block absolute left-64" src={newsletter} width={150} height={150} alt="No letter found"></Image>
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold yeseva-one-regular">Sign up for our Newsletter!</h1>
-         <p className="josefin-sans">Be the first one to know about new designs, special events or promotional code.</p>
+         <p className="josefin-sans text-center">Be the first one to know about new designs, special events or promotional code.</p>
          <label className="flex flex-row input rounded-full bg-white gap-2 border-border-light focus-within:border-border-light border-2">
             <Image src={message} width={30} height={30} alt="No icon found"></Image>
             <input className="bg-white w-56 josefin-sans" onChange={handleEmail} value={email} placeholder="Enter your email" type="email" id="email"></input>

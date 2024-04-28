@@ -13,6 +13,6 @@ export type GlobalStateManagement = {
    setIsAuthenticated: (response: any) => void;
    setUserEmail: (response: any) => void;
    setUserGeo: (response: any) => void;
-   setCart: (response: CartType) => void;
+   setCart: (response: CartType | null) => void;
    removeFromCart: (productIndex: number) => void;
 };

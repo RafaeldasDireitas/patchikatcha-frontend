@@ -85,11 +85,6 @@ export default function ProductName({ params }: any) {
    }
 
    const addToCart = async () => {
-      if (!jwtToken && !userId) {
-         toast.error("You must be logged in to add products!");
-         return;
-      }
-
       if (!findCountryShippingRate) {
          toast.error("You clicked too fast, try again!");
       } else {
@@ -138,9 +133,7 @@ export default function ProductName({ params }: any) {
                   firstItem: findCountryShippingRate.first_item.cost,
                   additionalItems: findCountryShippingRate.additional_items.cost,
                   blueprintId: product.blueprint_id,
-                  printProviderId: product.print_provider_id,
-                  userCountry: userCountry,
-                  currency: currency
+                  printProviderId: product.print_provider_id
                };
 
                FetchCreateCart({ userId, cart });

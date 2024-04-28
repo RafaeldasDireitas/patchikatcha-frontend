@@ -22,18 +22,21 @@ export default function CartProductCard({ productId, image, name, description, b
    const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] = useState<boolean>(false);
    const [isIncrementButtonDisabled, setIsIncrementButtonDisabled] = useState<boolean>(false);
 
+   console.log("first item" + firstItem);
+   console.log("additional" + additionalItems);
+
    useEffect(() => {
       if (index !== undefined && cart[index]) {
          const priceInEuro = (cart[index].price / 100).toFixed(2);
          setFormattedPrice(priceInEuro + " €");
       }
 
-      if (cart[index].quantity === 1) {
+      if (index !== undefined && cart[index].quantity === 1) {
          const formattedShippingPrice = (cart[index].first_item / 100).toFixed(2);
          setShippingCost(formattedShippingPrice);
       }
 
-      if (cart[index].quantity > 1) {
+      if (index !== undefined && cart[index].quantity > 1) {
          const formattedShippingPrice = ((cart[index].first_item + cart[index].additional_items * (quantity - 1)) / 100).toFixed(2);
          setShippingCost(formattedShippingPrice);
       }
@@ -128,9 +131,12 @@ export default function CartProductCard({ productId, image, name, description, b
                </div>
                <div className="flex flex-col">
                   <h1 className="text-2xl text-light text-center lg:text-start josefin-sans">{name}</h1>
-                  <h2 className="text-center text-lg lg:text-start">
-                     {formattedPrice} + {shippingCost} € (Shipping)
-                  </h2>
+                  {shippingCost && (
+                     <h2 className="text-center text-lg lg:text-start">
+                        {formattedPrice} + {shippingCost} € (Shipping)
+                     </h2>
+                  )}
+
                   <h2 className="text-center lg:text-start">Size: {translateSize}</h2>
                   <h2 className="text-center lg:text-start">Color: {translateColor}</h2>
                   <div className="flex justify-center lg:justify-start ">{children}</div>

@@ -20,7 +20,7 @@ export const endpoints = {
    grabShippingRate: (blueprintId: any, printProviderId: any) => `/api/Blueprint/get-blueprint/${blueprintId}/${printProviderId}`,
    grabAllProducts: (limit: any, pageNumber: any) => `/api/Product/grab-all-products?limit=${limit}&pageNumber=${pageNumber}`,
    grabCategoryProducts: (limit: any, pageNumber: any, productTag: any) => `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`,
-   grabUserCart: (userId: any) => `/api/Cart/grab-user-cart?userId=${userId}`,
+   grabUserCart: (userId: any, userCountry: any) => `/api/Cart/grab-user-cart?userId=${userId}&userCountry=${userCountry}`,
    createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`,
    updateCart: (userId: any) => `/api/Cart/update-cart?userId=${userId}`,
    updateCartShipping: (userId: any) => `/api/Cart/update-cart-shipping?userId=${userId}`,

@@ -46,8 +46,12 @@ export const useGlobalStore = create<GlobalStateManagement>()(
             });
          },
 
-         setCart(response: CartType) {
+         setCart(response: CartType | null) {
             set((state) => {
+               if (response === null) {
+                  return { ...state, cart: [] }; // Return a new state object with cart set to an empty array
+               }
+
                const existingIndex = state.cart.findIndex((product) => product.name === response.name && product.size === response.size && product.color == response.color);
 
                if (existingIndex !== -1) {

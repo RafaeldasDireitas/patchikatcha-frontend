@@ -50,6 +50,7 @@ export default function PatchiCart() {
                <div>
                   {cart.length !== 0 ? (
                      cart.map((product, key: number) => {
+                        console.log(product);
                         return (
                            <div key={key}>
                               <CartProductCard

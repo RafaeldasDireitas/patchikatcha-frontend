@@ -55,6 +55,7 @@ export default function Profile() {
       setUserId("");
       setJwtToken("");
       setUserEmail("");
+      setCart(null);
 
       toast.success("You successfuly logged out.");
       redirect((window.location.href = "/auth"));

@@ -1,13 +1,13 @@
-import { endpoints } from "@/endpoints/endpoints";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useState } from "react";
-import { toast } from "sonner";
 import FetchLogin from "./FetchLogin";
-import turtle from "@/public/turtle.png";
 import star from "@/public/star.png";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { loginValidation } from "@/zod/zod";
+import { toast } from "sonner";
+import { z } from "zod";
 
 export default function LoginForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -42,6 +42,15 @@ export default function LoginForm({ setIsLoginForm }: any) {
       password: password
    };
 
+   const authenticateUser = () => {
+      try {
+         loginValidation.parse(userData);
+         FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry });
+      } catch (error) {
+         toast.error("Credentials are wrong");
+      }
+   };
+
    return (
       <div className="flex flex-row">
          <div className="w-1/3 bg-body-background min-h-screen items-center flex justify-center">
@@ -70,10 +79,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                   id="password"
                />
                <div className="flex flex-col items-end">
-                  <button
-                     className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans"
-                     onClick={() => FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry })}
-                  >
+                  <button className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans" onClick={authenticateUser}>
                      Log in
                   </button>
                </div>

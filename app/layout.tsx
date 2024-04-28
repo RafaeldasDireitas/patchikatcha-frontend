@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
    return (
       <html lang="en" className="bg-white min-h-screen text-black flex flex-col">
          <body className="min-h-screen flex flex-col justify-between">
-            <Toaster expand visibleToasts={1} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }}></Toaster>
+            <Toaster expand visibleToasts={4} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }}></Toaster>
             <Hydrate>{children}</Hydrate>
             <Footer />
          </body>

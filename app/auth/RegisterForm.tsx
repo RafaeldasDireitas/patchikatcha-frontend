@@ -4,6 +4,8 @@ import FetchEmailToken from "./FetchEmailToken";
 import Image from "next/image";
 import turtle from "@/public/turtle.png";
 import { toast } from "sonner";
+import { registerValidation } from "@/zod/zod";
+import { z } from "zod";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
    const [email, setEmail] = useState("");
@@ -45,11 +47,20 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    };
 
    const createUserAccount = async () => {
-      if (password === confirmPassword) {
-         await FetchRegister({ userData, setRedirectToVerifyEmail });
-         await FetchEmailToken({ email, setEmailToken });
-      } else {
-         toast.error("Passwords don't match.");
+      try {
+         registerValidation.parse(userData);
+         if (password === confirmPassword) {
+            await FetchRegister({ userData, setRedirectToVerifyEmail });
+            await FetchEmailToken({ email, setEmailToken });
+         } else {
+            toast.error("Passwords don't match.");
+         }
+      } catch (error) {
+         if (error instanceof z.ZodError) {
+            error.errors.forEach((errorMessage) => {
+               toast.error(errorMessage.message);
+            });
+         }
       }
 
       //the rest of the code is in the useEffect if you need to debug this

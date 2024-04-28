@@ -1,7 +1,7 @@
 "use client";
 import message from "@/public/Message_light.svg";
 import send from "@/public/Send_hor_light.svg";
-import placeholder from "@/public/turtle.png";
+import { newsLetterValidation } from "@/zod/zod";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -15,20 +15,21 @@ export default function Newsletter() {
    };
 
    const sendEmail = async () => {
-      const send = await fetch("/api/create-contact", {
-         method: "POST",
-         headers: {
-            "Content-type": "application/json"
-         },
-         body: JSON.stringify({ email })
-      });
+      try {
+         newsLetterValidation.parse(email);
 
-      if (!send.ok) {
-         toast.error("There was an error");
-         return;
+         const send = await fetch("/api/create-contact", {
+            method: "POST",
+            headers: {
+               "Content-type": "application/json"
+            },
+            body: JSON.stringify({ email })
+         });
+
+         window.location.href = "/newsletter-confirmed";
+      } catch (error) {
+         toast.error("Email is not valid!");
       }
-
-      window.location.href = "/newsletter-confirmed";
    };
 
    return (

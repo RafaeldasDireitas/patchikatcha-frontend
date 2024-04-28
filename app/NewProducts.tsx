@@ -6,6 +6,7 @@ import Loading from "./components/Loading";
 import Link from "next/link";
 import { ProductType } from "@/types/ProductType";
 import { NewProductsType } from "@/types/NewProductsType";
+import Skeleton from "./components/Skeleton";
 
 export default function NewProducts() {
    const [newProducts, setNewProducts] = useState<NewProductsType>();
@@ -39,6 +40,7 @@ export default function NewProducts() {
                );
             })}
          </div>
+         <Skeleton heightInPx={32} />
       </div>
    );
 }

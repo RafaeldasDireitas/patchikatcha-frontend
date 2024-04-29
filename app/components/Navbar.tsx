@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import logo from "@/public/Patchi.svg";
-import { BiCart, BiDownArrowAlt, BiHeart, BiMenu, BiUser } from "react-icons/bi";
 import Link from "next/link";
 import Cart from "./cartdrawer/Cart";
 import { useGlobalStore } from "@/zustand/globalstore";
 import Categories from "./categoriesdrawer/Categories";
+import { IoCartOutline, IoHeartOutline, IoMenuOutline } from "react-icons/io5";
+import { AiOutlineUser } from "react-icons/ai";
 
 const categories = [
    {
@@ -42,7 +43,7 @@ export default function Navbar() {
                   {/* Page content here */}
                   <label htmlFor="my-drawer-3">
                      <div>
-                        <BiMenu size={30} className="lg:hidden block ml-4" />
+                        <IoMenuOutline color="brown" size={30} className="lg:hidden block ml-4" />
                      </div>
                   </label>
                   <Categories htmlFor="my-drawer-3" categories={categories} />
@@ -55,7 +56,7 @@ export default function Navbar() {
             <div className="lg:mx-10 flex justify-end items-center">
                <Link href={"/wishlist"}>
                   <div>
-                     <BiHeart size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                     <IoHeartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
                   </div>
                </Link>
                <div className="drawer-end">
@@ -63,7 +64,7 @@ export default function Navbar() {
                   {/* Page content here */}
                   <label htmlFor="my-drawer-4">
                      <div className="relative">
-                        <BiCart size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                        <IoCartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
                         <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">{cartQuantity}</h1>
                      </div>
                   </label>
@@ -72,14 +73,14 @@ export default function Navbar() {
                {globalStore.isAuthenticated ? (
                   <Link href={"/profile"}>
                      <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200 relative">
-                        <BiUser size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                        <AiOutlineUser size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
                         <button className="absolute btn btn-circle bg-green-500 hover:bg-green-500 w-3 min-h-0 max-h-3 left-6 -bottom-0.5"></button>
                      </div>
                   </Link>
                ) : (
                   <Link href={"/auth"}>
                      <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200">
-                        <BiUser size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />{" "}
+                        <AiOutlineUser size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />{" "}
                      </div>
                   </Link>
                )}
@@ -91,19 +92,18 @@ export default function Navbar() {
                   return (
                      <>
                         <div key={key} className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white">
-                           <div tabIndex={0} role="button" className="btn min-h-0 max-h-5 bg-button-background hover:bg-button-background border-none text-white">
+                           <div tabIndex={0} role="button" className="btn min-h-0 max-h-7 bg-button-background hover:bg-button-background border-none text-white">
                               {category.title}
                            </div>
-                           <ul className="dropdown-content mt-2 hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
+                           <ul className="dropdown-content hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
                               {category.content.map((content, index) => (
-                                 <li key={index} className="text-black ml-1 mb-1 hover:scale-110 hover:text-light hover:cursor-pointer">
+                                 <li key={index} className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer">
                                     {content}
                                  </li>
                               ))}
                               <li className="bg-button-background h-1"></li>
                            </ul>
                         </div>
-                        <BiDownArrowAlt size={20} color="white" className="mt-2" />
                      </>
                   );
                })}

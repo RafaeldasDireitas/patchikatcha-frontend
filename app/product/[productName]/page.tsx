@@ -20,7 +20,6 @@ import FetchCreateCart from "./FetchCreateCart";
 import ProductPrice from "./components/ProductPrice";
 import Wishlist from "./components/Wishlist";
 import Review from "./components/review/Review";
-import Skeleton from "@/app/components/Skeleton";
 import ProductLoading from "./components/ProductLoading";
 
 export default function ProductName({ params }: any) {

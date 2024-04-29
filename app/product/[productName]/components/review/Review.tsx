@@ -6,6 +6,7 @@ import Image from "next/image";
 import star from "@/public/star.png";
 import FetchGrabProductReviews from "../../FetchGrabProductReviews";
 import ReviewCard from "./ReviewCard";
+import Link from "next/link";
 
 export default function Review({ productId }: any) {
    const [allReviews, setAllReviews] = useState<ReviewType[]>();
@@ -25,16 +26,24 @@ export default function Review({ productId }: any) {
 
    const averageRating = allReviews.reduce((total, review) => total + review.rating, 0) / allReviews.length;
 
+   console.log(averageRating);
+
    return (
       <>
-         <div className="flex flex-row items-center mb-8">
-            <Image src={star} width={45} height={45} alt="No star found"></Image>
-            <Image src={star} width={45} height={45} alt="No star found"></Image>
-            <Image src={star} width={45} height={45} alt="No star found"></Image>
-            <Image src={star} width={45} height={45} alt="No star found"></Image>
-            <Image src={star} width={45} height={45} alt="No star found"></Image>
+         <div className="flex flex-row justify-between mb-8">
+            <div className="flex justify-start items-center">
+               {[...Array(averageRating)].map((_, key) => (
+                  <Image key={key} src={star} width={50} height={50} alt="Star"></Image>
+               ))}
 
-            <h1 className="mx-5">{allReviews.length} Reviews</h1>
+               <h1 className="mx-5">{allReviews.length} Reviews</h1>
+            </div>
+
+            <div className="flex justify-end">
+               <Link href={`/review-product/${productId}`}>
+                  <button className="btn text-white bg-button-background hover:bg-button-focused border-none rounded-3xl my-2 w-40">Write us a review!</button>
+               </Link>
+            </div>
          </div>
 
          <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">

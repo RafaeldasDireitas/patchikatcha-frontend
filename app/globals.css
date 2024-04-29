@@ -56,6 +56,10 @@ hr {
    font-style: normal;
 }
 
+.hide-scroll {
+   scrollbar-width: none;
+}
+
 .m-plus-rounded-1c-regular {
    font-family: "M PLUS Rounded 1c", sans-serif;
    font-weight: 600;

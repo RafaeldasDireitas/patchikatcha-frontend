@@ -35,7 +35,7 @@ export default function Navbar() {
 
    return (
       <>
-         <nav className="flex flex-row justify-between h-20 relative">
+         <nav className="flex flex-row justify-between h-20 max-h-20 relative">
             <div className="lg:mx-10 flex justify-start items-center">
                <div>
                   <input id="my-drawer-3" type="checkbox" className="drawer-toggle absolute" />
@@ -69,21 +69,42 @@ export default function Navbar() {
                   </label>
                   <Cart htmlFor="my-drawer-4"></Cart>
                </div>
-               <Link href={"/auth"}>
-                  <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200">
-                     <BiUser size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />{" "}
-                  </div>
-               </Link>{" "}
+               {globalStore.isAuthenticated ? (
+                  <Link href={"/profile"}>
+                     <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200 relative">
+                        <BiUser size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />
+                        <button className="absolute btn btn-circle bg-green-500 hover:bg-green-500 w-3 min-h-0 max-h-3 left-6 -bottom-0.5"></button>
+                     </div>
+                  </Link>
+               ) : (
+                  <Link href={"/auth"}>
+                     <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200">
+                        <BiUser size={25} className="mx-2 hover:cursor-pointer hover:scale-110 duration-200" />{" "}
+                     </div>
+                  </Link>
+               )}
             </div>
          </nav>
          <nav>
-            <div className="flex flex-row justify-center bg-button-background ">
-               {categories.map((category) => {
+            <div className="lg:flex hidden flex-row justify-center bg-button-background">
+               {categories.map((category, key) => {
                   return (
-                     <div className="flex flex-row mx-4 my-2 text-white">
-                        <h1>{category.title}</h1>
-                        <BiDownArrowAlt size={25} className="mx-1" />
-                     </div>
+                     <>
+                        <div key={key} className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white">
+                           <div tabIndex={0} role="button" className="btn min-h-0 max-h-5 bg-button-background hover:bg-button-background border-none text-white">
+                              {category.title}
+                           </div>
+                           <ul className="dropdown-content mt-2 hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
+                              {category.content.map((content, index) => (
+                                 <li key={index} className="text-black ml-1 mb-1 hover:scale-110 hover:text-light hover:cursor-pointer">
+                                    {content}
+                                 </li>
+                              ))}
+                              <li className="bg-button-background h-1"></li>
+                           </ul>
+                        </div>
+                        <BiDownArrowAlt size={20} color="white" className="mt-2" />
+                     </>
                   );
                })}
             </div>

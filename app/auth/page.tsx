@@ -6,7 +6,5 @@ import RegisterForm from "./RegisterForm";
 export default function Auth() {
    const [isLoginForm, setIsLoginForm] = useState(true);
 
-   return (
-      <>{isLoginForm ? <LoginForm setIsLoginForm={setIsLoginForm}></LoginForm> : <RegisterForm setIsLoginForm={setIsLoginForm}></RegisterForm>}</>
-   );
+   return <>{isLoginForm ? <LoginForm setIsLoginForm={setIsLoginForm}></LoginForm> : <RegisterForm setIsLoginForm={setIsLoginForm}></RegisterForm>}</>;
 }

@@ -11,7 +11,7 @@ export default async function FetchGrabProductReviews({ productId, setReviews, s
 
    if (grabReviews.ok) {
       const grabReviewsJson: ReviewType[] = await grabReviews.json();
-      const grab3Reviews = grabReviewsJson.slice(0, 3);
+      const grab3Reviews = grabReviewsJson.slice(0, 4);
 
       setReviews(grab3Reviews);
       setAllReviews(grabReviewsJson);

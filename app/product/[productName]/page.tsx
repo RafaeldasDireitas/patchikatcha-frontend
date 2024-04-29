@@ -19,7 +19,7 @@ import ImageDescription from "./components/ImageDescription";
 import FetchCreateCart from "./FetchCreateCart";
 import ProductPrice from "./components/ProductPrice";
 import Wishlist from "./components/Wishlist";
-import Review from "./components/Review";
+import Review from "./components/review/Review";
 import Skeleton from "@/app/components/Skeleton";
 import ProductLoading from "./components/ProductLoading";
 

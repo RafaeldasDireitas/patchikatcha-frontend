@@ -1,4 +1,5 @@
 import { CartType } from "@/types/CartType";
+import { AnyCnameRecord } from "dns";
 
 export const endpoints = {
    url: "https://localhost:7065",
@@ -30,6 +31,6 @@ export const endpoints = {
    createWishlist: (userId: any) => `/api/Wishlist/create-wishlist?userId=${userId}`,
    removeWishlist: (userId: any, productId: any) => `/api/Wishlist/remove-wishlist?userId=${userId}&productId=${productId}`,
    isWishlisted: (userId: any, productId: any) => `/api/Wishlist/is-wishlisted?userId=${userId}&productId=${productId}`,
-   grabProductReviews: (productId: any, limit: any) => `/api/Review/grab-product-reviews?productId=${productId}&limit=${limit}`,
+   grabProductReviews: (productId: any, limit: any, page: any) => `/api/Review/grab-product-reviews?productId=${productId}&limit=${limit}&page=${page}`,
    grabUserReviews: (userId: any) => `/api/Review/grab-user-reviews?userId=${userId}`
 };

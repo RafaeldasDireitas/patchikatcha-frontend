@@ -10,6 +10,9 @@ import Comment from "./components/Comment";
 import { useGlobalStore } from "@/zustand/globalstore";
 import FetchCreateReview from "./FetchCreateReview";
 import IsNotAuthenticated from "@/app/components/IsNotAuthenticated";
+import { z } from "zod";
+import { reviewValidation } from "@/zod/zod";
+import { toast } from "sonner";
 
 export default function ReviewProduct({ params }: any) {
    const globalStore = useGlobalStore();
@@ -51,7 +54,17 @@ export default function ReviewProduct({ params }: any) {
    };
 
    const createReview = () => {
-      FetchCreateReview({ review, jwtToken });
+      try {
+         reviewValidation.parse(review);
+
+         FetchCreateReview({ review, jwtToken });
+      } catch (error) {
+         if (error instanceof z.ZodError) {
+            error.errors.forEach((errorMessage) => {
+               toast.error(errorMessage.message);
+            });
+         }
+      }
    };
 
    useEffect(() => {

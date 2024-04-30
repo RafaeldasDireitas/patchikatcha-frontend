@@ -34,20 +34,18 @@ export default function NewProducts() {
             <h1 className="text-3xl lg:text-start text-center text-dark font-bold yeseva-one-regular">New Products</h1>
             <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
 
-            <div className="lg:p-12 grid lg:grid-cols-4 grid-cols-1 gap-8">
-               {[...Array(skeletons)].map((skeleton, key) => (
-                  <Skeleton key={key} widthInPx={350} heightInPx={450} />
-               ))}
+            <div className="lg:p-12">
+               <Skeleton widthInPx={320} heightInPx={322} />
             </div>
          </div>
       );
    }
 
    return (
-      <div className="lg:p-12 my-8 flex flex-col items-center">
+      <div className="lg:p-12 my-8 flex flex-col justify-center items-center relative">
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold yeseva-one-regular">New Products</h1>
          <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
-         <div ref={productListRef} className="flex flex-row overflow-x-auto hide-scroll w-full gap-8 lg:p-12">
+         <div ref={productListRef} className="flex flex-row overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12">
             {newProducts.data.map((product, key) => {
                const productPrice = product.variants.find((variant) => variant.is_enabled === true);
 
@@ -64,11 +62,11 @@ export default function NewProducts() {
                );
             })}
          </div>
-         <button className="btn absolute left-2 -bottom-48 btn-circle bg-button-background hover:bg-button-focused text-white border-none" onClick={scrollLeft}>
+         <button className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none" onClick={scrollLeft}>
             <FaArrowLeft />
          </button>
 
-         <button className="btn absolute right-2 btn-circle -bottom-48 bg-button-background hover:bg-button-focused text-white border-none" onClick={scrollRight}>
+         <button className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none" onClick={scrollRight}>
             <FaArrowRight />
          </button>
       </div>

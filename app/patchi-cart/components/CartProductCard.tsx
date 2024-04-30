@@ -117,7 +117,7 @@ export default function CartProductCard({ productId, image, name, description, b
             <div className="flex lg:flex-row flex-col p-8 gap-8">
                <div className="flex flex-col items-center">
                   <Link href={`/product/${name}?productId=${productId}`}>
-                     <Image src={image} width={120} height={120} className="hover:scale-110 duration-200" alt="No image found"></Image>
+                     <Image src={image} width={120} height={120} className="hover:scale-110 duration-200 rounded-xl" alt="No image found"></Image>
                   </Link>
                   <Quantity
                      width="w-28"

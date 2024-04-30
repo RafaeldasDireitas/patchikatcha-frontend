@@ -9,34 +9,32 @@ import ReviewCard from "./ReviewCard";
 import Link from "next/link";
 
 export default function Review({ productId }: any) {
-   const [allReviews, setAllReviews] = useState<ReviewType[]>();
-   const [reviews, setReviews] = useState<ReviewType[]>();
+   const [reviews, setReviews] = useState<ReviewType[]>([]);
+   const [reviewsCount, setReviewsCount] = useState<number>(0);
+   const [pageNumber, setPageNumber] = useState<number>(0);
 
    useEffect(() => {
-      FetchGrabProductReviews({ productId, setReviews, setAllReviews, limit: 50 });
+      FetchGrabProductReviews({ productId, reviews, setReviews, setReviewsCount, limit: 4, page: pageNumber });
    }, []);
 
-   if (!reviews || !allReviews) {
+   if (!reviews) {
       return <Loading />;
    }
 
    const loadAlLReviews = () => {
-      setReviews(allReviews);
+      setPageNumber(pageNumber + 1);
+      FetchGrabProductReviews({ productId, reviews, setReviews, setReviewsCount, limit: 4, page: pageNumber });
    };
 
-   const averageRating = allReviews.reduce((total, review) => total + review.rating, 0) / allReviews.length;
-
-   console.log(averageRating);
+   const averageRating = (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length).toFixed(1);
 
    return (
       <>
          <div className="flex flex-row justify-between mb-8">
             <div className="flex justify-start items-center">
-               {[...Array(averageRating)].map((_, key) => (
-                  <Image key={key} src={star} width={50} height={50} alt="Star"></Image>
-               ))}
+               {averageRating && [...Array(averageRating)].map((_, key) => <Image key={key} src={star} width={50} height={50} alt="Star"></Image>)}
 
-               <h1 className="mx-5">{allReviews.length} Reviews</h1>
+               <h1 className="mx-5">{reviewsCount} Reviews</h1>
             </div>
 
             <div className="flex justify-end">

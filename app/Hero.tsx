@@ -20,7 +20,7 @@ export default function Hero() {
                   </div>
                </div>
                <div className="hidden lg:flex">
-                  <Image src={bearPyjama} width={500} height={500} alt="Epic turtle" />
+                  <Image src={bearPyjama} width={500} height={500} alt="Epic turtle" priority />
                </div>
             </div>
          </section>

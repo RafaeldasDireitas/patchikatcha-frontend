@@ -1,8 +1,13 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { ReviewType } from "@/types/ReviewType";
 
-export default async function FetchGrabProductReviews({ productId, setReviews, setAllReviews, limit }: any) {
-   const grabReviews = await fetch(endpoints.url + endpoints.grabProductReviews(productId, limit), {
+type Reviews = {
+   reviews: ReviewType[];
+   reviewsCount: number;
+};
+
+export default async function FetchGrabProductReviews({ productId, reviews, setReviews, setReviewsCount, limit, page }: any) {
+   const grabReviews = await fetch(endpoints.url + endpoints.grabProductReviews(productId, limit, page), {
       method: "GET",
       headers: {
          "Content-type": "application/json"
@@ -10,10 +15,14 @@ export default async function FetchGrabProductReviews({ productId, setReviews, s
    });
 
    if (grabReviews.ok) {
-      const grabReviewsJson: ReviewType[] = await grabReviews.json();
-      const grab3Reviews = grabReviewsJson.slice(0, 4);
+      const grabReviewsJson: Reviews = await grabReviews.json();
 
-      setReviews(grab3Reviews);
-      setAllReviews(grabReviewsJson);
+      setReviewsCount(grabReviewsJson.reviewsCount);
+
+      if (reviews.length === 0) {
+         setReviews(grabReviewsJson.reviews);
+      } else {
+         setReviews([...reviews, ...grabReviewsJson.reviews]);
+      }
    }
 }

@@ -15,7 +15,8 @@ export default async function FetchCreateReview({ review, jwtToken }: any) {
       toast.success("Review submitted!");
       window.location.href = "/";
       return;
+   } else {
+      const responseData = await createReview.json();
+      toast.error(responseData.message);
    }
-
-   toast.error("There was an error, try again");
 }

@@ -109,6 +109,8 @@ export default function Profile() {
       }
    }, [idsGrabbed]);
 
+   console.log(orders);
+
    return (
       <div className="p-12">
          <h1>User profile</h1>
@@ -122,9 +124,10 @@ export default function Profile() {
 
          {orders.map((order, key) => {
             const formattedDate = new Date(order.created_at).toLocaleDateString().split(" ")[0];
-            const formattedPrice = (order.total_price / 100).toFixed(2) + " €";
             const status = order.status;
             const address = order.address_to.address1;
+            const totalPrice = order.total_price + order.total_shipping + order.total_tax;
+            const formattedPrice = (totalPrice / 100).toFixed(2) + " €";
 
             return (
                <>

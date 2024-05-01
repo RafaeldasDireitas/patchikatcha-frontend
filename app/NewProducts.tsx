@@ -14,13 +14,13 @@ export default function NewProducts() {
 
    const scrollLeft = () => {
       if (productListRef.current) {
-         productListRef.current.scrollBy({ left: -250, behavior: "smooth" });
+         productListRef.current.scrollBy({ left: -300, behavior: "smooth" });
       }
    };
 
    const scrollRight = () => {
       if (productListRef.current) {
-         productListRef.current.scrollBy({ left: 250, behavior: "smooth" });
+         productListRef.current.scrollBy({ left: 300, behavior: "smooth" });
       }
    };
 

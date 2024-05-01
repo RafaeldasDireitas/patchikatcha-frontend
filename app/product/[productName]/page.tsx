@@ -113,7 +113,6 @@ export default function ProductName({ params }: any) {
                const userId = globalStore.userId;
 
                const cart = {
-                  userId: userId,
                   name: product.title,
                   description: product.description,
                   basePrice: Math.trunc(basePrice),

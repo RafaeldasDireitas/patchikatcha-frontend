@@ -51,10 +51,10 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    };
 
    const createUserAccount = async () => {
-      const isSafeData = await registerValidation.safeParseAsync(userData);
+      const isValid = await registerValidation.safeParseAsync(userData);
 
-      if (!isSafeData.success) {
-         isSafeData.error.errors.forEach((error) => {
+      if (!isValid.success) {
+         isValid.error.errors.forEach((error) => {
             toast.error(error.message);
          });
          return;

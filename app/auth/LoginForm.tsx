@@ -42,13 +42,15 @@ export default function LoginForm({ setIsLoginForm }: any) {
       password: password
    };
 
-   const authenticateUser = () => {
-      try {
-         loginValidation.parse(userData);
-         FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry });
-      } catch (error) {
-         toast.error("Credentials are wrong");
+   const authenticateUser = async () => {
+      const isValid = await loginValidation.safeParseAsync(userData);
+
+      if (!isValid.success) {
+         toast.error("Credentials are wrong, try again");
+         return;
       }
+
+      await FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry });
    };
 
    return (

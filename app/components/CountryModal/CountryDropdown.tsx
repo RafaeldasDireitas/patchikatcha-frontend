@@ -46,12 +46,7 @@ export default function CountryDropDown() {
             {countries.countries.country.map((country, key) => {
                return (
                   <>
-                     <button
-                        className={`btn p-0 bg-white border-none text-black ${
-                           focusButton === country.countryCode ? "focus:bg-button-background" : ""
-                        }`}
-                        onClick={() => handleOnCountryClick(country)}
-                     >
+                     <button className={`btn p-0 bg-white border-none text-black ${focusButton === country.countryCode ? "focus:bg-button-background" : ""}`} onClick={() => handleOnCountryClick(country)}>
                         <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found"></Image>
                         {country.countryName}
                      </button>

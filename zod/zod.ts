@@ -9,7 +9,7 @@ export const loginValidation = z.object({
 
 export const registerValidation = z
    .object({
-      username: z.string().min(8, "Username must have at least 8 characters").max(20),
+      username: z.string().min(4, "Username must have at least 8 characters").max(20),
       email: z.string().email(),
       password: z.string().min(8, "Password must have at least 8 characters").max(20),
       confirmPassword: z.string().min(8).max(20)

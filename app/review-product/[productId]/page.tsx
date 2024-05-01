@@ -53,18 +53,17 @@ export default function ReviewProduct({ params }: any) {
       setRating(rating);
    };
 
-   const createReview = () => {
-      try {
-         reviewValidation.parse(review);
+   const createReview = async () => {
+      const isValid = await reviewValidation.safeParseAsync(review);
 
-         FetchCreateReview({ review, jwtToken });
-      } catch (error) {
-         if (error instanceof z.ZodError) {
-            error.errors.forEach((errorMessage) => {
-               toast.error(errorMessage.message);
-            });
-         }
+      if (!isValid.success) {
+         isValid.error.errors.forEach((error) => {
+            toast.error(error.message);
+         });
+         return;
       }
+
+      await FetchCreateReview({ review, jwtToken });
    };
 
    useEffect(() => {

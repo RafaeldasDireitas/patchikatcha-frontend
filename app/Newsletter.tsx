@@ -16,21 +16,22 @@ export default function Newsletter() {
    };
 
    const sendEmail = async () => {
-      try {
-         newsLetterValidation.parse(email);
+      const isValid = await newsLetterValidation.safeParseAsync(email);
 
-         const send = await fetch("/api/create-contact", {
-            method: "POST",
-            headers: {
-               "Content-type": "application/json"
-            },
-            body: JSON.stringify({ email })
-         });
-
-         window.location.href = "/newsletter-confirmed";
-      } catch (error) {
-         toast.error("Email is not valid!");
+      if (!isValid.success) {
+         toast.error("Email is invalid");
+         return;
       }
+
+      const send = await fetch("/api/create-contact", {
+         method: "POST",
+         headers: {
+            "Content-type": "application/json"
+         },
+         body: JSON.stringify({ email })
+      });
+
+      window.location.href = "/newsletter-confirmed";
    };
 
    return (

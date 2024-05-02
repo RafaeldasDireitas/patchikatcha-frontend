@@ -17,6 +17,7 @@ import { ProfilesType } from "@/types/ProfilesType";
 import { ReviewType } from "@/types/ReviewType";
 import FetchGrabUserReviews from "./FetchGrabUserReviews";
 import { CartType } from "@/types/CartType";
+import OrderHistory from "./OrderHistory";
 
 export default function Profile() {
    const test = [
@@ -36,6 +37,7 @@ export default function Profile() {
    const [idsGrabbed, setIdsGrabbed] = useState<boolean>(false);
    const [orders, setOrders] = useState<OrderType[]>([]);
    const [userReviews, setUserReviews] = useState<ReviewType[]>();
+   const [isOrderHistory, setIsOrderHistory] = useState<boolean>(true);
 
    const globalStore = useGlobalStore();
    const setIsAuthenticated = globalStore.setIsAuthenticated;
@@ -61,28 +63,9 @@ export default function Profile() {
       redirect((window.location.href = "/auth"));
    };
 
-   const changeCountry = async (country: any) => {
-      setUserGeo({
-         userCountry: country.userCountry,
-         countryName: country.countryName,
-         currency: country.currency
-      });
-
-      let cartBlueprint: BlueprintType[] = [];
-
-      cart.forEach((product) => {
-         cartBlueprint = [...cartBlueprint, { blueprintId: product.blueprint_id, printProviderId: product.print_provider_id, userCountryCode: country.userCountry }];
-      });
-
-      const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, jwtToken, cartBlueprint });
-
-      cart.forEach((product) => {
-         const findMatch = profileList.find((profile) => profile.variant_ids.includes(product.variant_id));
-
-         if (findMatch) {
-            globalStore.setCart({ ...product, first_item: findMatch.first_item.cost, additional_items: findMatch.additional_items.cost, quantity: 0 });
-         }
-      });
+   const changeCountry = () => {
+      setUserGeo("");
+      window.location.reload();
    };
 
    if (!isAuthenticated) {
@@ -112,42 +95,53 @@ export default function Profile() {
    console.log(orders);
 
    return (
-      <div className="p-12">
-         <h1>User profile</h1>
-         <button className="btn" onClick={signOutHandler}>
-            Sign out
-         </button>
+      <>
+         <div className="flex flex-row">
+            <div className="p-12 my-8 w-1/3">
+               <h1 className="text-2xl text-light quicksand-bold">Your Account</h1>
+               <p className="quicksand-light">Track your orders or change your settings</p>
 
-         <Link href={"/auth/change-password-warning"}>
-            <p>Change password</p>
-         </Link>
-
-         {orders.map((order, key) => {
-            const formattedDate = new Date(order.created_at).toLocaleDateString().split(" ")[0];
-            const status = order.status;
-            const address = order.address_to.address1;
-            const totalPrice = order.total_price + order.total_shipping + order.total_tax;
-            const formattedPrice = (totalPrice / 100).toFixed(2) + " €";
-
-            return (
-               <>
-                  <div key={key}>
-                     <a href={order.printify_connect.url} target="_blank">
-                        Click here for order details
-                     </a>
-                     <Order orderId={order.id} createdAt={formattedDate} totalPrice={formattedPrice} status={status} address={address}></Order>
+               <div className="mt-10">
+                  <h1 className="text-xl text-dark quicksand-bold">My orders</h1>
+                  <div className="p-4 quicksand-medium">
+                     <h2 className="hover:underline hover:text-light hover:cursor-pointer">Order history</h2>
+                     <h2 className="hover:underline hover:text-light hover:cursor-pointer">Help & Support</h2>
                   </div>
-               </>
-            );
-         })}
+               </div>
 
-         {test.map((country, key) => {
-            return (
-               <button onClick={() => changeCountry(country)} key={key} className="btn">
-                  {country.countryName}
-               </button>
-            );
-         })}
-      </div>
+               <div className="mt-4">
+                  <h1 className="text-xl text-dark quicksand-bold">Account settings</h1>
+                  <div className="p-4 quicksand-medium">
+                     <h2 className="hover:underline hover:text-light hover:cursor-pointer">Change personal details</h2>
+                     <h2 className="hover:underline hover:text-light hover:cursor-pointer">Newsletter subscription</h2>
+                     <h2 onClick={changeCountry} className="hover:underline hover:text-light hover:cursor-pointer">
+                        Change country
+                     </h2>
+                  </div>
+               </div>
+
+               <div className="mt-4">
+                  <h1 className="text-xl text-dark quicksand-bold">Additional settings</h1>
+                  <div className="p-4 quicksand-medium">
+                     <h2 className="hover:underline hover:text-light hover:cursor-pointer">View reviews</h2>
+                  </div>
+               </div>
+
+               <div className="flex flex-col">
+                  <button onClick={signOutHandler} className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                     Sign Out
+                  </button>
+
+                  <Link href={"/auth/change-password-warning"}>
+                     <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">Change Password</button>
+                  </Link>
+
+                  <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">Delete Account</button>
+               </div>
+            </div>
+
+            {isOrderHistory && <OrderHistory orders={orders} />}
+         </div>
+      </>
    );
 }

@@ -17,11 +17,11 @@ export default function CartProduct({ name, description, price, price_id, quanti
             </Link>
          </div>
          <div className="flex flex-col px-2">
-            <h1 className="text-lg text-light josefin-sans">{name}</h1>
-            <p>Price: {formattedPrice}</p>
-            <p>Quantity: {quantity}</p>
-            <p>Size: {sizeName}</p>
-            <p>Color: {colorName}</p>
+            <h1 className="text-lg text-light quicksand-semibold">{name}</h1>
+            <p className="quicksand-medium">Price: {formattedPrice}</p>
+            <p className="quicksand-medium">Quantity: {quantity}</p>
+            <p className="quicksand-medium">Size: {sizeName}</p>
+            <p className="quicksand-medium">Color: {colorName}</p>
          </div>
       </div>
    );

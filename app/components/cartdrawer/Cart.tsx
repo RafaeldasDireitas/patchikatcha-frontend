@@ -13,7 +13,7 @@ export default function Cart({ htmlFor }: any) {
 
          <ul className="menu p-4 w-80 min-h-full bg-body-background">
             <div>
-               <h1 className="text-3xl text-left text-dark">Your cart:</h1>
+               <h1 className="text-3xl text-left text-dark quicksand-medium">Your cart:</h1>
             </div>
             {cart &&
                cart.map((product, index) => {
@@ -38,10 +38,10 @@ export default function Cart({ htmlFor }: any) {
                <hr></hr>
                <div className="flex flex-col items-center gap-y-3">
                   <Link href={"/patchi-cart"}>
-                     <button className="btn mt-3 btn-circle bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">View Cart</button>
+                     <button className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">View Cart</button>
                   </Link>
                   <Link href={"/checkout"}>
-                     <button className="btn btn-circle bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">Checkout</button>
+                     <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">Checkout</button>
                   </Link>
                </div>
             </div>

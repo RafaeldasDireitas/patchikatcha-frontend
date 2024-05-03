@@ -90,13 +90,13 @@ export default function Navbar() {
             <div className="lg:flex hidden flex-row justify-center bg-button-background">
                {categories.map((category, key) => {
                   return (
-                     <div key={key} className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white">
+                     <div key={key} className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white quicksand-medium">
                         <div tabIndex={0} role="button" className="btn min-h-0 max-h-7 bg-button-background hover:bg-button-background border-none text-white">
                            {category.title}
                         </div>
                         <ul className="dropdown-content hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
                            {category.content.map((content, index) => (
-                              <li key={index} className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer">
+                              <li key={index} className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer quicksand-medium">
                                  {content}
                               </li>
                            ))}

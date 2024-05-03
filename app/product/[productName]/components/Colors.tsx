@@ -23,17 +23,17 @@ export default function Colors({ setColorId, productVariants }: any) {
       <>
          {productVariants.length > 1 ? (
             <>
-               <h1 className="text-lg text-light josefin-sans text-center lg:text-start">Colors:</h1>
+               <h1 className="text-lg text-light quicksand-light text-center lg:text-start">Colors:</h1>
                <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
                   {colorsName.map((colorName: any, key: number) => {
                      const colorId = uniqueColorsId[key];
 
                      return (
                         <button
-                           className={`btn ml-1 my-1 w-16 josefin-sans ${
+                           className={`btn ml-1 my-1 w-16 quicksand-light ${
                               colorId === isFocused
-                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 josefin-sans border-border-light hover:bg-transparent hover:border-border-light"
-                                 : "bg-transparent hover:bg-transparent hover:border-border-light border-border-light border-1 min-h-10 h-10 josefin-sans text-black"
+                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 quicksand-light border-border-light hover:bg-transparent hover:border-border-light"
+                                 : "bg-transparent hover:bg-transparent hover:border-border-light border-border-light border-1 min-h-10 h-10 quicksand-light text-black"
                            }`}
                            key={colorId}
                            onClick={() => handleColorClick(colorId)}

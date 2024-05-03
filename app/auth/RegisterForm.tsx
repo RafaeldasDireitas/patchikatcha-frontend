@@ -92,8 +92,8 @@ export default function RegisterForm({ setIsLoginForm }: any) {
 
          <div className="lg:w-2/3 w-full mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
             <div className="lg:w-[500px] w-full flex flex-col justify-center">
-               <h1 className="text-light text-3xl text-start yeseva-one-regular">Sign up</h1>
-               <p className="text-start my-2 josefin-sans">Create an account to keep track of your orders.</p>
+               <h1 className="text-light text-3xl text-start quicksand-bold">Sign up</h1>
+               <p className="text-start my-2 quicksand-medium">Create an account to keep track of your orders.</p>
                <input
                   type="text"
                   placeholder="Username"
@@ -106,7 +106,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="text"
                   placeholder="example@email.com"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
                   id="email"
                   onChange={emailHandler}
                   value={email}
@@ -115,7 +115,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
                   onChange={passwordHandler}
                   value={password}
                   id="password"
@@ -123,18 +123,18 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Confirm password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
                   onChange={confirmPasswordHandler}
                   value={confirmPassword}
                   id="confirmPassword"
                />
                <div className="flex flex-col items-end">
-                  <button className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans" onClick={createUserAccount}>
+                  <button className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold" onClick={createUserAccount}>
                      Sign up
                   </button>
                </div>
                <p className="my-1 josefin-sans" onClick={() => setIsLoginForm(true)}>
-                  Already have an account? Log in <span className="underline text-light hover:cursor-pointer josefin-sans">here</span>.
+                  Already have an account? Log in <span className="underline text-light hover:cursor-pointer quicksand-medium">here</span>.
                </p>
             </div>
          </div>

@@ -5,39 +5,23 @@ import IsNotAuthenticated from "../components/IsNotAuthenticated";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import { OrderType } from "@/types/OrderType";
-import Order from "./components/Order";
 import Link from "next/link";
 import FetchOrdersId from "./FetchOrdersId";
 import { OrderIdType } from "@/types/OrderIdType";
 import FetchOrders from "./FetchOrders";
 import Loading from "../components/Loading";
-import FetchUpdateCartShippingDatabase from "./FetchUpdateCartShippingDatabase";
-import { BlueprintType } from "@/types/BlueprintType";
-import { ProfilesType } from "@/types/ProfilesType";
 import { ReviewType } from "@/types/ReviewType";
 import FetchGrabUserReviews from "./FetchGrabUserReviews";
-import { CartType } from "@/types/CartType";
 import OrderHistory from "./OrderHistory";
 
 export default function Profile() {
-   const test = [
-      {
-         userCountry: "PT",
-         countryName: "Portugal",
-         currency: "EUR"
-      },
-      {
-         userCountry: "DE",
-         countryName: "Germany",
-         currency: "EUR"
-      }
-   ];
-
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
    const [idsGrabbed, setIdsGrabbed] = useState<boolean>(false);
    const [orders, setOrders] = useState<OrderType[]>([]);
    const [userReviews, setUserReviews] = useState<ReviewType[]>();
+
    const [isOrderHistory, setIsOrderHistory] = useState<boolean>(true);
+   const [isDeleteAccount, setIsDeleteAccount] = useState<boolean>(false);
 
    const globalStore = useGlobalStore();
    const setIsAuthenticated = globalStore.setIsAuthenticated;
@@ -61,6 +45,16 @@ export default function Profile() {
 
       toast.success("You successfuly logged out.");
       redirect((window.location.href = "/auth"));
+   };
+
+   const handleProfilePages = (page: string) => {
+      if (page === "orderHistory") {
+         setIsOrderHistory(true);
+         setIsDeleteAccount(false);
+      } else if (page === "deleteAccount") {
+         setIsOrderHistory(false);
+         setIsDeleteAccount(true);
+      }
    };
 
    const changeCountry = () => {
@@ -92,8 +86,6 @@ export default function Profile() {
       }
    }, [idsGrabbed]);
 
-   console.log(orders);
-
    return (
       <>
          <div className="flex flex-row">
@@ -104,7 +96,9 @@ export default function Profile() {
                <div className="mt-10">
                   <h1 className="text-xl text-dark quicksand-bold">My orders</h1>
                   <div className="p-4 quicksand-medium">
-                     <h2 className="hover:underline hover:text-light hover:cursor-pointer">Order history</h2>
+                     <h2 onClick={() => handleProfilePages("orderHistory")} className="hover:underline hover:text-light hover:cursor-pointer">
+                        Order history
+                     </h2>
                      <h2 className="hover:underline hover:text-light hover:cursor-pointer">Help & Support</h2>
                   </div>
                </div>
@@ -136,11 +130,18 @@ export default function Profile() {
                      <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">Change Password</button>
                   </Link>
 
-                  <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">Delete Account</button>
+                  <button onClick={() => handleProfilePages("deleteAccount")} className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                     Delete Account
+                  </button>
                </div>
             </div>
 
             {isOrderHistory && <OrderHistory orders={orders} />}
+            {isDeleteAccount && (
+               <div>
+                  <h1>delete account</h1>
+               </div>
+            )}
          </div>
       </>
    );

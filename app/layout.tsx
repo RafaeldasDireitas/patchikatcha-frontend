@@ -4,6 +4,7 @@ import "./globals.css";
 import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
 import Footer from "./components/Footer";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,9 +16,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
    return (
       <html lang="en" className="bg-white text-black">
-         <head>
+         <Head>
             <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
-         </head>
+         </Head>
          <body className="min-h-screen container justify-between flex flex-col">
             <Toaster expand visibleToasts={4} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }}></Toaster>
             <Hydrate>{children}</Hydrate>

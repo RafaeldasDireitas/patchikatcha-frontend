@@ -15,26 +15,26 @@ export default function CheckoutCard({ totalPrice, totalShipping }: any) {
             </div>
 
             <div className="flex flex-col">
-               <h1 className="text-xl font-semibold">Order details:</h1>
-               <div className="flex flex-row justify-between my-2">
+               <h1 className="text-xl quicksand-semibold">Order details:</h1>
+               <div className="flex flex-row justify-between my-2 quicksand-medium">
                   <h1 className="text-start">Subtotal:</h1>
                   <h1 className="text-end">{formattedPrice}</h1>
                </div>
-               <div className="flex flex-row justify-between my-2">
+               <div className="flex flex-row justify-between my-2 quicksand-medium">
                   <h1 className="text-start">Tax:</h1>
                   <h1 className="text-end">Calculated at checkout</h1>
                </div>
-               <div className="flex flex-row justify-between my-2">
+               <div className="flex flex-row justify-between my-2 quicksand-medium">
                   <h1 className="text-start">Shipping:</h1>
                   <h1 className="text-end">{formattedShipping}</h1>
                </div>
-               <div className="flex flex-row justify-between my-2">
+               <div className="flex flex-row justify-between my-2 quicksand-medium">
                   <h1 className="text-start">Total:</h1>
                   <h1 className="text-end">{total}</h1>
                </div>
                <div className="flex justify-center mt-2">
                   <Link href={"/checkout"}>
-                     <button className="btn w-80 bg-button-background hover:bg-button-focused border-none text-white  josefin-sans">Checkout</button>
+                     <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white quicksand-semibold">Checkout</button>
                   </Link>
                </div>
             </div>

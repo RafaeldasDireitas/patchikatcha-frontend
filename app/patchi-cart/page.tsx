@@ -43,8 +43,8 @@ export default function PatchiCart() {
       <div className="lg:m-20">
          <div className="flex flex-col lg:flex-row">
             <div className="flex flex-col lg:w-1/2">
-               <h1 className="text-3xl text-dark yeseva-one-regular text-center lg:text-start">Patchi Cart</h1>
-               <p className="josefin-sans text-center lg:text-start">Please note that each item will be shipped individually.</p>
+               <h1 className="text-3xl text-dark quicksand-bold text-center lg:text-start">Patchi Cart</h1>
+               <p className="quicksand-medium text-center lg:text-start">Please note that each item will be shipped individually.</p>
                <div className="lg:m-24 lg:hidden block">
                   <CheckoutCard totalPrice={totalPrice} totalShipping={totalShipping}></CheckoutCard>
                </div>
@@ -70,7 +70,7 @@ export default function PatchiCart() {
                                  index={product.index}
                               >
                                  <button
-                                    className="btn rounded-xl w-40 border-none bg-button-background hover:bg-red-800 text-white josefin-sans mt-2 items-center"
+                                    className="btn btn-circle rounded-xl w-28 border-none bg-button-background hover:bg-red-800 text-white quicksand-semibold mt-2 items-center"
                                     onClick={() =>
                                        removeCart(
                                           product.index,

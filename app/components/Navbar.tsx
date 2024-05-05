@@ -7,24 +7,7 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import Categories from "./categoriesdrawer/Categories";
 import { IoCartOutline, IoHeartOutline, IoMenuOutline } from "react-icons/io5";
 import { AiOutlineUser } from "react-icons/ai";
-
-const categories = [
-   {
-      title: "New",
-      content: ["New products", "Best sellers"],
-      href: ["/", "/best-sellers"]
-   },
-   {
-      title: "Clothing",
-      content: ["Hoodies", "T-shirts"],
-      href: ["/categories/hoodies", "/categories/t-shirts"]
-   },
-   {
-      title: "Accessories",
-      content: ["Backpacks", "Cups"],
-      href: ["/categories/backpacks", "/categories/cups"]
-   }
-];
+import { categories } from "../../data/CategoriesObject";
 
 export default function Navbar() {
    const globalStore = useGlobalStore();
@@ -96,9 +79,11 @@ export default function Navbar() {
                         </div>
                         <ul className="dropdown-content hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
                            {category.content.map((content, index) => (
-                              <li key={index} className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer quicksand-medium">
-                                 {content}
-                              </li>
+                              <Link href={{ pathname: `/categories/${content}`, query: { title: category.title } }}>
+                                 <li key={index} className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer quicksand-medium">
+                                    {content}
+                                 </li>
+                              </Link>
                            ))}
                            <li className="bg-button-background h-1"></li>
                         </ul>

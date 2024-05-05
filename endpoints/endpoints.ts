@@ -1,10 +1,7 @@
-import { CartType } from "@/types/CartType";
-import { AnyCnameRecord } from "dns";
-
 export const endpoints = {
    url: "https://localhost:7065",
    newProducts: "/api/Product/new-products",
-   publishProduct: "/api/Product/publish-product",
+   publishProduct: "/api/Admin/publish-product",
    register: "/api/Auth/register",
    login: "/api/Auth/login",
    changePassword: "/api/Auth/change-password",
@@ -21,7 +18,7 @@ export const endpoints = {
    grabPasswordToken: (userEmail: any) => `/api/Auth/grab-password-token?userEmail=${userEmail}`,
    grabShippingRate: (blueprintId: any, printProviderId: any) => `/api/Blueprint/get-blueprint/${blueprintId}/${printProviderId}`,
    grabAllProducts: (limit: any, pageNumber: any) => `/api/Product/grab-all-products?limit=${limit}&pageNumber=${pageNumber}`,
-   grabCategoryProducts: (limit: any, pageNumber: any, productTag: any) => `/api/Product/grab-category-products?limit=${limit}&pageNumber=${pageNumber}&productTag=${productTag}`,
+   grabCategoryProducts: (categoryName: any) => `/api/Product/grab-category-products?categoryName=${categoryName}`,
    grabUserCart: (userId: any, userCountry: any) => `/api/Cart/grab-user-cart?userId=${userId}&userCountry=${userCountry}`,
    createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`,
    updateCart: (userId: any) => `/api/Cart/update-cart?userId=${userId}`,

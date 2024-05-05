@@ -129,15 +129,15 @@ export default function CartProductCard({ productId, image, name, description, b
                   ></Quantity>
                </div>
                <div className="flex flex-col">
-                  <h1 className="text-2xl text-light text-center lg:text-start josefin-sans">{name}</h1>
+                  <h1 className="text-xl text-light text-center lg:text-start quicksand-bold mb-1">{name}</h1>
                   {shippingCost && (
-                     <h2 className="text-center text-lg lg:text-start">
+                     <h2 className="text-center lg:text-start quicksand-medium">
                         {formattedPrice} + {shippingCost} € (Shipping)
                      </h2>
                   )}
 
-                  <h2 className="text-center lg:text-start">Size: {translateSize}</h2>
-                  <h2 className="text-center lg:text-start">Color: {translateColor}</h2>
+                  <h2 className="text-center lg:text-start quicksand-medium">Size: {translateSize}</h2>
+                  <h2 className="text-center lg:text-start quicksand-medium">Color: {translateColor}</h2>
                   <div className="flex justify-center lg:justify-start ">{children}</div>
                </div>
             </div>

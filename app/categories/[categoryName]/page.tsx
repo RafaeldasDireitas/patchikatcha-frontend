@@ -63,7 +63,7 @@ export default function CategoryName({ params }: any) {
                   min={0}
                   max="500"
                   value={productPrice}
-                  className="range [--range-shdw:#BC6C25] range-xs w-40 justify-center"
+                  className="range [--range-shdw:#ffedd8] h-3 range-xs w-40 justify-center"
                   onChange={handleProductPrice}
                />
             </div>

@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { registerValidation } from "@/zod/zod";
 import { z } from "zod";
 import { useGlobalStore } from "@/zustand/globalstore";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -16,7 +17,9 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    const [username, setUsername] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
    const [redirectToVerifyEmail, setRedirectToVerifyEmail] = useState(false);
+   const [fetchEmailToken, setFetchEmailToken] = useState(false);
    const [emailToken, setEmailToken] = useState("");
+   const [apiKey, setApiKey] = useState("");
 
    const usernameHandler = (e: any) => {
       const username = e.target.value;
@@ -38,11 +41,17 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       setConfirmPassword(confirmPassword);
    };
 
+   const apiKeyHandler = (value: any) => {
+      const apiKey = value;
+      setApiKey(apiKey);
+   };
+
    const userData = {
       username: username,
       email: email,
       password: password,
-      confirmPassword: confirmPassword
+      confirmPassword: confirmPassword,
+      apiKey: apiKey
    };
 
    const emailData = {
@@ -60,13 +69,19 @@ export default function RegisterForm({ setIsLoginForm }: any) {
          return;
       }
 
-      await FetchRegister({ userData, setRedirectToVerifyEmail, setCart });
-      await FetchEmailToken({ email, setEmailToken });
+      await FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setCart });
+
       //the rest of the code is in the useEffect if you need to debug this
    };
 
    useEffect(() => {
-      if (emailToken) {
+      if (fetchEmailToken) {
+         FetchEmailToken({ email, setEmailToken });
+      }
+   }, [fetchEmailToken]);
+
+   useEffect(() => {
+      if (emailToken && fetchEmailToken) {
          const sendData = async () => {
             const send = await fetch("/api/send-email-verification", {
                method: "POST",
@@ -129,11 +144,17 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                   id="confirmPassword"
                />
                <div className="flex flex-col items-end">
-                  <button className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold" onClick={createUserAccount}>
+                  <button
+                     className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
+                     onClick={createUserAccount}
+                  >
                      Sign up
                   </button>
                </div>
-               <p className="my-1 josefin-sans" onClick={() => setIsLoginForm(true)}>
+               <div className="flex justify-center">
+                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" />
+               </div>
+               <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(true)}>
                   Already have an account? Log in <span className="underline text-light hover:cursor-pointer quicksand-medium">here</span>.
                </p>
             </div>

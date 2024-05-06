@@ -1,7 +1,8 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 import { CartType } from "@/types/CartType";
-import { LoginType, VerificationResponse } from "@/types/LoginType";
+import { LoginType } from "@/types/LoginType";
+import { VerificationResponse } from "@/types/VerificationResponse";
 
 export default async function FetchLogin({
    userData,
@@ -22,18 +23,12 @@ export default async function FetchLogin({
    });
 
    if (!createUser.ok) {
-      toast.error("Credentials are wrong, try again.");
+      const responseData = await createUser.json();
+      toast.error(responseData.message);
    }
 
    if (createUser.ok) {
       const responseData: LoginType = await createUser.json();
-
-      const verificationResponse: VerificationResponse = JSON.parse(responseData.verificationResponse);
-
-      if (!verificationResponse.success) {
-         toast.error("reCAPTCHA verification failed, try again.");
-         return;
-      }
 
       const cart: any = [];
 

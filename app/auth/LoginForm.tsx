@@ -14,7 +14,6 @@ export default function LoginForm({ setIsLoginForm }: any) {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [apiKey, setApiKey] = useState("");
-   const ref = useRef<HTMLDivElement>();
 
    const setUserId = globalStore.setUserId;
    const setJwtToken = globalStore.setJwtToken;
@@ -52,7 +51,6 @@ export default function LoginForm({ setIsLoginForm }: any) {
 
    const authenticateUser = async () => {
       const isValid = await loginValidation.safeParseAsync(userData);
-      console.log(apiKey);
 
       if (!isValid.success) {
          toast.error("Credentials are wrong, try again");
@@ -98,7 +96,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                   </button>
                </div>
                <div className="flex justify-center">
-                  <ReCAPTCHA sitekey="6Ld74NIpAAAAAL45i3spjza3372dlOAI6qLFKI7p" onChange={apiKeyHandler} size="normal" />
+                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" />
                </div>
                <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(false)}>
                   Don't have an account yet? Sign up <span className="underline text-light hover:cursor-pointer">here</span>.

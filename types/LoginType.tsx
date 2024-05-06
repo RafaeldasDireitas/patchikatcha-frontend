@@ -3,9 +3,3 @@ export type LoginType = {
    userId: string;
    verificationResponse: string;
 };
-
-export type VerificationResponse = {
-   success: boolean;
-   challenge_ts: string;
-   hostname: string;
-};

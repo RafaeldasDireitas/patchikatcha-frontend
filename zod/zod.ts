@@ -13,7 +13,8 @@ export const registerValidation = z
       username: z.string().min(4, "Username must have at least 8 characters").max(20),
       email: z.string().email(),
       password: z.string().min(8, "Password must have at least 8 characters").max(20),
-      confirmPassword: z.string().min(8).max(20)
+      confirmPassword: z.string().min(8).max(20),
+      apiKey: z.string()
    })
    .refine((data) => data.password === data.confirmPassword, { path: ["confirmPassword"], message: "Passwords don't match" });
 

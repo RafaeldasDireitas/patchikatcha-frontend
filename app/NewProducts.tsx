@@ -49,29 +49,31 @@ export default function NewProducts() {
    return (
       <div className="lg:p-12 my-8 flex flex-col justify-center items-center relative">
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">New Products</h1>
-         <p className="py-4 lg:text-start text-center quicksand-medium">Here is just a little description that is a little bit bigger than normal body copy.</p>
+         <p className="py-4 lg:text-start text-center quicksand-medium">
+            Here is just a little description that is a little bit bigger than normal body copy.
+         </p>
          <div ref={productListRef} className="flex flex-row overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12">
             {newProducts.data.map((product, key) => {
                const productPrice = product.variants.find((variant) => variant.is_enabled === true);
 
-               const productIVA = productPrice && productPrice.price * 0.23;
-
-               const basePrice = productPrice && productIVA && productPrice.price + productIVA;
-
-               const formattedPrice = basePrice && (basePrice / 100).toFixed(2) + " €";
-
                return (
                   <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
-                     <ProductCard key={key} title={product.title} price={formattedPrice} image={product.images[0].src}></ProductCard>
+                     <ProductCard key={key} title={product.title} price={productPrice?.price} image={product.images[0].src}></ProductCard>
                   </Link>
                );
             })}
          </div>
-         <button className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none" onClick={scrollLeft}>
+         <button
+            className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
+            onClick={scrollLeft}
+         >
             <FaArrowLeft />
          </button>
 
-         <button className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none" onClick={scrollRight}>
+         <button
+            className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
+            onClick={scrollRight}
+         >
             <FaArrowRight />
          </button>
       </div>

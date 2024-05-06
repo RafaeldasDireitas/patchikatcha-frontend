@@ -4,7 +4,7 @@ type breadCrumbPropType = {
 
 export default function Breadcrumb({ links }: breadCrumbPropType) {
    return (
-      <div className="text-sm breadcrumbs quicksand-light">
+      <div className="flex text-sm breadcrumbs lg:justify-start justify-center quicksand-light overflow-x-visible">
          <ul>
             {links.map((link, index) => {
                return <li key={index}>{link}</li>;

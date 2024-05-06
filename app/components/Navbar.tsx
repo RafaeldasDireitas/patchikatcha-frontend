@@ -48,7 +48,9 @@ export default function Navbar() {
                   <label htmlFor="my-drawer-4">
                      <div className="relative">
                         <IoCartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
-                        <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">{cartQuantity}</h1>
+                        <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
+                           {cartQuantity}
+                        </h1>
                      </div>
                   </label>
                   <Cart htmlFor="my-drawer-4"></Cart>
@@ -74,13 +76,17 @@ export default function Navbar() {
                {categories.map((category, key) => {
                   return (
                      <div key={key} className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white quicksand-medium">
-                        <div tabIndex={0} role="button" className="btn min-h-0 max-h-7 bg-button-background hover:bg-button-background border-none text-white">
+                        <div
+                           tabIndex={0}
+                           role="button"
+                           className="btn min-h-0 max-h-7 bg-button-background hover:bg-button-background border-none text-white"
+                        >
                            {category.title}
                         </div>
                         <ul className="dropdown-content hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
                            {category.content.map((content, index) => (
-                              <Link href={{ pathname: `/categories/${content}`, query: { title: category.title } }}>
-                                 <li key={index} className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer quicksand-medium">
+                              <Link key={index} href={{ pathname: `/categories/${content}`, query: { title: category.title } }}>
+                                 <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer quicksand-medium">
                                     {content}
                                  </li>
                               </Link>

@@ -24,7 +24,7 @@ export default function CategoryName({ params }: any) {
    }, []);
 
    if (!products) {
-      return <CategoryLoading categoryName={categoryName} />;
+      return <CategoryLoading categoryName={categoryName} categoryTitle={categoryTitle} />;
    }
 
    const handleProductPrice = (e: any) => {
@@ -42,11 +42,11 @@ export default function CategoryName({ params }: any) {
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
 
    return (
-      <div className="flex flex-row p-12">
-         <div className="flex flex-col w-1/3 my-8">
+      <div className="flex lg:flex-row flex-col p-12">
+         <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center my-8">
             <Breadcrumb links={links} />
             <h1 className="quicksand-bold text-2xl text-light">{categoryName}</h1>
-            <div className="mt-20">
+            <div className="lg:mt-20 mt-10">
                <h1 className="quicksand-bold text-xl text-dark">{categoryTitle}</h1>
                {findContent &&
                   findContent.content.map((content, key) => (
@@ -63,14 +63,14 @@ export default function CategoryName({ params }: any) {
                   min={0}
                   max="500"
                   value={productPrice}
-                  className="range [--range-shdw:#BC6C25] range-xs w-40"
+                  className="range [--range-shdw:#BC6C25] range-xs w-40 justify-center"
                   onChange={handleProductPrice}
                />
             </div>
          </div>
 
-         <div className="flex flex-col w-2/3">
-            <div className="flex justify-end">
+         <div className="flex flex-col lg:w-2/3">
+            <div className="flex lg:justify-end justify-center">
                <input
                   type="text"
                   placeholder="Search product..."
@@ -81,7 +81,7 @@ export default function CategoryName({ params }: any) {
                />
             </div>
 
-            <div className="gap-4 grid grid-cols-3 my-8">
+            <div className="lg:gap-4 gap-6 grid lg:grid-cols-3 grid-cols-1 my-8">
                {products &&
                   filteredProducts
                      .filter((product) => {

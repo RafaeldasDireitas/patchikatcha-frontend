@@ -37,8 +37,8 @@ export default function Hydrate({ children }: { children: ReactNode }) {
       `
                      }}
                   ></Script>
-
                   <Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer />
+                  <Script src="https://www.google.com/recaptcha/api.js" async defer></Script>
                   <div>{children}</div>
                </main>
             </>

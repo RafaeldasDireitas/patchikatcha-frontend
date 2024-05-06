@@ -5,6 +5,7 @@ import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
 import Footer from "./components/Footer";
 import Head from "next/head";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 

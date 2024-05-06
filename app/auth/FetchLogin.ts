@@ -1,8 +1,18 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 import { CartType } from "@/types/CartType";
+import { LoginType, VerificationResponse } from "@/types/LoginType";
 
-export default async function FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry }: any) {
+export default async function FetchLogin({
+   userData,
+   setUserId,
+   setJwtToken,
+   setIsAuthenticated,
+   setUserEmail,
+   setCart,
+   userCart,
+   userCountry
+}: any) {
    const createUser = await fetch(endpoints.url + endpoints.login, {
       method: "POST",
       headers: {
@@ -16,6 +26,15 @@ export default async function FetchLogin({ userData, setUserId, setJwtToken, set
    }
 
    if (createUser.ok) {
+      const responseData: LoginType = await createUser.json();
+
+      const verificationResponse: VerificationResponse = JSON.parse(responseData.verificationResponse);
+
+      if (!verificationResponse.success) {
+         toast.error("reCAPTCHA verification failed, try again.");
+         return;
+      }
+
       const cart: any = [];
 
       userCart.forEach((item: CartType) => {
@@ -39,8 +58,6 @@ export default async function FetchLogin({ userData, setUserId, setJwtToken, set
 
          cart.push(newCart);
       });
-
-      const responseData = await createUser.json();
 
       const grabUserCart = await fetch(endpoints.url + endpoints.grabUserCart(responseData.userId, userCountry), {
          method: "PUT",

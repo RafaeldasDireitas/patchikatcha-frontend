@@ -4,7 +4,8 @@ export const newsLetterValidation = z.string().email();
 
 export const loginValidation = z.object({
    email: z.string().email(),
-   password: z.string().min(8)
+   password: z.string().min(8),
+   apiKey: z.string()
 });
 
 export const registerValidation = z

@@ -19,7 +19,7 @@ export default function Navbar() {
 
    return (
       <>
-         <nav className="flex flex-row justify-between h-20 max-h-20 relative">
+         <nav className="flex flex-row justify-between h-20 max-h-20 relative" aria-label="primary">
             <div className="lg:mx-10 flex justify-start items-center">
                <div>
                   <input id="my-drawer-3" type="checkbox" className="drawer-toggle absolute" />
@@ -71,7 +71,7 @@ export default function Navbar() {
                )}
             </div>
          </nav>
-         <nav>
+         <nav aria-label="secondary">
             <div className="lg:flex hidden flex-row justify-center bg-button-background">
                {categories.map((category, key) => {
                   return (

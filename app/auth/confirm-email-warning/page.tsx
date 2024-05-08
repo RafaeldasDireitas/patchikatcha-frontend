@@ -41,7 +41,9 @@ export default function VerifyEmail() {
          <Image className="mb-4" src={cloud} width={400} height={400} alt="No turtle found"></Image>
          <h1 className="text-2xl text-light quicksand-bold">Please verify your email!</h1>
          <p className="my-4 quicksand-medium">We sent a link to your email. Please note this can take up to a few minutes.</p>
-         <p className="quicksand-medium">Didn’t receive your link? Type it again to retry!</p>
+         <p className="quicksand-medium">
+            Didn’t receive your link? <span className="text-light">Type it again to retry!</span>
+         </p>
          <input
             type="text"
             placeholder="example@email.com"

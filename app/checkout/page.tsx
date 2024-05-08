@@ -8,6 +8,7 @@ import FetchCreateCheckoutSession from "./FetchCreateCheckoutSession";
 import FetchSessionStatus from "./FetchSessionStatus";
 import { UserDataType } from "@/types/UserDataType";
 import IsNotAuthenticated from "../components/IsNotAuthenticated";
+import FetchIsEmailConfirmed from "../profile/FetchIsEmailConfirmed";
 
 const stripePromise = loadStripe("pk_test_51Onkz6Lwv2BbZpNwCznBgyiBZjWKIEQUJZPyyzbaLha0vf4Eu55o9h7fN0O9jMotkYsR6kgZtSYLq4lcbkntkRaD00g5Dird6V");
 
@@ -20,6 +21,7 @@ export default function Checkout() {
    const jwtToken = globalStore.jwtToken;
    const userGeo: UserDataType = globalStore.userGeo;
    const cart: CartType[] = globalStore.cart;
+   const [isEmailConfirmed, setIsEmailConfirmed] = useState(false);
 
    const checkoutObject = cart.map((product) => ({
       index: product.index,
@@ -44,12 +46,15 @@ export default function Checkout() {
          </div>
       );
    }
+   useEffect(() => {
+      FetchIsEmailConfirmed({ userId, setIsEmailConfirmed });
+   }, []);
 
    useEffect(() => {
       FetchCreateCheckoutSession({ userId, jwtToken, setClientSecret, setClientId });
    }, []);
 
-   if (!userEmail || !userId) {
+   if (!isEmailConfirmed) {
       return <IsNotAuthenticated />;
    }
 

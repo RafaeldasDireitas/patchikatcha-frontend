@@ -1,5 +1,4 @@
 "use client";
-import Categories from "./Categories";
 import Hero from "./Hero";
 import NewProducts from "./NewProducts";
 import Newsletter from "./Newsletter";

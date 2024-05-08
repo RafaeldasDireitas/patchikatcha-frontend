@@ -41,13 +41,12 @@ export default function Wishlist() {
       <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
          {wishlist &&
             wishlist.map((product, key) => {
-               const formattedPrice = (product.price / 100).toFixed(2) + " €";
                const formattedTitle = decodeURIComponent(product.title);
 
                return (
                   <div>
                      <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                        <ProductCard title={formattedTitle} price={formattedPrice} image={product.image}></ProductCard>
+                        <ProductCard title={formattedTitle} price={product.price} image={product.image}></ProductCard>
                      </Link>
                   </div>
                );

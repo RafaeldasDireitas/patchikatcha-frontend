@@ -5,6 +5,7 @@ import newsletter from "@/public/newsletter_image.png";
 import { newsLetterValidation } from "@/zod/zod";
 import Image from "next/image";
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "sonner";
 
 export default function Newsletter() {
@@ -41,8 +42,22 @@ export default function Newsletter() {
          <p className="josefin-sans text-center quicksand-medium">Be the first one to know about new designs, special events or promotional code.</p>
          <label className="flex flex-row input rounded-full bg-white gap-2 border-border-light focus-within:border-border-light border-2">
             <Image src={message} width={30} height={30} alt="No icon found"></Image>
-            <input className="bg-white w-56 quicksand-light" onChange={handleEmail} value={email} placeholder="Enter your email" type="email" id="email"></input>
-            <Image src={send} onClick={sendEmail} className="hover:cursor-pointer hover:scale-110 duration-200" width={30} height={30} alt="No icon found"></Image>
+            <input
+               className="bg-white w-56 quicksand-light"
+               onChange={handleEmail}
+               value={email}
+               placeholder="Enter your email"
+               type="email"
+               id="email"
+            ></input>
+            <Image
+               src={send}
+               onClick={sendEmail}
+               className="hover:cursor-pointer hover:scale-110 duration-200"
+               width={30}
+               height={30}
+               alt="No icon found"
+            ></Image>
          </label>
       </div>
    );

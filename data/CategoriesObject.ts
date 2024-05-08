@@ -7,11 +7,11 @@ export const categories = [
    {
       title: "Clothing",
       content: ["Hoodies", "T-shirts"],
-      href: ["/categories/hoodies", "/categories/t-shirts"]
+      href: ["/categories/Hoodies", "/categories/T-shirts"]
    },
    {
       title: "Accessories",
       content: ["Backpacks", "Mugs"],
-      href: ["/categories/backpacks", "/categories/mugs"]
+      href: ["/categories/Backpacks", "/categories/Mugs"]
    }
 ];

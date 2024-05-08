@@ -22,7 +22,7 @@ export default function CategoryLoading({ categoryName, categoryTitle }: Categor
                <div className="mt-10">
                   <h1 className="quicksand-bold text-xl text-dark">Filter by</h1>
                   <Skeleton widthInPx={160} heightInPx={24} />
-                  <Skeleton widthInPx={160} heightInPx={16} />
+                  <Skeleton widthInPx={160} heightInPx={24} />
                </div>
             </div>
 
@@ -32,9 +32,12 @@ export default function CategoryLoading({ categoryName, categoryTitle }: Categor
                </div>
 
                <div className="lg:gap-4 gap-6 grid lg:grid-cols-3 grid-cols-1 my-8">
-                  <Skeleton widthInPx={275} heightInPx={354} />
-                  <Skeleton widthInPx={275} heightInPx={354} />
-                  <Skeleton widthInPx={275} heightInPx={354} />
+                  <Skeleton widthInPx={275} heightInPx={275} />
+                  <Skeleton widthInPx={275} heightInPx={275} />
+                  <Skeleton widthInPx={275} heightInPx={275} />
+                  <Skeleton widthInPx={275} heightInPx={275} />
+                  <Skeleton widthInPx={275} heightInPx={275} />
+                  <Skeleton widthInPx={275} heightInPx={275} />
                </div>
             </div>
          </div>

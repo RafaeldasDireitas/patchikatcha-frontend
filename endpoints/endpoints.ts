@@ -11,6 +11,7 @@ export const endpoints = {
    verifyRole: (userEmail: any) => `/api/Auth/verify-user-role?email=${userEmail}`,
    grabEmailToken: (userEmail: any) => `/api/Auth/grab-email-token?email=${userEmail}`,
    confirmEmail: (token: any, userEmail: any) => `/api/Auth/confirm-email?token=${token}&email=${userEmail}`,
+   isEmailConfirmed: (userId: any) => `/api/Auth/is-email-confirmed?userId=${userId}`,
    grabProduct: (productId: any) => `/api/Product/grab-product?productId=${productId}`,
    grabOrders: (orderId: any) => `/api/Order/grab-user-orders?orderId=${orderId}`,
    grabOrdersId: (userEmail: any) => `/api/Order/grab-orders-id?userEmail=${userEmail}`,
@@ -28,6 +29,7 @@ export const endpoints = {
    createWishlist: (userId: any) => `/api/Wishlist/create-wishlist?userId=${userId}`,
    removeWishlist: (userId: any, productId: any) => `/api/Wishlist/remove-wishlist?userId=${userId}&productId=${productId}`,
    isWishlisted: (userId: any, productId: any) => `/api/Wishlist/is-wishlisted?userId=${userId}&productId=${productId}`,
-   grabProductReviews: (productId: any, limit: any, page: any) => `/api/Review/grab-product-reviews?productId=${productId}&limit=${limit}&page=${page}`,
+   grabProductReviews: (productId: any, limit: any, page: any) =>
+      `/api/Review/grab-product-reviews?productId=${productId}&limit=${limit}&page=${page}`,
    grabUserReviews: (userId: any) => `/api/Review/grab-user-reviews?userId=${userId}`
 };

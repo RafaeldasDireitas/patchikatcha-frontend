@@ -27,7 +27,9 @@ export default function Order({ printifyUrl, orderId, createdAt, status, address
 
                <div className="flex justify-center">
                   <Link href={`${printifyUrl}`} target="_blank">
-                     <button className="btn mt-3 btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-border-light border-2 text-white hover:text-white w-64">Order details</button>
+                     <button className="btn btn-circle my-2 quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-border-light border-2 text-white hover:text-white lg:w-64 w-36">
+                        Order details
+                     </button>
                   </Link>
                </div>
             </div>

@@ -19,7 +19,7 @@ export default function Categories({ htmlFor, categories }: any) {
                         <div className="collapse-content">
                            {category.content.map((content, key: number) => {
                               return (
-                                 <Link key={key} href={`${category.href[key]}`}>
+                                 <Link key={key} href={`${category.href[key]}?title=${category.title}`}>
                                     <p className="ml-6 my-1 quicksand-light">{content}</p>
                                  </Link>
                               );

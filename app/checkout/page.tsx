@@ -47,11 +47,15 @@ export default function Checkout() {
       );
    }
    useEffect(() => {
-      FetchIsEmailConfirmed({ userId, setIsEmailConfirmed });
+      if (userId) {
+         FetchIsEmailConfirmed({ userId, setIsEmailConfirmed });
+      }
    }, []);
 
    useEffect(() => {
-      FetchCreateCheckoutSession({ userId, jwtToken, setClientSecret, setClientId });
+      if (userId) {
+         FetchCreateCheckoutSession({ userId, jwtToken, setClientSecret, setClientId });
+      }
    }, []);
 
    if (!isEmailConfirmed) {

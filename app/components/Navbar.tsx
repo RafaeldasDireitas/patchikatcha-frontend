@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/public/Patchi.svg";
+import logo from "@/public/new_logo.svg";
 import Link from "next/link";
 import Cart from "./cartdrawer/Cart";
 import { useGlobalStore } from "@/zustand/globalstore";
@@ -33,7 +33,7 @@ export default function Navbar() {
                </div>
 
                <Link href={"/"} className="hover:scale-110 hover:cursor-pointer duration-200">
-                  <Image src={logo} width={100} height={100} alt="Patchi" className="mt-2" />
+                  <Image src={logo} width={180} height={180} alt="Patchi" className="mt-2" />
                </Link>
             </div>
             <div className="lg:mx-10 flex justify-end items-center">

@@ -45,7 +45,10 @@ export default function Colors({ setColorId, productVariants }: any) {
                </div>
             </>
          ) : (
-            <></>
+            <>
+               <h1 className="text-lg text-light quicksand-light text-center lg:text-start my-1">Colors:</h1>
+               <p className="quicksand-medium lg:text-start text-center">This product only has one color.</p>
+            </>
          )}
       </>
    );

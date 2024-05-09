@@ -58,13 +58,23 @@ export default function Wishlist({ userId, title, price, image, productId }: any
       <>
          <div>
             {isWishlisted ? (
-               <button onClick={removeWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white hover:border-none bg-transparent border-2 border-border-light text-light quicksand-semibold">
-                  Added to wishlist!
-               </button>
+               <div className="flex lg:justify-start justify-center">
+                  <button
+                     onClick={removeWishlist}
+                     className="btn w-96 btn-circle hover:bg-button-focused hover:text-white hover:border-none bg-transparent border-2 border-border-light text-light quicksand-semibold"
+                  >
+                     Added to wishlist!
+                  </button>
+               </div>
             ) : (
-               <button onClick={createWishlist} className="btn w-96 btn-circle hover:bg-button-focused hover:text-white hover:border-none bg-transparent border-2 border-border-light text-light quicksand-semibold">
-                  Add to wishlist
-               </button>
+               <div className="flex lg:justify-start justify-center">
+                  <button
+                     onClick={createWishlist}
+                     className="btn w-96 btn-circle hover:bg-button-focused hover:text-white hover:border-none bg-transparent border-2 border-border-light text-light quicksand-semibold"
+                  >
+                     Add to wishlist
+                  </button>
+               </div>
             )}
          </div>
       </>

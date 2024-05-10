@@ -42,6 +42,10 @@ hr {
    font-weight: 600;
    font-style: normal;
 }
+.gt_float_switcher .gt-selected .gt-current-lang {
+   border-radius: 0.75rem !important;
+   text-align: center !important;
+}
 
 .tox .tox-tbtn svg {
    fill: #bc6c25 !important;

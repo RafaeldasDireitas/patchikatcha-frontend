@@ -4,6 +4,9 @@ import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
+   const currentDate = new Date();
+   const currentYear = currentDate.getFullYear();
+
    return (
       <>
          <footer className="footer p-10 bg-button-background text-white">
@@ -11,7 +14,7 @@ export default function Footer() {
                <div className="bg-white rounded-xl">
                   <Image src={logo} width={200} height={200} alt="No logo found"></Image>
                </div>
-               <p className="quicksand-bold">Copyright © 2024 - All rights reserved</p>
+               <p className="quicksand-bold">Copyright © {currentYear} - All rights reserved</p>
             </aside>
             <nav>
                <h6 className="footer-title opacity-100 z-0 quicksand-bold">Socials</h6>

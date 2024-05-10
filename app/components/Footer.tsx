@@ -30,7 +30,9 @@ export default function Footer() {
                <Link href={"/terms-and-services"}>
                   <p className="link link-hover quicksand-medium">Terms and Services</p>
                </Link>
-               <a className="link link-hover quicksand-medium">Refund policy</a>
+               <Link href={"/refund-policy"}>
+                  <p className="link link-hover quicksand-medium">Refund policy</p>
+               </Link>
             </nav>
          </footer>
       </>

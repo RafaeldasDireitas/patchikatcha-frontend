@@ -8,7 +8,23 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import FetchUpdateCartDatabase from "../FetchUpdateCartDatabase";
 
-export default function CartProductCard({ productId, image, name, description, basePrice, price, priceId, size, color, quantity, index, additionalItems, firstItem, variantId, children }: any) {
+export default function CartProductCard({
+   productId,
+   image,
+   name,
+   description,
+   basePrice,
+   price,
+   priceId,
+   size,
+   color,
+   quantity,
+   index,
+   additionalItems,
+   firstItem,
+   variantId,
+   children
+}: any) {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
    const userId = globalStore.userId;
@@ -113,7 +129,7 @@ export default function CartProductCard({ productId, image, name, description, b
 
    return (
       <>
-         <div className="mx-auto lg:mx-0 flex justify-center lg:justify-start lg:flex-none lg:w-[600px] w-[300px] m-4 shadow-lg bg-white rounded-xl">
+         <div className="mx-auto lg:mx-0 flex justify-center lg:justify-start lg:flex-none lg:w-[600px] w-[350px] m-4 shadow-lg bg-white rounded-xl">
             <div className="flex lg:flex-row flex-col p-8 gap-8">
                <div className="flex flex-col items-center">
                   <Link href={`/product/${name}?productId=${productId}`}>

@@ -18,6 +18,7 @@ import { BiSolidCheckCircle, BiSolidXCircle } from "react-icons/bi";
 import countries from "@/data/countries.json";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import ProfileLoading from "./components/ProfileLoading";
 
 export default function Profile() {
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
@@ -76,7 +77,7 @@ export default function Profile() {
    }
 
    if (!orders) {
-      return <Loading></Loading>;
+      return <ProfileLoading />;
    }
 
    useEffect(() => {

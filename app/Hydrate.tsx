@@ -4,6 +4,7 @@ import Navbar from "@/app/components/Navbar";
 import { useGlobalStore } from "@/zustand/globalstore";
 import CountryModal from "./components/CountryModal/CountryModal";
 import Script from "next/script";
+import Loading from "./components/Loading";
 
 export default function Hydrate({ children }: { children: ReactNode }) {
    const [isHydrated, setIsHydrated] = useState(false);
@@ -43,7 +44,10 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                </main>
             </>
          ) : (
-            <Navbar />
+            <>
+               <Navbar />
+               <Loading />
+            </>
          )}
       </>
    );

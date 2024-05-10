@@ -141,8 +141,6 @@ export default function ProductName({ params }: any) {
       }
    };
 
-   console.log(product);
-
    const links = ["Home", "Product", `${decodedProductName}`];
 
    return (

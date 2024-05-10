@@ -49,7 +49,13 @@ export default function Categories() {
                                  })}
                               </ul>
                            </div>
-                           <Image className="w-20 h-20 lg:group-hover:opacity-0 lg:opacity-100 opacity-0" src={category.icon} width={80} height={80} alt="No image found"></Image>
+                           <Image
+                              className="w-20 h-20 lg:group-hover:opacity-0 lg:opacity-100 opacity-0"
+                              src={category.icon}
+                              width={80}
+                              height={80}
+                              alt="No image found"
+                           ></Image>
                            <h1 className="group-hover:opacity-0 lg:opacity-100 opacity-0">{category.name}</h1>
                         </div>
                      ) : (

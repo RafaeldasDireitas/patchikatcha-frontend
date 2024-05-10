@@ -11,7 +11,11 @@ export default function Rating({ checkRating, isChecked }: any) {
                width={100}
                height={100}
                onClick={() => checkRating(1)}
-               className={isChecked.isChecked1 ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200" : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"}
+               className={
+                  isChecked.isChecked1
+                     ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200"
+                     : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
+               }
                alt="No star found"
             ></Image>
             <Image
@@ -19,7 +23,11 @@ export default function Rating({ checkRating, isChecked }: any) {
                width={100}
                height={100}
                onClick={() => checkRating(2)}
-               className={isChecked.isChecked2 ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200" : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"}
+               className={
+                  isChecked.isChecked2
+                     ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200"
+                     : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
+               }
                alt="No star found"
             ></Image>
             <Image
@@ -27,7 +35,11 @@ export default function Rating({ checkRating, isChecked }: any) {
                width={100}
                height={100}
                onClick={() => checkRating(3)}
-               className={isChecked.isChecked3 ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200" : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"}
+               className={
+                  isChecked.isChecked3
+                     ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200"
+                     : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
+               }
                alt="No star found"
             ></Image>
             <Image
@@ -35,7 +47,11 @@ export default function Rating({ checkRating, isChecked }: any) {
                width={100}
                height={100}
                onClick={() => checkRating(4)}
-               className={isChecked.isChecked4 ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200" : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"}
+               className={
+                  isChecked.isChecked4
+                     ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200"
+                     : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
+               }
                alt="No star found"
             ></Image>
             <Image
@@ -43,7 +59,11 @@ export default function Rating({ checkRating, isChecked }: any) {
                width={100}
                height={100}
                onClick={() => checkRating(5)}
-               className={isChecked.isChecked5 ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200" : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"}
+               className={
+                  isChecked.isChecked5
+                     ? "opacity-100 hover:cursor-pointer hover:scale-110 duration-200"
+                     : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
+               }
                alt="No star found"
             ></Image>
          </div>

@@ -35,7 +35,14 @@ export default function AdminDashboard() {
       <div className="lg:p-12">
          <div className="flex flex-col">
             <h1 className="my-1 text-center text-xl">Publish product</h1>
-            <input type="text" onChange={handleProductId} value={productId} placeholder="Product Id" className="input input-bordered input-warning w-full max-w-xs my-1 bg-white" id="publish" />
+            <input
+               type="text"
+               onChange={handleProductId}
+               value={productId}
+               placeholder="Product Id"
+               className="input input-bordered input-warning w-full max-w-xs my-1 bg-white"
+               id="publish"
+            />
             <button className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white my-1 border-none" onClick={publishProduct}>
                Publish
             </button>

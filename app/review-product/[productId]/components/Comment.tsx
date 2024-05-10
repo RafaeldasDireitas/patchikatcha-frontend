@@ -18,7 +18,8 @@ export default function Comment({ comment, setComment }: any) {
                      height: 300,
                      max_height: 500,
                      color_default_foreground: "red",
-                     toolbar: "undo redo | blocks fontsize | bold italic underline strikethrough | align lineheight | numlist bullist indent outdent | removeformat"
+                     toolbar:
+                        "undo redo | blocks fontsize | bold italic underline strikethrough | align lineheight | numlist bullist indent outdent | removeformat"
                   }}
                   onEditorChange={handleComment}
                />

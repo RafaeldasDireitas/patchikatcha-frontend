@@ -38,10 +38,14 @@ export default function Cart({ htmlFor }: any) {
                <hr></hr>
                <div className="flex flex-col items-center gap-y-3">
                   <Link href={"/patchi-cart"}>
-                     <button className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">View Cart</button>
+                     <button className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                        View Cart
+                     </button>
                   </Link>
                   <Link href={"/checkout"}>
-                     <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">Checkout</button>
+                     <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                        Checkout
+                     </button>
                   </Link>
                </div>
             </div>

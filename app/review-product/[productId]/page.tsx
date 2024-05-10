@@ -93,7 +93,10 @@ export default function ReviewProduct({ params }: any) {
             <hr />
             <Comment comment={comment} setComment={setComment} />
             <div className="flex justify-end my-2">
-               <button onClick={createReview} className="btn text-white bg-button-background hover:bg-button-focused border-none rounded-3xl my-2 w-40">
+               <button
+                  onClick={createReview}
+                  className="btn text-white bg-button-background hover:bg-button-focused border-none rounded-3xl my-2 w-40"
+               >
                   Submit review!
                </button>
             </div>

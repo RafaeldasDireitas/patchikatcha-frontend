@@ -52,7 +52,9 @@ export const useGlobalStore = create<GlobalStateManagement>()(
                   return { ...state, cart: [] }; // Return a new state object with cart set to an empty array
                }
 
-               const existingIndex = state.cart.findIndex((product) => product.name === response.name && product.size === response.size && product.color == response.color);
+               const existingIndex = state.cart.findIndex(
+                  (product) => product.name === response.name && product.size === response.size && product.color == response.color
+               );
 
                if (existingIndex !== -1) {
                   const updatedCart = [...state.cart];

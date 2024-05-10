@@ -51,7 +51,10 @@ export default function CountryDropDown() {
             let cartBlueprint: BlueprintType[] = [];
 
             cart.forEach((product) => {
-               cartBlueprint = [...cartBlueprint, { blueprintId: product.blueprint_id, printProviderId: product.print_provider_id, userCountryCode: newCountry }];
+               cartBlueprint = [
+                  ...cartBlueprint,
+                  { blueprintId: product.blueprint_id, printProviderId: product.print_provider_id, userCountryCode: newCountry }
+               ];
             });
 
             const profileList: ProfilesType[] = await FetchUpdateCartShippingDatabase({ userId, jwtToken, cartBlueprint });
@@ -60,7 +63,12 @@ export default function CountryDropDown() {
                const findMatch = profileList.find((profile) => profile.variant_ids.includes(product.variant_id));
 
                if (findMatch) {
-                  globalStore.setCart({ ...product, first_item: findMatch.first_item.cost, additional_items: findMatch.additional_items.cost, quantity: 0 });
+                  globalStore.setCart({
+                     ...product,
+                     first_item: findMatch.first_item.cost,
+                     additional_items: findMatch.additional_items.cost,
+                     quantity: 0
+                  });
                }
             });
          }
@@ -77,7 +85,10 @@ export default function CountryDropDown() {
             {countries.countries.country.map((country, key) => {
                return (
                   <>
-                     <button className={`btn p-0 bg-white border-none text-black ${focusButton === country.countryCode ? "focus:bg-button-background" : ""}`} onClick={() => handleOnCountryClick(country)}>
+                     <button
+                        className={`btn p-0 bg-white border-none text-black ${focusButton === country.countryCode ? "focus:bg-button-background" : ""}`}
+                        onClick={() => handleOnCountryClick(country)}
+                     >
                         <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found"></Image>
                         {country.countryName}
                      </button>

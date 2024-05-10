@@ -20,7 +20,10 @@ export default function ChangePassword() {
             onChange={emailHandler}
             value={userEmail}
          />
-         <button className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white border-none quicksand-semibold" onClick={() => FetchChangePasswordEmail({ userEmail })}>
+         <button
+            className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white border-none quicksand-semibold"
+            onClick={() => FetchChangePasswordEmail({ userEmail })}
+         >
             Submit
          </button>
       </div>

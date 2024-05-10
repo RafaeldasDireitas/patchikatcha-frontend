@@ -28,13 +28,44 @@ export default function PatchiCart() {
       }
    });
 
-   const removeCart = async (index: any, name: any, description: any, image: any, base_price: any, price: any, additional_items: any, first_item: any, variant_id: any, price_id: any, product_id: any, quantity: any, size: any, color: any) => {
+   const removeCart = async (
+      index: any,
+      name: any,
+      description: any,
+      image: any,
+      base_price: any,
+      price: any,
+      additional_items: any,
+      first_item: any,
+      variant_id: any,
+      price_id: any,
+      product_id: any,
+      quantity: any,
+      size: any,
+      color: any
+   ) => {
       globalStore.removeFromCart(index);
       if (userId && jwtToken) {
          FetchRemoveCartDatabase({
             userId,
             jwtToken,
-            cart: { name, description, image, basePrice: base_price, price, additionalItems: additional_items, firstItem: first_item, variantId: variant_id, priceId: price_id, productId: product_id, quantity, size, color, userCountry, currency }
+            cart: {
+               name,
+               description,
+               image,
+               basePrice: base_price,
+               price,
+               additionalItems: additional_items,
+               firstItem: first_item,
+               variantId: variant_id,
+               priceId: price_id,
+               productId: product_id,
+               quantity,
+               size,
+               color,
+               userCountry,
+               currency
+            }
          });
       }
    };

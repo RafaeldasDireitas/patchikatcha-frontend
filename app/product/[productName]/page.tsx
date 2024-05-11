@@ -145,7 +145,7 @@ export default function ProductName({ params }: any) {
 
    return (
       <div className="bg-white">
-         <div className="lg:m-12 bg-white rounded-xl">
+         <div className="lg:p-12 bg-white rounded-xl">
             <div className="flex justify-center lg:justify-start">
                <Breadcrumb links={links} />
             </div>

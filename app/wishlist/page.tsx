@@ -8,6 +8,8 @@ import Link from "next/link";
 import IsNotAuthenticated from "../components/IsNotAuthenticated";
 import raccoonHeart from "@/public/raccoon_heart.png";
 import Image from "next/image";
+import Breadcrumb from "../components/Breadcrumb";
+import { GoHeartFill } from "react-icons/go";
 
 export default function Wishlist() {
    const [wishlist, setWishlist] = useState<WishlistType[]>();
@@ -35,19 +37,27 @@ export default function Wishlist() {
       );
    }
 
-   return (
-      <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
-         {wishlist.map((product, key) => {
-            const formattedTitle = decodeURIComponent(product.title);
+   const links = ["Home", "Wishlist"];
 
-            return (
-               <div key={key + key}>
-                  <Link href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                     <ProductCard title={formattedTitle} price={product.price} image={product.image}></ProductCard>
-                  </Link>
-               </div>
-            );
-         })}
-      </div>
+   return (
+      <>
+         <div className="flex flex-col justify-center items-center mt-12">
+            <Breadcrumb links={links} />
+            <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Your wishlist</h1>
+         </div>
+         <div className="lg:p-12 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8 mt-8 lg:mt-0">
+            {wishlist.map((product, key) => {
+               const formattedTitle = decodeURIComponent(product.title);
+
+               return (
+                  <div key={key + key}>
+                     <Link href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+                        <ProductCard title={formattedTitle} price={product.price} image={product.image}></ProductCard>
+                     </Link>
+                  </div>
+               );
+            })}
+         </div>
+      </>
    );
 }

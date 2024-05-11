@@ -13,6 +13,8 @@ export default function CategoryName({ params }: any) {
    const categoryName = params.categoryName;
    const queryParams = useSearchParams();
    const categoryTitle = queryParams.get("title");
+   const decodedCategoryName = categoryName && decodeURIComponent(categoryName);
+   const decodedCategoryTitle = categoryTitle && decodeURIComponent(categoryTitle);
 
    const [products, setProducts] = useState<ProductType[]>();
    const [productPrice, setProductPrice] = useState<number>(500);
@@ -23,7 +25,7 @@ export default function CategoryName({ params }: any) {
    }, []);
 
    if (!products) {
-      return <CategoryLoading categoryName={categoryName} categoryTitle={categoryTitle} />;
+      return <CategoryLoading categoryName={decodedCategoryName} categoryTitle={decodedCategoryTitle} />;
    }
 
    const handleProductPrice = (e: any) => {
@@ -36,17 +38,17 @@ export default function CategoryName({ params }: any) {
       setSearchProducts(searchProducts);
    };
 
-   const links = ["Home", "Categories", `${categoryName}`];
+   const links = ["Home", "Categories", `${decodedCategoryName}`];
    const findContent = categories.find((category) => category.title === categoryTitle);
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
 
    return (
       <div className="flex lg:flex-row flex-col p-12">
-         <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center my-8">
+         <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center">
             <Breadcrumb links={links} />
-            <h1 className="quicksand-bold text-2xl text-light">{categoryName}</h1>
-            <div className="lg:mt-20 mt-10">
-               <h1 className="quicksand-bold text-xl text-dark">{categoryTitle}</h1>
+            <h1 className="quicksand-bold text-2xl text-light">{decodedCategoryName}</h1>
+            <div className="mt-10">
+               <h1 className="quicksand-bold text-xl text-dark">{decodedCategoryTitle}</h1>
                {findContent?.content.map((content, key) => (
                   <Link href={{ pathname: `/categories/${content}`, query: { title: categoryTitle } }} key={key + key}>
                      <h2 className="mt-1 quicksand-medium text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>

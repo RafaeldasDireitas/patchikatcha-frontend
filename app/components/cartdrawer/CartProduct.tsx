@@ -1,6 +1,5 @@
 "use client";
 import { ProductsData } from "@/data/ProductsData";
-import { CartType } from "@/types/CartType";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,10 +10,13 @@ export default function CartProduct({ name, description, price, price_id, quanti
 
    return (
       <div className="flex flex-row p-1 py-8">
-         <div className="flex flex-col">
-            <Link href={{ pathname: `/product/${name}`, query: { productId: product_id } }}>
-               <Image className="rounded-xl hover:scale-110 duration-200" src={image} width={100} height={100} alt="Product image" />
-            </Link>
+         <div className="flex flex-col relative">
+            <input id={`product-${index}`} type="checkbox" className="drawer-toggle absolute" />
+            <label htmlFor={`product-${index}`}>
+               <Link href={{ pathname: `/product/${name}`, query: { productId: product_id } }}>
+                  <Image className="rounded-xl hover:scale-110 duration-200" src={image} width={100} height={100} alt="Product image" />
+               </Link>
+            </label>
          </div>
          <div className="flex flex-col px-2">
             <h1 className="text-lg text-light quicksand-semibold">{name}</h1>

@@ -82,7 +82,7 @@ export default function Navbar() {
                         <div
                            tabIndex={0}
                            role="button"
-                           className="btn min-h-0 max-h-7 bg-button-background hover:bg-button-background border-none text-white"
+                           className="btn min-h-0 bg-button-background max-h-8 text-lg hover:bg-button-background border-none text-white"
                         >
                            {category.title}
                         </div>

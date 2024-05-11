@@ -2,6 +2,7 @@
 import message from "@/public/Message_light.svg";
 import send from "@/public/Send_hor_light.svg";
 import newsletter from "@/public/newsletter_image.png";
+import newsletterHeart from "@/public/epic-cute-hearts.png";
 import { newsLetterValidation } from "@/zod/zod";
 import Image from "next/image";
 import { useState } from "react";
@@ -66,7 +67,7 @@ export default function Newsletter() {
             </label>
          </div>
          <div>
-            <Image className="hidden lg:flex mb-60 scale-x-[-1]" src={newsletter} width={150} height={150} alt="No letter found" />
+            <Image className="hidden lg:flex mb-60" src={newsletterHeart} width={100} height={100} alt="No letter found" />
          </div>
       </div>
    );

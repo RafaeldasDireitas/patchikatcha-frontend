@@ -1,6 +1,6 @@
 export default function TermsAndServices() {
    return (
-      <div className="p-12 my-8">
+      <div className="p-12">
          <h1 className="quicksand-bold text-2xl text-dark my-5">Website Terms of Use</h1>
          <h2>Version 1.0</h2>
          <p className="quicksand-medium my-5">

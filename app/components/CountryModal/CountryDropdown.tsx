@@ -11,7 +11,6 @@ import FetchUpdateCartShippingDatabase from "@/app/profile/FetchUpdateCartShippi
 
 export default function CountryDropDown() {
    const globalStore = useGlobalStore();
-   const userGeo = globalStore.userGeo;
    const jwtToken = globalStore.jwtToken;
    const userId = globalStore.userId;
    const cart = globalStore.cart;
@@ -84,17 +83,14 @@ export default function CountryDropDown() {
          <div className="grid grid-cols-3 gap-2">
             {countries.countries.country.map((country, key) => {
                return (
-                  <>
-                     <button
-                        className={`btn p-0 bg-white border-none text-black ${
-                           focusButton === country.countryCode ? "focus:bg-button-background" : ""
-                        }`}
-                        onClick={() => handleOnCountryClick(country)}
-                     >
-                        <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found" />
-                        {country.countryName}
-                     </button>
-                  </>
+                  <button
+                     key={key + key}
+                     className={`btn p-0 bg-white border-none text-black ${focusButton === country.countryCode ? "focus:bg-button-background" : ""}`}
+                     onClick={() => handleOnCountryClick(country)}
+                  >
+                     <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found" />
+                     {country.countryName}
+                  </button>
                );
             })}
          </div>

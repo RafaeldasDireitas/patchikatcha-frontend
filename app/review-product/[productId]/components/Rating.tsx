@@ -17,7 +17,7 @@ export default function Rating({ checkRating, isChecked }: any) {
                      : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
                }
                alt="No star found"
-            ></Image>
+            />
             <Image
                src={star}
                width={100}
@@ -29,7 +29,7 @@ export default function Rating({ checkRating, isChecked }: any) {
                      : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
                }
                alt="No star found"
-            ></Image>
+            />
             <Image
                src={star}
                width={100}
@@ -41,7 +41,7 @@ export default function Rating({ checkRating, isChecked }: any) {
                      : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
                }
                alt="No star found"
-            ></Image>
+            />
             <Image
                src={star}
                width={100}
@@ -53,7 +53,7 @@ export default function Rating({ checkRating, isChecked }: any) {
                      : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
                }
                alt="No star found"
-            ></Image>
+            />
             <Image
                src={star}
                width={100}
@@ -65,7 +65,7 @@ export default function Rating({ checkRating, isChecked }: any) {
                      : "opacity-50 hover:cursor-pointer hover:scale-110 duration-200"
                }
                alt="No star found"
-            ></Image>
+            />
          </div>
       </div>
    );

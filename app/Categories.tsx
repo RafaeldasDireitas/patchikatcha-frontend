@@ -55,12 +55,12 @@ export default function Categories() {
                               width={80}
                               height={80}
                               alt="No image found"
-                           ></Image>
+                           />
                            <h1 className="group-hover:opacity-0 lg:opacity-100 opacity-0">{category.name}</h1>
                         </div>
                      ) : (
                         <div className="btn flex flex-col m-1 w-60 h-56 bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
-                           <Image className="w-20 h-20" src={category.icon} width={80} height={80} alt="No image found"></Image>
+                           <Image className="w-20 h-20" src={category.icon} width={80} height={80} alt="No image found" />
                            <h1>{category.name}</h1>
                         </div>
                      )}

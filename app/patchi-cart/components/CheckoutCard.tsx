@@ -11,7 +11,7 @@ export default function CheckoutCard({ totalPrice, totalShipping }: any) {
       <div className="mx-auto w-96 bg-white shadow-lg rounded-xl lg:top-52 z-10">
          <div className="flex flex-col p-8">
             <div className="flex justify-center">
-               <Image src={turtle} width={150} height={150} alt="No image found"></Image>
+               <Image src={turtle} width={150} height={150} alt="No image found" />
             </div>
 
             <div className="flex flex-col">

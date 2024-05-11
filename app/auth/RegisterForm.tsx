@@ -102,7 +102,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    return (
       <div className="flex flex-row">
          <div className="lg:w-1/3 bg-body-background min-h-screen items-center lg:flex hidden justify-center">
-            <Image src={turtle} width={400} height={400} alt="No turtle found..."></Image>
+            <Image src={turtle} width={400} height={400} alt="No turtle found..." />
          </div>
 
          <div className="lg:w-2/3 w-full mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">

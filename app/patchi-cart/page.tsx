@@ -129,7 +129,7 @@ export default function PatchiCart() {
                      })
                   ) : (
                      <div>
-                        <h1 className="josefin-sans text-center lg:text-start">No products in your cart.</h1>
+                        <p className="text-center lg:text-start">No products in your cart.</p>
                      </div>
                   )}
                </div>

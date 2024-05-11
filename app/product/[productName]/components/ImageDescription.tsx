@@ -6,7 +6,7 @@ export default function ImageDescription({ product }: any) {
 
    return (
       <div className="flex flex-1 w-full justify-center">
-         <Image className="rounded-xl" src={lastImage.src} width={380} height={380} alt="No image found"></Image>
+         <Image className="rounded-xl max-h-[380px]" src={lastImage.src} width={380} height={380} alt="No image found" />
       </div>
    );
 }

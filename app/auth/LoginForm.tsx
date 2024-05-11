@@ -1,5 +1,5 @@
 import { useGlobalStore } from "@/zustand/globalstore";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import FetchLogin from "./FetchLogin";
 import star from "@/public/star.png";
 import Image from "next/image";
@@ -63,7 +63,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    return (
       <div className="flex flex-row">
          <div className="lg:w-1/3 bg-body-background min-h-screen items-center lg:flex hidden justify-center">
-            <Image src={star} width={300} height={300} alt="No turtle found..."></Image>
+            <Image src={star} width={300} height={300} alt="No turtle found..." />
          </div>
 
          <div className="lg:w-2/3 w-full mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
@@ -87,27 +87,29 @@ export default function LoginForm({ setIsLoginForm }: any) {
                   value={password}
                   id="password"
                />
-               <div className="flex flex-col items-end">
+               <div className="flex justify-end">
                   <button
-                     className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
+                     className="btn btn-circle w-1/2 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
                      onClick={authenticateUser}
                   >
                      Log in
                   </button>
                </div>
-               <div className="flex justify-center">
+
+               <div>
+                  <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(false)}>
+                     <span className="underline text-light hover:cursor-pointer">Sign up</span>
+                  </p>
+                  <p className="my-1 quicksand-medium">
+                     <span className="underline text-light hover:cursor-pointer">
+                        <Link href={"/auth/change-password-warning"}>Forgot password?</Link>
+                     </span>
+                  </p>
+               </div>
+
+               <div className="flex justify-center mt-4">
                   <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" />
                </div>
-               <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(false)}>
-                  Don't have an account yet? Sign up <span className="underline text-light hover:cursor-pointer">here</span>.
-               </p>
-               <p className="my-1 quicksand-medium">
-                  Forgot your password? Reset it{" "}
-                  <span className="underline text-light hover:cursor-pointer">
-                     <Link href={"/auth/change-password-warning"}>here</Link>
-                  </span>
-                  .
-               </p>
             </div>
          </div>
       </div>

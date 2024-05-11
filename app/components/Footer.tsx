@@ -12,7 +12,7 @@ export default function Footer() {
          <footer className="footer p-10 bg-button-background text-white">
             <aside>
                <div className="bg-white rounded-xl">
-                  <Image src={logo} width={200} height={200} alt="No logo found"></Image>
+                  <Image src={logo} width={200} height={200} alt="No logo found" />
                </div>
                <p className="quicksand-bold">Copyright © {currentYear} - All rights reserved</p>
             </aside>

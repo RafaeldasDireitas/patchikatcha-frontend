@@ -19,8 +19,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
          <Head>
             <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
          </Head>
-         <body className="min-h-screen container justify-between flex flex-col">
-            <Toaster expand visibleToasts={4} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }}></Toaster>
+         <body>
+            <Toaster expand visibleToasts={4} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }} />
             <Hydrate>{children}</Hydrate>
             <Footer />
          </body>

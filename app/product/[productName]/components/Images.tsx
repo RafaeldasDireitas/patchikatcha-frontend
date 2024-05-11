@@ -24,7 +24,7 @@ export default function Images({ product }: any) {
                      height={200}
                      alt="No image found"
                      onClick={() => changeMainImage(image.src)}
-                  ></Image>
+                  />
                );
             })}
          </div>
@@ -50,7 +50,7 @@ export default function Images({ product }: any) {
                      height={200}
                      alt="No image found"
                      onClick={() => changeMainImage(image.src)}
-                  ></Image>
+                  />
                );
             })}
          </div>

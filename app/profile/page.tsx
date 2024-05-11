@@ -115,9 +115,9 @@ export default function Profile() {
                   )}
                </div>
                <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
-                  <p className="quicksand-medium">You are currently in:&nbsp;</p>
-                  <p className="quicksand-medium">{findUserCountry && findUserCountry.countryName}</p>
-                  <Image className="mx-2" src={userCountryImage} width={30} height={30} alt="No country"></Image>
+                  <p>You are currently in:&nbsp;</p>
+                  <p>{findUserCountry && findUserCountry.countryName}</p>
+                  <Image className="mx-2" src={userCountryImage} width={30} height={30} alt="No country" />
                </div>
 
                <div className="mt-10">

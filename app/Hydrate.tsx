@@ -29,7 +29,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                <Navbar />
 
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
-               <main className="flex-grow">
+               <main>
                   <div className="gtranslate_wrapper"></div>
                   <Script
                      dangerouslySetInnerHTML={{
@@ -40,7 +40,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                   ></Script>
                   <Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer />
                   <Script src="https://www.google.com/recaptcha/api.js" async defer></Script>
-                  <div>{children}</div>
+                  <div className="flex-grow">{children}</div>
                </main>
             </>
          ) : (

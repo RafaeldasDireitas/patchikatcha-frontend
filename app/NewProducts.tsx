@@ -4,12 +4,10 @@ import FetchNewProducts from "@/app/FetchNewProducts";
 import Link from "next/link";
 import { NewProductsType } from "@/types/NewProductsType";
 import Skeleton from "./components/Skeleton";
-import Image from "next/image";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function NewProducts() {
    const [newProducts, setNewProducts] = useState<NewProductsType>();
-   const skeletons = 6;
    const productListRef: any = useRef(null);
 
    const scrollLeft = () => {
@@ -57,8 +55,8 @@ export default function NewProducts() {
                const productPrice = product.variants.find((variant) => variant.is_enabled === true);
 
                return (
-                  <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
-                     <ProductCard key={key} title={product.title} price={productPrice?.price} image={product.images[0].src}></ProductCard>
+                  <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
+                     <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src}></ProductCard>
                   </Link>
                );
             })}

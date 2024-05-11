@@ -16,41 +16,38 @@ export default function Wishlist() {
    const userId = globalStore.userId;
    const jwtToken = globalStore.jwtToken;
 
-   if (!userId && !jwtToken) {
-      return <IsNotAuthenticated />;
-   }
-
    useEffect(() => {
       if (userId && jwtToken) {
          FetchWishlist({ userId, jwtToken, setWishlist });
       }
    }, [userId, jwtToken]);
 
-   if (wishlist?.length === 0) {
+   if (!userId && !jwtToken) {
+      return <IsNotAuthenticated />;
+   }
+
+   if (!wishlist || wishlist.length === 0) {
       return (
-         <>
-            <div className="flex flex-col min-h-screen justify-center items-center">
-               <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />
-               <h1 className="text-2xl text-light font-bold">No items in your wishlist yet!</h1>
-            </div>
-         </>
+         <div className="flex flex-col min-h-screen justify-center items-center">
+            <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />
+            <h1 className="text-2xl text-light font-bold">No items in your wishlist yet!</h1>
+         </div>
       );
    }
 
    return (
       <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
-         {wishlist &&
-            wishlist.map((product, key) => {
-               const formattedTitle = decodeURIComponent(product.title);
+         {wishlist.map((product, key) => {
+            const formattedTitle = decodeURIComponent(product.title);
 
-               return (
-                  <div>
-                     <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                        <ProductCard title={formattedTitle} price={product.price} image={product.image}></ProductCard>
-                     </Link>
-                  </div>
-               );
-            })}
+            return (
+               <div key={key + key}>
+                  <Link href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+                     <ProductCard title={formattedTitle} price={product.price} image={product.image}></ProductCard>
+                  </Link>
+               </div>
+            );
+         })}
       </div>
    );
 }

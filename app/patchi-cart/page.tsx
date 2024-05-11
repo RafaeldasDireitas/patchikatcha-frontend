@@ -83,7 +83,7 @@ export default function PatchiCart() {
                   {cart.length !== 0 ? (
                      cart.map((product, key: number) => {
                         return (
-                           <div key={key}>
+                           <div key={key + key}>
                               <CartProductCard
                                  productId={product.product_id}
                                  image={product.image}

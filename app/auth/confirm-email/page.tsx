@@ -2,7 +2,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import FetchConfirmEmail from "./FetchConfirmEmail";
-import turtle from "@/public/turtle.png";
 import bear from "@/public/bear_icon.png";
 import Image from "next/image";
 import Link from "next/link";

@@ -7,7 +7,6 @@ import { categories } from "@/data/CategoriesObject";
 import Link from "next/link";
 import ProductCard from "@/app/components/ProductCard";
 import { ProductType } from "@/types/ProductType";
-import Loading from "@/app/components/Loading";
 import CategoryLoading from "./components/CategoryLoading";
 
 export default function CategoryName({ params }: any) {
@@ -48,12 +47,11 @@ export default function CategoryName({ params }: any) {
             <h1 className="quicksand-bold text-2xl text-light">{categoryName}</h1>
             <div className="lg:mt-20 mt-10">
                <h1 className="quicksand-bold text-xl text-dark">{categoryTitle}</h1>
-               {findContent &&
-                  findContent.content.map((content, key) => (
-                     <Link href={{ pathname: `/categories/${content}`, query: { title: categoryTitle } }} key={key}>
-                        <h2 className="mt-1 quicksand-medium text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
-                     </Link>
-                  ))}
+               {findContent?.content.map((content, key) => (
+                  <Link href={{ pathname: `/categories/${content}`, query: { title: categoryTitle } }} key={key + key}>
+                     <h2 className="mt-1 quicksand-medium text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
+                  </Link>
+               ))}
             </div>
             <div className="mt-10">
                <h1 className="quicksand-bold text-xl text-dark">Filter by</h1>

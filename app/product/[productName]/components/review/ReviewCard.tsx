@@ -8,7 +8,7 @@ export default function ReviewCard({ username, title, createdAt, comment, rating
          <div className="flex flex-col w-full bg-body-background p-4 rounded-xl">
             <div className="flex flex-row">
                {[...Array(rating)].map((_, key) => (
-                  <Image key={key} src={star} width={30} height={30} alt="Star" />
+                  <Image key={key + key} src={star} width={30} height={30} alt="Star" />
                ))}
             </div>
             <div className="flex flex-row">

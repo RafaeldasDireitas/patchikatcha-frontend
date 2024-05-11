@@ -18,7 +18,7 @@ export default function Images({ product }: any) {
                return (
                   <Image
                      className="hidden lg:block my-1 rounded-xl lg:hover:scale-105 hover:cursor-pointer duration-200"
-                     key={key}
+                     key={key + key}
                      src={image.src}
                      width={200}
                      height={200}
@@ -44,7 +44,7 @@ export default function Images({ product }: any) {
                return (
                   <Image
                      className="lg:hidden block my-1 rounded-xl lg:hover:scale-105 hover:cursor-pointer duration-200"
-                     key={key}
+                     key={key + key}
                      src={image.src}
                      width={200}
                      height={200}

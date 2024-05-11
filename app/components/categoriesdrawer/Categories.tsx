@@ -12,14 +12,14 @@ export default function Categories({ htmlFor, categories }: any) {
 
             {categories.map((category: CategoriesNavbarType, key: number) => {
                return (
-                  <div key={key}>
+                  <div key={key + key}>
                      <div className="collapse ">
                         <input type="radio" name="my-accordion-1" defaultChecked />
                         <div className="collapse-title text-xl quicksand-medium h-4">{category.title}</div>
                         <div className="collapse-content">
                            {category.content.map((content, key: number) => {
                               return (
-                                 <Link key={key} href={`${category.href[key]}?title=${category.title}`}>
+                                 <Link key={key + key} href={`${category.href[key]}?title=${category.title}`}>
                                     <p className="ml-6 my-1 quicksand-light">{content}</p>
                                  </Link>
                               );

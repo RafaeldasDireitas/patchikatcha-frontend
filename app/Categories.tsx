@@ -35,14 +35,14 @@ export default function Categories() {
          <div className="flex lg:flex-row flex-col gap-6 justify-center items-center my-8">
             {categories.map((category, key) => {
                return (
-                  <div key={key}>
+                  <div key={key + key}>
                      {category.content ? (
                         <div className="btn flex flex-col m-1 hover:cursor-default w-60 h-56 opacity-100 group bg-button-light-focus hover:bg-button-background rounded-xl text-black hover:text-white border-none hover:scale-110 duration-200">
                            <div className="absolute text-white lg:opacity-0 opacity-100 group-hover:opacity-100 group-hover:z-50">
                               <ul>
                                  {category.content.map((content, key) => {
                                     return (
-                                       <Link key={key} href={{ pathname: `/categories/${content.toLowerCase()}` }}>
+                                       <Link key={key + key} href={{ pathname: `/categories/${content.toLowerCase()}` }}>
                                           <li className="py-1 mx-2 hover:underline hover:cursor-pointer hover:scale-105 duration-200">{content}</li>
                                        </Link>
                                     );

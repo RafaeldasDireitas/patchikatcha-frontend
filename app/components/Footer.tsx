@@ -8,36 +8,34 @@ export default function Footer() {
    const currentYear = currentDate.getFullYear();
 
    return (
-      <>
-         <footer className="footer p-10 bg-button-background text-white">
-            <aside>
-               <div className="bg-white rounded-xl">
-                  <Image src={logo} width={200} height={200} alt="No logo found" />
-               </div>
-               <p className="quicksand-bold">Copyright © {currentYear} - All rights reserved</p>
-            </aside>
-            <nav>
-               <h6 className="footer-title opacity-100 z-0 quicksand-bold">Socials</h6>
-               <div className="flex flex-row items-center">
-                  <a className="link link-hover quicksand-medium">Instagram</a>
-                  <FaInstagram color="white" className="mx-2" size={20}></FaInstagram>
-               </div>
-            </nav>
-            <nav>
-               <h6 className="footer-title opacity-100 z-0 quicksand-bold">Company</h6>
-               <a className="link link-hover quicksand-medium">About us</a>
-               <a className="link link-hover quicksand-medium">Contacts</a>
-            </nav>
-            <nav>
-               <h6 className="footer-title opacity-100 z-0 quicksand-bold">Legal</h6>
-               <Link href={"/terms-and-services"}>
-                  <p className="link link-hover quicksand-medium">Terms and Services</p>
-               </Link>
-               <Link href={"/refund-policy"}>
-                  <p className="link link-hover quicksand-medium">Refund policy</p>
-               </Link>
-            </nav>
-         </footer>
-      </>
+      <footer className="footer p-10 bg-button-background text-white">
+         <aside>
+            <div className="bg-white rounded-xl">
+               <Image src={logo} width={200} height={200} alt="No logo found" />
+            </div>
+            <p className="quicksand-bold">Copyright © {currentYear} - All rights reserved</p>
+         </aside>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">Socials</h6>
+            <div className="flex flex-row items-center">
+               <a className="link link-hover quicksand-medium">Instagram</a>
+               <FaInstagram color="white" className="mx-2" size={20}></FaInstagram>
+            </div>
+         </nav>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">Company</h6>
+            <a className="link link-hover quicksand-medium">About us</a>
+            <a className="link link-hover quicksand-medium">Contacts</a>
+         </nav>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">Legal</h6>
+            <Link href={"/terms-and-services"}>
+               <p className="link link-hover quicksand-medium">Terms and Services</p>
+            </Link>
+            <Link href={"/refund-policy"}>
+               <p className="link link-hover quicksand-medium">Refund policy</p>
+            </Link>
+         </nav>
+      </footer>
    );
 }

@@ -33,7 +33,7 @@ export default function Review({ productId }: any) {
       <>
          <div className="flex flex-row justify-between mb-8">
             <div className="flex justify-start items-center">
-               {averageRating && [...Array(averageRating)].map((_, key) => <Image key={key} src={star} width={50} height={50} alt="Star" />)}
+               {averageRating && [...Array(averageRating)].map((_, key) => <Image key={key + key} src={star} width={50} height={50} alt="Star" />)}
                <h1 className="mx-5 quicksand-medium">{reviewsCount} Reviews</h1>
             </div>
 
@@ -50,7 +50,7 @@ export default function Review({ productId }: any) {
             {reviews.map((review, key) => {
                return (
                   <ReviewCard
-                     key={key}
+                     key={key + key}
                      username={review.username}
                      title={review.title}
                      createdAt={new Date(review.createdAt).toLocaleDateString()}

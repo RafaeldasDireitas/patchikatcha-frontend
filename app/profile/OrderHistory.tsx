@@ -15,7 +15,7 @@ export default function OrderHistory({ orders }: { orders: OrderType[] }) {
 
                return (
                   <>
-                     <div key={key}>
+                     <div key={key + key}>
                         <Order
                            printifyUrl={order.printify_connect.url}
                            orderId={order.id}

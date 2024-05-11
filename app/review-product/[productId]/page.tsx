@@ -10,7 +10,6 @@ import Comment from "./components/Comment";
 import { useGlobalStore } from "@/zustand/globalstore";
 import FetchCreateReview from "./FetchCreateReview";
 import IsNotAuthenticated from "@/app/components/IsNotAuthenticated";
-import { z } from "zod";
 import { reviewValidation } from "@/zod/zod";
 import { toast } from "sonner";
 
@@ -79,28 +78,23 @@ export default function ReviewProduct({ params }: any) {
    }
 
    return (
-      <>
-         <div className="lg:p-12 flex flex-col">
-            <h1 className="text-3xl text-dark josefin-sans">Write a review:</h1>
-            <div className="flex flex-row items-center my-2">
-               <Image src={product.images[0].src} width={100} height={100} alt="No image found" />
-               <h2 className="text-light">{product.title}</h2>
-            </div>
-            <hr />
-            <Rating checkRating={checkRating} isChecked={isChecked} />
-            <hr />
-            <AddATitle title={title} setTitle={setTitle} />
-            <hr />
-            <Comment comment={comment} setComment={setComment} />
-            <div className="flex justify-end my-2">
-               <button
-                  onClick={createReview}
-                  className="btn text-white bg-button-background hover:bg-button-focused border-none rounded-3xl my-2 w-40"
-               >
-                  Submit review!
-               </button>
-            </div>
+      <div className="lg:p-12 flex flex-col">
+         <h1 className="text-3xl text-dark josefin-sans">Write a review:</h1>
+         <div className="flex flex-row items-center my-2">
+            <Image src={product.images[0].src} width={100} height={100} alt="No image found" />
+            <h2 className="text-light">{product.title}</h2>
          </div>
-      </>
+         <hr />
+         <Rating checkRating={checkRating} isChecked={isChecked} />
+         <hr />
+         <AddATitle title={title} setTitle={setTitle} />
+         <hr />
+         <Comment comment={comment} setComment={setComment} />
+         <div className="flex justify-end my-2">
+            <button onClick={createReview} className="btn text-white bg-button-background hover:bg-button-focused border-none rounded-3xl my-2 w-40">
+               Submit review!
+            </button>
+         </div>
+      </div>
    );
 }

@@ -9,31 +9,30 @@ export default function Cart({ htmlFor }: any) {
 
    return (
       <div className="drawer-side z-50 right-0">
-         <label htmlFor={htmlFor} aria-label="close sidebar" className="drawer-overlay"></label>
+         <label htmlFor={htmlFor} aria-label="close sidebar" className="drawer-overlay" />
 
          <ul className="menu p-4 w-80 min-h-full bg-body-background">
             <div>
                <h1 className="text-3xl text-left text-dark quicksand-medium">Your cart:</h1>
             </div>
-            {cart &&
-               cart.map((product, index) => {
-                  return (
-                     <div key={index}>
-                        <CartProduct
-                           name={product.name}
-                           description={product.description}
-                           price={product.price}
-                           price_id={"aodjao"}
-                           image={product.image}
-                           size={product.size}
-                           color={product.color}
-                           quantity={product.quantity}
-                           index={product.index}
-                           product_id={product.product_id}
-                        ></CartProduct>
-                     </div>
-                  );
-               })}
+            {cart?.map((product, index) => {
+               return (
+                  <div key={index + index}>
+                     <CartProduct
+                        name={product.name}
+                        description={product.description}
+                        price={product.price}
+                        price_id={"aodjao"}
+                        image={product.image}
+                        size={product.size}
+                        color={product.color}
+                        quantity={product.quantity}
+                        index={product.index}
+                        product_id={product.product_id}
+                     />
+                  </div>
+               );
+            })}
             <div className="flex flex-col my-2">
                <hr></hr>
                <div className="flex flex-col items-center gap-y-3">

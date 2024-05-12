@@ -11,7 +11,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
-   const setCart = globalStore.setCart;
+   const userCountry = globalStore.userGeo.userCountry;
+
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [username, setUsername] = useState("");
@@ -20,6 +21,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    const [fetchEmailToken, setFetchEmailToken] = useState(false);
    const [emailToken, setEmailToken] = useState("");
    const [apiKey, setApiKey] = useState("");
+   const [isRegistering, setIsRegistering] = useState(false);
 
    const usernameHandler = (e: any) => {
       const username = e.target.value;
@@ -51,7 +53,8 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       email: email,
       password: password,
       confirmPassword: confirmPassword,
-      apiKey: apiKey
+      apiKey: apiKey,
+      userCountry: userCountry
    };
 
    const emailData = {
@@ -69,7 +72,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
          return;
       }
 
-      await FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setCart });
+      await FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setIsRegistering });
 
       //the rest of the code is in the useEffect if you need to debug this
    };
@@ -148,7 +151,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                      className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
                      onClick={createUserAccount}
                   >
-                     Sign up
+                     {isRegistering ? <span className="loading loading-spinner text-error"></span> : "Sign up"}
                   </button>
                </div>
                <div className="flex justify-center">

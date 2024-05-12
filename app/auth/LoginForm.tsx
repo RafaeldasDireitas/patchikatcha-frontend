@@ -14,6 +14,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [apiKey, setApiKey] = useState("");
+   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
    const setUserId = globalStore.setUserId;
    const setJwtToken = globalStore.setJwtToken;
@@ -57,7 +58,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
          return;
       }
 
-      await FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry });
+      await FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry, setIsLoggingIn });
    };
 
    return (
@@ -92,7 +93,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                      className="btn btn-circle w-1/2 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
                      onClick={authenticateUser}
                   >
-                     Log in
+                     {isLoggingIn ? <span className="loading loading-spinner text-error"></span> : "Log in"}
                   </button>
                </div>
 

@@ -2,7 +2,6 @@ import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 import { CartType } from "@/types/CartType";
 import { LoginType } from "@/types/LoginType";
-import { VerificationResponse } from "@/types/VerificationResponse";
 
 export default async function FetchLogin({
    userData,
@@ -12,7 +11,8 @@ export default async function FetchLogin({
    setUserEmail,
    setCart,
    userCart,
-   userCountry
+   userCountry,
+   setIsLoggingIn
 }: any) {
    const createUser = await fetch(endpoints.url + endpoints.login, {
       method: "POST",
@@ -28,6 +28,7 @@ export default async function FetchLogin({
    }
 
    if (createUser.ok) {
+      setIsLoggingIn(true);
       const responseData: LoginType = await createUser.json();
 
       const cart: any = [];

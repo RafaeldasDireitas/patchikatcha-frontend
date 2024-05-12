@@ -1,7 +1,7 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 
-export default async function FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setCart }: any) {
+export default async function FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setIsRegistering }: any) {
    const createUser = await fetch(endpoints.url + endpoints.register, {
       method: "POST",
       headers: {
@@ -16,7 +16,7 @@ export default async function FetchRegister({ userData, setRedirectToVerifyEmail
    }
 
    if (createUser.ok) {
-      setCart(null);
+      setIsRegistering(true);
       setFetchEmailToken(true);
       setRedirectToVerifyEmail(true);
    }

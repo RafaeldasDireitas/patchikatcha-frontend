@@ -8,6 +8,7 @@ import Categories from "./categoriesdrawer/Categories";
 import { IoCartOutline, IoHeartOutline, IoMenuOutline } from "react-icons/io5";
 import { AiOutlineUser } from "react-icons/ai";
 import { categories } from "../../data/CategoriesObject";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Navbar() {
    const globalStore = useGlobalStore();
@@ -21,16 +22,14 @@ export default function Navbar() {
       <>
          <nav className="flex flex-row justify-between h-20 max-h-20 relative" aria-label="primary">
             <div className="lg:mx-10 flex justify-start items-center">
-               <div>
-                  <input id="my-drawer-3" type="checkbox" className="drawer-toggle absolute" />
-                  {/* Page content here */}
-                  <label htmlFor="my-drawer-3">
+               <Sheet>
+                  <SheetTrigger>
                      <div>
                         <IoMenuOutline color="brown" size={30} className="lg:hidden block ml-4" />
                      </div>
-                  </label>
+                  </SheetTrigger>
                   <Categories htmlFor="my-drawer-3" categories={categories} />
-               </div>
+               </Sheet>
 
                <Link href={"/"} className="hover:scale-110 hover:cursor-pointer duration-200">
                   <Image src={logo} width={180} height={180} alt="Patchi" className="mt-2" />
@@ -42,19 +41,20 @@ export default function Navbar() {
                      <IoHeartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
                   </div>
                </Link>
-               <div className="drawer-end">
-                  <input id="my-drawer-4" type="checkbox" className="drawer-toggle absolute" />
-                  {/* Page content here */}
-                  <label htmlFor="my-drawer-4">
-                     <div className="relative">
-                        <IoCartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
-                        <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
-                           {cartQuantity}
-                        </h1>
+               <Sheet>
+                  <SheetTrigger>
+                     <div>
+                        <div className="relative">
+                           <IoCartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
+                           <h1 className="absolute text-xs left-6 top-3 bg-button-background hover:bg-button-background btn btn-circle border-none w-4 min-h-0 max-h-5 text-white rounded">
+                              {cartQuantity}
+                           </h1>
+                        </div>
                      </div>
-                  </label>
-                  <Cart htmlFor="my-drawer-4"></Cart>
-               </div>
+                  </SheetTrigger>
+                  <Cart />
+               </Sheet>
+
                {globalStore.isAuthenticated ? (
                   <Link href={"/profile"}>
                      <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200 relative">

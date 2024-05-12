@@ -2,6 +2,7 @@
 import { ProductsData } from "@/data/ProductsData";
 import Image from "next/image";
 import Link from "next/link";
+import { SheetClose } from "@/components/ui/sheet";
 
 export default function CartProduct({ name, description, price, price_id, quantity, image, index, product_id, size, color }: any) {
    const formattedPrice = (price / 100).toFixed(2) + " €";
@@ -11,14 +12,13 @@ export default function CartProduct({ name, description, price, price_id, quanti
    return (
       <div className="flex flex-row p-1 py-8">
          <div className="flex flex-col relative">
-            <input id={`product-${index}`} type="checkbox" className="drawer-toggle absolute" />
-            <label htmlFor={`product-${index}`}>
-               <Link href={{ pathname: `/product/${name}`, query: { productId: product_id } }}>
+            <Link href={{ pathname: `/product/${name}`, query: { productId: product_id } }}>
+               <SheetClose>
                   <Image className="rounded-xl hover:scale-110 duration-200" src={image} width={100} height={100} alt="Product image" />
-               </Link>
-            </label>
+               </SheetClose>
+            </Link>
          </div>
-         <div className="flex flex-col px-2">
+         <div className="flex flex-col px-2 text-start">
             <h1 className="text-lg text-light quicksand-semibold">{name}</h1>
             <p>Price: {formattedPrice}</p>
             <p>Quantity: {quantity}</p>

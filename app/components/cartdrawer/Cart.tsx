@@ -16,7 +16,7 @@ export default function Cart() {
             </SheetTitle>
             <SheetDescription>
                <div>
-                  <ul className="min-h-full bg-body-background">
+                  <ul className="min-h-full max-h-[450px] overflow-y-auto bg-body-background">
                      {cart?.map((product, index) => {
                         return (
                            <div key={index + index}>
@@ -35,27 +35,27 @@ export default function Cart() {
                            </div>
                         );
                      })}
-
-                     <div className="flex flex-col my-2">
-                        <hr></hr>
-                        <div className="flex flex-col items-center gap-y-3">
-                           <Link href={"/patchi-cart"}>
-                              <SheetClose>
-                                 <button className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
-                                    View Cart
-                                 </button>
-                              </SheetClose>
-                           </Link>
-                           <Link href={"/checkout"}>
-                              <SheetClose>
-                                 <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
-                                    Checkout
-                                 </button>
-                              </SheetClose>
-                           </Link>
-                        </div>
-                     </div>
                   </ul>
+
+                  <div className="flex flex-col my-2">
+                     <hr></hr>
+                     <div className="flex flex-col items-center gap-y-3">
+                        <Link href={"/patchi-cart"}>
+                           <SheetClose>
+                              <button className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                                 View Cart
+                              </button>
+                           </SheetClose>
+                        </Link>
+                        <Link href={"/checkout"}>
+                           <SheetClose>
+                              <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                                 Checkout
+                              </button>
+                           </SheetClose>
+                        </Link>
+                     </div>
+                  </div>
                </div>
             </SheetDescription>
          </SheetHeader>

@@ -98,10 +98,10 @@ export default function LoginForm({ setIsLoginForm }: any) {
 
                <div>
                   <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(false)}>
-                     <span className="underline text-light hover:cursor-pointer">Sign up</span>
+                     <span className="text-black hover:underline hover:text-light hover:cursor-pointer">Sign up</span>
                   </p>
                   <p className="my-1 quicksand-medium">
-                     <span className="underline text-light hover:cursor-pointer">
+                     <span className="text-black hover:underline hover:text-light hover:cursor-pointer">
                         <Link href={"/auth/change-password-warning"}>Forgot password?</Link>
                      </span>
                   </p>

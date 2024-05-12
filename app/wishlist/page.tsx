@@ -28,7 +28,11 @@ export default function Wishlist() {
       return <IsNotAuthenticated />;
    }
 
-   if (!wishlist || wishlist.length === 0) {
+   if (!wishlist) {
+      return <IsNotAuthenticated />;
+   }
+
+   if (wishlist.length === 0) {
       return (
          <div className="flex flex-col min-h-screen justify-center items-center">
             <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />

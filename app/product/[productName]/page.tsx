@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FetchGrabProduct from "./FetchGrabProduct";
 import { useGlobalStore } from "@/zustand/globalstore";
-import Loading from "@/app/components/Loading";
 import { toast } from "sonner";
 import Sizes from "./components/Sizes";
 import Title from "./components/Title";
@@ -25,7 +24,7 @@ import Breadcrumb from "@/app/components/Breadcrumb";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
-   const [addedToCart, setAddedToCart] = useState<boolean>(false);
+   const [addedToCart, setAddedToCart] = useState<string>("Add to cart");
    const [quantity, setQuantity] = useState<number>(1);
    const [sizeId, setSizeId] = useState<number>(0);
    const [colorId, setColorId] = useState<number>(0);
@@ -60,7 +59,7 @@ export default function ProductName({ params }: any) {
       return <ProductLoading />;
    }
 
-   const findCountryShippingRate = shippingRate && shippingRate.profiles.find((profile) => profile.countries.includes(userCountry));
+   const findCountryShippingRate = shippingRate?.profiles.find((profile) => profile.countries.includes(userCountry));
 
    shippingRate?.profiles.map((profile) => shippingCosts.push(profile.first_item.cost)); //grab shipping prices
 
@@ -82,63 +81,66 @@ export default function ProductName({ params }: any) {
       variantId = matchingVariant.id;
    }
 
-   const addToCart = async () => {
-      if (!findCountryShippingRate) {
-         toast.error("You clicked too fast, try again!");
-      } else {
-         setAddedToCart(true);
-         const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
-         const priceId = await grabPriceId.text();
-         const findCart = globalStore.cart.find((cart) => cart.name === product.title && cart.size === sizeId && cart.color === colorId);
+   const addToCart = () => {
+      setAddedToCart("Adding to cart...");
 
-         if (basePrice && !findCart) {
-            globalStore.setCart({
-               name: product.title,
-               description: product.description,
-               base_price: Math.trunc(basePrice),
-               price: Math.trunc(basePrice * quantity),
-               price_id: priceId,
-               image: product?.images[0].src,
-               quantity: quantity,
-               size: sizeId,
-               color: colorId,
-               product_id: productId,
-               variant_id: variantId ?? 0,
-               first_item: findCountryShippingRate.first_item.cost,
-               additional_items: findCountryShippingRate.additional_items.cost,
-               blueprint_id: product.blueprint_id,
-               print_provider_id: product.print_provider_id
-            });
+      setTimeout(async () => {
+         if (findCountryShippingRate) {
+            setAddedToCart("Added to cart!");
+            const grabPriceId = await fetch(endpoints.url + endpoints.grabPriceId(productId)); //no need to make a separate file for this
+            const priceId = await grabPriceId.text();
+            const findCart = globalStore.cart.find((cart) => cart.name === product.title && cart.size === sizeId && cart.color === colorId);
 
-            if (globalStore.userId && globalStore.jwtToken) {
-               const userId = globalStore.userId;
-
-               const cart = {
+            if (basePrice && !findCart) {
+               globalStore.setCart({
                   name: product.title,
                   description: product.description,
-                  basePrice: Math.trunc(basePrice),
+                  base_price: Math.trunc(basePrice),
                   price: Math.trunc(basePrice * quantity),
-                  priceId: priceId,
+                  price_id: priceId,
                   image: product?.images[0].src,
                   quantity: quantity,
                   size: sizeId,
                   color: colorId,
-                  productId: productId,
-                  variantId: variantId ?? 0,
-                  firstItem: findCountryShippingRate.first_item.cost,
-                  additionalItems: findCountryShippingRate.additional_items.cost,
-                  blueprintId: product.blueprint_id,
-                  printProviderId: product.print_provider_id
-               };
+                  product_id: productId,
+                  variant_id: variantId ?? 0,
+                  first_item: findCountryShippingRate.first_item.cost,
+                  additional_items: findCountryShippingRate.additional_items.cost,
+                  blueprint_id: product.blueprint_id,
+                  print_provider_id: product.print_provider_id
+               });
 
-               FetchCreateCart({ userId, jwtToken, cart });
+               if (globalStore.userId && globalStore.jwtToken) {
+                  const userId = globalStore.userId;
+
+                  const cart = {
+                     name: product.title,
+                     description: product.description,
+                     basePrice: Math.trunc(basePrice),
+                     price: Math.trunc(basePrice * quantity),
+                     priceId: priceId,
+                     image: product?.images[0].src,
+                     quantity: quantity,
+                     size: sizeId,
+                     color: colorId,
+                     productId: productId,
+                     variantId: variantId ?? 0,
+                     firstItem: findCountryShippingRate.first_item.cost,
+                     additionalItems: findCountryShippingRate.additional_items.cost,
+                     blueprintId: product.blueprint_id,
+                     printProviderId: product.print_provider_id
+                  };
+
+                  FetchCreateCart({ userId, jwtToken, cart });
+               }
+
+               toast.success("Added to cart!");
+            } else {
+               toast.error("Item already added to cart");
+               setAddedToCart("Added to cart!");
             }
-
-            toast.success("Added to cart!");
-         } else {
-            toast.error("Item already added to cart");
          }
-      }
+      }, 2000); // Run after 2 seconds
    };
 
    const links = ["Home", "Product", `${decodedProductName}`];

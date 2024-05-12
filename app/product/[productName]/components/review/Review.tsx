@@ -61,15 +61,17 @@ export default function Review({ productId }: any) {
             })}
          </div>
 
-         <div className="flex justify-center mt-4">
-            <button
-               disabled={isButtonDisabled}
-               onClick={loadAlLReviews}
-               className="btn btn-circle text-white bg-button-background hover:bg-button-focused border-none my-2 w-40"
-            >
-               Load more
-            </button>
-         </div>
+         {reviewsCount !== 0 && (
+            <div className="flex justify-center mt-4">
+               <button
+                  disabled={isButtonDisabled}
+                  onClick={loadAlLReviews}
+                  className="btn btn-circle disabled:text-black disabled:bg-gray-300 text-white bg-button-background hover:bg-button-focused border-none my-2 w-40"
+               >
+                  Load more
+               </button>
+            </div>
+         )}
       </>
    );
 }

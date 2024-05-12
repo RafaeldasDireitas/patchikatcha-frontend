@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
    return (
-      <html lang="en" className="bg-white text-black">
+      <html lang="en" className="bg-white text-black" suppressHydrationWarning>
          <Head>
             <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
          </Head>

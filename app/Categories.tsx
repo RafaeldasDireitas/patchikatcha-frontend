@@ -30,7 +30,7 @@ export default function Categories() {
    return (
       <>
          <div className="flex justify-center">
-            <h1 className="text-3xl lg:text-start text-center text-dark font-bold yeseva-one-regular">Our Categories:</h1>
+            <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Our Categories:</h1>
          </div>
          <div className="flex lg:flex-row flex-col gap-6 justify-center items-center my-8">
             {categories.map((category, key) => {

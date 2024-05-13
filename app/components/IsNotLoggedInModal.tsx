@@ -13,7 +13,7 @@ export default function IsNotLoggedInModal() {
    return (
       <AlertDialogContent>
          <AlertDialogHeader>
-            <AlertDialogTitle>Authentication required</AlertDialogTitle>
+            <AlertDialogTitle className="text-light">Authentication required</AlertDialogTitle>
             <AlertDialogDescription>To proceed to this page, please authenticate your account.</AlertDialogDescription>
          </AlertDialogHeader>
          <AlertDialogFooter>

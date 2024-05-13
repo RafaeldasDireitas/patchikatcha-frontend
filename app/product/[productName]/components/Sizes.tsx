@@ -32,8 +32,8 @@ export default function Sizes({ setSizeId, productVariants }: any) {
                         <button
                            className={`btn ml-1 my-1 w-16 quicksand-light ${
                               sizeId === isFocused
-                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 quicksand-light border-border-light hover:bg-transparent hover:border-border-light"
-                                 : "bg-transparent hover:bg-button-background hover:border-border-light border-border-light border-1 min-h-10 h-10 quicksand-light text-black"
+                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 quicksand-light hover:bg-button-light-focus border-border-light hover:border-border-light"
+                                 : "bg-transparent hover:bg-transparent border-border-light hover:border-border-light border-1 min-h-10 h-10 quicksand-light text-black"
                            }`}
                            key={sizeId}
                            onClick={() => handleSizeClick(sizeId)}

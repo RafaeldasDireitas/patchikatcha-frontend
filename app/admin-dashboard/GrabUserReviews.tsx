@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import FetchUserReviews from "../FetchUserReviews";
+import FetchUserReviews from "./FetchUserReviews";
 import { ReviewType } from "@/types/ReviewType";
 
 export default function GrabUserReviews() {
@@ -34,25 +34,23 @@ export default function GrabUserReviews() {
             Find reviews
          </button>
          {hasReviews && (
-            <table className="table-auto table-lg">
+            <table className="table-auto table-lg border">
                <thead>
-                  <tr>
-                     <th>Id</th>
-                     <th>Review Title</th>
-                     <th>Comment</th>
-                     <th>Rating</th>
-                     <th>Created At</th>
-                     <th>Username</th>
+                  <tr className="border">
+                     <th className="border">Id</th>
+                     <th className="border">Review Title</th>
+                     <th className="border">Comment</th>
+                     <th className="border">Rating</th>
+                     <th className="border">Created At</th>
                   </tr>
                </thead>
                <tbody>
                   {userReviews?.map((userReview) => (
-                     <tr>
-                        <td>{userReview.id}</td>
-                        <td>{userReview.title}</td>
-                        <td dangerouslySetInnerHTML={{ __html: userReview.comment }}></td> <td>{userReview.rating}</td>
-                        <td>{new Date(userReview.createdAt).toLocaleDateString()}</td>
-                        <td>{userReview.username}</td>
+                     <tr className="border">
+                        <td className="border">{userReview.id}</td>
+                        <td className="border">{userReview.title}</td>
+                        <td className="border" dangerouslySetInnerHTML={{ __html: userReview.comment }}></td> <td>{userReview.rating}</td>
+                        <td className="border">{new Date(userReview.createdAt).toLocaleDateString()}</td>
                      </tr>
                   ))}
                </tbody>

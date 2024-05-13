@@ -1,7 +1,7 @@
 "use client";
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useState } from "react";
-import FetchPublishProduct from "../FetchPublishProduct";
+import FetchPublishProduct from "./FetchPublishProduct";
 
 export default function PublishProduct() {
    const [productId, setProductId] = useState("");

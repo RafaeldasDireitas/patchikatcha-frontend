@@ -3,8 +3,8 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { FetchVerifyUserRole } from "./FetchVerifyUserRole";
-import PublishProduct from "./components/PublishProduct";
-import GrabUserReviews from "./components/GrabUserReviews";
+import PublishProduct from "./PublishProduct";
+import GrabUserReviews from "./GrabUserReviews";
 
 export default function AdminDashboard() {
    const [isAuthorized, setIsAuthorized] = useState(false);

@@ -9,17 +9,7 @@ import { IoCartOutline, IoHeartOutline, IoMenuOutline } from "react-icons/io5";
 import { AiOutlineUser } from "react-icons/ai";
 import { categories } from "../../data/CategoriesObject";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
-import {
-   AlertDialog,
-   AlertDialogAction,
-   AlertDialogCancel,
-   AlertDialogContent,
-   AlertDialogDescription,
-   AlertDialogFooter,
-   AlertDialogHeader,
-   AlertDialogTitle,
-   AlertDialogTrigger
-} from "@/components/ui/alert-dialog";
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import IsNotLoggedInModal from "./IsNotLoggedInModal";
 
 export default function Navbar() {
@@ -43,7 +33,7 @@ export default function Navbar() {
                         <IoMenuOutline color="brown" size={30} className="lg:hidden block ml-4" />
                      </div>
                   </SheetTrigger>
-                  <Categories htmlFor="my-drawer-3" categories={categories} />
+                  <Categories categories={categories} />
                </Sheet>
 
                <Link href={"/"} className="hover:scale-110 hover:cursor-pointer duration-200">
@@ -51,6 +41,11 @@ export default function Navbar() {
                </Link>
             </div>
             <div className="lg:mx-10 flex justify-end items-center">
+               <input
+                  type="text"
+                  placeholder="Search"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] h-10 w-full bg-white quicksand-light"
+               />{" "}
                {!isAuthenticated || !jwtToken || !userId ? (
                   <AlertDialog>
                      <AlertDialogTrigger>
@@ -67,7 +62,6 @@ export default function Navbar() {
                      </div>
                   </Link>
                )}
-
                <Sheet>
                   <SheetTrigger>
                      <div>

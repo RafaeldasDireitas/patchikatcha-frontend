@@ -27,8 +27,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   unstyled: true,
                   classNames: {
                      success:
-                        "bg-button-background w-auto text-white rounded-xl shadow-xl drop-shadow-xl flex flex-row items-center justify-center lg:justify-center text-center lg:text-start p-3",
-                     error: "bg-red-800 w-auto text-white rounded-xl shadow-xl drop-shadow-xl flex flex-row items-center justify-center lg:justify-center text-center lg:text-start p-3"
+                        "bg-button-background w-auto text-white quicksand-semibold rounded-xl shadow-xl drop-shadow-xl flex flex-row items-center justify-center lg:justify-center text-center lg:text-start p-3",
+                     error: "bg-red-800 w-auto text-white quicksand-semibold rounded-xl shadow-xl drop-shadow-xl flex flex-row items-center justify-center lg:justify-center text-center lg:text-start p-3"
                   }
                }}
                position="bottom-left"

@@ -93,6 +93,22 @@
    }
 }
 
+::-webkit-scrollbar {
+   width: 4px;
+}
+
+::-webkit-scrollbar-track {
+   background: #41080e;
+}
+
+::-webkit-scrollbar-thumb {
+   background: #bc6c25;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background: #41080e;
+}
+
 .bg-hero-section-image {
    background-image: url("/hero_banner.jpg");
 }

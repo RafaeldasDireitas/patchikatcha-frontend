@@ -17,6 +17,8 @@ import { BiSolidCheckCircle, BiSolidXCircle } from "react-icons/bi";
 import countries from "@/data/countries.json";
 import Image from "next/image";
 import ProfileLoading from "./components/ProfileLoading";
+import DeleteAccountModal from "./components/DeleteAccountModal";
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 
 export default function Profile() {
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
@@ -26,7 +28,6 @@ export default function Profile() {
    const [isEmailConfirmed, setIsEmailConfirmed] = useState(false);
 
    const [isOrderHistory, setIsOrderHistory] = useState<boolean>(true);
-   const [isDeleteAccount, setIsDeleteAccount] = useState<boolean>(false);
 
    const globalStore = useGlobalStore();
    const setIsAuthenticated = globalStore.setIsAuthenticated;
@@ -55,10 +56,8 @@ export default function Profile() {
    const handleProfilePages = (page: string) => {
       if (page === "orderHistory") {
          setIsOrderHistory(true);
-         setIsDeleteAccount(false);
       } else if (page === "deleteAccount") {
-         setIsOrderHistory(false);
-         setIsDeleteAccount(true);
+         setIsOrderHistory(true);
       }
    };
 
@@ -162,22 +161,17 @@ export default function Profile() {
                   </button>
                </Link>
 
-               <button
-                  onClick={() => handleProfilePages("deleteAccount")}
-                  className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64"
-               >
-                  Delete Account
-               </button>
+               <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                     <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                        Delete Account
+                     </button>
+                  </AlertDialogTrigger>
+                  <DeleteAccountModal />
+               </AlertDialog>
             </div>
          </div>
-         <div className="lg:w-2/3">
-            {isOrderHistory && <OrderHistory orders={orders} />}
-            {isDeleteAccount && (
-               <div>
-                  <h1>delete account</h1>
-               </div>
-            )}
-         </div>
+         <div className="lg:w-2/3">{isOrderHistory && <OrderHistory orders={orders} />}</div>
       </div>
    );
 }

@@ -4,6 +4,10 @@ import cloud from "@/public/cloud.png";
 import { useEffect, useState } from "react";
 import FetchEmailVerification from "../FetchEmailVerification";
 import FetchEmailToken from "../FetchEmailToken";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import SendEmailModal from "./SendEmailModal";
 
 export default function VerifyEmail() {
    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -15,16 +19,6 @@ export default function VerifyEmail() {
       email: userEmail
    };
 
-   const emailHandler = (e: any) => {
-      const userEmail = e.target.value;
-      setUserEmail(userEmail);
-   };
-
-   const handleSendVerificationEmail = async () => {
-      setIsButtonDisabled(true);
-      FetchEmailToken({ email: userEmail, setEmailToken });
-   };
-
    useEffect(() => {
       if (emailToken) {
          FetchEmailVerification(emailData);
@@ -32,28 +26,25 @@ export default function VerifyEmail() {
    }, [emailToken]);
 
    return (
-      <div className="flex flex-col min-h-screen items-center justify-center gap-4">
+      <div className="flex flex-col min-h-screen items-center text-center justify-center gap-4">
          <Image src={cloud} width={400} height={400} alt="No turtle found" />
          <h1 className="text-2xl text-light quicksand-bold">Please verify your email!</h1>
          <p>We sent a link to your email. Please note this might take a few minutes.</p>
-         <p>
-            Didn’t receive your link? <span className="text-light">Type it again to retry!</span>
-         </p>
-         <input
-            type="text"
-            placeholder="example@email.com"
-            className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] w-full bg-white quicksand-light"
-            id="email"
-            onChange={emailHandler}
-            value={userEmail}
-         />
-         <button
-            className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white border-none"
-            onClick={handleSendVerificationEmail}
-            disabled={isButtonDisabled}
-         >
-            Submit
-         </button>
+
+         <Dialog>
+            <DialogTrigger asChild>
+               <p>
+                  Didn’t receive your link? <span className="text-light hover:cursor-pointer hover:underline">Click here to retry!</span>
+               </p>
+            </DialogTrigger>
+            <SendEmailModal
+               setUserEmail={setUserEmail}
+               setEmailToken={setEmailToken}
+               setIsButtonDisabled={setIsButtonDisabled}
+               userEmail={userEmail}
+               isButtonDisabled={isButtonDisabled}
+            />
+         </Dialog>
       </div>
    );
 }

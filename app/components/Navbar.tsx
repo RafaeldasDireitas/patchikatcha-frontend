@@ -8,11 +8,26 @@ import Categories from "./categoriesdrawer/Categories";
 import { IoCartOutline, IoHeartOutline, IoMenuOutline } from "react-icons/io5";
 import { AiOutlineUser } from "react-icons/ai";
 import { categories } from "../../data/CategoriesObject";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import {
+   AlertDialog,
+   AlertDialogAction,
+   AlertDialogCancel,
+   AlertDialogContent,
+   AlertDialogDescription,
+   AlertDialogFooter,
+   AlertDialogHeader,
+   AlertDialogTitle,
+   AlertDialogTrigger
+} from "@/components/ui/alert-dialog";
+import IsNotLoggedInModal from "./IsNotLoggedInModal";
 
 export default function Navbar() {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
+   const jwtToken = globalStore.jwtToken;
+   const userId = globalStore.userId;
+   const isAuthenticated = globalStore.isAuthenticated;
 
    const cartQuantity = cart.reduce((accumulator, currentProduct) => {
       return accumulator + currentProduct.quantity;
@@ -36,11 +51,23 @@ export default function Navbar() {
                </Link>
             </div>
             <div className="lg:mx-10 flex justify-end items-center">
-               <Link href={"/wishlist"}>
-                  <div>
-                     <IoHeartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
-                  </div>
-               </Link>
+               {!isAuthenticated || !jwtToken || !userId ? (
+                  <AlertDialog>
+                     <AlertDialogTrigger>
+                        <div>
+                           <IoHeartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
+                        </div>
+                     </AlertDialogTrigger>
+                     <IsNotLoggedInModal />
+                  </AlertDialog>
+               ) : (
+                  <Link href={"/wishlist"}>
+                     <div>
+                        <IoHeartOutline size={25} className="mx-2 text-dark hover:cursor-pointer hover:scale-110 duration-200" />
+                     </div>
+                  </Link>
+               )}
+
                <Sheet>
                   <SheetTrigger>
                      <div>
@@ -54,7 +81,6 @@ export default function Navbar() {
                   </SheetTrigger>
                   <Cart />
                </Sheet>
-
                {globalStore.isAuthenticated ? (
                   <Link href={"/profile"}>
                      <div className="mx-2 hover:cursor-pointer hover:scale-105 duration-200 relative">

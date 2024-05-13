@@ -20,7 +20,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
          </Head>
          <body>
-            <Toaster expand visibleToasts={4} toastOptions={{ style: { backgroundColor: "#BC6C25", color: "white" } }} />
+            <Toaster
+               expand
+               visibleToasts={4}
+               toastOptions={{
+                  unstyled: true,
+                  classNames: {
+                     success:
+                        "bg-button-background w-auto text-white rounded-xl shadow-xl drop-shadow-xl flex flex-row items-center justify-center lg:justify-center text-center lg:text-start p-3",
+                     error: "bg-red-800 w-auto text-white rounded-xl shadow-xl drop-shadow-xl flex flex-row items-center justify-center lg:justify-center text-center lg:text-start p-3"
+                  }
+               }}
+               position="bottom-left"
+            />
             <Hydrate>{children}</Hydrate>
             <Footer />
          </body>

@@ -1,8 +1,17 @@
+"use client";
 import Image from "next/image";
 import turtle from "@/public/turtle.png";
 import Link from "next/link";
+import { useGlobalStore } from "@/zustand/globalstore";
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import IsNotLoggedInModal from "@/app/components/IsNotLoggedInModal";
 
 export default function CheckoutCard({ totalPrice, totalShipping }: any) {
+   const globalStore = useGlobalStore();
+   const jwtToken = globalStore.jwtToken;
+   const userId = globalStore.userId;
+   const isAuthenticated = globalStore.isAuthenticated;
+
    const formattedPrice = (totalPrice / 100).toFixed(2) + " €";
    const formattedShipping = (totalShipping / 100).toFixed(2) + " €";
    const total = ((totalPrice + totalShipping) / 100).toFixed(2) + " €";
@@ -33,11 +42,22 @@ export default function CheckoutCard({ totalPrice, totalShipping }: any) {
                   <h1 className="text-end">{total}</h1>
                </div>
                <div className="flex justify-center mt-2">
-                  <Link href={"/checkout"}>
-                     <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white quicksand-semibold">
-                        Checkout
-                     </button>
-                  </Link>
+                  {!isAuthenticated || !jwtToken || !userId ? (
+                     <AlertDialog>
+                        <AlertDialogTrigger>
+                           <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white quicksand-semibold">
+                              Checkout
+                           </button>
+                        </AlertDialogTrigger>
+                        <IsNotLoggedInModal />
+                     </AlertDialog>
+                  ) : (
+                     <Link href={"/checkout"}>
+                        <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white quicksand-semibold">
+                           Checkout
+                        </button>
+                     </Link>
+                  )}
                </div>
             </div>
          </div>

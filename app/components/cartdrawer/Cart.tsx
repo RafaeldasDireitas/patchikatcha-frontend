@@ -3,10 +3,15 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import CartProduct from "./CartProduct";
 import Link from "next/link";
 import { SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import IsNotLoggedInModal from "../IsNotLoggedInModal";
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 
 export default function Cart() {
    const globalStore = useGlobalStore();
    const cart = globalStore.cart;
+   const jwtToken = globalStore.jwtToken;
+   const userId = globalStore.userId;
+   const isAuthenticated = globalStore.isAuthenticated;
 
    return (
       <SheetContent side="right" className="bg-body-background lg:w-[370px] w-[300px]">
@@ -47,13 +52,24 @@ export default function Cart() {
                               </button>
                            </SheetClose>
                         </Link>
-                        <Link href={"/checkout"}>
-                           <SheetClose>
-                              <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
-                                 Checkout
-                              </button>
-                           </SheetClose>
-                        </Link>
+                        {!isAuthenticated || !jwtToken || !userId ? (
+                           <AlertDialog>
+                              <AlertDialogTrigger>
+                                 <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                                    Checkout
+                                 </button>
+                              </AlertDialogTrigger>
+                              <IsNotLoggedInModal />
+                           </AlertDialog>
+                        ) : (
+                           <Link href={"/checkout"}>
+                              <SheetClose>
+                                 <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                                    Checkout
+                                 </button>
+                              </SheetClose>
+                           </Link>
+                        )}
                      </div>
                   </div>
                </div>

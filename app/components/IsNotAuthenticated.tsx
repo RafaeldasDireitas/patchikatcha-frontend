@@ -11,14 +11,6 @@ export default function IsNotAuthenticated() {
 
    const [countdown, setCountdown] = useState(10);
 
-   if (!jwtToken || !userId || !isAuthenticated) {
-      return (
-         <div className="flex min-h-screen justify-center items-center">
-            <h1 className="text-3xl text-center text-dark font-bold quicksand-bold">You must be logged in!</h1>
-         </div>
-      );
-   }
-
    useEffect(() => {
       if (countdown > 0) {
          const interval = setInterval(() => {
@@ -35,16 +27,22 @@ export default function IsNotAuthenticated() {
       }
    }, [countdown]);
 
-   return (
-      <>
-         <div className="flex flex-col min-h-screen items-center justify-center">
-            <h1 className="text-3xl text-center text-dark font-bold quicksand-bold">
-               Checking your account status...<span className="loading loading-spinner text-error mx-2"></span>
-            </h1>
-            <h1 className="text-xl text-center text-red-800 font-bold quicksand-semibold my-2">
-               Please confirm your email to continue. Redirecting in {countdown} seconds...
-            </h1>
+   if (!jwtToken || !userId || !isAuthenticated) {
+      return (
+         <div className="flex min-h-screen justify-center items-center">
+            <h1 className="text-3xl text-center text-dark font-bold quicksand-bold">You must be logged in!</h1>
          </div>
-      </>
+      );
+   }
+
+   return (
+      <div className="flex flex-col min-h-screen items-center justify-center">
+         <h1 className="text-3xl text-center text-dark font-bold quicksand-bold">
+            Checking your account status...<span className="loading loading-spinner text-error mx-2"></span>
+         </h1>
+         <h1 className="text-xl text-center text-red-800 font-bold quicksand-semibold my-2">
+            Please confirm your email to continue. Redirecting in {countdown} seconds...
+         </h1>
+      </div>
    );
 }

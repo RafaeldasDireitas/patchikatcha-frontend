@@ -54,8 +54,6 @@ export default function NewProducts() {
          <div ref={productListRef} className="flex flex-row overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12">
             {newProducts.data.map((product, key) => {
                const productPrice = product.variants.find((variant) => variant.is_enabled === true);
-               // const imageSrc = product.images[0].src ? product.images[0].src : logo;
-
                return (
                   <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
                      <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src}></ProductCard>

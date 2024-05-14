@@ -69,7 +69,9 @@ export default function ProductName({ params }: any) {
 
    const basePrice = productPrice && productIVA && productPrice.price + productIVA;
 
-   const formattedPrice = basePrice && (basePrice / 100).toFixed(2) + " €";
+   const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 0.99;
+
+   const formattedPrice = adjustedPrice && adjustedPrice.toFixed(2) + " €";
 
    const productVariants: VariantsType[] = product.variants.filter((product) => product.is_enabled === true);
 
@@ -91,12 +93,12 @@ export default function ProductName({ params }: any) {
             const priceId = await grabPriceId.text();
             const findCart = globalStore.cart.find((cart) => cart.name === product.title && cart.size === sizeId && cart.color === colorId);
 
-            if (basePrice && !findCart) {
+            if (adjustedPrice && !findCart) {
                globalStore.setCart({
                   name: product.title,
                   description: product.description,
-                  base_price: Math.trunc(basePrice),
-                  price: Math.trunc(basePrice * quantity),
+                  base_price: adjustedPrice * 100,
+                  price: adjustedPrice * 100 * quantity,
                   price_id: priceId,
                   image: product?.images[0].src,
                   quantity: quantity,
@@ -116,8 +118,8 @@ export default function ProductName({ params }: any) {
                   const cart = {
                      name: product.title,
                      description: product.description,
-                     basePrice: Math.trunc(basePrice),
-                     price: Math.trunc(basePrice * quantity),
+                     basePrice: Math.trunc(adjustedPrice),
+                     price: Math.trunc(adjustedPrice * quantity),
                      priceId: priceId,
                      image: product?.images[0].src,
                      quantity: quantity,
@@ -139,6 +141,8 @@ export default function ProductName({ params }: any) {
                toast.error("Item already added to cart");
                setAddedToCart("Added to cart!");
             }
+         } else {
+            toast.error("There was an error adding to the cart");
          }
       }, 2000); // Run after 2 seconds
    };

@@ -5,7 +5,17 @@ export default function ProductCard({ title, price, image }: any) {
 
    const basePrice = productIVA && price + productIVA;
 
-   const formattedPrice = basePrice && (basePrice / 100).toFixed(2) + " €";
+   const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 0.99;
+
+   const formattedPrice = basePrice && adjustedPrice.toFixed(2) + " €";
+
+   // const productIVA = price * 0.23;
+
+   // const basePrice = productPrice && productIVA && Math.floor(productPrice.price + productIVA);
+
+   // const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 0.99;
+
+   // const formattedPrice = adjustedPrice && adjustedPrice.toFixed(2) + " €";
 
    return (
       <div className="flex flex-col justify-center items-center rounded-xl hover:scale-110  hover:cursor-pointer duration-200">

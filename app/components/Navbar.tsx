@@ -41,11 +41,6 @@ export default function Navbar() {
                </Link>
             </div>
             <div className="lg:mx-10 flex justify-end items-center">
-               <input
-                  type="text"
-                  placeholder="Search"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] h-10 w-full bg-white quicksand-light"
-               />{" "}
                {!isAuthenticated || !jwtToken || !userId ? (
                   <AlertDialog>
                      <AlertDialogTrigger>

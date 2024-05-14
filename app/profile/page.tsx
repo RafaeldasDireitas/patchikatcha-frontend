@@ -19,6 +19,8 @@ import Image from "next/image";
 import ProfileLoading from "./components/ProfileLoading";
 import DeleteAccountModal from "./components/DeleteAccountModal";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import ChangeCountryProfileModal from "./components/ChangeCountryProfileModal";
 
 export default function Profile() {
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
@@ -103,7 +105,15 @@ export default function Profile() {
             <h1 className="text-2xl text-light quicksand-bold lg:text-start text-center">Your Account</h1>
             <p className="quicksand-light lg:text-start text-center">Track your orders or change your settings</p>
             <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
-               <p className="quicksand-light">{isEmailConfirmed ? "Your email is confirmed" : "Your email isn't confirmed!"}</p>
+               <p className="quicksand-light">
+                  {isEmailConfirmed ? (
+                     "Your email is confirmed"
+                  ) : (
+                     <Link href={"/auth/confirm-email-warning"}>
+                        <span className="hover:underline hover:text-light">Your email isn't confirmed!</span>
+                     </Link>
+                  )}
+               </p>
                {isEmailConfirmed ? (
                   <BiSolidCheckCircle className="mx-2 text-light" size={25} />
                ) : (
@@ -134,9 +144,14 @@ export default function Profile() {
                <div className="p-4 quicksand-medium">
                   <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Change personal details</h2>
                   <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Newsletter subscription</h2>
-                  <h2 onClick={changeCountry} className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">
-                     Change country
-                  </h2>
+                  <div className="flex justify-center lg:justify-start">
+                     <Dialog>
+                        <DialogTrigger>
+                           <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Change country</h2>
+                        </DialogTrigger>
+                        <ChangeCountryProfileModal />
+                     </Dialog>
+                  </div>
                </div>
             </div>
 

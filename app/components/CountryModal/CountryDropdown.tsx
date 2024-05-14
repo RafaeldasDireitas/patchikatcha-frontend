@@ -8,6 +8,7 @@ import FetchUpdateUserCountry from "./FetchUpdateUserCountry";
 import { BlueprintType } from "@/types/BlueprintType";
 import { ProfilesType } from "@/types/ProfilesType";
 import FetchUpdateCartShippingDatabase from "@/app/profile/FetchUpdateCartShippingDatabase";
+import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export default function CountryDropDown() {
    const globalStore = useGlobalStore();
@@ -31,8 +32,6 @@ export default function CountryDropDown() {
 
       setFocusButton(country.countryCode);
    };
-
-   console.log(userGeoData.userCountry);
 
    const handleUserGeoData = async () => {
       if (userGeoData.userCountry || userGeoData.countryName || userGeoData.currency) {
@@ -79,7 +78,11 @@ export default function CountryDropDown() {
    };
 
    return (
-      <>
+      <DialogContent className="lg:w-[500px]" onInteractOutside={(e) => e.preventDefault()}>
+         <DialogHeader>
+            <DialogTitle>Edit profile</DialogTitle>
+            <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+         </DialogHeader>
          <div className="grid grid-cols-3 gap-2">
             {countries.countries.country.map((country, key) => {
                return (
@@ -94,9 +97,13 @@ export default function CountryDropDown() {
                );
             })}
          </div>
-         <button className="btn my-2" onClick={handleUserGeoData}>
-            Confirm country!
-         </button>
-      </>
+         <DialogFooter>
+            <DialogClose>
+               <button className="btn my-2" onClick={handleUserGeoData}>
+                  Confirm country!
+               </button>
+            </DialogClose>
+         </DialogFooter>
+      </DialogContent>
    );
 }

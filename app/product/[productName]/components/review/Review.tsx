@@ -35,6 +35,7 @@ export default function Review({ productId }: any) {
             <div className="flex justify-start items-center">
                {averageRating && [...Array(averageRating)].map((_, key) => <Image key={key + key} src={star} width={50} height={50} alt="Star" />)}
                <h1 className="mx-5 quicksand-medium">{reviewsCount} Reviews</h1>
+               <h1 className="mx-5 quicksand-medium">{averageRating} out of 5</h1>
             </div>
 
             <div className="flex justify-end">

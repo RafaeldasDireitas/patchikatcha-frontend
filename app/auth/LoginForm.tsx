@@ -99,12 +99,14 @@ export default function LoginForm({ setIsLoginForm }: any) {
 
                <div>
                   <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(false)}>
-                     <span className="text-black hover:underline hover:text-light hover:cursor-pointer">Sign up</span>
+                     Don't have an account yet? Sign up <span className="underline text-light hover:cursor-pointer">here</span>.
                   </p>
                   <p className="my-1 quicksand-medium">
-                     <span className="text-black hover:underline hover:text-light hover:cursor-pointer">
-                        <Link href={"/auth/change-password-warning"}>Forgot password?</Link>
+                     Forgot your password? Reset it{" "}
+                     <span className="underline text-light hover:cursor-pointer">
+                        <Link href={"/auth/change-password-warning"}>here</Link>
                      </span>
+                     .
                   </p>
                </div>
 

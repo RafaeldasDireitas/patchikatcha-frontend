@@ -19,7 +19,7 @@ export default function DeleteAccountModal() {
          </AlertDialogHeader>
          <AlertDialogFooter>
             <AlertDialogCancel className="quicksand-semibold hover:bg-button-focused hover:text-white">Cancel</AlertDialogCancel>
-            <AlertDialogAction className="bg-red-800 hover:bg-button-focused quicksand-semibold">Continue</AlertDialogAction>
+            <AlertDialogAction className="bg-red-800 hover:bg-button-focused quicksand-semibold">Delete</AlertDialogAction>
          </AlertDialogFooter>
       </AlertDialogContent>
    );

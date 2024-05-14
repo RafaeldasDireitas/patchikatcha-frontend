@@ -1,15 +1,20 @@
 import Image from "next/image";
 import star from "@/public/star.png";
 import { BiSolidCheckCircle } from "react-icons/bi";
-import { FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 export default function ReviewCard({ username, title, createdAt, comment, rating }: any) {
+   const stars = rating;
+   const emptyStars = 5 - rating;
+
    return (
       <div className="flex flex-col w-full bg-body-background p-4 rounded-xl">
          <div className="flex flex-row">
-            {[...Array(rating)].map((_, key) => (
-               // <Image key={key + key} src={star} width={30} height={30} alt="Star" />
+            {[...Array(stars)].map((_, key) => (
                <FaStar key={key + key} size={25} className="text-light" />
+            ))}
+            {[...Array(emptyStars)].map((_, key) => (
+               <FaRegStar key={key + key} size={25} className="text-light" />
             ))}
          </div>
          <div className="flex flex-row items-center">

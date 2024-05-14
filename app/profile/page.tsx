@@ -123,7 +123,18 @@ export default function Profile() {
             <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
                <p>You are currently in:&nbsp;</p>
                <p>{findUserCountry?.countryName}</p>
-               <Image className="mx-2" src={userCountryImage} width={30} height={30} alt="No country" />
+               <Dialog>
+                  <DialogTrigger>
+                     <Image
+                        className="mx-2 hover:scale-110 hover:cursor-pointer duration-200"
+                        src={userCountryImage}
+                        width={30}
+                        height={30}
+                        alt="No country"
+                     />
+                  </DialogTrigger>
+                  <ChangeCountryProfileModal />
+               </Dialog>
             </div>
 
             <div className="mt-10">

@@ -43,7 +43,6 @@ export default function ProductName({ params }: any) {
    const decodedProductName = decodeURIComponent(productName);
    const productId = searchParams.get("productId");
    let variantId = product?.variants[0].id; //app enters a loop if its a state
-   let shippingCosts: number[] = [];
 
    document.title = decodedProductName;
 
@@ -60,8 +59,6 @@ export default function ProductName({ params }: any) {
    }
 
    const findCountryShippingRate = shippingRate?.profiles.find((profile) => profile.countries.includes(userCountry));
-
-   shippingRate?.profiles.map((profile) => shippingCosts.push(profile.first_item.cost)); //grab shipping prices
 
    const productPrice = product.variants.find((variant) => variant.is_enabled === true);
 
@@ -118,8 +115,8 @@ export default function ProductName({ params }: any) {
                   const cart = {
                      name: product.title,
                      description: product.description,
-                     basePrice: Math.trunc(adjustedPrice),
-                     price: Math.trunc(adjustedPrice * quantity),
+                     basePrice: adjustedPrice * 100,
+                     price: adjustedPrice * 100 * quantity,
                      priceId: priceId,
                      image: product?.images[0].src,
                      quantity: quantity,

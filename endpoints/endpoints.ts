@@ -32,5 +32,6 @@ export const endpoints = {
    isWishlisted: (userId: any, productId: any) => `/api/Wishlist/is-wishlisted?userId=${userId}&productId=${productId}`,
    grabProductReviews: (productId: any, limit: any, page: any) =>
       `/api/Review/grab-product-reviews?productId=${productId}&limit=${limit}&page=${page}`,
-   grabUserReviews: (userId: any) => `/api/Review/grab-user-reviews?userId=${userId}`
+   grabUserReviews: (userId: any) => `/api/Review/grab-user-reviews?userId=${userId}`,
+   recommendedProducts: (tag: any) => `/api/Product/recommended-products?tag=${tag}`
 };

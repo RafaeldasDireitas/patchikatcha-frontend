@@ -21,6 +21,7 @@ import Wishlist from "./components/Wishlist";
 import Review from "./components/review/Review";
 import ProductLoading from "./components/ProductLoading";
 import Breadcrumb from "@/app/components/Breadcrumb";
+import RecommendedProducts from "./components/RecommendedProducts";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -181,6 +182,8 @@ export default function ProductName({ params }: any) {
             </div>
 
             <hr className="my-2" />
+
+            <RecommendedProducts></RecommendedProducts>
 
             <div className="lg:m-12 p-2">
                <Review productId={productId} />

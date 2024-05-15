@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import ProductCard from "./components/ProductCard";
-import FetchNewProducts from "@/app/FetchNewProducts";
 import Link from "next/link";
 import { NewProductsType } from "@/types/NewProductsType";
 import Skeleton from "./components/Skeleton";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import logo from "@/public/Happy_Halloween.jpg";
+import FetchNewProducts from "./FetchNewProducts";
 
 export default function NewProducts() {
    const [newProducts, setNewProducts] = useState<NewProductsType>();

@@ -144,6 +144,8 @@ export default function ProductName({ params }: any) {
       }, 2000); // Run after 2 seconds
    };
 
+   console.log(product);
+
    const links = ["Home", "Product", `${decodedProductName}`];
 
    return (

@@ -44,8 +44,8 @@ export default function Footer() {
          <nav>
             <h6 className="footer-title opacity-100 z-0 quicksand-bold">Socials</h6>
             <div className="flex flex-row items-center">
-               <FaInstagram color="white" className="mx-2" size={20}></FaInstagram>
-               <a className="link link-hover quicksand-medium">Instagram</a>
+               <FaInstagram color="white" size={30}></FaInstagram>
+               {/* <a className="link link-hover quicksand-medium">Instagram</a> */}
             </div>
          </nav>
       </footer>

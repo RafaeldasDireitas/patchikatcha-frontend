@@ -1,6 +1,6 @@
 import { endpoints } from "@/endpoints/endpoints";
 
-export default async function NewProducts({ setNewProducts }: any) {
+export default async function FetchNewProducts({ setNewProducts }: any) {
    try {
       const newProducts = await fetch(endpoints.url + endpoints.newProducts);
 

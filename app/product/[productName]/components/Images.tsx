@@ -13,11 +13,11 @@ export default function Images({ product }: any) {
 
    return (
       <>
-         <div className="flex flex-col max-h-96 overflow-auto">
+         <div className="flex flex-col max-h-96 overflow-auto p-4">
             {sideImages.map((image: any, key: number) => {
                return (
                   <Image
-                     className="hidden lg:block my-1 rounded-xl lg:hover:shadow-lg hover:cursor-pointer duration-200"
+                     className="hidden lg:block my-1 rounded-xl lg:hover:scale-105 hover:cursor-pointer duration-200"
                      key={key + key}
                      src={image.src}
                      width={180}

@@ -5,6 +5,7 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import CountryModal from "./components/CountryModal/CountryModal";
 import Script from "next/script";
 import Loading from "./components/Loading";
+import Footer from "./components/Footer";
 
 export default function Hydrate({ children }: { children: ReactNode }) {
    const [isHydrated, setIsHydrated] = useState(false);
@@ -29,7 +30,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                <Navbar />
 
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
-               <main>
+               <main className="">
                   <div className="gtranslate_wrapper"></div>
                   <Script
                      dangerouslySetInnerHTML={{
@@ -40,13 +41,15 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                   ></Script>
                   <Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer />
                   <Script src="https://www.google.com/recaptcha/api.js" async defer></Script>
-                  <div className="flex-grow">{children}</div>
+                  <div>{children}</div>
                </main>
+               <Footer />
             </>
          ) : (
             <>
                <Navbar />
                <Loading />
+               <Footer />
             </>
          )}
       </>

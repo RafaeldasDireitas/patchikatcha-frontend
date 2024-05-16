@@ -34,7 +34,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                position="bottom-left"
             />
             <Hydrate>{children}</Hydrate>
-            <Footer />
          </body>
       </html>
    );

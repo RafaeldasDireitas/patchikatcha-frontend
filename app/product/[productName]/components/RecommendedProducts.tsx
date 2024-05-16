@@ -17,20 +17,23 @@ export default function RecommendedProducts(tag: any) {
 
    if (!recommendedProducts) {
       return (
-         <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">
-            <Skeleton widthInPx={250} heightInPx={250} />
-            <Skeleton widthInPx={250} heightInPx={250} />
-            <Skeleton widthInPx={250} heightInPx={250} />
-            <Skeleton widthInPx={250} heightInPx={250} />
-         </div>
+         <>
+            <div className="my-2">
+               <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">Products you might also like:</h1>
+            </div>
+            <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">
+               <Skeleton widthInPx={250} heightInPx={250} />
+               <Skeleton widthInPx={250} heightInPx={250} />
+               <Skeleton widthInPx={250} heightInPx={250} />
+               <Skeleton widthInPx={250} heightInPx={250} />
+            </div>
+         </>
       );
    }
 
-   console.log(productTag);
-
    return (
       <>
-         <div className="lg:my-4 my-2">
+         <div className="my-2">
             <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">Products you might also like:</h1>
          </div>
          <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">

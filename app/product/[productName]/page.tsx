@@ -22,6 +22,7 @@ import Review from "./components/review/Review";
 import ProductLoading from "./components/ProductLoading";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import RecommendedProducts from "./components/RecommendedProducts";
+import Skeleton from "@/app/components/Skeleton";
 
 export default function ProductName({ params }: any) {
    const [product, setProduct] = useState<ProductType>();
@@ -151,7 +152,7 @@ export default function ProductName({ params }: any) {
 
    return (
       <div className="bg-white">
-         <div className="lg:p-12 bg-white rounded-xl">
+         <div className="flex flex-col gap-y-12 lg:p-12 bg-white rounded-xl">
             <div className="flex justify-center lg:justify-start">
                <Breadcrumb links={links} />
             </div>
@@ -176,7 +177,7 @@ export default function ProductName({ params }: any) {
                </div>
             </div>
 
-            <div className="lg:m-12 p-2 gap-6 flex lg:flex-row flex-col">
+            <div className="gap-6 flex lg:flex-row flex-col">
                <DetailedDescription product={product} />
                <ImageDescription product={product}></ImageDescription>
             </div>
@@ -185,7 +186,7 @@ export default function ProductName({ params }: any) {
 
             <RecommendedProducts tag={product.tags[0]}></RecommendedProducts>
 
-            <div className="lg:m-12 p-2">
+            <div>
                <Review productId={productId} />
             </div>
          </div>

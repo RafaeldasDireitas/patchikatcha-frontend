@@ -68,7 +68,7 @@ export default function Review({ productId }: any) {
             )}
          </div>
 
-         <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
+         <div className="grid lg:grid-cols-1 grid-cols-1 gap-8">
             {reviews.map((review, key) => {
                return (
                   <ReviewCard

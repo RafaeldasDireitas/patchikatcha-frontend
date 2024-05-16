@@ -21,26 +21,30 @@ export default function Cart() {
             </SheetTitle>
             <SheetDescription>
                <div>
-                  <ul className="min-h-full max-h-[450px] overflow-y-auto bg-body-background">
-                     {cart?.map((product, index) => {
-                        return (
-                           <div key={index + index}>
-                              <CartProduct
-                                 name={product.name}
-                                 description={product.description}
-                                 price={product.price}
-                                 price_id={"aodjao"}
-                                 image={product.image}
-                                 size={product.size}
-                                 color={product.color}
-                                 quantity={product.quantity}
-                                 index={product.index}
-                                 product_id={product.product_id}
-                              />
-                           </div>
-                        );
-                     })}
-                  </ul>
+                  {cart.length !== 0 ? (
+                     <ul className="min-h-full max-h-[450px] overflow-y-auto bg-body-background">
+                        {cart?.map((product, index) => {
+                           return (
+                              <div key={index + index}>
+                                 <CartProduct
+                                    name={product.name}
+                                    description={product.description}
+                                    price={product.price}
+                                    price_id={"aodjao"}
+                                    image={product.image}
+                                    size={product.size}
+                                    color={product.color}
+                                    quantity={product.quantity}
+                                    index={product.index}
+                                    product_id={product.product_id}
+                                 />
+                              </div>
+                           );
+                        })}
+                     </ul>
+                  ) : (
+                     <p className="text-black my-4 text-center">Cart is empty</p>
+                  )}
 
                   <div className="flex flex-col my-2">
                      <hr></hr>

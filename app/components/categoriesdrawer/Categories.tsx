@@ -11,7 +11,7 @@ export default function Categories({ categories }: any) {
                <h1 className="text-3xl text-left text-dark quicksand-medium">Categories:</h1>
             </SheetTitle>
             <SheetDescription>
-               <div className="bg-body-background">
+               <div className="bg-body-background text-black">
                   {categories.map((category: CategoriesNavbarType, key: number) => {
                      return (
                         <div key={key + key}>
@@ -23,7 +23,7 @@ export default function Categories({ categories }: any) {
                                     return (
                                        <Link key={key + key} href={`${category.href[key]}?title=${category.title}`}>
                                           <SheetClose className="">
-                                             <p className="my-1 hover:underline hover:text-light quicksand-light">{content}</p>
+                                             <p className="my-1 hover:underline hover:text-light">{content}</p>
                                           </SheetClose>
                                        </Link>
                                     );

@@ -5,16 +5,28 @@ import FetchRecommendedProducts from "../FetchRecommendedProducts";
 import Image from "next/image";
 import ProductCard from "@/app/components/ProductCard";
 import Link from "next/link";
+import Skeleton from "@/app/components/Skeleton";
 
-export default function RecommendedProducts() {
+export default function RecommendedProducts(tag: any) {
    const [recommendedProducts, setRecommendedProducts] = useState<RecommendedProductType[]>();
-   const tag = "Hoodies";
+   const productTag = tag.tag;
 
    useEffect(() => {
-      FetchRecommendedProducts({ tag, setRecommendedProducts });
+      FetchRecommendedProducts({ productTag, setRecommendedProducts });
    }, []);
 
-   console.log(recommendedProducts);
+   if (!recommendedProducts) {
+      return (
+         <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">
+            <Skeleton widthInPx={250} heightInPx={250} />
+            <Skeleton widthInPx={250} heightInPx={250} />
+            <Skeleton widthInPx={250} heightInPx={250} />
+            <Skeleton widthInPx={250} heightInPx={250} />
+         </div>
+      );
+   }
+
+   console.log(productTag);
 
    return (
       <>

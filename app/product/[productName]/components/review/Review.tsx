@@ -7,12 +7,20 @@ import star from "@/public/star.png";
 import FetchGrabProductReviews from "../../FetchGrabProductReviews";
 import ReviewCard from "./ReviewCard";
 import Link from "next/link";
+import { useGlobalStore } from "@/zustand/globalstore";
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import IsNotLoggedInModal from "@/app/components/IsNotLoggedInModal";
 
 export default function Review({ productId }: any) {
    const [reviews, setReviews] = useState<ReviewType[]>([]);
    const [reviewsCount, setReviewsCount] = useState<number>(0);
    const [pageNumber, setPageNumber] = useState<number>(0);
    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
+
+   const globalStore = useGlobalStore();
+   const userId = globalStore.userId;
+   const jwtToken = globalStore.jwtToken;
+   const isAuthenticated = globalStore.isAuthenticated;
 
    useEffect(() => {
       FetchGrabProductReviews({ productId, reviews, setReviews, setReviewsCount, setIsButtonDisabled, limit: 4, page: pageNumber });
@@ -38,13 +46,26 @@ export default function Review({ productId }: any) {
                <h1 className="mx-5 quicksand-medium">{averageRating} out of 5</h1>
             </div>
 
-            <div className="flex justify-end">
-               <Link href={`/review-product/${productId}`}>
-                  <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
-                     Write us a review!
-                  </button>
-               </Link>
-            </div>
+            {!isAuthenticated || !jwtToken || !userId ? (
+               <AlertDialog>
+                  <AlertDialogTrigger>
+                     <div className="flex justify-end">
+                        <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
+                           Write us a review!
+                        </button>
+                     </div>
+                  </AlertDialogTrigger>
+                  <IsNotLoggedInModal />
+               </AlertDialog>
+            ) : (
+               <div className="flex justify-end">
+                  <Link href={`/review-product/${productId}`}>
+                     <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
+                        Write us a review!
+                     </button>
+                  </Link>
+               </div>
+            )}
          </div>
 
          <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">

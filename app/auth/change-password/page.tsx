@@ -53,7 +53,7 @@ export default function ChangePassword() {
             onChange={handleConfirmNewPassword}
             value={confirmNewPassword}
          />
-         <button className="btn w-40 bg-button-background text-white border-none" onClick={SendPasswordData}>
+         <button className="btn btn-circle w-40 bg-button-background text-white border-none" onClick={SendPasswordData}>
             Submit
          </button>
       </div>

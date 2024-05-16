@@ -11,7 +11,9 @@ export default function ChangePassword() {
    };
 
    return (
-      <div className="flex flex-col min-h-screen items-center justify-center">
+      <div className="flex flex-col min-h-screen items-center justify-center gap-y-2">
+         <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Reset your password</h1>
+         <p>Enter your email and we'll send you a link to reset your password.</p>
          <input
             type="text"
             placeholder="example@email.com"

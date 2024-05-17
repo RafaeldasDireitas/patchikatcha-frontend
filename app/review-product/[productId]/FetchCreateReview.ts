@@ -1,7 +1,7 @@
 import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 
-export default async function FetchCreateReview({ review, jwtToken }: any) {
+export default async function FetchCreateReview({ review, jwtToken, decodedProductTitle, productId }: any) {
    const createReview = await fetch(endpoints.url + endpoints.createReview, {
       method: "POST",
       headers: {
@@ -13,7 +13,7 @@ export default async function FetchCreateReview({ review, jwtToken }: any) {
 
    if (createReview.ok) {
       toast.success("Review submitted!");
-      window.location.href = "/";
+      window.location.href = `/product/${decodedProductTitle}?productId=${productId}`;
       return;
    } else {
       const responseData = await createReview.json();

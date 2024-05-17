@@ -12,13 +12,19 @@ import FetchCreateReview from "./FetchCreateReview";
 import IsNotAuthenticated from "@/app/components/IsNotAuthenticated";
 import { reviewValidation } from "@/zod/zod";
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function ReviewProduct({ params }: any) {
    const globalStore = useGlobalStore();
    const userId = globalStore.userId;
    const jwtToken = globalStore.jwtToken;
 
+   const useParams = useSearchParams();
    const productId = params.productId;
+   const productTitle = useParams.get("productTitle");
+   const decodedProductTitle = productTitle && decodeURIComponent(productTitle);
+
    const [product, setProduct] = useState<ProductType>();
    const [title, setTitle] = useState("");
    const [comment, setComment] = useState("");
@@ -34,6 +40,7 @@ export default function ReviewProduct({ params }: any) {
    const review = {
       title: title,
       productId: productId,
+      productTitle: decodedProductTitle,
       applicationUserId: userId,
       comment: comment,
       rating: rating,
@@ -62,7 +69,7 @@ export default function ReviewProduct({ params }: any) {
          return;
       }
 
-      await FetchCreateReview({ review, jwtToken });
+      await FetchCreateReview({ review, jwtToken, decodedProductTitle, productId });
    };
 
    useEffect(() => {
@@ -80,9 +87,17 @@ export default function ReviewProduct({ params }: any) {
    return (
       <div className="lg:p-12 flex flex-col">
          <h1 className="text-3xl text-dark josefin-sans">Write a review:</h1>
-         <div className="flex flex-row items-center my-2">
-            <Image src={product.images[0].src} width={100} height={100} alt="No image found" />
-            <h2 className="text-light">{product.title}</h2>
+         <div className="flex flex-row items-center my-2 mx-2">
+            <Link href={{ pathname: `/product/${decodedProductTitle}`, query: { productId: productId } }}>
+               <Image
+                  className="rounded-xl hover:scale-105 hover:cursor-pointer duration-200"
+                  src={product.images[0].src}
+                  width={100}
+                  height={100}
+                  alt="No image found"
+               />
+            </Link>
+            <h2 className="text-light mx-2">{product.title}</h2>
          </div>
          <hr />
          <Rating checkRating={checkRating} isChecked={isChecked} />

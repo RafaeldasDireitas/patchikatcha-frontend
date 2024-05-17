@@ -22,7 +22,8 @@ export const reviewValidation = z.object({
    rating: z.number().min(1, "You must have at least 1 star").max(5, "You can only have 5 stars"),
    title: z.string().min(5).max(50),
    productId: z.string(),
+   productTitle: z.string(),
    applicationUserId: z.string(),
    createdAt: z.string(),
-   comment: z.string().min(5).max(500)
+   comment: z.string().min(5, "Comment must have at least 5 letters").max(500, "You exceeded the amount of words")
 });

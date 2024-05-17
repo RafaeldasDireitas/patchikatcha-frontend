@@ -3,6 +3,7 @@ import { ReviewType } from "@/types/ReviewType";
 import { BiSolidCheckCircle } from "react-icons/bi";
 import { FaRegStar, FaRegTrashAlt, FaStar } from "react-icons/fa";
 import DeleteReviewModal from "./DeleteReviewModal";
+import Link from "next/link";
 
 type ViewReviewsPropType = {
    userReviews: ReviewType[] | undefined;

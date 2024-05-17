@@ -11,7 +11,12 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import IsNotLoggedInModal from "@/app/components/IsNotLoggedInModal";
 
-export default function Review({ productId }: any) {
+type ReviewPropType = {
+   productId: string;
+   productTitle: string;
+};
+
+export default function Review({ productId, productTitle }: ReviewPropType) {
    const [reviews, setReviews] = useState<ReviewType[]>([]);
    const [reviewsCount, setReviewsCount] = useState<number>(0);
    const [pageNumber, setPageNumber] = useState<number>(0);
@@ -59,7 +64,7 @@ export default function Review({ productId }: any) {
                </AlertDialog>
             ) : (
                <div className="flex justify-end">
-                  <Link href={`/review-product/${productId}`}>
+                  <Link href={{ pathname: `/review-product/${productId}`, query: { productTitle: productTitle } }}>
                      <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
                         Write us a review!
                      </button>

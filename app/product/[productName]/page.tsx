@@ -187,7 +187,7 @@ export default function ProductName({ params }: any) {
             <RecommendedProducts tag={product.tags[0]}></RecommendedProducts>
 
             <div>
-               <Review productId={productId} />
+               <Review productId={productId} productTitle={productName} />
             </div>
          </div>
       </div>

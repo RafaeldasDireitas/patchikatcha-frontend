@@ -1,5 +1,5 @@
 import { OrderType } from "@/types/OrderType";
-import Order from "./components/Order";
+import Order from "./Order";
 
 export default function OrderHistory({ orders }: { orders: OrderType[] }) {
    return (
@@ -23,7 +23,7 @@ export default function OrderHistory({ orders }: { orders: OrderType[] }) {
                            totalPrice={formattedPrice}
                            status={status}
                            address={address}
-                        ></Order>
+                        />
                      </div>
                   </>
                );

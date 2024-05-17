@@ -12,15 +12,15 @@ export default function Hydrate({ children }: { children: ReactNode }) {
    const globalStore = useGlobalStore();
    const userGeo = globalStore.userGeo;
 
+   // Wait until after hydration to show
+   useEffect(() => {
+      setIsHydrated(true);
+   }, []);
+
    useEffect(() => {
       if (globalStore.jwtToken.length !== 0) {
          globalStore.setIsAuthenticated(true);
       }
-   }, []);
-
-   // Wait until after hydration to show
-   useEffect(() => {
-      setIsHydrated(true);
    }, []);
 
    return (

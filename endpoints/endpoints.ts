@@ -33,5 +33,6 @@ export const endpoints = {
    grabProductReviews: (productId: any, limit: any, page: any) =>
       `/api/Review/grab-product-reviews?productId=${productId}&limit=${limit}&page=${page}`,
    grabUserReviews: (userId: any) => `/api/Review/grab-user-reviews?userId=${userId}`,
-   recommendedProducts: (productTag: any) => `/api/Product/recommended-products?tag=${productTag}`
+   recommendedProducts: (productTag: any) => `/api/Product/recommended-products?tag=${productTag}`,
+   deleteAccount: (userId: any, password: any) => `/api/Auth/delete-account?userId=${userId}&password=${password}`
 };

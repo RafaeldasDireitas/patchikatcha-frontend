@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import FetchUserReviews from "./FetchUserReviews";
+import FetchUserReviews from "../FetchUserReviews";
 import { ReviewType } from "@/types/ReviewType";
 
 export default function GrabUserReviews() {

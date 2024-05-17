@@ -11,16 +11,16 @@ import { OrderIdType } from "@/types/OrderIdType";
 import FetchOrders from "./FetchOrders";
 import { ReviewType } from "@/types/ReviewType";
 import FetchGrabUserReviews from "./FetchGrabUserReviews";
-import OrderHistory from "./OrderHistory";
 import FetchIsEmailConfirmed from "./FetchIsEmailConfirmed";
 import { BiSolidCheckCircle, BiSolidXCircle } from "react-icons/bi";
 import countries from "@/data/countries.json";
 import Image from "next/image";
 import ProfileLoading from "./components/ProfileLoading";
 import DeleteAccountModal from "./components/DeleteAccountModal";
-import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import ChangeCountryProfileModal from "./components/ChangeCountryProfileModal";
+import OrderHistory from "./components/OrderHistory";
+import ViewReviews from "./components/ViewReviews";
 
 export default function Profile() {
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
@@ -29,7 +29,8 @@ export default function Profile() {
    const [userReviews, setUserReviews] = useState<ReviewType[]>();
    const [isEmailConfirmed, setIsEmailConfirmed] = useState(false);
 
-   const [isOrderHistory, setIsOrderHistory] = useState<boolean>(true);
+   const [isOrderHistory, setIsOrderHistory] = useState(true);
+   const [isViewReviews, setIsViewReviews] = useState(false);
 
    const globalStore = useGlobalStore();
    const setIsAuthenticated = globalStore.setIsAuthenticated;
@@ -58,18 +59,15 @@ export default function Profile() {
    const handleProfilePages = (page: string) => {
       if (page === "orderHistory") {
          setIsOrderHistory(true);
-      } else if (page === "deleteAccount") {
-         setIsOrderHistory(true);
+         setIsViewReviews(false);
+      } else if (page === "viewReviews") {
+         setIsViewReviews(true);
+         setIsOrderHistory(false);
       }
    };
 
    const findUserCountry = countries.countries.country.find((country) => country.countryCode === userCountry);
    const userCountryImage: any = findUserCountry?.countryFlag;
-
-   const changeCountry = () => {
-      setUserGeo("");
-      window.location.reload();
-   };
 
    useEffect(() => {
       FetchIsEmailConfirmed({ userId, setIsEmailConfirmed });
@@ -169,7 +167,12 @@ export default function Profile() {
             <div className="mt-4">
                <h1 className="text-xl text-dark quicksand-bold lg:text-start text-center">Additional settings</h1>
                <div className="p-4 quicksand-medium">
-                  <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">View reviews</h2>
+                  <h2
+                     onClick={() => handleProfilePages("viewReviews")}
+                     className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
+                  >
+                     View reviews
+                  </h2>
                </div>
             </div>
 
@@ -187,17 +190,26 @@ export default function Profile() {
                   </button>
                </Link>
 
-               <AlertDialog>
-                  <AlertDialogTrigger asChild>
+               <Dialog>
+                  <DialogTrigger asChild>
                      <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">
                         Delete Account
                      </button>
-                  </AlertDialogTrigger>
+                  </DialogTrigger>
                   <DeleteAccountModal />
-               </AlertDialog>
+               </Dialog>
             </div>
          </div>
-         <div className="lg:w-2/3">{isOrderHistory && <OrderHistory orders={orders} />}</div>
+         {isOrderHistory && (
+            <div className="lg:w-2/3">
+               <OrderHistory orders={orders} />
+            </div>
+         )}
+         {isViewReviews && (
+            <div className="lg:w-2/3">
+               <ViewReviews />
+            </div>
+         )}
       </div>
    );
 }

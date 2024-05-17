@@ -176,7 +176,7 @@ export default function Profile() {
                </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center items-center lg:items-start lg:justify-start">
                <button
                   onClick={signOutHandler}
                   className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64"
@@ -207,7 +207,7 @@ export default function Profile() {
          )}
          {isViewReviews && (
             <div className="lg:w-2/3">
-               <ViewReviews />
+               <ViewReviews userReviews={userReviews} />
             </div>
          )}
       </div>

@@ -3,7 +3,7 @@ import Order from "./Order";
 
 export default function OrderHistory({ orders }: { orders: OrderType[] }) {
    return (
-      <div className="p-12 my-8 quicksand flex flex-col">
+      <div className="p-12 lg:my-8 quicksand flex flex-col">
          <h1 className="text-2xl text-dark quicksand-bold lg:text-start text-center mb-2">Order history:</h1>
          <p className="quicksand-medium lg:text-start text-center mb-2">Your orders will be updated every 30 minutes.</p>
          <div className="gap-4 grid lg:grid-cols-3 grid-cols-1">

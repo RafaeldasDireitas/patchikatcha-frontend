@@ -14,9 +14,10 @@ import IsNotLoggedInModal from "@/app/components/IsNotLoggedInModal";
 type ReviewPropType = {
    productId: string;
    productTitle: string;
+   productImage: string;
 };
 
-export default function Review({ productId, productTitle }: ReviewPropType) {
+export default function Review({ productId, productTitle, productImage }: ReviewPropType) {
    const [reviews, setReviews] = useState<ReviewType[]>([]);
    const [reviewsCount, setReviewsCount] = useState<number>(0);
    const [pageNumber, setPageNumber] = useState<number>(0);
@@ -64,7 +65,7 @@ export default function Review({ productId, productTitle }: ReviewPropType) {
                </AlertDialog>
             ) : (
                <div className="flex justify-end">
-                  <Link href={{ pathname: `/review-product/${productId}`, query: { productTitle: productTitle } }}>
+                  <Link href={{ pathname: `/review-product/${productId}`, query: { productTitle: productTitle, productImage: productImage } }}>
                      <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
                         Write us a review!
                      </button>

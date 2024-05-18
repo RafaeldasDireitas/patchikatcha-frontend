@@ -1,9 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import FetchProduct from "./FetchProduct";
-import { ProductType } from "@/types/ProductType";
-import Loading from "@/app/components/Loading";
+import { useState } from "react";
 import Rating from "./components/Rating";
 import AddATitle from "./components/AddATitle";
 import Comment from "./components/Comment";
@@ -23,9 +20,9 @@ export default function ReviewProduct({ params }: any) {
    const useParams = useSearchParams();
    const productId = params.productId;
    const productTitle = useParams.get("productTitle");
+   const productImage: any = useParams.get("productImage");
    const decodedProductTitle = productTitle && decodeURIComponent(productTitle);
 
-   const [product, setProduct] = useState<ProductType>();
    const [title, setTitle] = useState("");
    const [comment, setComment] = useState("");
    const [isChecked, setIsChecked] = useState({
@@ -41,6 +38,7 @@ export default function ReviewProduct({ params }: any) {
       title: title,
       productId: productId,
       productTitle: decodedProductTitle,
+      productImage: productImage,
       applicationUserId: userId,
       comment: comment,
       rating: rating,
@@ -72,14 +70,6 @@ export default function ReviewProduct({ params }: any) {
       await FetchCreateReview({ review, jwtToken, decodedProductTitle, productId });
    };
 
-   useEffect(() => {
-      FetchProduct({ productId, setProduct });
-   }, []);
-
-   if (!product) {
-      return <Loading />;
-   }
-
    if (!jwtToken && !userId) {
       return <IsNotAuthenticated />;
    }
@@ -91,13 +81,13 @@ export default function ReviewProduct({ params }: any) {
             <Link href={{ pathname: `/product/${decodedProductTitle}`, query: { productId: productId } }}>
                <Image
                   className="rounded-xl hover:scale-105 hover:cursor-pointer duration-200"
-                  src={product.images[0].src}
+                  src={productImage}
                   width={100}
                   height={100}
                   alt="No image found"
                />
             </Link>
-            <h2 className="text-light mx-2">{product.title}</h2>
+            <h2 className="text-light mx-2">{decodedProductTitle}</h2>
          </div>
          <hr />
          <Rating checkRating={checkRating} isChecked={isChecked} />

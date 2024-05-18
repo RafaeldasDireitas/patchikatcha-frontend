@@ -38,11 +38,11 @@ export default function CategoryName({ params }: any) {
       setSearchProducts(searchProducts);
    };
 
-   console.log(products);
-
    const links = ["Home", "Categories", `${decodedCategoryName}`];
    const findContent = categories.find((category) => category.title === categoryTitle);
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
+
+   console.log(filteredProducts);
 
    return (
       <div className="flex lg:flex-row flex-col p-12">
@@ -85,14 +85,13 @@ export default function CategoryName({ params }: any) {
 
             <div className="lg:gap-4 gap-6 grid lg:grid-cols-3 grid-cols-1 my-8">
                {products &&
+                  filteredProducts &&
                   filteredProducts.map((product, key) => {
                      const productPrice = product.variants.find((variant) => variant.is_enabled === true);
-                     const imageUrl = product.images[0]?.src || "/";
-                     console.log(product.images[0].src);
 
                      return (
                         <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
-                           <ProductCard title={product.title} price={productPrice?.price} image={imageUrl} />
+                           <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src} />
                         </Link>
                      );
                   })}

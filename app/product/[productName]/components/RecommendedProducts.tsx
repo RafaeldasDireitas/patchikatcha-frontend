@@ -41,10 +41,11 @@ export default function RecommendedProducts(tag: any) {
                recommendedProducts.map((product) => {
                   const decodedImage = decodeURIComponent(product.image);
                   const formattedPrice = product.price;
+                  console.log(product.price);
 
                   return (
                      <Link href={`/product/${product.title}?productId=${product.productId}`}>
-                        <ProductCard title={product.title} price={formattedPrice} image={decodedImage} />
+                        <ProductCard title={product.title} price={product.price} image={decodedImage} />
                      </Link>
                   );
                })}

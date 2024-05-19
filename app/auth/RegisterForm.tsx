@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FetchRegister from "./FetchRegister";
 import FetchEmailToken from "./FetchEmailToken";
 import Image from "next/image";
@@ -22,6 +22,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    const [emailToken, setEmailToken] = useState("");
    const [apiKey, setApiKey] = useState("");
    const [isRegistering, setIsRegistering] = useState(false);
+   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
    const usernameHandler = (e: any) => {
       const username = e.target.value;
@@ -73,6 +74,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       }
 
       await FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setIsRegistering });
+      recaptchaRef.current?.reset();
 
       //the rest of the code is in the useEffect if you need to debug this
    };
@@ -154,12 +156,13 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                      {isRegistering ? <span className="loading loading-spinner text-error"></span> : "Sign up"}
                   </button>
                </div>
-               <div className="flex justify-center">
-                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" />
-               </div>
+
                <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(true)}>
                   Already have an account? Log in <span className="underline text-light hover:cursor-pointer quicksand-medium">here</span>.
                </p>
+               <div className="flex justify-center mt-4">
+                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" ref={recaptchaRef} />
+               </div>
             </div>
          </div>
       </div>

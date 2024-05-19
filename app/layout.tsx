@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
          <Head>
             <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
          </Head>
-         <body>
+         <body className="min-h-screen flex flex-col justify-between">
             <Toaster
                expand
                visibleToasts={4}

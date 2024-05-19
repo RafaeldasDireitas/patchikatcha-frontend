@@ -71,35 +71,43 @@ export default function ChangeCountryProfileModal() {
             });
          }
 
-         toast.success("Your country was selected!");
+         toast.success("Your country was changed!");
       } else {
          toast.error("You didn't select a country");
       }
    };
 
    return (
-      <DialogContent className="lg:w-[500px]">
+      <DialogContent className="lg:w-[500px] quicksand-medium">
          <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+            <DialogTitle className="text-dark">Change country</DialogTitle>
+            <DialogDescription>This will affect displayed product and shipping prices.</DialogDescription>
          </DialogHeader>
-         <div className="grid grid-cols-3 gap-2">
+         <div className="grid lg:grid-cols-3 grid-cols-2 gap-2">
             {countries.countries.country.map((country, key) => {
                return (
-                  <button
-                     key={key + key}
-                     className={`btn p-0 bg-white border-none text-black ${focusButton === country.countryCode ? "focus:bg-button-background" : ""}`}
-                     onClick={() => handleOnCountryClick(country)}
-                  >
-                     <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found" />
-                     {country.countryName}
-                  </button>
+                  <>
+                     <div className="flex">
+                        <button
+                           key={key + key}
+                           className={`btn p-0 w-full px-2 bg-white hover:bg-body-background border-border-light text-black quicksand-semibold ${
+                              focusButton === country.countryCode ? "focus:bg-button-background" : ""
+                           }`}
+                           onClick={() => handleOnCountryClick(country)}
+                        >
+                           <Image src={`${country.countryFlag}`} width={30} height={30} alt="No image found" />
+                           {country.countryName}
+                        </button>
+                     </div>
+                  </>
                );
             })}
          </div>
          <DialogFooter>
             <DialogClose onClick={handleUserGeoData}>
-               <h1>Confirm</h1>
+               <button className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold">
+                  Confirm
+               </button>
             </DialogClose>
          </DialogFooter>
       </DialogContent>

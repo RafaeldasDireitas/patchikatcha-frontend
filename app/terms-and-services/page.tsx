@@ -371,8 +371,8 @@ export default function TermsAndServices() {
          </p>
          <hr />
          <h1 className="quicksand-bold text-2xl text-dark my-5">Contact Information</h1>
-         <p className="quicksand-medium my-5">Address: Portugal</p>
-         <p className="quicksand-medium my-5">Email: scuttlecounterservices@gmail.com</p>
+         <p className="quicksand-medium my-5">Address: Rua Casal José Padeiro nº3 2440-051, Fanhais</p>
+         <p className="quicksand-medium my-5">Email: patchikatcha@gmail.com</p>
       </div>
    );
 }

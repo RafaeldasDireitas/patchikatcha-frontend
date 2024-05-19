@@ -12,6 +12,7 @@ export default function OrderHistory({ orders }: { orders: OrderType[] }) {
                const formattedPrice = (order.total_price / 100).toFixed(2) + " €";
                const status = order.status;
                const address = order.address_to.address1;
+               const lineItems = order.line_items;
 
                return (
                   <>
@@ -23,6 +24,7 @@ export default function OrderHistory({ orders }: { orders: OrderType[] }) {
                            totalPrice={formattedPrice}
                            status={status}
                            address={address}
+                           lineItems={lineItems}
                         />
                      </div>
                   </>

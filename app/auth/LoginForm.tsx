@@ -1,5 +1,5 @@
 import { useGlobalStore } from "@/zustand/globalstore";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FetchLogin from "./FetchLogin";
 import star from "@/public/star.png";
 import Image from "next/image";
@@ -15,6 +15,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    const [password, setPassword] = useState("");
    const [apiKey, setApiKey] = useState("");
    const [isLoggingIn, setIsLoggingIn] = useState(false);
+   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
    const setUserId = globalStore.setUserId;
    const setJwtToken = globalStore.setJwtToken;
@@ -59,6 +60,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
       }
 
       await FetchLogin({ userData, setUserId, setJwtToken, setIsAuthenticated, setUserEmail, setCart, userCart, userCountry, setIsLoggingIn });
+      recaptchaRef.current?.reset();
    };
 
    return (
@@ -111,7 +113,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                </div>
 
                <div className="flex justify-center mt-4">
-                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" />
+                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" ref={recaptchaRef} />
                </div>
             </div>
          </div>

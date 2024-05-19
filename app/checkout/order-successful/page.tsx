@@ -5,16 +5,15 @@ import Link from "next/link";
 export default function OrderSucess() {
    return (
       <>
-         <div className="min-h-screen flex flex-col justify-center items-center">
-            <Image src={orderSuccessful} width={300} height={300} alt="Order successful"></Image>
+         <div className="min-h-screen flex flex-col items-center text-center mt-16">
+            <Image className="flex justify-center" src={orderSuccessful} width={300} height={300} alt="Order successful"></Image>
             <h1 className="text-3xl text-dark quicksand-bold">Your order was successful!</h1>
-            <p>You will soon receive an email with your receipt.</p>
+            <p>You will soon receive a confirmation email.</p>
             <p>
-               Check your{" "}
+               You can check your order status anytime in your
                <Link href={"/profile"}>
-                  <span className="text-light hover:underline hover:cursor-pointer">profile</span>
+                  <span className="text-light hover:underline hover:cursor-pointer"> profile</span>
                </Link>{" "}
-               to see your order details!
             </p>
          </div>
       </>

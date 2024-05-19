@@ -39,13 +39,9 @@ export default function RecommendedProducts(tag: any) {
          <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">
             {recommendedProducts &&
                recommendedProducts.map((product) => {
-                  const decodedImage = decodeURIComponent(product.image);
-                  const formattedPrice = product.price;
-                  console.log(product.price);
-
                   return (
                      <Link href={`/product/${product.title}?productId=${product.productId}`}>
-                        <ProductCard title={product.title} price={product.price} image={decodedImage} />
+                        <ProductCard title={product.title} price={product.price} image={product.image} />
                      </Link>
                   );
                })}

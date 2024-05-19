@@ -1,7 +1,7 @@
 "use client";
 import message from "@/public/Message_light.svg";
 import send from "@/public/Send_hor_light.svg";
-import newsletter from "@/public/newsletter_image.png";
+import newsletter from "@/public/cat_newsletter.png";
 import newsletterHeart from "@/public/epic-cute-hearts.png";
 import { newsLetterValidation } from "@/zod/zod";
 import Image from "next/image";
@@ -38,7 +38,7 @@ export default function Newsletter() {
    return (
       <div className="flex items-center justify-center gap-8 bg-body-background h-60">
          <div>
-            <Image className="hidden lg:flex mt-10" src={newsletter} width={150} height={150} alt="No letter found" />
+            <Image className="hidden lg:flex mt-10" src={newsletter} width={200} height={200} alt="No letter found" />
          </div>
          {/* < className="flex flex-col items-center gap-y-2 mr-[150px]"> */}
          <div className="flex flex-col items-center gap-y-2">

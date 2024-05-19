@@ -80,8 +80,8 @@ export default function CountryDropDown() {
    return (
       <DialogContent className="lg:w-[500px]" onInteractOutside={(e) => e.preventDefault()}>
          <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+            <DialogTitle className="text-dark">Change country</DialogTitle>
+            <DialogDescription>This will affect displayed product and shipping prices.</DialogDescription>
          </DialogHeader>
          <div className="grid lg:grid-cols-3 grid-cols-2 gap-2">
             {countries.countries.country.map((country, key) => {

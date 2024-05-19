@@ -27,3 +27,9 @@ export const reviewValidation = z.object({
    createdAt: z.string(),
    comment: z.string().min(5, "Comment must have at least 5 letters").max(500, "You exceeded the amount of words")
 });
+
+export const contactUsValidation = z.object({
+   subject: z.string().min(1, "The subject cannot be empty").max(30, "Subject is too long"),
+   userEmail: z.string().email(),
+   content: z.string().min(1, "Content cannot be empty").max(400, "Content cannot be longer than 400 words")
+});

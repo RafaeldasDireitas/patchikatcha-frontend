@@ -1,4 +1,11 @@
+"use client";
+import { useEffect } from "react";
+
 export default function TermsAndServices() {
+   useEffect(() => {
+      document.title = "Terms and Services";
+   }, []);
+
    return (
       <div className="p-12">
          <h1 className="quicksand-bold text-2xl text-dark my-5">Website Terms of Use</h1>

@@ -19,6 +19,8 @@ export default function Wishlist() {
    const jwtToken = globalStore.jwtToken;
 
    useEffect(() => {
+      document.title = "Wishlist";
+
       if (userId && jwtToken) {
          FetchWishlist({ userId, jwtToken, setWishlist });
       }

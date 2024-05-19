@@ -20,11 +20,15 @@ export default function Footer() {
             <a className="link link-hover quicksand-medium">About PatchiKatcha</a>
             <a className="link link-hover quicksand-medium">Newsletter</a>
             <a className="link link-hover quicksand-medium">Reviews</a>
-            <p className="link link-hover quicksand-medium">FAQ</p>
+            <Link href={"/faq"}>
+               <p className="link link-hover quicksand-medium">FAQ</p>
+            </Link>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0 quicksand-bold">Support</h6>
-            <p className="link link-hover quicksand-medium">Contact us</p>
+            <Link href={"/contact-us"}>
+               <p className="link link-hover quicksand-medium">Contact us</p>
+            </Link>
             <p className="link link-hover quicksand-medium">Shipping</p>
             <p className="link link-hover quicksand-medium">Payment Methods</p>
             <Link href={"/returns"}>

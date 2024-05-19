@@ -70,6 +70,8 @@ export default function Profile() {
    const userCountryImage: any = findUserCountry?.countryFlag;
 
    useEffect(() => {
+      document.title = "Profile";
+
       FetchIsEmailConfirmed({ userId, setIsEmailConfirmed });
    }, []);
 

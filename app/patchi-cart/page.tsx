@@ -3,6 +3,7 @@ import { useGlobalStore } from "@/zustand/globalstore";
 import CartProductCard from "./components/CartProductCard";
 import CheckoutCard from "./components/CheckoutCard";
 import FetchRemoveCartDatabase from "./FetchRemoveCartDatabase";
+import { useEffect } from "react";
 
 export default function PatchiCart() {
    const globalStore = useGlobalStore();
@@ -13,6 +14,10 @@ export default function PatchiCart() {
    const currency = globalStore.userGeo.currency;
    let totalPrice = 0;
    let totalShipping = 0;
+
+   useEffect(() => {
+      document.title = "Patchi Cart";
+   }, []);
 
    cart.forEach((product) => {
       totalPrice = totalPrice + product.price;

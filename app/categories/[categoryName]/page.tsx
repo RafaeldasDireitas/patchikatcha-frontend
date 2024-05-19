@@ -21,6 +21,8 @@ export default function CategoryName({ params }: any) {
    const [searchProducts, setSearchProducts] = useState("");
 
    useEffect(() => {
+      document.title = decodedCategoryName;
+
       FetchCategoryProducts({ setProducts, categoryName });
    }, []);
 
@@ -41,8 +43,6 @@ export default function CategoryName({ params }: any) {
    const links = ["Home", "Categories", `${decodedCategoryName}`];
    const findContent = categories.find((category) => category.title === categoryTitle);
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
-
-   console.log(filteredProducts);
 
    return (
       <div className="flex lg:flex-row flex-col p-12">

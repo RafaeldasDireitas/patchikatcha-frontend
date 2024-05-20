@@ -36,5 +36,6 @@ export const endpoints = {
    grabUserReviews: (userId: any) => `/api/Review/grab-user-reviews?userId=${userId}`,
    deleteReview: (userId: any, id: any) => `/api/Review/delete-review?userId=${userId}&id=${id}`,
    recommendedProducts: (productTag: any) => `/api/Product/recommended-products?tag=${productTag}`,
-   deleteAccount: (userId: any, password: any) => `/api/Auth/delete-account?userId=${userId}&password=${password}`
+   deleteAccount: (userId: any, password: any) => `/api/Auth/delete-account?userId=${userId}&password=${password}`,
+   changeProductTag: (productId: any) => `/api/Admin/change-product-tag?productId=${productId}`
 };

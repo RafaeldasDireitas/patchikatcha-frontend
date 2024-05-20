@@ -6,6 +6,7 @@ import { FetchVerifyUserRole } from "./FetchVerifyUserRole";
 import GrabUserReviews from "./components/GrabUserReviews";
 import PublishProduct from "./components/PublishProduct";
 import AddProductToDb from "./components/AddProductToDb";
+import ChangeProductTag from "./components/ChangeProductTag";
 
 export default function AdminDashboard() {
    const [isAuthorized, setIsAuthorized] = useState(false);
@@ -27,6 +28,7 @@ export default function AdminDashboard() {
             <PublishProduct />
             <GrabUserReviews />
             <AddProductToDb />
+            <ChangeProductTag />
          </div>
       </div>
    );

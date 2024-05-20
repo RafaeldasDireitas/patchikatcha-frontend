@@ -86,15 +86,22 @@ export default function CategoryName({ params }: any) {
             <div className="lg:gap-4 gap-6 grid lg:grid-cols-3 grid-cols-1 my-8">
                {products &&
                   filteredProducts &&
-                  filteredProducts.map((product, key) => {
-                     const productPrice = product.variants.find((variant) => variant.is_enabled === true);
+                  filteredProducts
+                     .filter((product) => {
+                        const variantProduct = product.variants.find((variant) => variant.is_enabled === true);
+                        const variantProductIVA = variantProduct && variantProduct.price * 0.23;
+                        const variantProductWithIVA = variantProduct && variantProductIVA && variantProduct.price + variantProductIVA;
+                        return variantProduct?.price && variantProductWithIVA && variantProductWithIVA / 100 < productPrice;
+                     })
+                     .map((product, key) => {
+                        const productPrice = product.variants.find((variant) => variant.is_enabled === true);
 
-                     return (
-                        <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
-                           <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src} />
-                        </Link>
-                     );
-                  })}
+                        return (
+                           <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
+                              <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src} />
+                           </Link>
+                        );
+                     })}
             </div>
          </div>
       </div>

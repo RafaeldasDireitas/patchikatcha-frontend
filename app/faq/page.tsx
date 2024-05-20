@@ -8,7 +8,7 @@ export default function faq() {
    }, []);
 
    return (
-      <div className="p-4 lg:p-12 flex flex-col">
+      <div className="p-4 lg:p-12 flex flex-col min-h-screen">
          <h1 className="text-3xl text-dark quicksand-bold">FAQ</h1>
          <Accordion type="single" collapsible className="w-full p-4">
             <AccordionItem value="item-1">

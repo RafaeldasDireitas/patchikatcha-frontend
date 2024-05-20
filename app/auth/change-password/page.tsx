@@ -38,7 +38,7 @@ export default function ChangePassword() {
    };
 
    return (
-      <div className="flex flex-col min-h-screen items-center justify-center">
+      <div className="flex flex-col items-center min-h-screen justify-center gap-y-2 px-2 text-center">
          <input
             type="password"
             placeholder="New password"

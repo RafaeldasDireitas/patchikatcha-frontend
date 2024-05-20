@@ -87,7 +87,7 @@ export default function Navbar() {
             </div>
          </nav>
          <nav aria-label="secondary">
-            <div className="lg:flex hidden flex-row justify-center bg-button-background">
+            <div className="lg:flex hidden h-12 max-h-12 items-center justify-center bg-button-background">
                {categories.map((category, key) => {
                   return (
                      <div

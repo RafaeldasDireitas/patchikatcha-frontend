@@ -1,4 +1,5 @@
 "use client";
+import AboutUs from "./AboutUs";
 import BestSellers from "./BestSellers";
 import Hero from "./Hero";
 import NewProducts from "./NewProducts";
@@ -8,10 +9,11 @@ export default function Home() {
    return (
       <>
          <Hero />
-         <NewProducts />
          <BestSellers />
-         {/* <Categories /> */}
          <Newsletter />
+         <NewProducts />
+         <AboutUs />
+         {/* <Categories /> */}
       </>
    );
 }

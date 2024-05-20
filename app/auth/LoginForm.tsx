@@ -69,7 +69,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
             <Image src={star} width={300} height={300} alt="No turtle found..." />
          </div>
 
-         <div className="lg:w-2/3 w-full mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
+         <div className="lg:w-2/3 w-full my-16 mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
             <div className="lg:w-[500px] w-full flex flex-col justify-center">
                <h1 className="text-light text-3xl text-start quicksand-bold">Log in</h1>
                <p className="text-start my-2 quicksand-medium">Log in to start buying!</p>

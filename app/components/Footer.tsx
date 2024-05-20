@@ -31,10 +31,6 @@ export default function Footer() {
             </Link>
             <p className="link link-hover quicksand-medium">Shipping</p>
             <p className="link link-hover quicksand-medium">Payment Methods</p>
-            <Link href={"/returns"}>
-               <p className="link link-hover quicksand-medium">Returns</p>
-            </Link>
-
             <p className="link link-hover quicksand-medium">Order Tracking</p>
          </nav>
          <nav>
@@ -42,7 +38,9 @@ export default function Footer() {
             <Link href={"/terms-and-services"}>
                <p className="link link-hover quicksand-medium">Terms and Services</p>
             </Link>
-            <p className="link link-hover quicksand-medium">Privacy Policy</p>
+            <Link href={"/refund-policy"}>
+               <p className="link link-hover quicksand-medium">Refund Policy</p>
+            </Link>
             <p className="link link-hover quicksand-medium">Data Policy</p>
          </nav>
          <nav>

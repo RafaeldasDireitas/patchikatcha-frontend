@@ -30,7 +30,7 @@ export default function BestSellers() {
 
    if (!bestSellers) {
       return (
-         <div className="flex flex-col justify-center items-center lg:p-12 my-8">
+         <div className="flex flex-col justify-center items-center lg:p-12">
             <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Best Sellers</h1>
             <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
 
@@ -47,7 +47,7 @@ export default function BestSellers() {
    }
 
    return (
-      <div className="lg:p-12 my-8 flex flex-col justify-center items-center relative">
+      <div className="lg:p-12 flex flex-col justify-center items-center relative">
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">Best Sellers</h1>
          <p className="py-4 lg:text-start text-center quicksand-medium">
             Here is just a little description that is a little bit bigger than normal body copy.

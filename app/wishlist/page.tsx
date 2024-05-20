@@ -36,7 +36,7 @@ export default function Wishlist() {
 
    if (wishlist.length === 0) {
       return (
-         <div className="flex flex-col min-h-screen justify-center items-center">
+         <div className="flex flex-col min-h-screen justify-center items-center my-16">
             <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />
             <h1 className="text-2xl text-light font-bold">No items in your wishlist yet!</h1>
          </div>
@@ -47,7 +47,7 @@ export default function Wishlist() {
 
    return (
       <>
-         <div className="flex flex-col justify-center items-center mt-12">
+         <div className="flex flex-col justify-center items-center min-h-screen my-16">
             <Breadcrumb links={links} />
             <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Your wishlist</h1>
          </div>

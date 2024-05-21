@@ -41,7 +41,9 @@ export default function Footer() {
             <Link href={"/refund-policy"}>
                <p className="link link-hover quicksand-medium">Refund Policy</p>
             </Link>
-            <p className="link link-hover quicksand-medium">Data Policy</p>
+            <Link href={"/cookie-policy"}>
+               <p className="link link-hover quicksand-medium">Cookie Policy</p>
+            </Link>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0 quicksand-bold">Socials</h6>

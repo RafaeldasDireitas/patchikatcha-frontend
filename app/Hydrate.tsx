@@ -31,6 +31,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
 
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
                <main className="">
+                  <Script src="https://consent.cookiefirst.com/sites/patchikatcha.com-3640d558-7e25-482d-89b5-7bfe9d385b64/consent.js"></Script>
                   <div className="gtranslate_wrapper"></div>
                   <Script
                      dangerouslySetInnerHTML={{

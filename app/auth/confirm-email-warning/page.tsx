@@ -26,7 +26,7 @@ export default function VerifyEmail() {
    }, [emailToken]);
 
    return (
-      <div className="flex flex-col min-h-screen items-center text-center justify-center gap-4">
+      <div className="flex flex-col min-h-screen my-16 items-center text-center justify-center gap-4">
          <Image src={cloud} width={400} height={400} alt="No turtle found" />
          <h1 className="text-2xl text-light quicksand-bold">Please verify your email!</h1>
          <p>We sent a link to your email. Please note this might take a few minutes.</p>

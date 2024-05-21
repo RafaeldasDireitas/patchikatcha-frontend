@@ -16,7 +16,7 @@ export default function ConfirmEmail() {
    }, []);
 
    return (
-      <div className="flex flex-col min-h-screen items-center justify-center">
+      <div className="flex flex-col min-h-screen my-16 items-center justify-center">
          <Image className="mb-4" src={bear} width={300} height={300} alt="No turtle found" />
          <h1 className="text-2xl text-light font-bold">Your email has been verified successfully!</h1>
          <p className="my-4">

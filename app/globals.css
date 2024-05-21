@@ -110,7 +110,7 @@
 }
 
 .bg-hero-section-image {
-   background-image: url("/patchikatcha-frontend/public/hero_banner.jpg");
+   background-image: url("../public/hero_bear.png");
 }
 
 .bg-product-card {

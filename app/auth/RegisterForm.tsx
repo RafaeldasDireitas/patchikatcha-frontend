@@ -1,16 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FetchRegister from "./FetchRegister";
 import FetchEmailToken from "./FetchEmailToken";
 import Image from "next/image";
 import turtle from "@/public/turtle.png";
 import { toast } from "sonner";
+import { registerValidation } from "@/zod/zod";
+import { z } from "zod";
+import { useGlobalStore } from "@/zustand/globalstore";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
+   const globalStore = useGlobalStore();
+   const userCountry = globalStore.userGeo.userCountry;
+
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+   const [username, setUsername] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
    const [redirectToVerifyEmail, setRedirectToVerifyEmail] = useState(false);
+   const [fetchEmailToken, setFetchEmailToken] = useState(false);
    const [emailToken, setEmailToken] = useState("");
+   const [apiKey, setApiKey] = useState("");
+   const [isRegistering, setIsRegistering] = useState(false);
+   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+
+   const usernameHandler = (e: any) => {
+      const username = e.target.value;
+      setUsername(username);
+   };
 
    const emailHandler = (e: any) => {
       const email = e.target.value;
@@ -27,9 +44,18 @@ export default function RegisterForm({ setIsLoginForm }: any) {
       setConfirmPassword(confirmPassword);
    };
 
+   const apiKeyHandler = (value: any) => {
+      const apiKey = value;
+      setApiKey(apiKey);
+   };
+
    const userData = {
+      username: username,
       email: email,
-      password: password
+      password: password,
+      confirmPassword: confirmPassword,
+      apiKey: apiKey,
+      userCountry: userCountry
    };
 
    const emailData = {
@@ -38,18 +64,29 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    };
 
    const createUserAccount = async () => {
-      if (password === confirmPassword) {
-         await FetchRegister({ userData, setRedirectToVerifyEmail });
-         await FetchEmailToken({ email, setEmailToken });
-      } else {
-         toast.error("Passwords don't match.");
+      const isValid = await registerValidation.safeParseAsync(userData);
+
+      if (!isValid.success) {
+         isValid.error.errors.forEach((error) => {
+            toast.error(error.message);
+         });
+         return;
       }
+
+      await FetchRegister({ userData, setRedirectToVerifyEmail, setFetchEmailToken, setIsRegistering });
+      recaptchaRef.current?.reset();
 
       //the rest of the code is in the useEffect if you need to debug this
    };
 
    useEffect(() => {
-      if (emailToken) {
+      if (fetchEmailToken) {
+         FetchEmailToken({ email, setEmailToken });
+      }
+   }, [fetchEmailToken]);
+
+   useEffect(() => {
+      if (emailToken && fetchEmailToken) {
          const sendData = async () => {
             const send = await fetch("/api/send-email-verification", {
                method: "POST",
@@ -69,18 +106,27 @@ export default function RegisterForm({ setIsLoginForm }: any) {
 
    return (
       <div className="flex flex-row">
-         <div className="w-1/3 bg-body-background min-h-screen items-center flex justify-center">
-            <Image src={turtle} width={400} height={400} alt="No turtle found..."></Image>
+         <div className="lg:w-1/3 bg-body-background min-h-screen items-center lg:flex hidden justify-center">
+            <Image src={turtle} width={400} height={400} alt="No turtle found..." />
          </div>
 
-         <div className="w-2/3 bg-white min-h-screen items-center flex flex-col justify-center">
-            <div className="w-[500px] flex flex-col justify-center">
-               <h1 className="text-light text-3xl text-start yeseva-one-regular">Sign up</h1>
-               <p className="text-start my-2 josefin-sans">Create an account to keep track of your orders.</p>
+         <div className="lg:w-2/3 w-full my-16 mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
+            <div className="lg:w-[500px] w-full flex flex-col justify-center">
+               <h1 className="text-light text-3xl text-start quicksand-bold">Sign up</h1>
+               <p className="text-start my-2 quicksand-medium">Create an account to keep track of your orders.</p>
+               <input
+                  type="text"
+                  placeholder="Username"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  id="username"
+                  onChange={usernameHandler}
+                  value={username}
+                  required
+               />
                <input
                   type="text"
                   placeholder="example@email.com"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
                   id="email"
                   onChange={emailHandler}
                   value={email}
@@ -89,7 +135,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
                   onChange={passwordHandler}
                   value={password}
                   id="password"
@@ -97,23 +143,26 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Confirm password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white josefin-sans"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
                   onChange={confirmPasswordHandler}
                   value={confirmPassword}
-                  id="password"
+                  id="confirmPassword"
                />
                <div className="flex flex-col items-end">
-                  <button className="btn btn-circle w-40 bg-button-background border-none my-2 text-white josefin-sans" onClick={createUserAccount}>
-                     Sign up
+                  <button
+                     className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
+                     onClick={createUserAccount}
+                  >
+                     {isRegistering ? <span className="loading loading-spinner text-error"></span> : "Sign up"}
                   </button>
                </div>
-               <p className="my-1 josefin-sans">
-                  Already have an account? Log in{" "}
-                  <span className="underline text-light hover:cursor-pointer josefin-sans" onClick={() => setIsLoginForm(true)}>
-                     here
-                  </span>
-                  .
+
+               <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(true)}>
+                  Already have an account? Log in <span className="underline text-light hover:cursor-pointer quicksand-medium">here</span>.
                </p>
+               <div className="flex justify-center mt-4">
+                  <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" ref={recaptchaRef} />
+               </div>
             </div>
          </div>
       </div>

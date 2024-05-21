@@ -1,7 +1,7 @@
 export default function Title({ product }: any) {
    return (
-      <>
-         <h1 className="text-3xl text-light yeseva-one-regular">{product.title}</h1>
-      </>
+      <div>
+         <h1 className="text-3xl text-dark quicksand-bold text-center lg:text-start">{product.title}</h1>
+      </div>
    );
 }

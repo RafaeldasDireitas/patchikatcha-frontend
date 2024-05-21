@@ -1,20 +1,22 @@
 import Image from "next/image";
+import fallback from "@/public/Happy_Halloween.jpg";
 
-export default function ProductCard({ title, tag, price, image }: any) {
-   console.log(image);
+export default function ProductCard({ title, price, image }: any) {
+   const productIVA = price * 0.23;
+
+   const basePrice = productIVA && price + productIVA;
+
+   const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 0.99;
+
+   const formattedPrice = basePrice && adjustedPrice.toFixed(2) + " €";
+
+   const imageUrl = image || fallback;
+
    return (
-      <>
-         <div className="p-4 rounded-3xl bg-product-card w-96 shadow-lg hover:shadow-2xl hover:scale-105 duration-200">
-            <div className="flex flex-col items-center">
-               <h1 className="text-center py-1 text-2xl yeseva-one-regular text-light truncate w-80">{title}</h1>
-               <Image src={image} width={305} height={227} alt="Product image" className="py-2 rounded-3xl"></Image>
-               <h2 className="text-center py-1 text-lg josefin-sans font-semibold text-light">{tag}</h2>
-               <h2 className="text-center py-1 josefin-sans">{price}</h2>
-               <button className="btn text-white bg-button-background hover:bg-white hover:text-black border-none rounded-3xl my-2 w-40">
-                  View Details
-               </button>
-            </div>
-         </div>
-      </>
+      <div className="flex flex-col justify-center items-center rounded-xl hover:scale-110  hover:cursor-pointer duration-200">
+         <Image className="rounded-xl" src={imageUrl} width={250} height={250} alt="Product image" unoptimized />
+         <h1 className="text-center quicksand pt-3 text-xl quicksand-semibold text-light truncate w-80">{title}</h1>
+         <h2 className="text-center quicksand pb-2 quicksand-medium">{formattedPrice}</h2>
+      </div>
    );
 }

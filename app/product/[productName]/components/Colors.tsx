@@ -21,24 +21,35 @@ export default function Colors({ setColorId, productVariants }: any) {
 
    return (
       <>
-         <h1 className="text-2xl text-light yeseva-one-regular">Colors:</h1>
-         <div className="flex flex-row flex-wrap my-2">
-            {colorsName.map((colorName: any, key: number) => {
-               const colorId = uniqueColorsId[key];
+         {productVariants.length > 1 ? (
+            <>
+               <h1 className="text-lg text-light quicksand-light text-center lg:text-start">Colors:</h1>
+               <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
+                  {colorsName.map((colorName: any, key: number) => {
+                     const colorId = uniqueColorsId[key];
 
-               return (
-                  <button
-                     className={`btn mx-1 my-1 w-20 josefin-sans ${
-                        colorId === isFocused ? "bg-button-focused" : ""
-                     } bg-button-background border-none text-white`}
-                     key={colorId}
-                     onClick={() => handleColorClick(colorId)}
-                  >
-                     {colorName}
-                  </button>
-               );
-            })}
-         </div>
+                     return (
+                        <button
+                           className={`btn ml-1 my-1 w-16 quicksand-light ${
+                              colorId === isFocused
+                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 quicksand-light border-border-light hover:bg-transparent hover:border-border-light"
+                                 : "bg-transparent hover:bg-button-background hover:border-border-light border-border-light border-1 min-h-10 h-10 quicksand-light text-black"
+                           }`}
+                           key={colorId}
+                           onClick={() => handleColorClick(colorId)}
+                        >
+                           {colorName}
+                        </button>
+                     );
+                  })}
+               </div>
+            </>
+         ) : (
+            <>
+               <h1 className="text-lg text-light quicksand-light text-center lg:text-start my-1">Colors:</h1>
+               <p className="quicksand-medium lg:text-start text-center">This product only has one color.</p>
+            </>
+         )}
       </>
    );
 }

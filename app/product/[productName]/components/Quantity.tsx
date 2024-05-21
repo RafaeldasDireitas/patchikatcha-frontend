@@ -1,8 +1,19 @@
-export default function Quantity({ quantity, incrementQuantity, decrementQuantity }: any) {
+export default function Quantity({
+   quantity,
+   width,
+   decrementQuantity,
+   incrementQuantity,
+   isDecrementButtonDisabled,
+   isIncrementButtonDisabled
+}: any) {
    return (
-      <div className="flex justify-end">
-         <div className="w-40 rounded-xl flex items-center justify-start bg-button-background">
-            <button className="flex items-center justify-start p-2 hover:scale-110 duration-150" onClick={decrementQuantity}>
+      <div className="flex justify-center lg:justify-end m-2">
+         <div className={`${width} rounded-xl flex items-center bg-button-background`}>
+            <button
+               className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-l-xl"
+               onClick={decrementQuantity}
+               disabled={isDecrementButtonDisabled}
+            >
                <svg
                   className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -18,10 +29,14 @@ export default function Quantity({ quantity, incrementQuantity, decrementQuantit
             </button>
 
             <div className="flex w-1/2 justify-center items-center">
-               <h1 className="text-white josefin-sans">{quantity}</h1>
+               <h1 className="text-white quicksand-medium">{quantity}</h1>
             </div>
 
-            <button className="flex items-center justify-end p-2" onClick={incrementQuantity}>
+            <button
+               className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-r-xl"
+               onClick={incrementQuantity}
+               disabled={isIncrementButtonDisabled}
+            >
                <svg
                   className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"

@@ -21,24 +21,35 @@ export default function Sizes({ setSizeId, productVariants }: any) {
 
    return (
       <>
-         <h1 className="text-2xl text-light yeseva-one-regular">Sizes:</h1>
-         <div className="flex flex-row flex-wrap my-2">
-            {sizesName.map((sizeName: any, key: number) => {
-               const sizeId = uniqueSizesId[key];
+         {productVariants.length > 1 ? (
+            <>
+               <h1 className="text-lg text-light quicksand-light text-center lg:text-start">Sizes:</h1>
+               <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
+                  {sizesName.map((sizeName: any, key: number) => {
+                     const sizeId = uniqueSizesId[key];
 
-               return (
-                  <button
-                     className={`btn ml-1 my-1 w-20 josefin-sans ${
-                        sizeId === isFocused ? "bg-button-focused" : ""
-                     } bg-button-background border-none text-white`}
-                     key={sizeId}
-                     onClick={() => handleSizeClick(sizeId)}
-                  >
-                     {sizeName}
-                  </button>
-               );
-            })}
-         </div>
+                     return (
+                        <button
+                           className={`btn ml-1 my-1 w-16 quicksand-light ${
+                              sizeId === isFocused
+                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 quicksand-light hover:bg-button-light-focus border-border-light hover:border-border-light"
+                                 : "bg-transparent hover:bg-transparent border-border-light hover:border-border-light border-1 min-h-10 h-10 quicksand-light text-black"
+                           }`}
+                           key={sizeId}
+                           onClick={() => handleSizeClick(sizeId)}
+                        >
+                           {sizeName}
+                        </button>
+                     );
+                  })}
+               </div>
+            </>
+         ) : (
+            <>
+               <h1 className="text-lg text-light quicksand-light text-center lg:text-start my-1">Sizes:</h1>
+               <p className="quicksand-medium lg:text-start text-center">This product only has one size.</p>
+            </>
+         )}
       </>
    );
 }

@@ -1,39 +1,57 @@
+import Link from "next/link";
+import logo from "@/public/logo_white.png";
+import Image from "next/image";
+import { FaInstagram } from "react-icons/fa";
+
 export default function Footer() {
+   const currentDate = new Date();
+   const currentYear = currentDate.getFullYear();
+
    return (
-      <>
-         <footer className="bg-button-background">
-            <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-               <span className="text-sm text-white sm:text-center justify-center flex">
-                  © 2024{" "}
-                  <a href="https://flowbite.com/" className="hover:underline text-white">
-                     PatchiKatcha™
-                  </a>
-                  . All Rights Reserved.
-               </span>
-               <ul className="flex flex-wrap items-center justify-center mt-3 text-sm font-medium text-black sm:mt-0">
-                  <li>
-                     <a href="#" className=" hover:underline me-4 md:me-6 text-white">
-                        About
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" className="hover:underline me-4 md:me-6 text-white">
-                        Privacy Policy
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" className="hover:underline me-4 md:me-6 text-white">
-                        Licensing
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" className="hover:underline text-white">
-                        Contact
-                     </a>
-                  </li>
-               </ul>
+      <footer className="footer p-10 bg-button-background text-white">
+         <aside>
+            <div>
+               <Image src={logo} width={180} height={180} alt="No logo found" />
             </div>
-         </footer>
-      </>
+            <p className="quicksand-bold">Copyright © {currentYear} - All rights reserved</p>
+         </aside>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">About us</h6>
+            <a className="link link-hover quicksand-medium">About PatchiKatcha</a>
+            <a className="link link-hover quicksand-medium">Newsletter</a>
+            <a className="link link-hover quicksand-medium">Reviews</a>
+            <Link href={"/faq"}>
+               <p className="link link-hover quicksand-medium">FAQ</p>
+            </Link>
+         </nav>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">Support</h6>
+            <Link href={"/contact-us"}>
+               <p className="link link-hover quicksand-medium">Contact us</p>
+            </Link>
+            <p className="link link-hover quicksand-medium">Shipping</p>
+            <p className="link link-hover quicksand-medium">Payment Methods</p>
+            <p className="link link-hover quicksand-medium">Order Tracking</p>
+         </nav>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">Legal</h6>
+            <Link href={"/terms-and-services"}>
+               <p className="link link-hover quicksand-medium">Terms and Services</p>
+            </Link>
+            <Link href={"/refund-policy"}>
+               <p className="link link-hover quicksand-medium">Refund Policy</p>
+            </Link>
+            <Link href={"/cookie-policy"}>
+               <p className="link link-hover quicksand-medium">Cookie Policy</p>
+            </Link>
+         </nav>
+         <nav>
+            <h6 className="footer-title opacity-100 z-0 quicksand-bold">Socials</h6>
+            <div className="flex flex-row items-center">
+               <FaInstagram color="white" size={30}></FaInstagram>
+               {/* <a className="link link-hover quicksand-medium">Instagram</a> */}
+            </div>
+         </nav>
+      </footer>
    );
 }

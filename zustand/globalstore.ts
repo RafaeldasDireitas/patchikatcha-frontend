@@ -1,16 +1,24 @@
 import { CartType } from "@/types/CartType";
 import { GlobalStateManagement } from "@/types/StateManagement";
+import { UserDataType } from "@/types/UserDataType";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export const useGlobalStore = create<GlobalStateManagement>()(
    persist(
       (set) => ({
+         userId: "" as string,
          jwtToken: "" as string,
          isAuthenticated: false as boolean,
          userEmail: "" as string,
          cart: [] as CartType[],
+         userGeo: {} as UserDataType,
 
+         setUserId(response: string) {
+            return set({
+               userId: response
+            });
+         },
          setJwtToken(response: string) {
             return set({
                jwtToken: response
@@ -28,8 +36,22 @@ export const useGlobalStore = create<GlobalStateManagement>()(
             });
          },
 
-         setCart(response: CartType) {
+         setUserGeo(response: UserDataType) {
+            return set({
+               userGeo: {
+                  userCountry: response.userCountry,
+                  countryName: response.countryName,
+                  currency: response.currency
+               }
+            });
+         },
+
+         setCart(response: CartType | null) {
             set((state) => {
+               if (response === null) {
+                  return { ...state, cart: [] }; // Return a new state object with cart set to an empty array
+               }
+
                const existingIndex = state.cart.findIndex(
                   (product) => product.name === response.name && product.size === response.size && product.color == response.color
                );
@@ -39,7 +61,10 @@ export const useGlobalStore = create<GlobalStateManagement>()(
 
                   updatedCart[existingIndex] = {
                      ...updatedCart[existingIndex],
-                     quantity: updatedCart[existingIndex].quantity + response.quantity
+                     quantity: updatedCart[existingIndex].quantity + response.quantity,
+                     price: response.price,
+                     first_item: response.first_item,
+                     additional_items: response.additional_items
                   };
 
                   return { cart: updatedCart };
@@ -53,7 +78,7 @@ export const useGlobalStore = create<GlobalStateManagement>()(
 
          removeFromCart(productIndex: number) {
             set((state) => ({
-               cart: [...state.cart.filter((product) => product.index !== productIndex)]
+               cart: state.cart.filter((product) => product.index !== productIndex).map((product, index) => ({ ...product, index }))
             }));
          }
       }),

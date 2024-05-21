@@ -13,22 +13,47 @@ export default function Images({ product }: any) {
 
    return (
       <>
-         <div className="flex flex-col max-h-96 overflow-auto">
+         <div className="flex flex-col max-h-96 overflow-auto p-4">
             {sideImages.map((image: any, key: number) => {
                return (
                   <Image
-                     className="my-1 rounded-xl hover:scale-110 hover:cursor-pointer duration-200"
-                     key={key}
+                     className="hidden lg:block my-1 rounded-xl lg:hover:scale-105 hover:cursor-pointer duration-200"
+                     key={key + key}
+                     src={image.src}
+                     width={180}
+                     height={180}
+                     alt="No image found"
+                     onClick={() => changeMainImage(image.src)}
+                  />
+               );
+            })}
+         </div>
+         {mainImage && (
+            <div className="flex lg:flex-none justify-center">
+               <Image
+                  className="lg:max-h-[400px] w-[400px] p-2 lg:p-0 rounded-xl justify-center"
+                  src={mainImage}
+                  width={400}
+                  height={400}
+                  alt="No image found"
+               />
+            </div>
+         )}
+         <div className="flex flex-row max-h-96 gap-x-4 overflow-auto">
+            {sideImages.map((image: any, key: number) => {
+               return (
+                  <Image
+                     className="lg:hidden block my-1 rounded-xl lg:hover:shadow-lg hover:cursor-pointer duration-200"
+                     key={key + key}
                      src={image.src}
                      width={200}
                      height={200}
                      alt="No image found"
                      onClick={() => changeMainImage(image.src)}
-                  ></Image>
+                  />
                );
             })}
          </div>
-         {mainImage && <Image className="rounded-xl max-w-[380px] max-h-[380px]" src={mainImage} width={380} height={380} alt="No image found" />}
       </>
    );
 }

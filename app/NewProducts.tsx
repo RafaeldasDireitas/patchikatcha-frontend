@@ -1,46 +1,78 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProductCard from "./components/ProductCard";
-import FetchNewProducts from "@/app/FetchNewProducts";
-import { ProductDataType } from "@/types/ProductDataType";
-import Loading from "./components/Loading";
 import Link from "next/link";
-import { ProductType } from "@/types/ProductType";
+import { NewProductsType } from "@/types/NewProductsType";
+import Skeleton from "./components/Skeleton";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import FetchNewProducts from "./FetchNewProducts";
 
 export default function NewProducts() {
-   const [newProducts, setNewProducts] = useState<ProductType[]>();
+   const [newProducts, setNewProducts] = useState<NewProductsType>();
+   const productListRef: any = useRef(null);
+
+   const scrollLeft = () => {
+      if (productListRef.current) {
+         productListRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      }
+   };
+
+   const scrollRight = () => {
+      if (productListRef.current) {
+         productListRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      }
+   };
 
    useEffect(() => {
       FetchNewProducts({ setNewProducts });
    }, []);
 
    if (!newProducts) {
-      return <Loading />;
+      return (
+         <div className="flex flex-col justify-center items-center lg:p-12 my-4">
+            <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">New Products</h1>
+            <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
+
+            <div className="flex flex-row overflow-x-auto w-full justify-center gap-8 lg:p-12 my-8">
+               <Skeleton widthInPx={320} heightInPx={322} />
+               <div className="lg:flex hidden gap-8">
+                  <Skeleton widthInPx={320} heightInPx={322} />
+                  <Skeleton widthInPx={320} heightInPx={322} />
+                  <Skeleton widthInPx={320} heightInPx={322} />
+               </div>
+            </div>
+         </div>
+      );
    }
 
    return (
-      <div className="lg:p-12 py-8 flex flex-col items-center">
-         <h1 className="text-3xl lg:text-start text-center text-light font-bold">New Products</h1>
-         <p className="py-4 lg:text-start text-center">Here is just a little description that is a little bit bigger than normal body copy.</p>
-         <div className="lg:p-12 grid lg:grid-cols-3 grid-cols-1 gap-8">
-            {newProducts.map((product, key) => {
-               const formattedPrice = (product.variants[0].price / 100).toFixed(2) + " €";
-               const filteredImages = product.images.filter((image) => image.is_default === true);
-
-               console.log(filteredImages);
-
+      <div className="lg:p-12 flex flex-col justify-center items-center relative">
+         <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">New Products</h1>
+         <p className="py-4 lg:text-start text-center quicksand-medium">
+            Here is just a little description that is a little bit bigger than normal body copy.
+         </p>
+         <div ref={productListRef} className="flex flex-row overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12">
+            {newProducts.data.map((product, key) => {
+               const productPrice = product.variants.find((variant) => variant.is_enabled === true);
                return (
-                  <Link key={key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
-                     <ProductCard
-                        key={key}
-                        title={product.title}
-                        tag={product.tags[0]}
-                        price={formattedPrice}
-                        image={product?.images[0]?.src}
-                     ></ProductCard>
+                  <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
+                     <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src}></ProductCard>
                   </Link>
                );
             })}
          </div>
+         <button
+            className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
+            onClick={scrollLeft}
+         >
+            <FaArrowLeft />
+         </button>
+
+         <button
+            className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
+            onClick={scrollRight}
+         >
+            <FaArrowRight />
+         </button>
       </div>
    );
 }

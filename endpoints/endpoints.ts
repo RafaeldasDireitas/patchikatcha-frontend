@@ -1,5 +1,5 @@
 export const endpoints = {
-   url: "https://api.patchikatcha.com",
+   url: "https://localhost:7065", // https://api.patchikatcha.com
    newProducts: "/api/Product/new-products",
    publishProduct: "/api/Admin/publish-product",
    register: "/api/Auth/register",

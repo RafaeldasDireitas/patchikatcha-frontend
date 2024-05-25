@@ -8,6 +8,7 @@ import { registerValidation } from "@/zod/zod";
 import { z } from "zod";
 import { useGlobalStore } from "@/zustand/globalstore";
 import ReCAPTCHA from "react-google-recaptcha";
+import { redirection } from "@/endpoints/redirection";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -97,7 +98,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
             });
 
             if (redirectToVerifyEmail) {
-               window.location.href = `/auth/confirm-email-warning`;
+               window.location.href = redirection["confirm-email-warning"];
             }
          };
          sendData();

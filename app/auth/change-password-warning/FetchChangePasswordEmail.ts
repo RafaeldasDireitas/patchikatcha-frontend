@@ -1,4 +1,5 @@
 import { endpoints } from "@/endpoints/endpoints";
+import { redirection } from "@/endpoints/redirection";
 import { toast } from "sonner";
 
 export default async function FetchChangePasswordEmail({ userEmail }: any) {
@@ -23,7 +24,7 @@ export default async function FetchChangePasswordEmail({ userEmail }: any) {
       toast.success("Email sent.");
 
       setTimeout(() => {
-         window.location.href = "/auth";
+         window.location.href = redirection.auth;
       }, 5000);
    } else {
       toast.error("There was an error, try again.");

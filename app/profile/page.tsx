@@ -21,6 +21,7 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import ChangeCountryProfileModal from "./components/ChangeCountryProfileModal";
 import OrderHistory from "./components/OrderHistory";
 import ViewReviews from "./components/ViewReviews";
+import { redirection } from "@/endpoints/redirection";
 
 export default function Profile() {
    const [ordersId, setOrdersId] = useState<OrderIdType[]>([]);
@@ -53,7 +54,7 @@ export default function Profile() {
       setCart(null);
 
       toast.success("You successfuly logged out.");
-      redirect((window.location.href = "/auth"));
+      redirect((window.location.href = redirection.auth));
    };
 
    const handleProfilePages = (page: string) => {

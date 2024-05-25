@@ -1,4 +1,5 @@
 "use client";
+import { redirection } from "@/endpoints/redirection";
 import message from "@/public/Message_light.svg";
 import send from "@/public/Send_hor_light.svg";
 import newsletter from "@/public/cat_newsletter.png";
@@ -32,7 +33,7 @@ export default function Newsletter() {
          body: JSON.stringify({ email })
       });
 
-      window.location.href = "/newsletter-confirmed";
+      window.location.href = redirection["newsletter-confirmed"];
    };
 
    return (

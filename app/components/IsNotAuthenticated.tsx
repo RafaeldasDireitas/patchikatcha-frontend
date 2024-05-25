@@ -2,6 +2,7 @@
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useEffect, useState } from "react";
 import FetchIsEmailConfirmed from "../profile/FetchIsEmailConfirmed";
+import { redirection } from "@/endpoints/redirection";
 
 export default function IsNotAuthenticated() {
    const globalStore = useGlobalStore();
@@ -23,7 +24,7 @@ export default function IsNotAuthenticated() {
 
    useEffect(() => {
       if (countdown === 0) {
-         window.location.href = "/auth/confirm-email-warning";
+         window.location.href = redirection["confirm-email-warning"];
       }
    }, [countdown]);
 

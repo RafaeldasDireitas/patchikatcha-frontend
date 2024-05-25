@@ -1,4 +1,5 @@
 "use client";
+import { redirection } from "@/endpoints/redirection";
 import { useEffect, useState } from "react";
 
 export default function Return() {
@@ -19,7 +20,7 @@ export default function Return() {
    }, []);
 
    if (status === "open") {
-      window.location.href = "/checkout";
+      window.location.href = redirection.checkout;
    }
 
    if (status === "complete") {

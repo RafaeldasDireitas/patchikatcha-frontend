@@ -31,6 +31,16 @@ export default function Hydrate({ children }: { children: ReactNode }) {
 
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
                <main className="">
+                  <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7WR8TJ192"></Script>
+                  <Script>
+                     {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-Q7WR8TJ192');
+          `}
+                  </Script>
                   <Script src="https://consent.cookiefirst.com/sites/patchikatcha.com-3640d558-7e25-482d-89b5-7bfe9d385b64/consent.js"></Script>
                   <div className="gtranslate_wrapper"></div>
                   <Script

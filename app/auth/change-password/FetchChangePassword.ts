@@ -1,4 +1,5 @@
 import { endpoints } from "@/endpoints/endpoints";
+import { redirection } from "@/endpoints/redirection";
 import { toast } from "sonner";
 
 type SucceededType = {
@@ -23,7 +24,7 @@ export default async function FetchChangePassword({ changePasswordData }: any) {
       toast.success("Congrats, your password has been changed!");
 
       setTimeout(() => {
-         window.location.href = "/auth";
+         window.location.href = redirection.auth;
       }, 5000);
    }
 }

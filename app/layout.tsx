@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
-import Footer from "./components/Footer";
 import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,6 +17,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <html lang="en" className="bg-white text-black" suppressHydrationWarning>
          <Head>
             <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+            <link
+               href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap"
+               rel="stylesheet"
+            ></link>
          </Head>
          <body className="container min-h-screen flex flex-col justify-between">
             <Toaster

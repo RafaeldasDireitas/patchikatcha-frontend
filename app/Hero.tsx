@@ -5,10 +5,13 @@ import bearPyjama from "@/public/bear_pyjama_party.png";
 export default function Hero() {
    return (
       <>
-         <section className="bg-hero-section-image">
+         <section className="bg-body-background">
             <div className="flex flex-row max-w-screen-xl py-8 mx-auto">
                <div className="mr-auto place-self-center lg:justify-start justify-center">
-                  <h1 className="max-w-2xl mb-4 lg:text-4xl md:text-4xl text-3xl font-extrabold tracking-tight lg:mx-0 md:mx-2 sm:mx-2 mx-2 leading-none xl:text-6xl text-light text-center lg:text-start quicksand-bold">
+                  <div className="flex lg:hidden flex-col justify-center items-center">
+                     <Image src={bearPyjama} width={250} height={250} alt="Epic turtle" priority />
+                  </div>
+                  <h1 className="max-w-2xl mb-4 lg:text-4xl md:text-4xl text-3xl quicksand-bold tracking-tight lg:mx-0 md:mx-2 sm:mx-2 mx-2 leading-none xl:text-6xl text-dark text-center lg:text-start quicksand-bold">
                      Just a cute headline for a cute raccoon
                   </h1>
                   <p className="max-w-2xl mb-6 font-light text-black lg:mb-8 md:text-lg lg:text-xl lg:text-start text-center lg:mx-0 mx-6 quicksand-medium">

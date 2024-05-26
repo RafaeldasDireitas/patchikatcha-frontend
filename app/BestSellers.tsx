@@ -47,12 +47,12 @@ export default function BestSellers() {
    }
 
    return (
-      <div className="lg:p-12 flex flex-col justify-center items-center relative">
+      <div className="lg:p-12 flex flex-col justify-center items-center relative my-8 lg:my-0">
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">Best Sellers</h1>
-         <p className="py-4 lg:text-start text-center quicksand-medium">
+         <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center quicksand-medium">
             Here is just a little description that is a little bit bigger than normal body copy.
          </p>
-         <div ref={productListRef} className="flex flex-row overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12">
+         <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
             {bestSellers &&
                bestSellers.map((product, key) => {
                   return (

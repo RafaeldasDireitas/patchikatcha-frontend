@@ -20,30 +20,30 @@ export default function Footer() {
             <a className="link link-hover ">About PatchiKatcha</a>
             <a className="link link-hover ">Newsletter</a>
             <a className="link link-hover ">Reviews</a>
-            <Link href={"/faq"}>
-               <p className="link link-hover ">FAQ</p>
-            </Link>
+            <a href={"/faq"} className="link link-hover ">
+               FAQ
+            </a>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Support</h6>
-            <Link href={"/contact-us"}>
-               <p className="link link-hover ">Contact us</p>
-            </Link>
+            <a href={"/contact-us"} className="link link-hover ">
+               Contact us
+            </a>
             <p className="link link-hover ">Shipping</p>
             <p className="link link-hover ">Payment Methods</p>
             <p className="link link-hover ">Order Tracking</p>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Legal</h6>
-            <Link href={"/terms-and-services"}>
-               <p className="link link-hover ">Terms and Services</p>
-            </Link>
-            <Link href={"/refund-policy"}>
-               <p className="link link-hover ">Refund Policy</p>
-            </Link>
-            <Link href={"/cookie-policy"}>
-               <p className="link link-hover ">Cookie Policy</p>
-            </Link>
+            <a href={"/terms-and-services"} className="link link-hover ">
+               Terms and Services
+            </a>
+            <a href={"/refund-policy"} className="link link-hover ">
+               Refund Policy
+            </a>
+            <a href={"/cookie-policy"} className="link link-hover ">
+               Cookie Policy
+            </a>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Socials</h6>

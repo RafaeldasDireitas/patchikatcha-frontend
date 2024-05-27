@@ -2,7 +2,7 @@ export type RecommendedProductType = {
    id: number;
    productId: string;
    title: string;
-   tags: string;
+   tag: string;
    price: number;
    image: string;
    purchases: number;

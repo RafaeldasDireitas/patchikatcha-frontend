@@ -1,5 +1,5 @@
 export const endpoints = {
-   url: "https://api.patchikatcha.com", // https://api.patchikatcha.com // https://localhost:7065
+   url: "https://localhost:7065", // https://api.patchikatcha.com // https://localhost:7065
    newProducts: "/api/Product/new-products",
    publishProduct: "/api/Admin/publish-product",
    register: "/api/Auth/register",
@@ -21,7 +21,7 @@ export const endpoints = {
    grabPasswordToken: (userEmail: any) => `/api/Auth/grab-password-token?userEmail=${userEmail}`,
    grabShippingRate: (blueprintId: any, printProviderId: any) => `/api/Blueprint/get-blueprint/${blueprintId}/${printProviderId}`,
    grabAllProducts: (limit: any, pageNumber: any) => `/api/Product/grab-all-products?limit=${limit}&pageNumber=${pageNumber}`,
-   grabCategoryProducts: (categoryName: any) => `/api/Product/grab-category-products?categoryName=${categoryName}`,
+   grabCategoryProducts: (categoryName: any, page: any) => `/api/Product/grab-category-products?categoryName=${categoryName}&page=${page}`,
    grabUserCart: (userId: any, userCountry: any) => `/api/Cart/grab-user-cart?userId=${userId}&userCountry=${userCountry}`,
    createCart: (userId: any) => `/api/Cart/create-cart?userId=${userId}`,
    updateCart: (userId: any) => `/api/Cart/update-cart?userId=${userId}`,

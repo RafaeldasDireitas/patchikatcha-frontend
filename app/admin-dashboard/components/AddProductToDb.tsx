@@ -17,7 +17,7 @@ export default function AddProductToDb() {
    const dbProductDto = {
       productId: productId,
       title: title,
-      tags: tag,
+      tag: tag,
       price: price,
       image: image,
       purchases: 0

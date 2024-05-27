@@ -10,7 +10,7 @@ export default function Quantity({
       <div className="flex justify-center lg:justify-end m-2">
          <div className={`${width} rounded-xl flex items-center bg-button-background`}>
             <button
-               className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-l-xl"
+               className="flex items-center justify-start p-2 lg:hover:scale-110 duration-150 bg-button-focused rounded-l-xl"
                onClick={decrementQuantity}
                disabled={isDecrementButtonDisabled}
             >
@@ -33,7 +33,7 @@ export default function Quantity({
             </div>
 
             <button
-               className="flex items-center justify-start p-2 hover:scale-110 duration-150 bg-button-focused rounded-r-xl"
+               className="flex items-center justify-start p-2 lg:hover:scale-110 duration-150 bg-button-focused rounded-r-xl"
                onClick={incrementQuantity}
                disabled={isIncrementButtonDisabled}
             >

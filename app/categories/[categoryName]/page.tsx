@@ -48,17 +48,17 @@ export default function CategoryName({ params }: any) {
       <div className="flex lg:flex-row flex-col p-12">
          <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center">
             <Breadcrumb links={links} />
-            <h1 className="quicksand-bold text-2xl text-light">{decodedCategoryName}</h1>
+            <h1 className="text-2xl text-light">{decodedCategoryName}</h1>
             <div className="mt-10">
-               <h1 className="quicksand-bold text-xl text-dark">{decodedCategoryTitle}</h1>
+               <h1 className="text-xl text-dark">{decodedCategoryTitle}</h1>
                {findContent?.content.map((content, key) => (
                   <Link href={{ pathname: `/categories/${content}`, query: { title: categoryTitle } }} key={key + key}>
-                     <h2 className="mt-1 quicksand-medium text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
+                     <h2 className="mt-1  text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
                   </Link>
                ))}
             </div>
             <div className="mt-10">
-               <h1 className="quicksand-bold text-xl text-dark">Filter by</h1>
+               <h1 className="text-xl text-dark">Filter by</h1>
                <p className="quicksand-light mt-1">Price range: {productPrice} €</p>
                <input
                   type="range"

@@ -12,7 +12,7 @@ export default function ChangePassword() {
 
    return (
       <div className="flex flex-col items-center justify-center gap-y-2 min-h-screen my-16 px-2 text-center">
-         <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Reset your password</h1>
+         <h1 className="text-3xl lg:text-start text-center text-dark">Reset your password</h1>
          <p>Enter your email and we'll send you a link to reset your password.</p>
          <input
             type="text"
@@ -23,7 +23,7 @@ export default function ChangePassword() {
             value={userEmail}
          />
          <button
-            className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white border-none quicksand-semibold"
+            className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white border-none "
             onClick={() => FetchChangePasswordEmail({ userEmail })}
          >
             Submit

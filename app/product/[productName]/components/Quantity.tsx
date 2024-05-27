@@ -29,7 +29,7 @@ export default function Quantity({
             </button>
 
             <div className="flex w-1/2 justify-center items-center">
-               <h1 className="text-white quicksand-medium">{quantity}</h1>
+               <h1 className="text-white ">{quantity}</h1>
             </div>
 
             <button

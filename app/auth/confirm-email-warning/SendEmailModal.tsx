@@ -15,10 +15,8 @@ export default function SendEmailModal({ setUserEmail, setEmailToken, setIsButto
    return (
       <DialogContent className="sm:max-w-[425px]">
          <DialogHeader>
-            <DialogTitle className="quicksand-bold text-light">Send email</DialogTitle>
-            <DialogDescription className="quicksand-medium">
-               If you didn't receive your email, type it here again, and we'll send you another!
-            </DialogDescription>
+            <DialogTitle className="text-light">Send email</DialogTitle>
+            <DialogDescription className="">If you didn't receive your email, type it here again, and we'll send you another!</DialogDescription>
          </DialogHeader>
          <input
             type="text"

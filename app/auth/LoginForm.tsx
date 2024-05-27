@@ -71,8 +71,8 @@ export default function LoginForm({ setIsLoginForm }: any) {
 
          <div className="lg:w-2/3 w-full my-16 mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
             <div className="lg:w-[500px] w-full flex flex-col justify-center">
-               <h1 className="text-light text-3xl text-start quicksand-bold">Log in</h1>
-               <p className="text-start my-2 quicksand-medium">Log in to start buying!</p>
+               <h1 className="text-light text-3xl text-start">Log in</h1>
+               <p className="text-start my-2 ">Log in to start buying!</p>
                <input
                   type="text"
                   placeholder="example@email.com"
@@ -92,7 +92,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
                />
                <div className="flex justify-end">
                   <button
-                     className="btn btn-circle w-1/2 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
+                     className="btn btn-circle w-1/2 bg-button-background hover:bg-button-focused border-none my-2 text-white "
                      onClick={authenticateUser}
                   >
                      {isLoggingIn ? <span className="loading loading-spinner text-error"></span> : "Log in"}
@@ -100,10 +100,10 @@ export default function LoginForm({ setIsLoginForm }: any) {
                </div>
 
                <div>
-                  <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(false)}>
+                  <p className="my-1 " onClick={() => setIsLoginForm(false)}>
                      Don't have an account yet? Sign up <span className="underline text-light hover:cursor-pointer">here</span>.
                   </p>
-                  <p className="my-1 quicksand-medium">
+                  <p className="my-1 ">
                      Forgot your password? Reset it{" "}
                      <span className="underline text-light hover:cursor-pointer">
                         <Link href={"/auth/change-password-warning"}>here</Link>

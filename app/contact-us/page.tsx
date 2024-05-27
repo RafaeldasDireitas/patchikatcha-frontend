@@ -66,7 +66,7 @@ export default function ContactUs() {
       <div className="px-2 lg:px-0 min-h-screen my-16">
          <div className="flex flex-col justify-center items-center gap-y-3">
             <div className="-my-1 text-center">
-               <h1 className="text-3xl text-dark quicksand-bold my-1">Contact us</h1>
+               <h1 className="text-3xl text-dark  my-1">Contact us</h1>
                <p>
                   Got any questions or requests? Check out our{" "}
                   <Link href={"/faq"} className="text-light hover:underline hover:cursor-pointer">
@@ -100,10 +100,7 @@ export default function ContactUs() {
                   value={content}
                ></textarea>
                <div className="flex justify-center">
-                  <button
-                     onClick={sendEmail}
-                     className="btn btn-circle bg-button-background hover:bg-button-focused quicksand-semibold w-60 text-white border-none"
-                  >
+                  <button onClick={sendEmail} className="btn btn-circle bg-button-background hover:bg-button-focused  w-60 text-white border-none">
                      Submit
                   </button>
                </div>

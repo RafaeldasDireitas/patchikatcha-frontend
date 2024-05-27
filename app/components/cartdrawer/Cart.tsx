@@ -17,7 +17,7 @@ export default function Cart() {
       <SheetContent side="right" className="bg-body-background lg:w-[370px] w-[300px]">
          <SheetHeader>
             <SheetTitle>
-               <h1 className="text-3xl text-left text-dark quicksand-medium">Your cart:</h1>
+               <h1 className="text-3xl text-left text-dark ">Your cart:</h1>
             </SheetTitle>
             <SheetDescription>
                <div>
@@ -51,7 +51,7 @@ export default function Cart() {
                      <div className="flex flex-col items-center gap-y-3">
                         <Link href={"/patchi-cart"}>
                            <SheetClose>
-                              <button className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                              <button className="btn mt-3 btn-circle  bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
                                  View Cart
                               </button>
                            </SheetClose>
@@ -59,7 +59,7 @@ export default function Cart() {
                         {!isAuthenticated || !jwtToken || !userId ? (
                            <AlertDialog>
                               <AlertDialogTrigger>
-                                 <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                                 <button className="btn btn-circle  bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
                                     Checkout
                                  </button>
                               </AlertDialogTrigger>
@@ -68,7 +68,7 @@ export default function Cart() {
                         ) : (
                            <Link href={"/checkout"}>
                               <SheetClose>
-                                 <button className="btn btn-circle quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
+                                 <button className="btn btn-circle  bg-button-background hover:bg-button-focused hover:border-none border-none w-64 text-white">
                                     Checkout
                                  </button>
                               </SheetClose>

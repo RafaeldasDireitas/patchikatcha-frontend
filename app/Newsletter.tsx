@@ -43,10 +43,8 @@ export default function Newsletter() {
          </div>
          {/* < className="flex flex-col items-center gap-y-2 mr-[150px]"> */}
          <div className="flex flex-col items-center gap-y-2">
-            <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">Sign up for our Newsletter!</h1>
-            <p className="josefin-sans text-center quicksand-medium">
-               Be the first one to know about new designs, special events or promotional code.
-            </p>
+            <h1 className="text-3xl lg:text-start text-center text-dark">Sign up for our Newsletter!</h1>
+            <p className="josefin-sans text-center ">Be the first one to know about new designs, special events or promotional code.</p>
             <label className="flex flex-row input rounded-full bg-white gap-2 border-border-light focus-within:border-border-light border-2">
                <Image src={message} width={30} height={30} alt="No icon found" />
                <input

@@ -6,6 +6,9 @@ import CountryModal from "./components/CountryModal/CountryModal";
 import Script from "next/script";
 import Loading from "./components/Loading";
 import Footer from "./components/Footer";
+import { Quicksand } from "next/font/google";
+
+const quicksand = Quicksand({ subsets: ["latin"] });
 
 export default function Hydrate({ children }: { children: ReactNode }) {
    const [isHydrated, setIsHydrated] = useState(false);
@@ -30,7 +33,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
                <Navbar />
 
                {Object.keys(userGeo).length === 0 ? <CountryModal /> : <></>}
-               <main className="">
+               <main className={`${quicksand.className}`}>
                   <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7WR8TJ192"></Script>
                   <Script>
                      {`

@@ -1,7 +1,7 @@
 export default function RefundPolicy() {
    return (
       <div className="p-12 min-h-screen">
-         <h1 className="quicksand-bold text-2xl text-dark mb-1">Our returns policy:</h1>
+         <h1 className=" text-2xl text-dark mb-1">Our returns policy:</h1>
          <p className="my-1">
             We do not take responsibility for returns and exchanges for customers that ordered the wrong size, color, or simply changed their mind.
          </p>
@@ -9,11 +9,11 @@ export default function RefundPolicy() {
             In case of a damaged product or a manufacturing error, Patchi Katcha offers a free replacement or a refund if you contact us within 30
             days of product delivery. To initiate a return or exchange due to a damaged product or manufacturing error, please follow these steps:
          </p>
-         <ul className="list-disc p-8 quicksand-semibold">
+         <ul className="list-disc p-8 ">
             <li>
                {" "}
                Contact our team through the{" "}
-               <a href="/contacts" className="text-light hover:underline quicksand-semibold">
+               <a href="/contacts" className="text-light hover:underline ">
                   contacts page
                </a>{" "}
                on our website.

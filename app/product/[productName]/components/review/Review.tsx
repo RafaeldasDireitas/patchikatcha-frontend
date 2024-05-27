@@ -47,14 +47,14 @@ export default function Review({ productId, productTitle, productImage }: Review
       <>
          <div className="flex lg:flex-row flex-col justify-between">
             <div className="flex lg:justify-start justify-center items-center">
-               <h1 className="text-3xl text-dark quicksand-bold">Reviews ({reviewsCount}):</h1>
+               <h1 className="text-3xl text-dark ">Reviews ({reviewsCount}):</h1>
             </div>
 
             {!isAuthenticated || !jwtToken || !userId ? (
                <AlertDialog>
                   <AlertDialogTrigger>
                      <div className="flex lg:justify-end justify-center">
-                        <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
+                        <button className="btn btn-circle text-white bg-button-background  hover:bg-button-focused border-none my-2 w-40">
                            Write us a review!
                         </button>
                      </div>
@@ -64,7 +64,7 @@ export default function Review({ productId, productTitle, productImage }: Review
             ) : (
                <div className="flex lg:justify-end justify-center">
                   <Link href={{ pathname: `/review-product/${productId}`, query: { productTitle: productTitle, productImage: productImage } }}>
-                     <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
+                     <button className="btn btn-circle text-white bg-button-background  hover:bg-button-focused border-none my-2 w-40">
                         Write us a review!
                      </button>
                   </Link>

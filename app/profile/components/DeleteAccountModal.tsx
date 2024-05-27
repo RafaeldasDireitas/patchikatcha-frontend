@@ -27,8 +27,8 @@ export default function DeleteAccountModal() {
    return (
       <DialogContent className="sm:max-w-[425px]">
          <DialogHeader>
-            <DialogTitle className="quicksand-bold text-light text-center">Are you absolutely sure?</DialogTitle>
-            <DialogDescription className="quicksand-medium text-center">This action is irreversible</DialogDescription>
+            <DialogTitle className=" text-light text-center">Are you absolutely sure?</DialogTitle>
+            <DialogDescription className=" text-center">This action is irreversible</DialogDescription>
          </DialogHeader>
          <input
             type="password"

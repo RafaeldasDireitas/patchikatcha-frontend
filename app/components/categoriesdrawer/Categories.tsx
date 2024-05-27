@@ -8,7 +8,7 @@ export default function Categories({ categories }: any) {
       <SheetContent side="left" className="bg-body-background lg:w-[370px] w-[300px]">
          <SheetHeader>
             <SheetTitle>
-               <h1 className="text-3xl text-left text-dark quicksand-medium">Categories:</h1>
+               <h1 className="text-3xl text-left text-dark ">Categories:</h1>
             </SheetTitle>
             <SheetDescription>
                <div className="bg-body-background text-black">
@@ -17,7 +17,7 @@ export default function Categories({ categories }: any) {
                         <div key={key + key}>
                            <div className="collapse ">
                               <input type="radio" name="my-accordion-1" defaultChecked />
-                              <div className="collapse-title text-xl text-start quicksand-medium h-4">{category.title}</div>
+                              <div className="collapse-title text-xl text-start  h-4">{category.title}</div>
                               <div className="collapse-content flex flex-col pl-6 text-start">
                                  {category.content.map((content, key: number) => {
                                     return (

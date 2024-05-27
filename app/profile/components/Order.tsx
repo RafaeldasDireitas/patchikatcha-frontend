@@ -7,12 +7,12 @@ export default function Order({ printifyUrl, orderId, createdAt, status, address
       <div className="bg-body-background text-light rounded-xl">
          <div className="flex flex-col p-2 gap-y-1">
             <div className="flex flex-row mx-2">
-               <p className="quicksand-bold">
+               <p className="">
                   {firstItem} {lineItems.length > 1 ? ` + ${lineItems.length - 1} items` : ""}
                </p>
             </div>
 
-            <div className="flex flex-col mx-2 quicksand-medium">
+            <div className="flex flex-col mx-2 ">
                <h1>Created on: {createdAt}</h1>
                <p></p>
             </div>
@@ -34,7 +34,7 @@ export default function Order({ printifyUrl, orderId, createdAt, status, address
 
             <div className="flex justify-center">
                <Link href={`${printifyUrl}`} target="_blank">
-                  <button className="btn btn-circle my-2 quicksand-semibold bg-button-background hover:bg-button-focused hover:border-none border-border-light border-2 text-white hover:text-white lg:w-64 w-36">
+                  <button className="btn btn-circle my-2  bg-button-background hover:bg-button-focused hover:border-none border-border-light border-2 text-white hover:text-white lg:w-64 w-36">
                      Order details
                   </button>
                </Link>

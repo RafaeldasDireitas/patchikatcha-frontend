@@ -103,7 +103,7 @@ export default function Profile() {
    return (
       <div className="flex lg:flex-row flex-col">
          <div className="p-12 my-8 lg:w-1/3">
-            <h1 className="text-2xl text-light quicksand-bold lg:text-start text-center">Your Account</h1>
+            <h1 className="text-2xl text-light  lg:text-start text-center">Your Account</h1>
             <p className="quicksand-light lg:text-start text-center">Track your orders or change your settings</p>
             <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
                <p className="quicksand-light">
@@ -139,8 +139,8 @@ export default function Profile() {
             </div>
 
             <div className="mt-10">
-               <h1 className="text-xl text-dark quicksand-bold lg:text-start text-center">My orders</h1>
-               <div className="p-4 quicksand-medium">
+               <h1 className="text-xl text-dark  lg:text-start text-center">My orders</h1>
+               <div className="p-4 ">
                   <h2
                      onClick={() => handleProfilePages("orderHistory")}
                      className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
@@ -152,8 +152,8 @@ export default function Profile() {
             </div>
 
             <div className="mt-4">
-               <h1 className="text-xl text-dark quicksand-bold lg:text-start text-center">Account settings</h1>
-               <div className="p-4 quicksand-medium">
+               <h1 className="text-xl text-dark  lg:text-start text-center">Account settings</h1>
+               <div className="p-4 ">
                   <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Change personal details</h2>
                   <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Newsletter subscription</h2>
                   <div className="flex justify-center lg:justify-start">
@@ -168,8 +168,8 @@ export default function Profile() {
             </div>
 
             <div className="mt-4">
-               <h1 className="text-xl text-dark quicksand-bold lg:text-start text-center">Additional settings</h1>
-               <div className="p-4 quicksand-medium">
+               <h1 className="text-xl text-dark  lg:text-start text-center">Additional settings</h1>
+               <div className="p-4 ">
                   <h2
                      onClick={() => handleProfilePages("viewReviews")}
                      className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
@@ -182,20 +182,20 @@ export default function Profile() {
             <div className="flex flex-col justify-center items-center lg:items-start lg:justify-start">
                <button
                   onClick={signOutHandler}
-                  className="btn mt-3 btn-circle quicksand-semibold bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64"
+                  className="btn mt-3 btn-circle  bg-transparent hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64"
                >
                   Sign Out
                </button>
 
                <Link href={"/auth/change-password-warning"}>
-                  <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                  <button className="btn mt-3 btn-circle bg-transparent  hover:bg-button-focused hover:border-none border-border-light border-2 text-light hover:text-white w-64">
                      Change Password
                   </button>
                </Link>
 
                <Dialog>
                   <DialogTrigger asChild>
-                     <button className="btn mt-3 btn-circle bg-transparent quicksand-semibold hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">
+                     <button className="btn mt-3 btn-circle bg-transparent  hover:bg-red-800 hover:border-none border-border-light border-2 text-light hover:text-white w-64">
                         Delete Account
                      </button>
                   </DialogTrigger>

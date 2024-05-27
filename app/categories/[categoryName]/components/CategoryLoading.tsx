@@ -13,13 +13,13 @@ export default function CategoryLoading({ categoryName, categoryTitle }: Readonl
       <div className="flex lg:flex-row flex-col p-12">
          <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center">
             <Breadcrumb links={links} />
-            <h1 className="quicksand-bold text-2xl text-light">{categoryName}</h1>
+            <h1 className="text-2xl text-light">{categoryName}</h1>
             <div className="lg:mt-20 mt-10">
-               <h1 className="quicksand-bold text-xl text-dark">{categoryTitle}</h1>
+               <h1 className="text-xl text-dark">{categoryTitle}</h1>
                <Skeleton widthInPx={160} heightInPx={24} />
             </div>
             <div className="mt-10">
-               <h1 className="quicksand-bold text-xl text-dark">Filter by</h1>
+               <h1 className="text-xl text-dark">Filter by</h1>
                <Skeleton widthInPx={160} heightInPx={24} />
                <Skeleton widthInPx={160} heightInPx={24} />
             </div>

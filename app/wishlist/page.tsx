@@ -49,7 +49,7 @@ export default function Wishlist() {
       <>
          <div className="flex flex-col justify-center items-center min-h-screen my-16">
             <Breadcrumb links={links} />
-            <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Your wishlist</h1>
+            <h1 className="text-3xl lg:text-start text-center text-dark ">Your wishlist</h1>
          </div>
          <div className="lg:p-12 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8 mt-8 lg:mt-0">
             {wishlist.map((product, key) => {

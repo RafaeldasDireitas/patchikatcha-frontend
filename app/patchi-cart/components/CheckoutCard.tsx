@@ -33,20 +33,20 @@ export default function CheckoutCard({ totalPrice, totalShipping }: any) {
                   <Image className="mx-1" src={mastercard} width={50} height={50} alt="Mastercard icon"></Image>
                   <Image className="mx-1" src={paypal} width={50} height={50} alt="Paypal icon"></Image>
                </div>
-               <h1 className="text-xl quicksand-semibold">Order details:</h1>
-               <div className="flex flex-row justify-between my-2 quicksand-medium">
+               <h1 className="text-xl ">Order details:</h1>
+               <div className="flex flex-row justify-between my-2 ">
                   <h1 className="text-start">Subtotal:</h1>
                   <h1 className="text-end">{formattedPrice}</h1>
                </div>
-               <div className="flex flex-row justify-between my-2 quicksand-medium">
+               <div className="flex flex-row justify-between my-2 ">
                   <h1 className="text-start">Tax:</h1>
                   <h1 className="text-end">Calculated at checkout</h1>
                </div>
-               <div className="flex flex-row justify-between my-2 quicksand-medium">
+               <div className="flex flex-row justify-between my-2 ">
                   <h1 className="text-start">Shipping:</h1>
                   <h1 className="text-end">{formattedShipping}</h1>
                </div>
-               <div className="flex flex-row justify-between my-2 quicksand-medium">
+               <div className="flex flex-row justify-between my-2 ">
                   <h1 className="text-start">Total:</h1>
                   <h1 className="text-end">{total}</h1>
                </div>
@@ -54,7 +54,7 @@ export default function CheckoutCard({ totalPrice, totalShipping }: any) {
                   {!isAuthenticated || !jwtToken || !userId ? (
                      <AlertDialog>
                         <AlertDialogTrigger>
-                           <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white quicksand-semibold">
+                           <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white ">
                               Checkout
                            </button>
                         </AlertDialogTrigger>
@@ -62,9 +62,7 @@ export default function CheckoutCard({ totalPrice, totalShipping }: any) {
                      </AlertDialog>
                   ) : (
                      <Link href={"/checkout"}>
-                        <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white quicksand-semibold">
-                           Checkout
-                        </button>
+                        <button className="btn btn-circle w-80 bg-button-background hover:bg-button-focused border-none text-white ">Checkout</button>
                      </Link>
                   )}
                </div>

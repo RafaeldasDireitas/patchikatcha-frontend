@@ -146,17 +146,15 @@ export default function ProductName({ params }: any) {
       }, 2000); // Run after 2 seconds
    };
 
-   console.log(product);
-
    const links = ["Home", "Product", `${decodedProductName}`];
 
    return (
       <div className="bg-white">
-         <div className="flex flex-col gap-y-12 lg:p-12 bg-white rounded-xl">
+         <div className="flex flex-col lg:p-12 bg-white rounded-xl">
             <div className="flex justify-center lg:justify-start">
                <Breadcrumb links={links} />
             </div>
-            <div className="flex lg:flex-row flex-col gap-6 lg:p-12">
+            <div className="flex lg:flex-row flex-col gap-x-4 lg:p-12">
                <Images product={product}></Images>
 
                <div className="flex flex-col">
@@ -177,17 +175,19 @@ export default function ProductName({ params }: any) {
                </div>
             </div>
 
-            <div className="gap-6 flex lg:flex-row flex-col">
-               <DetailedDescription product={product} />
-               <ImageDescription product={product}></ImageDescription>
-            </div>
+            <div className="flex flex-col gap-8">
+               <div className="flex lg:flex-row flex-col">
+                  <DetailedDescription product={product} />
+                  <ImageDescription product={product}></ImageDescription>
+               </div>
 
-            {/* <hr className="my-2" /> */}
+               {/* <hr className="my-2" /> */}
 
-            <RecommendedProducts tag={product.tags[0]}></RecommendedProducts>
+               <RecommendedProducts tag={product.tags[0]}></RecommendedProducts>
 
-            <div>
-               <Review productId={productId} productTitle={productName} productImage={product.images[0].src} />
+               <div>
+                  <Review productId={productId} productTitle={productName} productImage={product.images[0].src} />
+               </div>
             </div>
          </div>
       </div>

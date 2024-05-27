@@ -43,7 +43,7 @@ export default function Images({ product }: any) {
             {sideImages.map((image: any, key: number) => {
                return (
                   <Image
-                     className="lg:hidden block my-1 rounded-xl lg:hover:shadow-lg hover:cursor-pointer duration-200"
+                     className="lg:hidden block my-1 rounded-xl lg:hover:scale-105 hover:cursor-pointer duration-200"
                      key={key + key}
                      src={image.src}
                      width={200}

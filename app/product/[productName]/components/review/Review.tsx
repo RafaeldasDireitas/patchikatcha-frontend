@@ -45,7 +45,7 @@ export default function Review({ productId, productTitle, productImage }: Review
 
    return (
       <>
-         <div className="flex lg:flex-row flex-col justify-between mb-8">
+         <div className="flex lg:flex-row flex-col justify-between">
             <div className="flex lg:justify-start justify-center items-center">
                <h1 className="text-3xl text-dark quicksand-bold">Reviews ({reviewsCount}):</h1>
             </div>

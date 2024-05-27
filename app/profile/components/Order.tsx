@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export default function Order({ printifyUrl, orderId, createdAt, status, address, lineItems }: any) {
-   console.log(lineItems);
    const firstItem = lineItems[0].metadata.title;
 
    return (

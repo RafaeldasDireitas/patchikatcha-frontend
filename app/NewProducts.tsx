@@ -45,7 +45,7 @@ export default function NewProducts() {
    }
 
    return (
-      <div className="lg:p-12 flex flex-col justify-center items-center relative mt-20 lg:mt-0">
+      <div className="lg:p-12 flex flex-col justify-center items-center relative">
          <h1 className="text-3xl lg:text-start text-center text-dark font-bold quicksand-bold">New Products</h1>
          <p className="my-2 lg:text-start text-center quicksand-medium mx-4 lg:mx-0">
             Here is just a little description that is a little bit bigger than normal body copy.

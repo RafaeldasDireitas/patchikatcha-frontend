@@ -154,7 +154,7 @@ export default function ProductName({ params }: any) {
             <div className="flex justify-center lg:justify-start">
                <Breadcrumb links={links} />
             </div>
-            <div className="flex lg:flex-row flex-col gap-x-4 lg:p-12">
+            <div className="flex lg:flex-row flex-col gap-4 lg:p-12">
                <Images product={product}></Images>
 
                <div className="flex flex-col">

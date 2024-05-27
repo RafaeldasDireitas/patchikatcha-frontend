@@ -8,6 +8,7 @@ import Link from "next/link";
 import ProductCard from "@/app/components/ProductCard";
 import { ProductType } from "@/types/ProductType";
 import CategoryLoading from "./components/CategoryLoading";
+import { Slider } from "@/components/ui/slider";
 
 export default function CategoryName({ params }: any) {
    const categoryName = params.categoryName;
@@ -30,8 +31,8 @@ export default function CategoryName({ params }: any) {
       return <CategoryLoading categoryName={decodedCategoryName} categoryTitle={decodedCategoryTitle} />;
    }
 
-   const handleProductPrice = (e: any) => {
-      const productPrice = e.target.value;
+   const handleProductPrice = (value: number[]) => {
+      const productPrice = value[0];
       setProductPrice(productPrice);
    };
 
@@ -45,28 +46,29 @@ export default function CategoryName({ params }: any) {
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
 
    return (
-      <div className="flex lg:flex-row flex-col p-12">
-         <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center">
+      <div className="flex lg:flex-row flex-col p-12 gap-4">
+         <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center gap-4">
             <Breadcrumb links={links} />
             <h1 className="text-2xl text-light">{decodedCategoryName}</h1>
-            <div className="mt-10">
+            <div>
                <h1 className="text-xl text-dark">{decodedCategoryTitle}</h1>
                {findContent?.content.map((content, key) => (
                   <Link href={{ pathname: `/categories/${content}`, query: { title: categoryTitle } }} key={key + key}>
-                     <h2 className="mt-1  text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
+                     <h2 className="text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
                   </Link>
                ))}
             </div>
-            <div className="mt-10">
+            <div>
                <h1 className="text-xl text-dark">Filter by</h1>
-               <p className=" mt-1">Price range: {productPrice} €</p>
-               <input
-                  type="range"
+               <p>Price range: {productPrice} €</p>
+               <Slider
+                  defaultValue={[500]}
                   min={0}
-                  max="500"
-                  value={productPrice}
-                  className="range [--range-shdw:#ffedd8] h-3 range-xs w-40 justify-center"
-                  onChange={handleProductPrice}
+                  max={500}
+                  step={1}
+                  value={[productPrice]}
+                  onValueChange={handleProductPrice}
+                  className="mx-auto lg:mx-0 w-40 my-2"
                />
             </div>
          </div>
@@ -76,14 +78,14 @@ export default function CategoryName({ params }: any) {
                <input
                   type="text"
                   placeholder="Search product..."
-                  className="input rounded-full border-border-light focus:border-border-light border-2 my-2 w-72 bg-white "
+                  className="input rounded-full border-border-light focus:border-border-light border-2 w-72 bg-white "
                   id="productSearch"
                   onChange={handleSearchProducts}
                   value={searchProducts}
                />
             </div>
 
-            <div className="lg:gap-4 gap-6 grid lg:grid-cols-3 grid-cols-1 my-8">
+            <div className="lg:gap-4 gap-6 grid lg:grid-cols-3 grid-cols-1 my-4">
                {products &&
                   filteredProducts &&
                   filteredProducts

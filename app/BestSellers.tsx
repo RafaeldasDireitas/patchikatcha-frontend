@@ -48,7 +48,7 @@ export default function BestSellers() {
 
    return (
       <div className="lg:p-12 flex flex-col justify-center items-center relative mt-8 lg:mt-0">
-         <h1 className="text-3xl lg:text-start text-center text-dark font-bold">Best Sellers</h1>
+         <h1 className="text-3xl lg:text-start text-center text-dark">Best Sellers</h1>
          <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center ">
             Here is just a little description that is a little bit bigger than normal body copy.
          </p>

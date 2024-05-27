@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Quicksand } from "next/font/google";
+import { Quicksand, Fredoka } from "next/font/google";
 import "./globals.css";
 import Hydrate from "./Hydrate";
 import { Toaster } from "sonner";
-import Head from "next/head";
 
-const inter = Inter({ subsets: ["latin"] });
-const quicksand = Quicksand({ subsets: ["latin"], weight: "700" });
+const fredoka = Fredoka({ subsets: ["latin"], variable: "--font-fredoka" });
+const quicksand = Quicksand({ subsets: ["latin"], variable: "--font-quicksand" });
 
 export const metadata: Metadata = {
    title: "Patchi Katcha",
@@ -16,15 +15,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
    return (
       <html lang="en" className="bg-white text-black" suppressHydrationWarning>
-         <Head>
-            <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');</style>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-            <link
-               href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap"
-               rel="stylesheet"
-            ></link>
-         </Head>
          <body className={`container min-h-screen flex flex-col justify-between ${quicksand.className}`}>
             <Toaster
                expand

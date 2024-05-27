@@ -17,7 +17,7 @@ export default function ChangePassword() {
          <input
             type="text"
             placeholder="example@email.com"
-            className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+            className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
             id="email"
             onChange={emailHandler}
             value={userEmail}

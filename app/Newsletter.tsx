@@ -47,14 +47,7 @@ export default function Newsletter() {
             <p className="josefin-sans text-center ">Be the first one to know about new designs, special events or promotional code.</p>
             <label className="flex flex-row input rounded-full bg-white gap-2 border-border-light focus-within:border-border-light border-2">
                <Image src={message} width={30} height={30} alt="No icon found" />
-               <input
-                  className="bg-white w-56 quicksand-light"
-                  onChange={handleEmail}
-                  value={email}
-                  placeholder="Enter your email"
-                  type="email"
-                  id="email"
-               ></input>
+               <input className="bg-white w-56 " onChange={handleEmail} value={email} placeholder="Enter your email" type="email" id="email"></input>
                <Image
                   src={send}
                   onClick={sendEmail}

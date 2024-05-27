@@ -127,7 +127,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="text"
                   placeholder="example@email.com"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   id="email"
                   onChange={emailHandler}
                   value={email}
@@ -136,7 +136,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   onChange={passwordHandler}
                   value={password}
                   id="password"
@@ -144,7 +144,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Confirm password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   onChange={confirmPasswordHandler}
                   value={confirmPassword}
                   id="confirmPassword"

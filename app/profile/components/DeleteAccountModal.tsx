@@ -33,7 +33,7 @@ export default function DeleteAccountModal() {
          <input
             type="password"
             placeholder="Password"
-            className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] w-full bg-white quicksand-light"
+            className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] w-full bg-white "
             id="password"
             onChange={passwordHandler}
             value={password}

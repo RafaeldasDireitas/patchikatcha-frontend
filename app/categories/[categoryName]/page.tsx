@@ -59,7 +59,7 @@ export default function CategoryName({ params }: any) {
             </div>
             <div className="mt-10">
                <h1 className="text-xl text-dark">Filter by</h1>
-               <p className="quicksand-light mt-1">Price range: {productPrice} €</p>
+               <p className=" mt-1">Price range: {productPrice} €</p>
                <input
                   type="range"
                   min={0}
@@ -76,7 +76,7 @@ export default function CategoryName({ params }: any) {
                <input
                   type="text"
                   placeholder="Search product..."
-                  className="input rounded-full border-border-light focus:border-border-light border-2 my-2 w-72 bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 my-2 w-72 bg-white "
                   id="productSearch"
                   onChange={handleSearchProducts}
                   value={searchProducts}

@@ -82,7 +82,7 @@ export default function ContactUs() {
                   onChange={handleSubject}
                   value={subject}
                   placeholder="Subject"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   id="subject"
                />
                <input
@@ -90,11 +90,11 @@ export default function ContactUs() {
                   onChange={handleUserEmail}
                   value={userEmail}
                   placeholder="Your email"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] w-full bg-white "
                   id="userEmail"
                />
                <textarea
-                  className="textarea rounded-xl my-2 border-border-light focus:border-border-light border-2 max-w-[500px] max-h-96 h-48  w-full bg-white quicksand-light"
+                  className="textarea rounded-xl my-2 border-border-light focus:border-border-light border-2 max-w-[500px] max-h-96 h-48  w-full bg-white "
                   placeholder="Content"
                   onChange={handleContent}
                   value={content}

@@ -38,7 +38,7 @@ export default function Wishlist() {
       return (
          <div className="flex flex-col min-h-screen justify-center items-center my-16">
             <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />
-            <h1 className="text-2xl text-light font-bold">No items in your wishlist yet!</h1>
+            <h1 className="text-2xl text-light ">No items in your wishlist yet!</h1>
          </div>
       );
    }

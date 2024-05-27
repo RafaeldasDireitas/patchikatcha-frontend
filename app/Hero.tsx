@@ -14,7 +14,7 @@ export default function Hero() {
                   <h1 className="max-w-2xl mb-4 lg:text-4xl md:text-4xl text-3xl tracking-tight lg:mx-0 md:mx-2 sm:mx-2 mx-2 leading-none xl:text-6xl text-dark text-center lg:text-start">
                      Just a cute headline for a cute raccoon
                   </h1>
-                  <p className="max-w-2xl mb-6 font-light text-black lg:mb-8 md:text-lg lg:text-xl lg:text-start text-center lg:mx-0 mx-6 ">
+                  <p className="max-w-2xl mb-6 text-black lg:mb-8 md:text-lg lg:text-xl lg:text-start text-center lg:mx-0 mx-6 ">
                      Here is just a little description that is a little bit bigger than normal body copy.{" "}
                   </p>
                   <div className="flex lg:justify-start xl:justify-start justify-center">

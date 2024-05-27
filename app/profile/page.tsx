@@ -104,9 +104,9 @@ export default function Profile() {
       <div className="flex lg:flex-row flex-col">
          <div className="p-12 my-8 lg:w-1/3">
             <h1 className="text-2xl text-light  lg:text-start text-center">Your Account</h1>
-            <p className="quicksand-light lg:text-start text-center">Track your orders or change your settings</p>
+            <p className=" lg:text-start text-center">Track your orders or change your settings</p>
             <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
-               <p className="quicksand-light">
+               <p className="">
                   {isEmailConfirmed ? (
                      "Your email is confirmed"
                   ) : (

@@ -23,17 +23,17 @@ export default function Sizes({ setSizeId, productVariants }: any) {
       <>
          {productVariants.length > 1 ? (
             <>
-               <h1 className="text-lg text-light quicksand-light text-center lg:text-start">Sizes:</h1>
+               <h1 className="text-lg text-light  text-center lg:text-start">Sizes:</h1>
                <div className="flex flex-row flex-wrap my-2 justify-center lg:justify-start">
                   {sizesName.map((sizeName: any, key: number) => {
                      const sizeId = uniqueSizesId[key];
 
                      return (
                         <button
-                           className={`btn ml-1 w-16 quicksand-light ${
+                           className={`btn ml-1 w-16  ${
                               sizeId === isFocused
-                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10 quicksand-light hover:bg-button-light-focus border-border-light hover:border-border-light"
-                                 : "bg-transparent hover:bg-transparent border-border-light hover:border-border-light border-1 min-h-10 h-10 quicksand-light text-black"
+                                 ? "bg-button-light-focus text-black border-1 min-h-10 h-10  hover:bg-button-light-focus border-border-light hover:border-border-light"
+                                 : "bg-transparent hover:bg-transparent border-border-light hover:border-border-light border-1 min-h-10 h-10  text-black"
                            }`}
                            key={sizeId}
                            onClick={() => handleSizeClick(sizeId)}
@@ -46,7 +46,7 @@ export default function Sizes({ setSizeId, productVariants }: any) {
             </>
          ) : (
             <>
-               <h1 className="text-lg text-light quicksand-light text-center lg:text-start my-1">Sizes:</h1>
+               <h1 className="text-lg text-light  text-center lg:text-start my-1">Sizes:</h1>
                <p className=" lg:text-start text-center">This product only has one size.</p>
             </>
          )}

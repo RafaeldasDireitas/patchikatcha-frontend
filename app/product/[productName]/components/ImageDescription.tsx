@@ -1,4 +1,3 @@
-import { ProductType } from "@/types/ProductType";
 import Image from "next/image";
 
 export default function ImageDescription({ product }: any) {

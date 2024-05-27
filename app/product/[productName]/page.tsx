@@ -175,7 +175,7 @@ export default function ProductName({ params }: any) {
                </div>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 lg:gap-12">
                <div className="flex lg:flex-row flex-col">
                   <DetailedDescription product={product} />
                   <ImageDescription product={product}></ImageDescription>

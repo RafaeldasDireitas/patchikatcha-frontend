@@ -53,7 +53,7 @@ export default function Review({ productId, productTitle, productImage }: Review
             {!isAuthenticated || !jwtToken || !userId ? (
                <AlertDialog>
                   <AlertDialogTrigger>
-                     <div className="flex lg:justify-end justify-center mt-2">
+                     <div className="flex lg:justify-end justify-center">
                         <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
                            Write us a review!
                         </button>
@@ -62,7 +62,7 @@ export default function Review({ productId, productTitle, productImage }: Review
                   <IsNotLoggedInModal />
                </AlertDialog>
             ) : (
-               <div className="flex lg:justify-end justify-center mt-2">
+               <div className="flex lg:justify-end justify-center">
                   <Link href={{ pathname: `/review-product/${productId}`, query: { productTitle: productTitle, productImage: productImage } }}>
                      <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
                         Write us a review!

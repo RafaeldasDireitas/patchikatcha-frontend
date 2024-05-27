@@ -33,7 +33,7 @@ export default function RecommendedProducts(tag: any) {
 
    return (
       <>
-         <div className="my-2">
+         <div>
             <h1 className="text-3xl lg:text-start text-center text-dark quicksand-bold">Products you might also like:</h1>
          </div>
          <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">

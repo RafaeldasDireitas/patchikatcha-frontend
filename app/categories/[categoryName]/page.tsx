@@ -59,7 +59,7 @@ export default function CategoryName({ params }: any) {
    console.log(page);
 
    const links = ["Home", "Categories", `${decodedCategoryName}`];
-   const findContent = categories.find((category) => category.content.includes(categoryName));
+   const findContent = categories.find((category) => category.content.includes(categoryName) || category.title.includes(categoryName));
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
 
    return (
@@ -72,7 +72,9 @@ export default function CategoryName({ params }: any) {
                <Breadcrumb links={links} />
                {/* <h1 className="text-2xl text-light">{decodedCategoryName}</h1> */}
                <div>
-                  <h1 className="text-xl text-dark">{decodedCategoryName}</h1>
+                  <Link href={`/categories/${findContent?.title}`}>
+                     <h1 className="text-xl text-dark hover:underline hover:cursor-pointer">{findContent?.title}</h1>
+                  </Link>
                   {findContent?.content.map((content, key) => (
                      <Link href={{ pathname: `/categories/${content}` }} key={key + key}>
                         <h2 className="text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>

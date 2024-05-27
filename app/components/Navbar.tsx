@@ -100,10 +100,15 @@ export default function Navbar() {
                         </div>
                         <ul className="dropdown-content hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
                            {category.content.map((content, index) => (
-                              <Link key={index + index} href={{ pathname: `/categories/${content}` }}>
-                                 <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer ">{content}</li>
-                              </Link>
+                              <>
+                                 <Link key={index + index} href={{ pathname: `/categories/${content}` }}>
+                                    <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer ">{content}</li>
+                                 </Link>
+                              </>
                            ))}
+                           <Link href={{ pathname: `/categories/${category.title}` }}>
+                              <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer ">All {category.title}</li>
+                           </Link>
                            <li className="bg-button-background h-1"></li>
                         </ul>
                      </div>

@@ -37,9 +37,9 @@ export default function RecommendedProducts(tag: any) {
          </div>
          <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">
             {recommendedProducts &&
-               recommendedProducts.map((product) => {
+               recommendedProducts.map((product, key) => {
                   return (
-                     <Link href={`/product/${product.title}?productId=${product.productId}`}>
+                     <Link key={key + key} href={`/product/${product.title}?productId=${product.productId}`}>
                         <ProductCard title={product.title} price={product.price} image={product.image} secondImage={product.secondImage} />
                      </Link>
                   );

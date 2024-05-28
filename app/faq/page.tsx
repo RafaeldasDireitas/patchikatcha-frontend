@@ -1,13 +1,13 @@
-"use client";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Metadata } from "next";
 import Link from "next/link";
-import { useEffect } from "react";
+
+export const metadata: Metadata = {
+   title: "FAQ",
+   description: "You'll find the most asked questions here!"
+};
 
 export default function faq() {
-   useEffect(() => {
-      document.title = "FAQ";
-   }, []);
-
    return (
       <div className="p-4 lg:p-12 flex flex-col min-h-screen">
          <h1 className="text-3xl text-dark ">FAQ</h1>

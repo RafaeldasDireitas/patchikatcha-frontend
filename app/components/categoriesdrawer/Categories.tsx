@@ -19,15 +19,22 @@ export default function Categories({ categories }: any) {
                               <input type="radio" name="my-accordion-1" defaultChecked />
                               <div className="collapse-title text-xl text-start  h-4">{category.title}</div>
                               <div className="collapse-content flex flex-col pl-6 text-start">
-                                 {category.content.map((content, key: number) => {
-                                    return (
-                                       <Link key={key + key} href={`${category.href[key]}?title=${category.title}`}>
-                                          <SheetClose className="">
-                                             <p className="my-1 hover:underline hover:text-light">{content}</p>
-                                          </SheetClose>
-                                       </Link>
-                                    );
-                                 })}
+                                 <ul className="flex flex-col">
+                                    {category.content.map((content, key: number) => {
+                                       return (
+                                          <Link key={key + key} href={`${category.href[key]}?title=${category.title}`}>
+                                             <SheetClose>
+                                                <li className="text-dark my-1 hover:underline hover:text-light">{content}</li>
+                                             </SheetClose>
+                                          </Link>
+                                       );
+                                    })}
+                                    <Link href={{ pathname: `/categories/${category.title}` }}>
+                                       <SheetClose>
+                                          <li className="text-dark my-1 hover:underline hover:text-light">All {category.title}</li>
+                                       </SheetClose>
+                                    </Link>
+                                 </ul>
                               </div>
                            </div>
                            <hr />

@@ -18,10 +18,10 @@ export default function ProductCard({ title, price, image, secondImage }: any) {
             <Image className="rounded-xl transition-opacity duration-500" src={imageUrl} width={275} height={275} alt="Product image" />
             <Image
                className="rounded-xl absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500"
-               src={secondImage}
+               src={secondImage || imageUrl}
                width={275}
                height={275}
-               alt=""
+               alt="Second image"
             />
          </div>{" "}
          <h1 className="text-center pt-3 text-xl text-light truncate w-80">{title}</h1>

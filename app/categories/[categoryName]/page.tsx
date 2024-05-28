@@ -2,29 +2,24 @@
 import Breadcrumb from "@/app/components/Breadcrumb";
 import { useEffect, useState } from "react";
 import FetchCategoryProducts from "./FetchCategoryProducts";
-import { useSearchParams } from "next/navigation";
 import { categories } from "@/data/CategoriesObject";
 import Link from "next/link";
 import ProductCard from "@/app/components/ProductCard";
 import CategoryLoading from "./components/CategoryLoading";
 import { Slider } from "@/components/ui/slider";
 import { ProductInDbType } from "@/types/ProductInDbType";
-import {
-   Pagination,
-   PaginationContent,
-   PaginationEllipsis,
-   PaginationItem,
-   PaginationLink,
-   PaginationNext,
-   PaginationPrevious
-} from "@/components/ui/pagination";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
+import CategoryNameDisplay from "./components/CategoryNameDisplay";
 
-export default function CategoryName({ params }: any) {
+type CategoryNamePropType = {
+   params: {
+      categoryName: string;
+   };
+};
+
+export default function CategoryName({ params }: CategoryNamePropType) {
    const categoryName = params.categoryName;
-   const queryParams = useSearchParams();
-   const categoryTitle = queryParams.get("title");
    const decodedCategoryName = categoryName && decodeURIComponent(categoryName);
-   const decodedCategoryTitle = categoryTitle && decodeURIComponent(categoryTitle);
 
    const [products, setProducts] = useState<ProductInDbType[]>();
    const [productPrice, setProductPrice] = useState<number>(150);
@@ -33,13 +28,11 @@ export default function CategoryName({ params }: any) {
    const [page, setPage] = useState(0);
 
    useEffect(() => {
-      document.title = decodedCategoryName;
-
       FetchCategoryProducts({ setProducts, categoryName, page, setTotalPages });
    }, [page]);
 
    if (!products) {
-      return <CategoryLoading categoryName={decodedCategoryName} categoryTitle={decodedCategoryTitle} />;
+      return <CategoryLoading categoryName={categoryName} />;
    }
 
    const handleProductPrice = (value: number[]) => {
@@ -56,17 +49,13 @@ export default function CategoryName({ params }: any) {
       setPage(page);
    };
 
-   console.log(page);
-
-   const links = ["Home", "Categories", `${decodedCategoryName}`];
+   const links = ["Home", "Categories", `${categoryName}`];
    const findContent = categories.find((category) => category.content.includes(categoryName) || category.title.includes(categoryName));
    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchProducts.toLocaleLowerCase()));
 
    return (
       <div>
-         <div className="flex w-full bg-body-background justify-center items-center h-[300px]">
-            <h1 className="text-6xl text-dark">{decodedCategoryName}</h1>
-         </div>
+         <CategoryNameDisplay categoryName={categoryName} />
          <div className="flex lg:flex-row flex-col p-12 gap-4">
             <div className="flex flex-col lg:w-1/3 lg:text-start text-center lg:justify-start justify-center gap-4">
                <Breadcrumb links={links} />

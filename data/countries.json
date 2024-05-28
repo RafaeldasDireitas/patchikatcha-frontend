@@ -56,15 +56,6 @@
             "countryFlag": "//upload.wikimedia.org/wikipedia/commons/8/89/Bandera_de_Espa%C3%B1a.svg"
          },
          {
-            "countryCode": "FI",
-            "countryName": "Finland",
-            "currencyCode": "EUR",
-            "population": "5244000",
-            "capital": "Helsinki",
-            "continentName": "Europe",
-            "countryFlag": "//upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg"
-         },
-         {
             "countryCode": "FR",
             "countryName": "France",
             "currencyCode": "EUR",
@@ -72,15 +63,6 @@
             "capital": "Paris",
             "continentName": "Europe",
             "countryFlag": "//upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg"
-         },
-         {
-            "countryCode": "GB",
-            "countryName": "United Kingdom",
-            "currencyCode": "GBP",
-            "population": "62348447",
-            "capital": "London",
-            "continentName": "Europe",
-            "countryFlag": "//upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
          },
          {
             "countryCode": "IE",
@@ -128,15 +110,6 @@
             "countryFlag": "//upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg"
          },
          {
-            "countryCode": "NO",
-            "countryName": "Norway",
-            "currencyCode": "NOK",
-            "population": "5009150",
-            "capital": "Oslo",
-            "continentName": "Europe",
-            "countryFlag": "//upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"
-         },
-         {
             "countryCode": "PT",
             "countryName": "Portugal",
             "currencyCode": "EUR",
@@ -153,15 +126,6 @@
             "capital": "Stockholm",
             "continentName": "Europe",
             "countryFlag": "//upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg"
-         },
-         {
-            "countryCode": "US",
-            "countryName": "United States",
-            "currencyCode": "USD",
-            "population": "310232863",
-            "capital": "Washington",
-            "continentName": "North America",
-            "countryFlag": "//upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
          }
       ]
    }

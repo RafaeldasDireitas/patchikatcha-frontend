@@ -9,7 +9,10 @@ const quicksand = Quicksand({ subsets: ["latin"], variable: "--font-quicksand" }
 
 export const metadata: Metadata = {
    title: "Patchi Katcha",
-   description: "Online shop that sells the most epic, cute products!"
+   description: "Online shop that sells the most epic, cute products!",
+   twitter: {
+      card: "summary_large_image"
+   }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -5,13 +5,12 @@ import { categories } from "@/data/CategoriesObject";
 
 type CategoryLoadingProps = {
    categoryName: string;
-   categoryTitle: string | null;
 };
 
-export default function CategoryLoading({ categoryName, categoryTitle }: Readonly<CategoryLoadingProps>) {
+export default function CategoryLoading({ categoryName }: Readonly<CategoryLoadingProps>) {
    const links = ["Home", "Categories", `${categoryName}`];
 
-   const findContent = categories.find((category) => category.title === categoryTitle);
+   const findContent = categories.find((category) => category.title === categoryName);
 
    return (
       <div>
@@ -23,9 +22,9 @@ export default function CategoryLoading({ categoryName, categoryTitle }: Readonl
                <Breadcrumb links={links} />
                <h1 className="text-2xl text-light">{categoryName}</h1>
                <div>
-                  <h1 className="text-xl text-dark">{categoryTitle}</h1>
+                  <h1 className="text-xl text-dark">{categoryName}</h1>
                   {findContent?.content.map((content, key) => (
-                     <Link href={{ pathname: `/categories/${content}`, query: { title: categoryTitle } }} key={key + key}>
+                     <Link href={{ pathname: `/categories/${content}` }} key={key + key}>
                         <h2 className="text-base hover:text-light hover:underline hover:cursor-pointer">{content}</h2>
                      </Link>
                   ))}

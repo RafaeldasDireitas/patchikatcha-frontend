@@ -27,7 +27,7 @@ export default function CategoryName({ params }: any) {
    const decodedCategoryTitle = categoryTitle && decodeURIComponent(categoryTitle);
 
    const [products, setProducts] = useState<ProductInDbType[]>();
-   const [productPrice, setProductPrice] = useState<number>(500);
+   const [productPrice, setProductPrice] = useState<number>(150);
    const [searchProducts, setSearchProducts] = useState("");
    const [totalPages, setTotalPages] = useState(0);
    const [page, setPage] = useState(0);
@@ -85,9 +85,9 @@ export default function CategoryName({ params }: any) {
                   <h1 className="text-xl text-dark">Filter by</h1>
                   <p>Price range: {productPrice} €</p>
                   <Slider
-                     defaultValue={[500]}
+                     defaultValue={[150]}
                      min={0}
-                     max={500}
+                     max={150}
                      step={1}
                      value={[productPrice]}
                      onValueChange={handleProductPrice}

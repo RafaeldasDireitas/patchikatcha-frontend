@@ -5,5 +5,6 @@ export type BestSellerType = {
    tags: string;
    price: number;
    image: string;
+   secondImage: string;
    purchases: number;
 };

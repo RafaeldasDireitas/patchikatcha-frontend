@@ -5,9 +5,10 @@ import { NewProductsType } from "@/types/NewProductsType";
 import Skeleton from "./components/Skeleton";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import FetchNewProducts from "./FetchNewProducts";
+import { ProductInDbType } from "@/types/ProductInDbType";
 
 export default function NewProducts() {
-   const [newProducts, setNewProducts] = useState<NewProductsType>();
+   const [newProducts, setNewProducts] = useState<ProductInDbType[]>();
    const productListRef: any = useRef(null);
 
    const scrollLeft = () => {
@@ -51,11 +52,16 @@ export default function NewProducts() {
             Here is just a little description that is a little bit bigger than normal body copy.
          </p>
          <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
-            {newProducts.data.map((product, key) => {
-               const productPrice = product.variants.find((variant) => variant.is_enabled === true);
+            {newProducts.map((product, key) => {
                return (
-                  <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.id } }}>
-                     <ProductCard key={key + key} title={product.title} price={productPrice?.price} image={product.images[0].src}></ProductCard>
+                  <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+                     <ProductCard
+                        key={key + key}
+                        title={product.title}
+                        price={product.price}
+                        image={product.image}
+                        secondImage={product.secondImage}
+                     ></ProductCard>
                   </Link>
                );
             })}

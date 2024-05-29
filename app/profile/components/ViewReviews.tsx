@@ -12,8 +12,8 @@ type ViewReviewsPropType = {
 
 export default function ViewReviews({ userReviews }: ViewReviewsPropType) {
    return (
-      <div className="p-12 lg:my-8 quicksand flex flex-col gap-y-4">
-         <h1 className="text-2xl text-dark quicksand-bold lg:text-start text-center mb-2">View reviews:</h1>
+      <div className="p-12 lg:my-8 flex flex-col gap-y-4">
+         <h1 className="text-2xl text-dark  lg:text-start text-center mb-2">View reviews:</h1>
          {userReviews?.map((userReview) => {
             const stars = userReview.rating;
             const emptyStars = 5 - userReview.rating;
@@ -27,7 +27,7 @@ export default function ViewReviews({ userReviews }: ViewReviewsPropType) {
 
                      <div className="flex flex-col w-full bg-body-background p-4 rounded-xl">
                         <div className="flex flex-row items-center">
-                           <h1 className="quicksand-semibold my-1">{userReview.username}</h1>
+                           <h1 className=" my-1">{userReview.username}</h1>
                            <BiSolidCheckCircle className="mx-2 text-light" size={25} />
                            <AlertDialog>
                               <AlertDialogTrigger asChild>
@@ -46,8 +46,8 @@ export default function ViewReviews({ userReviews }: ViewReviewsPropType) {
                            ))}
                         </div>
                         <div className="my-1">
-                           <h1 className="quicksand-semibold">{userReview.title}</h1>
-                           <p className="quicksand-medium" dangerouslySetInnerHTML={{ __html: userReview.comment }}></p>
+                           <h1 className="">{userReview.title}</h1>
+                           <p className="" dangerouslySetInnerHTML={{ __html: userReview.comment }}></p>
                         </div>
                      </div>
                   </div>

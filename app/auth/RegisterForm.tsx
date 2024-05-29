@@ -8,6 +8,7 @@ import { registerValidation } from "@/zod/zod";
 import { z } from "zod";
 import { useGlobalStore } from "@/zustand/globalstore";
 import ReCAPTCHA from "react-google-recaptcha";
+import { redirection } from "@/endpoints/redirection";
 
 export default function RegisterForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -97,7 +98,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
             });
 
             if (redirectToVerifyEmail) {
-               window.location.href = `/auth/confirm-email-warning`;
+               window.location.href = redirection["confirm-email-warning"];
             }
          };
          sendData();
@@ -112,8 +113,8 @@ export default function RegisterForm({ setIsLoginForm }: any) {
 
          <div className="lg:w-2/3 w-full my-16 mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">
             <div className="lg:w-[500px] w-full flex flex-col justify-center">
-               <h1 className="text-light text-3xl text-start quicksand-bold">Sign up</h1>
-               <p className="text-start my-2 quicksand-medium">Create an account to keep track of your orders.</p>
+               <h1 className="text-light text-3xl text-start">Sign up</h1>
+               <p className="text-start my-2 ">Create an account to keep track of your orders.</p>
                <input
                   type="text"
                   placeholder="Username"
@@ -126,7 +127,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="text"
                   placeholder="example@email.com"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   id="email"
                   onChange={emailHandler}
                   value={email}
@@ -135,7 +136,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   onChange={passwordHandler}
                   value={password}
                   id="password"
@@ -143,22 +144,22 @@ export default function RegisterForm({ setIsLoginForm }: any) {
                <input
                   type="password"
                   placeholder="Confirm password"
-                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white quicksand-light"
+                  className="input rounded-full border-border-light focus:border-border-light border-2 max-w-[500px] my-2 w-full bg-white "
                   onChange={confirmPasswordHandler}
                   value={confirmPassword}
                   id="confirmPassword"
                />
                <div className="flex flex-col items-end">
                   <button
-                     className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold"
+                     className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white "
                      onClick={createUserAccount}
                   >
                      {isRegistering ? <span className="loading loading-spinner text-error"></span> : "Sign up"}
                   </button>
                </div>
 
-               <p className="my-1 quicksand-medium" onClick={() => setIsLoginForm(true)}>
-                  Already have an account? Log in <span className="underline text-light hover:cursor-pointer quicksand-medium">here</span>.
+               <p className="my-1 " onClick={() => setIsLoginForm(true)}>
+                  Already have an account? Log in <span className="underline text-light hover:cursor-pointer ">here</span>.
                </p>
                <div className="flex justify-center mt-4">
                   <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_RECAPATCHA_SITE_KEY}`} onChange={apiKeyHandler} size="normal" ref={recaptchaRef} />

@@ -41,22 +41,20 @@ export default function Review({ productId, productTitle, productImage }: Review
       FetchGrabProductReviews({ productId, reviews, setReviews, setReviewsCount, setIsButtonDisabled, limit: 4, page: pageNumber });
    };
 
-   const averageRating = (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length).toFixed(2);
+   // const averageRating = (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length).toFixed(2);
 
    return (
       <>
-         <div className="flex flex-row justify-between mb-8">
-            <div className="flex justify-start items-center">
-               {averageRating && [...Array(averageRating)].map((_, key) => <Image key={key + key} src={star} width={50} height={50} alt="Star" />)}
-               <h1 className="mx-5 quicksand-medium">{reviewsCount} Reviews</h1>
-               <h1 className="mx-5 quicksand-medium">{averageRating} out of 5</h1>
+         <div className="flex lg:flex-row flex-col justify-between">
+            <div className="flex lg:justify-start justify-center items-center">
+               <h1 className="text-3xl text-dark ">Reviews ({reviewsCount}):</h1>
             </div>
 
             {!isAuthenticated || !jwtToken || !userId ? (
                <AlertDialog>
                   <AlertDialogTrigger>
-                     <div className="flex justify-end">
-                        <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
+                     <div className="flex lg:justify-end justify-center">
+                        <button className="btn btn-circle text-white bg-button-background  hover:bg-button-focused border-none my-2 w-40">
                            Write us a review!
                         </button>
                      </div>
@@ -64,9 +62,9 @@ export default function Review({ productId, productTitle, productImage }: Review
                   <IsNotLoggedInModal />
                </AlertDialog>
             ) : (
-               <div className="flex justify-end">
+               <div className="flex lg:justify-end justify-center">
                   <Link href={{ pathname: `/review-product/${productId}`, query: { productTitle: productTitle, productImage: productImage } }}>
-                     <button className="btn btn-circle text-white bg-button-background quicksand-semibold hover:bg-button-focused border-none my-2 w-40">
+                     <button className="btn btn-circle text-white bg-button-background  hover:bg-button-focused border-none my-2 w-40">
                         Write us a review!
                      </button>
                   </Link>
@@ -74,7 +72,7 @@ export default function Review({ productId, productTitle, productImage }: Review
             )}
          </div>
 
-         <div className="grid lg:grid-cols-4 grid-cols-1 gap-8">
+         <div className="grid lg:grid-cols-4 grid-cols-1 gap-6 p-2">
             {reviews.map((review, key) => {
                return (
                   <ReviewCard
@@ -91,13 +89,17 @@ export default function Review({ productId, productTitle, productImage }: Review
 
          {reviewsCount !== 0 && (
             <div className="flex justify-center mt-4">
-               <button
-                  disabled={isButtonDisabled}
-                  onClick={loadAlLReviews}
-                  className="btn btn-circle disabled:text-black disabled:bg-gray-300 text-white bg-button-background hover:bg-button-focused border-none my-2 w-40"
-               >
-                  Load more
-               </button>
+               {!isButtonDisabled ? (
+                  <button
+                     disabled={isButtonDisabled}
+                     onClick={loadAlLReviews}
+                     className="btn btn-circle disabled:text-black disabled:bg-gray-300 text-white bg-button-background hover:bg-button-focused border-none my-2 w-40"
+                  >
+                     Load more
+                  </button>
+               ) : (
+                  <></>
+               )}
             </div>
          )}
       </>

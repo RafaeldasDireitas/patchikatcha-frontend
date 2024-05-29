@@ -13,11 +13,13 @@ export default function AddProductToDb() {
    const [price, setPrice] = useState(0);
    const [image, setImage] = useState("");
    const [tag, setTag] = useState("Hoodies");
+   const [categoryTag, setCategoryTag] = useState("Clothing");
 
    const dbProductDto = {
       productId: productId,
       title: title,
-      tags: tag,
+      tag: tag,
+      categoryTag: categoryTag,
       price: price,
       image: image,
       purchases: 0
@@ -46,6 +48,11 @@ export default function AddProductToDb() {
    const tagHandler = (value: string) => {
       const tag = value;
       setTag(tag);
+   };
+
+   const categoryTagHandler = (value: string) => {
+      const categoryTag = value;
+      setCategoryTag(categoryTag);
    };
 
    const createProduct = () => {
@@ -95,6 +102,15 @@ export default function AddProductToDb() {
             <SelectContent>
                <SelectItem value="Hoodies">Hoodies</SelectItem>
                <SelectItem value="Mugs">Mugs</SelectItem>
+            </SelectContent>
+         </Select>
+         <Select onValueChange={categoryTagHandler} defaultValue={categoryTag}>
+            <SelectTrigger className="w-full max-w-xs">
+               <SelectValue placeholder="Category Tag" />
+            </SelectTrigger>
+            <SelectContent>
+               <SelectItem value="Clothing">Hoodies</SelectItem>
+               <SelectItem value="Accessories">Mugs</SelectItem>
             </SelectContent>
          </Select>
          <button className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white my-1 border-none" onClick={createProduct}>

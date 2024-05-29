@@ -1,4 +1,5 @@
 import { endpoints } from "@/endpoints/endpoints";
+import { redirection } from "@/endpoints/redirection";
 import { toast } from "sonner";
 
 export default async function FetchDeleteAccount({ userId, password, jwtToken, setJwtToken, setUserEmail, setUserId, setIsAuthenticated }: any) {
@@ -16,7 +17,7 @@ export default async function FetchDeleteAccount({ userId, password, jwtToken, s
       setUserId("");
       setIsAuthenticated(false);
 
-      window.location.href = "/";
+      window.location.href = redirection.url;
       return;
    }
 

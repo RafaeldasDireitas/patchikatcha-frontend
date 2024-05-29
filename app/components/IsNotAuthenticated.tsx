@@ -2,6 +2,7 @@
 import { useGlobalStore } from "@/zustand/globalstore";
 import { useEffect, useState } from "react";
 import FetchIsEmailConfirmed from "../profile/FetchIsEmailConfirmed";
+import { redirection } from "@/endpoints/redirection";
 
 export default function IsNotAuthenticated() {
    const globalStore = useGlobalStore();
@@ -23,26 +24,24 @@ export default function IsNotAuthenticated() {
 
    useEffect(() => {
       if (countdown === 0) {
-         window.location.href = "/auth/confirm-email-warning";
+         window.location.href = redirection["confirm-email-warning"];
       }
    }, [countdown]);
 
    if (!jwtToken || !userId || !isAuthenticated) {
       return (
          <div className="flex min-h-screen justify-center items-center">
-            <h1 className="text-3xl text-center text-dark font-bold quicksand-bold">You must be logged in!</h1>
+            <h1 className="text-3xl text-center text-dark ">You must be logged in!</h1>
          </div>
       );
    }
 
    return (
       <div className="flex flex-col min-h-screen items-center justify-center">
-         <h1 className="text-3xl text-center text-dark font-bold quicksand-bold">
+         <h1 className="text-3xl text-center text-dark ">
             Checking your account status...<span className="loading loading-spinner text-error mx-2"></span>
          </h1>
-         <h1 className="text-xl text-center text-red-800 font-bold quicksand-semibold my-2">
-            Please confirm your email to continue. Redirecting in {countdown} seconds...
-         </h1>
+         <h1 className="text-xl text-center text-red-800   my-2">Please confirm your email to continue. Redirecting in {countdown} seconds...</h1>
       </div>
    );
 }

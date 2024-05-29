@@ -9,9 +9,11 @@ export default function Home() {
    return (
       <>
          <Hero />
-         <BestSellers />
-         <NewProducts />
-         <AboutUs />
+         <div className="flex flex-col gap-6">
+            <BestSellers />
+            <NewProducts />
+            <AboutUs />
+         </div>
          <Newsletter />
 
          {/* <Categories /> */}

@@ -10,7 +10,7 @@ export default function ReviewCard({ username, title, createdAt, comment, rating
    return (
       <div className="flex flex-col w-full bg-body-background p-4 rounded-xl">
          <div className="flex flex-row items-center">
-            <h1 className="quicksand-semibold my-1">{username}</h1>
+            <h1 className=" my-1">{username}</h1>
             <BiSolidCheckCircle className="mx-2 text-light" size={25} />
             <h2 className="px-2 text-end w-full">{createdAt}</h2>
          </div>
@@ -23,8 +23,8 @@ export default function ReviewCard({ username, title, createdAt, comment, rating
             ))}
          </div>
          <div className="my-1">
-            <h1 className="quicksand-semibold">{title}</h1>
-            <p className="quicksand-medium" dangerouslySetInnerHTML={{ __html: comment }}></p>
+            <h1 className="">{title}</h1>
+            <p className="" dangerouslySetInnerHTML={{ __html: comment }}></p>
          </div>
       </div>
    );

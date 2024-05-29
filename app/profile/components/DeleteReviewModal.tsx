@@ -27,12 +27,12 @@ export default function DeleteReviewModal({ id }: DeleteReviewModalPropType) {
    return (
       <AlertDialogContent>
          <AlertDialogHeader>
-            <AlertDialogTitle className="quicksand-bold text-light text-center">Delete review</AlertDialogTitle>
-            <AlertDialogDescription className="quicksand-medium text-center">Are you sure you want to delete your review?</AlertDialogDescription>
+            <AlertDialogTitle className=" text-light text-center">Delete review</AlertDialogTitle>
+            <AlertDialogDescription className=" text-center">Are you sure you want to delete your review?</AlertDialogDescription>
          </AlertDialogHeader>
          <AlertDialogFooter>
-            <AlertDialogCancel className="quicksand-semibold hover:bg-button-focused hover:text-white">Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={deleteReview} className="bg-button-background hover:bg-button-focused quicksand-semibold">
+            <AlertDialogCancel className=" hover:bg-button-focused hover:text-white">Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={deleteReview} className="bg-button-background hover:bg-button-focused ">
                Continue
             </AlertDialogAction>
          </AlertDialogFooter>

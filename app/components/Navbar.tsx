@@ -90,10 +90,7 @@ export default function Navbar() {
             <div className="lg:flex hidden h-12 max-h-12 items-center justify-center bg-button-background">
                {categories.map((category, key) => {
                   return (
-                     <div
-                        key={key + key}
-                        className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white quicksand-medium"
-                     >
+                     <div key={key + key} className="dropdown dropdown-bottom dropdown-hover flex flex-col my-2 ml-4 -mr-1 text-white ">
                         <div
                            tabIndex={0}
                            role="button"
@@ -103,12 +100,13 @@ export default function Navbar() {
                         </div>
                         <ul className="dropdown-content hover:underline left-0 w-52 max-h-96 bg-white p-2 shadow-xl">
                            {category.content.map((content, index) => (
-                              <Link key={index + index} href={{ pathname: `/categories/${content}`, query: { title: category.title } }}>
-                                 <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer quicksand-medium">
-                                    {content}
-                                 </li>
+                              <Link key={index + index} href={{ pathname: `/categories/${content}` }}>
+                                 <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer ">{content}</li>
                               </Link>
                            ))}
+                           <Link href={{ pathname: `/categories/${category.title}` }}>
+                              <li className="text-black ml-1 mb-1 hover:text-light hover:underline hover:cursor-pointer ">All {category.title}</li>
+                           </Link>
                            <li className="bg-button-background h-1"></li>
                         </ul>
                      </div>

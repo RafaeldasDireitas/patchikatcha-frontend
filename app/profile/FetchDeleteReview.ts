@@ -1,4 +1,5 @@
 import { endpoints } from "@/endpoints/endpoints";
+import { redirection } from "@/endpoints/redirection";
 import { toast } from "sonner";
 
 export default async function FetchDeleteReview({ userId, id, jwtToken }: any) {
@@ -12,7 +13,7 @@ export default async function FetchDeleteReview({ userId, id, jwtToken }: any) {
 
    if (deleteReview.ok) {
       toast.success("Review deleted");
-      window.location.href = "/profile";
+      window.location.href = redirection.profile;
       return;
    }
 

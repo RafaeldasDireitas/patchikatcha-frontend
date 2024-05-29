@@ -78,7 +78,7 @@ export default function ChangeCountryProfileModal() {
    };
 
    return (
-      <DialogContent className="lg:w-[500px] quicksand-medium">
+      <DialogContent className="lg:w-[500px] ">
          <DialogHeader>
             <DialogTitle className="text-dark">Change country</DialogTitle>
             <DialogDescription>This will affect displayed product and shipping prices.</DialogDescription>
@@ -90,7 +90,7 @@ export default function ChangeCountryProfileModal() {
                      <div className="flex">
                         <button
                            key={key + key}
-                           className={`btn p-0 w-full px-2 bg-white hover:bg-body-background border-border-light text-black quicksand-semibold ${
+                           className={`btn p-0 w-full px-2 bg-white hover:bg-body-background border-border-light text-black  ${
                               focusButton === country.countryCode ? "focus:bg-button-background" : ""
                            }`}
                            onClick={() => handleOnCountryClick(country)}
@@ -105,9 +105,7 @@ export default function ChangeCountryProfileModal() {
          </div>
          <DialogFooter>
             <DialogClose onClick={handleUserGeoData}>
-               <button className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white quicksand-semibold">
-                  Confirm
-               </button>
+               <button className="btn btn-circle w-40 bg-button-background hover:bg-button-focused border-none my-2 text-white ">Confirm</button>
             </DialogClose>
          </DialogFooter>
       </DialogContent>

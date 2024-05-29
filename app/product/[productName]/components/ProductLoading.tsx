@@ -6,7 +6,7 @@ export default function ProductLoading() {
          <div className="flex justify-center lg:justify-start">
             <Skeleton widthInPx={248} heightInPx={36} />
          </div>
-         <div className="flex lg:flex-row flex-col gap-6 lg:p-12">
+         <div className="flex lg:flex-row flex-col gap-4 lg:p-12">
             <Skeleton widthInPx={600} heightInPx={400} />
 
             <div className="flex flex-col">

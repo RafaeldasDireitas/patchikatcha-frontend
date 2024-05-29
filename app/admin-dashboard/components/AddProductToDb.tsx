@@ -109,8 +109,8 @@ export default function AddProductToDb() {
                <SelectValue placeholder="Category Tag" />
             </SelectTrigger>
             <SelectContent>
-               <SelectItem value="Clothing">Hoodies</SelectItem>
-               <SelectItem value="Accessories">Mugs</SelectItem>
+               <SelectItem value="Clothing">Clothing</SelectItem>
+               <SelectItem value="Accessories">Accessories</SelectItem>
             </SelectContent>
          </Select>
          <button className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white my-1 border-none" onClick={createProduct}>

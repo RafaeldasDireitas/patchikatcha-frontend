@@ -6,6 +6,7 @@ import newsletter from "@/public/cat_newsletter.png";
 import newsletterHeart from "@/public/epic-cute-hearts.png";
 import { newsLetterValidation } from "@/zod/zod";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -57,6 +58,14 @@ export default function Newsletter() {
                   alt="No icon found"
                />
             </label>
+            <p>
+               By clicking the button you agree to our{" "}
+               <span>
+                  <Link href={"/terms-and-services"} className="hover:underline text-light hover:cursor-pointer">
+                     Terms and Services.
+                  </Link>
+               </span>
+            </p>
          </div>
          <div>
             <Image className="hidden lg:flex mb-60" src={newsletterHeart} width={100} height={100} alt="No letter found" />

@@ -26,10 +26,12 @@ export default function Footer() {
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Support</h6>
-            <a href={"/contact-us"} className="link link-hover ">
+            <a href="/contact-us" className="link link-hover ">
                Contact us
             </a>
-            <p className="link link-hover ">Shipping</p>
+            <a href="/shipping" className="link link-hover ">
+               Shipping
+            </a>
             <p className="link link-hover ">Payment Methods</p>
             <p className="link link-hover ">Order Tracking</p>
          </nav>

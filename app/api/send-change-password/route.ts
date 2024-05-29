@@ -10,7 +10,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
    apiInstance.setApiKey(TransactionalEmailsApiApiKeys.apiKey, apiKey);
 
-   sendSmtpEmail.subject = "Change password";
+   sendSmtpEmail.subject = "Patchi Katcha - Change password";
    sendSmtpEmail.templateId = 2;
    sendSmtpEmail.sender = { name: "Patchi Katcha", email: "patchikatcha@gmail.com" };
    sendSmtpEmail.to = [{ email: userEmail, name: "sample-name" }];

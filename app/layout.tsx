@@ -10,6 +10,11 @@ const quicksand = Quicksand({ subsets: ["latin"], variable: "--font-quicksand" }
 export const metadata: Metadata = {
    title: "Patchi Katcha",
    description: "Online shop that sells the most epic, cute products!",
+   openGraph: {
+      images: {
+         url: "opengraph-image.png"
+      }
+   },
    twitter: {
       card: "summary_large_image"
    }

@@ -41,6 +41,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
          url: `${baseUrl}/faq`
       },
       {
+         url: `${baseUrl}/shipping`
+      },
+      {
          url: `${baseUrl}/newsletter-confirmed`
       },
       {
@@ -54,6 +57,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
       {
          url: `${baseUrl}/refund-policy`
+      },
+      {
+         url: `${baseUrl}/payment-methods`
       },
       {
          url: `${baseUrl}/review-product`

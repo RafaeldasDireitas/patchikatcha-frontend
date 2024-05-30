@@ -1,6 +1,6 @@
 export default function Shipping() {
    return (
-      <div className="p-12 gap-8 min-h-screen">
+      <div className="p-12 flex flex-col text-center lg:text-start gap-8 min-h-screen">
          <h1 className="text-3xl text-dark">Shipping</h1>
          <div className="p-4">
             <h1 className="text-2xl">Clothing:</h1>

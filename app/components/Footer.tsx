@@ -32,7 +32,9 @@ export default function Footer() {
             <a href="/shipping" className="link link-hover ">
                Shipping
             </a>
-            <p className="link link-hover ">Payment Methods</p>
+            <a href="/payment-methods" className="link link-hover ">
+               Payment Methods
+            </a>
             <p className="link link-hover ">Order Tracking</p>
          </nav>
          <nav>

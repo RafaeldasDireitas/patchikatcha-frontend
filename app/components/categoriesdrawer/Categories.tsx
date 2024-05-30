@@ -24,14 +24,14 @@ export default function Categories({ categories }: any) {
                                        return (
                                           <Link key={key + key} href={`${category.href[key]}?title=${category.title}`}>
                                              <SheetClose>
-                                                <li className="text-dark my-1 hover:underline hover:text-light">{content}</li>
+                                                <li className="text-dark text-lg my-1 hover:underline hover:text-light">{content}</li>
                                              </SheetClose>
                                           </Link>
                                        );
                                     })}
                                     <Link href={{ pathname: `/categories/${category.title}` }}>
                                        <SheetClose>
-                                          <li className="text-dark my-1 hover:underline hover:text-light">All {category.title}</li>
+                                          <li className="text-dark text-lg my-1 hover:underline hover:text-light">All {category.title}</li>
                                        </SheetClose>
                                     </Link>
                                  </ul>

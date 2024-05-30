@@ -18,7 +18,7 @@ export default function Shipping() {
          </div>
 
          <div className="p-4">
-            <h1 className="text-2xl">Home:</h1>
+            <h1 className="text-2xl">Home & Living:</h1>
             <div className="p-2">
                <p>Mugs - 2 to 7 business days</p>
             </div>

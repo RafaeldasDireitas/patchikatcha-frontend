@@ -17,9 +17,7 @@ export default function Footer() {
          </aside>
          <nav>
             <h6 className="footer-title opacity-100 z-0">About us</h6>
-            <a className="link link-hover ">About PatchiKatcha</a>
             <a className="link link-hover ">Newsletter</a>
-            <a className="link link-hover ">Reviews</a>
             <a href={"/faq"} className="link link-hover ">
                FAQ
             </a>
@@ -35,7 +33,9 @@ export default function Footer() {
             <a href="/payment-methods" className="link link-hover ">
                Payment Methods
             </a>
-            <p className="link link-hover ">Order Tracking</p>
+            <a href="/profile" className="link link-hover ">
+               Order Tracking
+            </a>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Legal</h6>

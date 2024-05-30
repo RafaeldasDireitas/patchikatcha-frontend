@@ -2,6 +2,7 @@
 import { SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { CategoriesNavbarType } from "@/types/CategoriesNavbarType";
 import Link from "next/link";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Categories({ categories }: any) {
    return (
@@ -14,12 +15,11 @@ export default function Categories({ categories }: any) {
                <div className="bg-body-background text-black">
                   {categories.map((category: CategoriesNavbarType, key: number) => {
                      return (
-                        <div key={key + key}>
-                           <div className="collapse ">
-                              <input type="radio" name="my-accordion-1" defaultChecked />
-                              <div className="collapse-title text-xl text-start  h-4">{category.title}</div>
-                              <div className="collapse-content flex flex-col pl-6 text-start">
-                                 <ul className="flex flex-col">
+                        <Accordion type="single" collapsible className="p-4">
+                           <AccordionItem value={`item-${key}`}>
+                              <AccordionTrigger className="text-xl">{category.title}</AccordionTrigger>
+                              <AccordionContent>
+                                 <ul className="flex flex-col text-start mx-2">
                                     {category.content.map((content, key: number) => {
                                        return (
                                           <Link key={key + key} href={`${category.href[key]}?title=${category.title}`}>
@@ -35,10 +35,9 @@ export default function Categories({ categories }: any) {
                                        </SheetClose>
                                     </Link>
                                  </ul>
-                              </div>
-                           </div>
-                           <hr />
-                        </div>
+                              </AccordionContent>
+                           </AccordionItem>
+                        </Accordion>
                      );
                   })}
                </div>

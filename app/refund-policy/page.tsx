@@ -26,7 +26,7 @@ export default function RefundPolicy() {
                on our website.
             </li>
             <li> Provide a clear photo or video showing the issue with the product.</li>
-            <li>Our team will typically respond to your issue within [X] business days and aim to resolve it as quickly as possible.</li>
+            <li>Our team will typically respond to your issue within 2 to 5 business days and aim to resolve it as quickly as possible.</li>
          </ul>
          <p>
             Please note that any claims for damaged or defective products must be made within 30 days of delivery. After this time, we may not be able

@@ -16,7 +16,7 @@ export default function faq() {
                <AccordionTrigger className="">Do you ship worldwide?</AccordionTrigger>
                <AccordionContent>
                   We currently only ship within the EU. However, we have ideas to also offer worldwide shipping in the future. You can follow our
-                  Instagram (linked) to stay up to date.
+                  Instagram to stay up to date.
                </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">

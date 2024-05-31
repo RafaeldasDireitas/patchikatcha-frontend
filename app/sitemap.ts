@@ -41,6 +41,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
          url: `${baseUrl}/faq`
       },
       {
+         url: `${baseUrl}/imprint`
+      },
+      {
          url: `${baseUrl}/shipping`
       },
       {

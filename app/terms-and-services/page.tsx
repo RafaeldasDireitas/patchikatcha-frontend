@@ -370,9 +370,6 @@ export default function TermsAndServices() {
             prior written consent or the consent of such third party which may own the Marks.
          </p>
          <hr />
-         <h1 className=" text-2xl text-dark my-5">Contact Information</h1>
-         <p className=" my-5">Address: Rua Casal José Padeiro nº3 2440-051, Fanhais</p>
-         <p className=" my-5">Email: patchikatcha@gmail.com</p>
       </div>
    );
 }

@@ -11,12 +11,12 @@ export const categories = [
    },
    {
       title: "Accessories",
-      content: ["Backpacks", "Mugs"],
-      href: ["/categories/Backpacks", "/categories/Mugs"]
+      content: ["Mouse Pads"],
+      href: ["/categories/Mouse-Pads", "/categories/Accessories"]
    },
    {
       title: "Home & Living",
-      content: ["Backpacks", "Mugs"],
-      href: ["/categories/Backpacks", "/categories/Mugs"]
+      content: ["Mugs", "Journals", "Towels"],
+      href: ["/categories/Mugs", "/categories/Journals", "/categories/Towels", "/categories/Home & Living"]
    }
 ];

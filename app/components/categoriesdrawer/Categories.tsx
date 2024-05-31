@@ -15,7 +15,7 @@ export default function Categories({ categories }: any) {
                <div className="bg-body-background text-black">
                   {categories.map((category: CategoriesNavbarType, key: number) => {
                      return (
-                        <Accordion type="single" collapsible className="p-4">
+                        <Accordion key={key + key} type="single" collapsible className="p-4">
                            <AccordionItem value={`item-${key}`}>
                               <AccordionTrigger className="text-xl">{category.title}</AccordionTrigger>
                               <AccordionContent>

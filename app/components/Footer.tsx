@@ -48,6 +48,9 @@ export default function Footer() {
             <a href={"/cookie-policy"} className="link link-hover ">
                Cookie Policy
             </a>
+            <a href={"/imprint"} className="link link-hover ">
+               Imprint
+            </a>
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Socials</h6>

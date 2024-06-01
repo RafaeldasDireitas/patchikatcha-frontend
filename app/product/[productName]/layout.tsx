@@ -22,6 +22,7 @@ import Review from "./components/review/Review";
 import ProductLoading from "./components/ProductLoading";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import RecommendedProducts from "./components/RecommendedProducts";
+import Loading from "@/app/components/Loading";
 
 export default function ProductLayout({ params }: any) {
    const [product, setProduct] = useState<ProductType | undefined>();
@@ -56,7 +57,7 @@ export default function ProductLayout({ params }: any) {
    }, [sizeId, colorId]);
 
    if (!product || !productId) {
-      return <ProductLoading />;
+      return <Loading />;
    }
 
    const findCountryShippingRate = shippingRate?.profiles.find((profile) => profile.countries.includes(userCountry));

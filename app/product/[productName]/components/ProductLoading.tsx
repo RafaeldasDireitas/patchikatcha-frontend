@@ -7,7 +7,9 @@ export default function ProductLoading() {
             <Skeleton widthInPx={248} heightInPx={36} />
          </div>
          <div className="flex lg:flex-row flex-col gap-4 lg:p-12">
-            <Skeleton widthInPx={600} heightInPx={400} />
+            <div className="w-[360px] lg:w-[600px]">
+               <Skeleton widthInPx={600} heightInPx={400} />
+            </div>
 
             <div className="flex flex-col">
                <div className="flex flex-row justify-center lg:justify-start gap-4">
@@ -25,11 +27,6 @@ export default function ProductLoading() {
 
                <Skeleton widthInPx={384} heightInPx={48} />
             </div>
-         </div>
-
-         <div className="lg:m-12 p-2 gap-6 flex lg:flex-row flex-col">
-            <Skeleton widthInPx={768} heightInPx={336} />
-            <Skeleton widthInPx={380} heightInPx={388} />
          </div>
       </div>
    );

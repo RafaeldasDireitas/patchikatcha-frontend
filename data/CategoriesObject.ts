@@ -16,7 +16,7 @@ export const categories = [
    },
    {
       title: "Home & Living",
-      content: ["Mugs", "Journals", "Towels"],
-      href: ["/categories/Mugs", "/categories/Journals", "/categories/Towels", "/categories/Home & Living"]
+      content: ["Mugs", "Journals", "Towels", "Pillows"],
+      href: ["/categories/Mugs", "/categories/Journals", "/categories/Towels", "/categories/Pillows", "/categories/Home & Living"]
    }
 ];

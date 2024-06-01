@@ -12,7 +12,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
    createContact.email = email;
 
-   await apiInstance.createContact(createContact);
+   const createContactResponse = await apiInstance.createContact(createContact);
+
+   // Extract the contact ID from the response
+   const contactId = createContactResponse.body.id;
+
+   // Add the contact to the specified list
+   const addContactToList = new AddContactToList();
+   addContactToList.emails = [email];
+
+   await apiInstance.addContactToList(7, addContactToList);
 
    return NextResponse.json("Email created");
 }

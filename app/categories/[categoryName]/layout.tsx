@@ -78,7 +78,13 @@ export default function CategoriesLayout({ params }: any) {
                         .map((product, key) => {
                            return (
                               <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                                 <ProductCard key={key + key} title={product.title} price={product.price} image={product.image} />
+                                 <ProductCard
+                                    key={key + key}
+                                    title={product.title}
+                                    price={product.price}
+                                    image={product.image}
+                                    secondImage={product.secondImage}
+                                 />
                               </Link>
                            );
                         })}

@@ -40,7 +40,13 @@ export default function RecommendedProducts(tag: any) {
                recommendedProducts.map((product, key) => {
                   return (
                      <Link key={key + key} href={`/product/${product.title}?productId=${product.productId}`}>
-                        <ProductCard title={product.title} price={product.price} image={product.image} secondImage={product.secondImage} />
+                        <ProductCard
+                           productId={product.productId}
+                           title={product.title}
+                           price={product.price}
+                           image={product.image}
+                           secondImage={product.secondImage}
+                        />
                      </Link>
                   );
                })}

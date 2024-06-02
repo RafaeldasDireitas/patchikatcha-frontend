@@ -59,6 +59,7 @@ export default function NewProducts() {
                   <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
                      <ProductCard
                         key={key + key}
+                        productId={product.productId}
                         title={product.title}
                         price={product.price}
                         image={product.image}

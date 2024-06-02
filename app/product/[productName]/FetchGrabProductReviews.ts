@@ -12,7 +12,7 @@ type FetchGrabProductReviewsPropsType = {
    reviews: ReviewType[];
    setReviews: Dispatch<SetStateAction<ReviewType[]>>;
    setReviewsCount: Dispatch<SetStateAction<number>>;
-   setIsButtonDisabled: Dispatch<SetStateAction<boolean>>;
+   setIsButtonDisabled?: Dispatch<SetStateAction<boolean>>;
    limit: number;
    page: number;
 };
@@ -40,7 +40,7 @@ export default async function FetchGrabProductReviews({
 
       if (grabReviewsJson.reviews.length < 4) {
          setReviews([...reviews, ...grabReviewsJson.reviews]);
-         setIsButtonDisabled(true);
+         if (setIsButtonDisabled) setIsButtonDisabled(true);
          return;
       }
 

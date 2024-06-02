@@ -10,7 +10,7 @@ export default function Footer() {
    return (
       <footer className="footer p-10 bg-button-background text-white">
          <aside>
-            <div>
+            <div className="flex items-center">
                <Image src={logo} width={180} height={180} alt="No logo found" />
             </div>
             <p>Copyright © {currentYear} - All rights reserved</p>

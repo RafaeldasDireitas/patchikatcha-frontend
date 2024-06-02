@@ -14,6 +14,7 @@ export const endpoints = {
    grabEmailToken: (userEmail: any) => `/api/Auth/grab-email-token?email=${userEmail}`,
    confirmEmail: (token: any, userEmail: any) => `/api/Auth/confirm-email?token=${token}&email=${userEmail}`,
    isEmailConfirmed: (userId: any) => `/api/Auth/is-email-confirmed?userId=${userId}`,
+   grabProductId: (productTitle: any) => `/api/Product/grab-product-id?productTitle=${productTitle}`,
    grabProduct: (productId: any) => `/api/Product/grab-product?productId=${productId}`,
    grabOrders: (orderId: any) => `/api/Order/grab-user-orders?orderId=${orderId}`,
    grabOrdersId: (userEmail: any) => `/api/Order/grab-orders-id?userEmail=${userEmail}`,

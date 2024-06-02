@@ -45,27 +45,29 @@ export default function ProductCard({ productId, title, price, image, secondImag
                alt="Second image"
             />
          </div>{" "}
-         <h1 className="text-center pt-3 text-xl text-light truncate w-80">{title}</h1>
-         <h2 className="text-center pb-2 ">{formattedPrice}</h2>
-         <div className="flex flex-row items-center justify-center">
-            {reviews.length > 0 ? (
-               <>
-                  {[...Array(fullStars)].map((_, index) => (
-                     <FaStar key={index} className="text-light" />
-                  ))}
-                  {[...Array(emptyStars)].map((_, index) => (
-                     <FaRegStar key={index} className="text-light" />
-                  ))}
-               </>
-            ) : (
-               <>
-                  {[...Array(5)].map((_, index) => (
-                     <FaRegStar key={index} className="text-light" />
-                  ))}
-               </>
-            )}
+         <div className="space-2">
+            <h1 className="text-center mt-2 text-xl text-light truncate w-80">{title}</h1>
+            <h2 className="text-center">{formattedPrice}</h2>
+            <div className="flex flex-row items-center justify-center">
+               {reviews.length > 0 ? (
+                  <>
+                     {[...Array(fullStars)].map((_, index) => (
+                        <FaStar key={index} className="text-light" />
+                     ))}
+                     {[...Array(emptyStars)].map((_, index) => (
+                        <FaRegStar key={index} className="text-light" />
+                     ))}
+                  </>
+               ) : (
+                  <>
+                     {[...Array(5)].map((_, index) => (
+                        <FaRegStar key={index} className="text-light" />
+                     ))}
+                  </>
+               )}
 
-            <h2 className="px-1">({reviewsCount})</h2>
+               <h2 className="px-1">({reviewsCount})</h2>
+            </div>
          </div>
       </div>
    );

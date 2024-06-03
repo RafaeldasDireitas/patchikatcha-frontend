@@ -82,6 +82,8 @@ export default function ProductLayout({ params }: any) {
       variantId = matchingVariant.id;
    }
 
+   console.log(product);
+
    const addToCart = () => {
       setAddedToCart("Adding to cart...");
 

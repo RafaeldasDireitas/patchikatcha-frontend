@@ -7,7 +7,10 @@ import { SheetClose } from "@/components/ui/sheet";
 export default function CartProduct({ name, description, price, price_id, quantity, image, index, product_id, size, color }: any) {
    const formattedPrice = (price / 100).toFixed(2) + " €";
    const sizeName = Object.keys(ProductsData).find((key: any) => ProductsData[key] === size);
-   const colorName = Object.keys(ProductsData).find((key: any) => ProductsData[key] == color);
+   const colorName = Object.keys(ProductsData).find((key: any) => {
+      const value = ProductsData[key];
+      return Array.isArray(value) ? value.includes(color) : value === color;
+   });
 
    return (
       <div className="flex flex-row p-1 py-8">

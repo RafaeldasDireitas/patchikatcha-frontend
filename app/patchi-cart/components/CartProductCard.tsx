@@ -32,7 +32,10 @@ export default function CartProductCard({
    const currency = globalStore.userGeo.currency;
    const jwtToken = globalStore.jwtToken;
    const translateSize = Object.keys(ProductsData).find((product: any) => ProductsData[product] === size);
-   const translateColor = Object.keys(ProductsData).find((product: any) => ProductsData[product] === color);
+   const translateColor = Object.keys(ProductsData).find((key: any) => {
+      const value = ProductsData[key];
+      return Array.isArray(value) ? value.includes(color) : value === color;
+   });
    const [formattedPrice, setFormattedPrice] = useState<string>("");
    const [shippingCost, setShippingCost] = useState<string>("");
    const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] = useState<boolean>(false);

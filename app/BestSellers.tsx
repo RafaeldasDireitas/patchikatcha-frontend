@@ -7,6 +7,7 @@ import Link from "next/link";
 import ProductCard from "./components/ProductCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Skeleton from "./components/Skeleton";
+import Image from "next/image";
 
 export default function BestSellers() {
    const [bestSellers, setBestSellers] = useState<BestSellerType[]>();
@@ -49,40 +50,43 @@ export default function BestSellers() {
    }
 
    return (
-      <div className="lg:p-12 flex flex-col justify-center items-center relative mt-8 lg:mt-0">
-         <h1 className="text-3xl lg:text-start text-center text-dark">Best Sellers</h1>
-         <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center">
-            Here is just a little description that is a little bit bigger than normal body copy.
-         </p>
-         <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
-            {bestSellers &&
-               bestSellers.map((product, key) => {
-                  return (
-                     <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                        <ProductCard
-                           key={key + key}
-                           title={product.title}
-                           price={product.price}
-                           image={product.image}
-                           secondImage={product.secondImage}
-                        />
-                     </Link>
-                  );
-               })}
-         </div>
-         <button
-            className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
-            onClick={scrollLeft}
-         >
-            <FaArrowLeft />
-         </button>
+      // <div className="lg:p-12 flex flex-col justify-center items-center relative mt-8 lg:mt-0">
+      //    <h1 className="text-3xl lg:text-start text-center text-dark">Best Sellers</h1>
+      //    <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center">
+      //       Here is just a little description that is a little bit bigger than normal body copy.
+      //    </p>
+      //    <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
+      //       {bestSellers &&
+      //          bestSellers.map((product, key) => {
+      //             return (
+      //                <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+      //                   <ProductCard
+      //                      key={key + key}
+      //                      title={product.title}
+      //                      price={product.price}
+      //                      image={product.image}
+      //                      secondImage={product.secondImage}
+      //                   />
+      //                </Link>
+      //             );
+      //          })}
+      //    </div>
+      //    <button
+      //       className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
+      //       onClick={scrollLeft}
+      //    >
+      //       <FaArrowLeft />
+      //    </button>
 
-         <button
-            className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
-            onClick={scrollRight}
-         >
-            <FaArrowRight />
-         </button>
+      //    <button
+      //       className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
+      //       onClick={scrollRight}
+      //    >
+      //       <FaArrowRight />
+      //    </button>
+      // </div>
+      <div>
+         <Image src={bestSellers[2].image} width={500} height={500} alt="Epic duck" />
       </div>
    );
 }

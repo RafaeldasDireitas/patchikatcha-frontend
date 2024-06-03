@@ -5,7 +5,10 @@ export default function Colors({ setColorId, productVariants }: any) {
    const colorsId = productVariants.map((product: any) => (product.options[0].toString().length >= 3 ? product.options[0] : product.options[1])); //FOR SOME REASON PRINTIFY CHANGES THE ORDER OF THE ARRAY
    const uniqueColorsId = colorsId.filter((value: any, index: any) => colorsId.indexOf(value) === index);
    const colorsName = uniqueColorsId.map((colorId: number) => {
-      return Object.keys(ProductsData).find((key: any) => ProductsData[key] === colorId);
+      return Object.keys(ProductsData).find((key: any) => {
+         const value = ProductsData[key];
+         return Array.isArray(value) ? value.includes(colorId) : value === colorId;
+      });
    });
 
    const [isFocused, setIsFocused] = useState<number>(uniqueColorsId[0]);

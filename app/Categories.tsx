@@ -18,14 +18,16 @@ export default function Categories() {
    ];
 
    return (
-      <div className="grid grid-cols-3 gap-4 p-12">
+      <div className="flex flex-row flex-wrap justify-center items-center gap-12">
          {categories.map((category, key) => (
-            <Link href={`/categories/${category.title}`}>
-               <div
-                  className="flex items-end lg:hover:scale-105 hover:cursor-pointer duration-200 w-96 h-96 bg-center bg-cover rounded-badge"
-                  style={{ backgroundImage: `url(${images[key].url})` }}
-               >
-                  <h1 className="m-4 align-bottom text-4xl text-white">{category.title}</h1>
+            <Link href={`/categories/${category.title}`} key={key + key}>
+               <div className="lg:hover:scale-105 hover:cursor-pointer duration-200 w-96 h-96">
+                  <div className="relative items-end">
+                     <Image className="rounded-xl" src={images[key].url} width={400} height={400} alt="Category card"></Image>
+                     <div className="absolute bottom-0 left-0">
+                        <h1 className="m-4 text-4xl text-white">{category.title}</h1>
+                     </div>
+                  </div>
                </div>
             </Link>
          ))}

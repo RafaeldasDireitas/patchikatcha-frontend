@@ -42,6 +42,7 @@ export default function Newsletter() {
 
       if (send.ok) {
          setIsSent(true);
+         toast.success("Your verification email was sent!");
       }
    };
 

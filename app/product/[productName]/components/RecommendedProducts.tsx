@@ -35,7 +35,7 @@ export default function RecommendedProducts(tag: any) {
          <div>
             <h1 className="text-3xl mx-4 lg:mx-0 lg:text-start text-center text-dark ">Products you might also like:</h1>
          </div>
-         <div className="grid lg:grid-cols-4 grid-cols-1 justify-center items-center">
+         <div className="grid lg:grid-cols-4 grid-cols-1 gap-4 justify-center items-center">
             {recommendedProducts &&
                recommendedProducts.map((product, key) => {
                   return (

@@ -102,80 +102,88 @@ export default function Profile() {
 
    return (
       <div className="flex lg:flex-row flex-col">
-         <div className="p-12 my-8 lg:w-1/3">
-            <h1 className="text-2xl text-light  lg:text-start text-center">Your Account</h1>
-            <p className=" lg:text-start text-center">Track your orders or change your settings</p>
-            <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
-               <p className="">
+         <div className="p-12 lg:my-8 lg:w-1/3">
+            <div className="space-y-1">
+               <h1 className="text-2xl text-light  lg:text-start text-center">Your Account</h1>
+               <p className=" lg:text-start text-center">Track your orders or change your settings</p>
+               <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
+                  <p className="">
+                     {isEmailConfirmed ? (
+                        "Your email is confirmed"
+                     ) : (
+                        <Link href={"/auth/confirm-email-warning"}>
+                           <span className="hover:underline hover:text-light">Your email isn't confirmed!</span>
+                        </Link>
+                     )}
+                  </p>
                   {isEmailConfirmed ? (
-                     "Your email is confirmed"
+                     <BiSolidCheckCircle className="mx-2 text-light" size={25} />
                   ) : (
-                     <Link href={"/auth/confirm-email-warning"}>
-                        <span className="hover:underline hover:text-light">Your email isn't confirmed!</span>
-                     </Link>
+                     <BiSolidXCircle className="mx-2 text-red-800" size={25} />
                   )}
-               </p>
-               {isEmailConfirmed ? (
-                  <BiSolidCheckCircle className="mx-2 text-light" size={25} />
-               ) : (
-                  <BiSolidXCircle className="mx-2 text-red-800" size={25} />
-               )}
-            </div>
-            <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
-               <p>You are currently in:&nbsp;</p>
-               <p>{findUserCountry?.countryName}</p>
-               <Dialog>
-                  <DialogTrigger>
-                     <Image
-                        className="mx-2 hover:scale-110 hover:cursor-pointer duration-200"
-                        src={userCountryImage}
-                        width={30}
-                        height={30}
-                        alt="No country"
-                     />
-                  </DialogTrigger>
-                  <ChangeCountryProfileModal />
-               </Dialog>
-            </div>
-
-            <div className="mt-10">
-               <h1 className="text-xl text-dark  lg:text-start text-center">My orders</h1>
-               <div className="p-4 ">
-                  <h2
-                     onClick={() => handleProfilePages("orderHistory")}
-                     className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
-                  >
-                     Order history
-                  </h2>
-                  <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Help & Support</h2>
+               </div>
+               <div className="flex flex-row lg:text-start text-center lg:justify-start justify-center">
+                  <p>You are currently in:&nbsp;</p>
+                  <p>{findUserCountry?.countryName}</p>
+                  <Dialog>
+                     <DialogTrigger>
+                        <Image
+                           className="mx-2 hover:scale-110 hover:cursor-pointer duration-200"
+                           src={userCountryImage}
+                           width={30}
+                           height={30}
+                           alt="No country"
+                        />
+                     </DialogTrigger>
+                     <ChangeCountryProfileModal />
+                  </Dialog>
                </div>
             </div>
 
-            <div className="mt-4">
-               <h1 className="text-xl text-dark  lg:text-start text-center">Account settings</h1>
-               <div className="p-4 ">
-                  <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Change personal details</h2>
-                  <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Newsletter subscription</h2>
-                  <div className="flex justify-center lg:justify-start">
-                     <Dialog>
-                        <DialogTrigger>
-                           <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Change country</h2>
-                        </DialogTrigger>
-                        <ChangeCountryProfileModal />
-                     </Dialog>
+            <div className="gap-4 my-4">
+               <div>
+                  <h1 className="text-xl text-dark lg:text-start text-center">My orders</h1>
+                  <div className="p-2">
+                     <h2
+                        onClick={() => handleProfilePages("orderHistory")}
+                        className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
+                     >
+                        Order history
+                     </h2>
+                     <Link href={"/contact-us"}>
+                        <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Help & Support</h2>
+                     </Link>
                   </div>
                </div>
-            </div>
 
-            <div className="mt-4">
-               <h1 className="text-xl text-dark  lg:text-start text-center">Additional settings</h1>
-               <div className="p-4 ">
-                  <h2
-                     onClick={() => handleProfilePages("viewReviews")}
-                     className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
-                  >
-                     View reviews
-                  </h2>
+               <div>
+                  <h1 className="text-xl text-dark lg:text-start text-center">Account settings</h1>
+                  <div className="p-2">
+                     <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Change personal details</h2>
+                     <h2 className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer">Newsletter subscription</h2>
+                     <div className="flex justify-center lg:justify-start">
+                        <Dialog>
+                           <DialogTrigger>
+                              <h2 className="hover:underline lg:text-start font-normal text-center hover:text-light hover:cursor-pointer">
+                                 Change country
+                              </h2>
+                           </DialogTrigger>
+                           <ChangeCountryProfileModal />
+                        </Dialog>
+                     </div>
+                  </div>
+               </div>
+
+               <div>
+                  <h1 className="text-xl text-dark lg:text-start text-center">Additional settings</h1>
+                  <div className="p-2">
+                     <h2
+                        onClick={() => handleProfilePages("viewReviews")}
+                        className="hover:underline lg:text-start text-center hover:text-light hover:cursor-pointer"
+                     >
+                        View reviews
+                     </h2>
+                  </div>
                </div>
             </div>
 

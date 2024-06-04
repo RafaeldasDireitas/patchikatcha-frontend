@@ -32,19 +32,14 @@ export default function BestSellers() {
 
    if (!bestSellers) {
       return (
-         <div className="lg:p-12 flex flex-col justify-center items-center relative mt-8 lg:mt-0">
-            <h1 className="text-3xl lg:text-start text-center text-dark">Best Sellers</h1>
-            <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center">
-               Here is just a little description that is a little bit bigger than normal body copy.
-            </p>
-
-            <div className="flex flex-row overflow-x-auto w-full justify-center gap-8 lg:p-12 my-8">
-               <Skeleton widthInPx={320} heightInPx={322} />
-               <div className="lg:flex hidden gap-8">
-                  <Skeleton widthInPx={320} heightInPx={322} />
-                  <Skeleton widthInPx={320} heightInPx={322} />
-                  <Skeleton widthInPx={320} heightInPx={322} />
-               </div>
+         <div className="p-12">
+            <div className="lg:flex lg:flex-row hidden justify-center gap-4">
+               <Skeleton widthInPx={650} heightInPx={650} />
+               <Skeleton widthInPx={650} heightInPx={650} />
+            </div>
+            <div className="lg:hidden flex flex-col justify-center">
+               <Skeleton widthInPx={264} heightInPx={264} />
+               <Skeleton widthInPx={264} heightInPx={264} />
             </div>
          </div>
       );

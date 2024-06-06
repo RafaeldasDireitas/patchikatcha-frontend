@@ -33,7 +33,10 @@ export default function PaymentMethods() {
 
          <div className="my-2 p-2">
             <h1 className="text-lg">Credit and Debit Cards</h1>
-            <p>We accept Visa and MasterCard. Your card information is processed securely using industry-standard encryption.</p>
+            <p>
+               We accept Visa and MasterCard, American Express, Discover, Diners Club and China UnionPay. Your card information is processed securely
+               using industry-standard encryption.
+            </p>
          </div>
 
          <div className="my-2 p-2">

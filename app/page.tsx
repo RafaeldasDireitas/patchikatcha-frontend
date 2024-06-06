@@ -15,7 +15,7 @@ export default function Home() {
             <NewProducts />
             <Categories />
 
-            <AboutUs />
+            {/* <AboutUs /> */}
          </div>
          <Newsletter />
 

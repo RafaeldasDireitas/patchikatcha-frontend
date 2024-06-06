@@ -47,7 +47,7 @@ export default function Newsletter() {
    };
 
    return (
-      <div className="flex items-center justify-center gap-8 bg-body-background">
+      <div className="flex items-center justify-center gap-8 bg-body-background mt-4">
          <div>
             <Image className="hidden lg:flex mt-24" src={newsletter} width={200} height={200} alt="No letter found" />
          </div>

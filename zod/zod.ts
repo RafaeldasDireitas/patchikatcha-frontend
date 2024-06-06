@@ -4,16 +4,16 @@ export const newsLetterValidation = z.string().email();
 
 export const loginValidation = z.object({
    email: z.string().email(),
-   password: z.string().min(8),
+   password: z.string().min(8).max(50),
    apiKey: z.string()
 });
 
 export const registerValidation = z
    .object({
-      username: z.string().min(4, "Username must have at least 8 characters").max(20),
+      username: z.string().min(4, "Username must have at least 8 characters").max(25, "Username cannot have more than 25 characters"),
       email: z.string().email(),
-      password: z.string().min(8, "Password must have at least 8 characters").max(20),
-      confirmPassword: z.string().min(8).max(20),
+      password: z.string().min(8, "Password must have at least 8 characters").max(50, "Password cannot have more than 50 characters"),
+      confirmPassword: z.string().min(8).max(50),
       apiKey: z.string()
    })
    .refine((data) => data.password === data.confirmPassword, { path: ["confirmPassword"], message: "Passwords don't match" });

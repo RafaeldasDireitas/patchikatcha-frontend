@@ -21,7 +21,7 @@ export default function Hero() {
    return (
       <>
          <section className="bg-body-background">
-            <div className="flex flex-row max-w-screen-xl py-8 mx-auto">
+            <div className="flex flex-row max-w-screen-xl mx-auto lg:py-8 py-4">
                <div className="mr-auto place-self-center lg:justify-start justify-center">
                   <div className="flex lg:hidden flex-col justify-center items-center">
                      <Image src={bearPyjama} width={250} height={250} alt="Epic bear" priority />

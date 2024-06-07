@@ -46,7 +46,7 @@ export default function BestSellers() {
    }
 
    return (
-      <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-4 p-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2 p-12">
          <Link href={{ pathname: `/product/${bestSellers[0].title}`, query: { productId: bestSellers[0].productId } }}>
             <div className="items-end relative">
                <Image

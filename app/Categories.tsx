@@ -18,7 +18,7 @@ export default function Categories() {
    ];
 
    return (
-      <div className="flex flex-col justify-center items-center p-4 lg:grid lg:grid-cols-3 lg:justify-items-center gap-4">
+      <div className="lg:p-4 lg:grid lg:grid-cols-3 grid-cols-1 justify-items-center gap-2">
          {categories.map((category, key) => (
             <Link href={`/categories/${category.title}`} key={key + key}>
                <div className="lg:hover:scale-105 hover:cursor-pointer duration-200 w-96 h-auto p-8 lg:p-0">

@@ -4,7 +4,7 @@ import AboutUsImage from "@/public/aboutus.png";
 export default function AboutUs() {
    return (
       <div className="flex flex-col lg:flex-row lg:p-12">
-         <div className="flex flex-col lg:w-2/4">
+         <div className="flex flex-col lg:w-2/4 items-center">
             <Image className="rounded-xl" src={AboutUsImage} width={1000} height={1000} alt="About us"></Image>
          </div>
 

@@ -64,6 +64,7 @@ export default function Newsletter() {
                   <CiLocationArrow1 size={25} onClick={sendEmail} className="hover:cursor-pointer lg:hover:scale-110 duration-200 my-auto" />
                )}
             </label>
+            {isSent && <p className="text-center">Please check your email to confirm your subscription.</p>}
             <p className="text-center mb-4 lg:mb-0">
                By clicking the button you agree to our{" "}
                <span>

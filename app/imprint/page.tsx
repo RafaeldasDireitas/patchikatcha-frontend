@@ -8,7 +8,6 @@ export default function Imprint() {
                <p>2440-051, Fanhais</p>
                <p>Portugal</p>
                <p className="">Email: patchikatcha@gmail.com</p>
-               <p>Phone number: +351 961 013 016</p>
             </div>
          </div>
       </div>

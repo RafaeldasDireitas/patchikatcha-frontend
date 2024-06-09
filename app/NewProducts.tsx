@@ -50,9 +50,7 @@ export default function NewProducts() {
    return (
       <div className="lg:p-4 flex flex-col justify-center items-center relative">
          <h1 className="text-3xl lg:text-start text-center text-dark">New Products</h1>
-         <p className="my-2 lg:text-start text-center mx-4 lg:mx-0">
-            Here is just a little description that is a little bit bigger than normal body copy.
-         </p>
+         <p className="my-2 lg:text-start text-center mx-4 lg:mx-0">Discover our latest additions to our ever-growing catalogue of cute items! </p>
          <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
             {newProducts.map((product, key) => {
                return (

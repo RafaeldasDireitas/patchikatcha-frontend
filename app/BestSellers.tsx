@@ -17,11 +17,11 @@ export default function BestSellers() {
    if (!bestSellers) {
       return (
          <div className="p-12">
-            <div className="lg:flex lg:flex-row hidden justify-center gap-4">
+            <div className="hidden lg:grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2">
                <Skeleton widthInPx={650} heightInPx={650} />
                <Skeleton widthInPx={650} heightInPx={650} />
             </div>
-            <div className="lg:hidden flex flex-col justify-center">
+            <div className="lg:hidden grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2">
                <Skeleton widthInPx={264} heightInPx={264} />
                <Skeleton widthInPx={264} heightInPx={264} />
             </div>
@@ -30,7 +30,7 @@ export default function BestSellers() {
    }
 
    return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2 p-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2 md:gap-4 p-12">
          {bestSellers.map((bestSeller, key) => {
             const productIVA1 = bestSellers && bestSeller.price * 0.23;
 

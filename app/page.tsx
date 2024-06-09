@@ -14,7 +14,6 @@ export default function Home() {
             <BestSellers />
             <NewProducts />
             <Categories />
-
             <AboutUs />
          </div>
          <Newsletter />

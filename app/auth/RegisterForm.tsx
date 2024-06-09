@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import FetchRegister from "./FetchRegister";
 import FetchEmailToken from "./FetchEmailToken";
 import Image from "next/image";
-import turtle from "@/public/turtle.png";
+import star from "@/public/star.png";
 import { toast } from "sonner";
 import { registerValidation } from "@/zod/zod";
 import { z } from "zod";
@@ -108,7 +108,7 @@ export default function RegisterForm({ setIsLoginForm }: any) {
    return (
       <div className="flex flex-row">
          <div className="lg:w-1/3 bg-body-background min-h-screen items-center lg:flex hidden justify-center">
-            <Image src={turtle} width={400} height={400} alt="No turtle found..." />
+            <Image src={star} width={300} height={300} alt="No turtle found..." />
          </div>
 
          <div className="lg:w-2/3 w-full my-16 mx-2 lg:mx-0 bg-white min-h-screen items-center flex flex-col justify-center">

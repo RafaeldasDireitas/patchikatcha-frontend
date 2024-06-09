@@ -1,20 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
-import card from "@/public/card-image-test.png";
 import { categories } from "@/data/CategoriesObject";
-import floatingDuck from "@/public/floating-duck.jpg";
-import cuteDuck from "@/public/cuteDuckBg.png";
+import categoryClothing from "@/public/category-clothing.png";
+import categoryAccessories from "@/public/category-accessories.png";
+import categoryHome from "@/public/categories-home.png";
 
 export default function Categories() {
    const images = [
       {
-         url: cuteDuck.src
+         url: categoryClothing.src
       },
       {
-         url: cuteDuck.src
+         url: categoryAccessories.src
       },
       {
-         url: cuteDuck.src
+         url: categoryHome.src
       }
    ];
 
@@ -24,8 +24,8 @@ export default function Categories() {
             <Link href={`/categories/${category.title}`} key={key + key}>
                <div className="lg:hover:scale-105 hover:cursor-pointer duration-200 lg:w-96 h-auto">
                   <div className="relative items-end">
-                     <Image className="rounded-xl" src={images[key].url} width={400} height={400} alt="Category card"></Image>
-                     <div className="absolute bottom-0 left-0 bg-body-background shadow-md rounded-bl-3xl rounded-tr-3xl">
+                     <Image className="rounded-2xl" src={images[key].url} width={400} height={400} alt="Category card"></Image>
+                     <div className="absolute bottom-0 left-0 bg-body-background shadow-md rounded-bl-2xl rounded-tr-2xl">
                         <h1 className="m-4 text-2xl text-dark">{category.title}</h1>
                      </div>
                   </div>

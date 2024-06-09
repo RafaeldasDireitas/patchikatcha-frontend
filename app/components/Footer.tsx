@@ -1,7 +1,7 @@
 import Link from "next/link";
 import logo from "@/public/logo_white.png";
 import Image from "next/image";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaPinterest } from "react-icons/fa";
 
 export default function Footer() {
    const currentDate = new Date();
@@ -54,9 +54,13 @@ export default function Footer() {
          </nav>
          <nav>
             <h6 className="footer-title opacity-100 z-0">Socials</h6>
-            <div className="flex flex-row items-center">
-               <FaInstagram color="white" size={30}></FaInstagram>
-               {/* <a className="link link-hover ">Instagram</a> */}
+            <div className="flex flex-row items-center gap-2">
+               <Link href={"https://www.instagram.com/patchikatcha/"}>
+                  <FaInstagram color="white" size={30}></FaInstagram>
+               </Link>
+               <Link href={"https://pinterest.com/patchikatcha/"}>
+                  <FaPinterest color="white" size={30}></FaPinterest>
+               </Link>
             </div>
          </nav>
       </footer>

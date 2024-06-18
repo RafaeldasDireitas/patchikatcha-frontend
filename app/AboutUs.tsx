@@ -1,12 +1,15 @@
 import Image from "next/image";
 import AboutUsImage from "@/public/aboutus.png";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function AboutUs() {
    return (
       <div className="flex flex-col lg:flex-row lg:p-12">
          <div className="flex flex-col lg:w-2/4 items-center">
-            <Image className="rounded-xl" src={AboutUsImage} width={800} height={800} alt="About us"></Image>
+            <motion.div whileInView={{ rotateY: 180 }} viewport={{ once: true }} transition={{ type: "spring", duration: 2 }}>
+               <Image className="rounded-xl" src={AboutUsImage} width={800} height={800} alt="About us"></Image>
+            </motion.div>
          </div>
 
          <div className="flex flex-col lg:w-2/4 lg:px-10 my-4 lg:my-0">

@@ -49,7 +49,7 @@ export default function Wishlist() {
             <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />
             <h1 className="text-2xl text-light ">Your wishlist is empty!</h1>
             <p className="text-center">
-               Let's change that! Browse our products!{" "}
+               Let's change that!{" "}
                <Link href={`${href}`} className="text-light hover:cursor-pointer">
                   Browse our products!
                </Link>

@@ -2,6 +2,7 @@ import { endpoints } from "@/endpoints/endpoints";
 import { toast } from "sonner";
 import { CartType } from "@/types/CartType";
 import { LoginType } from "@/types/LoginType";
+import { redirection } from "@/endpoints/redirection";
 
 export default async function FetchLogin({
    userData,
@@ -73,6 +74,7 @@ export default async function FetchLogin({
          setUserEmail(userData.email);
          setCart(null);
          grabUserCartJson.map((cart) => setCart(cart));
+         window.location.href = redirection.url;
       }
    }
 }

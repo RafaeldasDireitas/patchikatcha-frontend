@@ -30,14 +30,14 @@ export default function IsNotAuthenticated() {
 
    if (!jwtToken || !userId || !isAuthenticated) {
       return (
-         <div className="flex min-h-screen justify-center items-center">
+         <div className="flex min-h-screen justify-center items-center my-16">
             <h1 className="text-3xl text-center text-dark ">You must be logged in!</h1>
          </div>
       );
    }
 
    return (
-      <div className="flex flex-col min-h-screen items-center justify-center">
+      <div className="flex flex-col min-h-screen items-center justify-center my-16">
          <h1 className="text-3xl text-center text-dark ">
             Checking your account status...<span className="loading loading-spinner text-error mx-2"></span>
          </h1>

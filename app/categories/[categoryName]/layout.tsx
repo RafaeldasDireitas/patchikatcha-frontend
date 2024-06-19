@@ -11,6 +11,7 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@
 import CategoryNameDisplay from "./components/CategoryNameDisplay";
 import Filters from "./components/Filters";
 import Content from "./components/Content";
+import { motion } from "framer-motion";
 
 export default function CategoriesLayout({ params }: any) {
    const categoryName = params.categoryName;
@@ -77,9 +78,18 @@ export default function CategoriesLayout({ params }: any) {
                         })
                         .map((product, key) => {
                            return (
-                              <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                                 <ProductCard key={key + key} title={product.title} price={product.price} image={product.image} />
-                              </Link>
+                              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: key * 0.1 }}>
+                                 <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+                                    <ProductCard
+                                       key={key + key}
+                                       productId={product.productId}
+                                       title={product.title}
+                                       price={product.price}
+                                       image={product.image}
+                                       secondImage={product.secondImage}
+                                    />
+                                 </Link>
+                              </motion.div>
                            );
                         })}
                </div>

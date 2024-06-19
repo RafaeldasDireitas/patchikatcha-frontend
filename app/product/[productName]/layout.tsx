@@ -19,9 +19,9 @@ import FetchCreateCart from "./FetchCreateCart";
 import ProductPrice from "./components/ProductPrice";
 import Wishlist from "./components/Wishlist";
 import Review from "./components/review/Review";
-import ProductLoading from "./components/ProductLoading";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import RecommendedProducts from "./components/RecommendedProducts";
+import Loading from "@/app/components/Loading";
 
 export default function ProductLayout({ params }: any) {
    const [product, setProduct] = useState<ProductType | undefined>();
@@ -56,7 +56,7 @@ export default function ProductLayout({ params }: any) {
    }, [sizeId, colorId]);
 
    if (!product || !productId) {
-      return <ProductLoading />;
+      return <Loading />;
    }
 
    const findCountryShippingRate = shippingRate?.profiles.find((profile) => profile.countries.includes(userCountry));
@@ -67,7 +67,9 @@ export default function ProductLayout({ params }: any) {
 
    const basePrice = productPrice && productIVA && productPrice.price + productIVA;
 
-   const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 0.99;
+   const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 1 - 0.01;
+
+   const adjustedPriceInCents = adjustedPrice && Math.round(adjustedPrice * 100);
 
    const formattedPrice = adjustedPrice && adjustedPrice.toFixed(2) + " €";
 
@@ -91,16 +93,16 @@ export default function ProductLayout({ params }: any) {
             const priceId = await grabPriceId.text();
             const findCart = globalStore.cart.find((cart) => cart.name === product.title && cart.size === sizeId && cart.color === colorId);
 
-            if (adjustedPrice && !findCart) {
+            if (adjustedPriceInCents && !findCart) {
                globalStore.setCart({
                   name: product.title,
                   description: product.description,
-                  base_price: adjustedPrice * 100,
-                  price: adjustedPrice * 100 * quantity,
+                  base_price: adjustedPriceInCents,
+                  price: adjustedPriceInCents * quantity,
                   price_id: priceId,
                   image: product?.images[0].src,
                   quantity: quantity,
-                  size: sizeId,
+                  size: sizeId !== undefined ? sizeId : null,
                   color: colorId,
                   product_id: productId,
                   variant_id: variantId ?? 0,
@@ -116,12 +118,12 @@ export default function ProductLayout({ params }: any) {
                   const cart = {
                      name: product.title,
                      description: product.description,
-                     basePrice: adjustedPrice * 100,
-                     price: adjustedPrice * 100 * quantity,
+                     basePrice: adjustedPriceInCents,
+                     price: adjustedPriceInCents * quantity,
                      priceId: priceId,
                      image: product?.images[0].src,
                      quantity: quantity,
-                     size: sizeId,
+                     size: sizeId !== undefined ? sizeId : null,
                      color: colorId,
                      productId: productId,
                      variantId: variantId ?? 0,

@@ -3,9 +3,11 @@ type CategoryNamePropType = {
 };
 
 export default function CategoryNameDisplay({ categoryName }: CategoryNamePropType) {
+   const decodedCategoryName = decodeURIComponent(categoryName);
+
    return (
       <div className="flex w-full bg-body-background justify-center items-center h-[300px]">
-         <h1 className="text-6xl text-dark">{categoryName}</h1>
+         <h1 className="text-6xl text-dark text-center">{decodedCategoryName}</h1>
       </div>
    );
 }

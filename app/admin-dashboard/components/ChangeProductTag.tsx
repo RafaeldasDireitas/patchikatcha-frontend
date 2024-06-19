@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import FetchChangeProductTag from "../FetchChangeProductTag";
 import { useGlobalStore } from "@/zustand/globalstore";
+import { categories } from "@/data/CategoriesObject";
 
 export default function ChangeProductTag() {
    const globalStore = useGlobalStore();
@@ -43,8 +44,13 @@ export default function ChangeProductTag() {
                <SelectValue placeholder="Tag" />
             </SelectTrigger>
             <SelectContent>
-               <SelectItem value="Hoodies">Hoodies</SelectItem>
-               <SelectItem value="Mugs">Mugs</SelectItem>
+               {categories.flatMap((category) =>
+                  category.content.map((content, key) => (
+                     <SelectItem key={key + key} value={content}>
+                        {content}
+                     </SelectItem>
+                  ))
+               )}
             </SelectContent>
          </Select>
 

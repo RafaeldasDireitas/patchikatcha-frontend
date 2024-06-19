@@ -1,5 +1,3 @@
-import Image from "next/image";
-import star from "@/public/star.png";
 import { BiSolidCheckCircle } from "react-icons/bi";
 import { FaRegStar, FaStar } from "react-icons/fa";
 

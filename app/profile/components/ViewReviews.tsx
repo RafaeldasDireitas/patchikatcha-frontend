@@ -12,7 +12,7 @@ type ViewReviewsPropType = {
 
 export default function ViewReviews({ userReviews }: ViewReviewsPropType) {
    return (
-      <div className="p-12 lg:my-8 flex flex-col gap-y-4">
+      <div className="lg:p-12 p-4 lg:my-8 flex flex-col gap-y-4">
          <h1 className="text-2xl text-dark  lg:text-start text-center mb-2">View reviews:</h1>
          {userReviews?.map((userReview) => {
             const stars = userReview.rating;

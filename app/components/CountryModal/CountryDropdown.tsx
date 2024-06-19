@@ -80,7 +80,7 @@ export default function CountryDropDown() {
    return (
       <DialogContent className="lg:w-[500px]" onInteractOutside={(e) => e.preventDefault()}>
          <DialogHeader>
-            <DialogTitle className="text-dark">Change country</DialogTitle>
+            <DialogTitle className="text-dark">Choose your country</DialogTitle>
             <DialogDescription>This will affect displayed product and shipping prices.</DialogDescription>
          </DialogHeader>
          <div className="grid lg:grid-cols-3 grid-cols-2 gap-2">

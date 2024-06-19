@@ -9,9 +9,11 @@ import IsNotAuthenticated from "../components/IsNotAuthenticated";
 import raccoonHeart from "@/public/raccoon_heart.png";
 import Image from "next/image";
 import Breadcrumb from "../components/Breadcrumb";
+import { categories } from "@/data/CategoriesObject";
 
 export default function Wishlist() {
    const [wishlist, setWishlist] = useState<WishlistType[]>();
+   const [href, setHref] = useState("");
 
    const globalStore = useGlobalStore();
    const userId = globalStore.userId;
@@ -22,6 +24,16 @@ export default function Wishlist() {
          FetchWishlist({ userId, jwtToken, setWishlist });
       }
    }, [userId, jwtToken]);
+
+   useEffect(() => {
+      setHref(getRandomHref());
+   }, []);
+
+   const getRandomHref = () => {
+      const hrefs = categories.flatMap((category) => category.href);
+      const randomIndex = Math.floor(Math.random() * hrefs.length);
+      return hrefs[randomIndex];
+   };
 
    if (!userId && !jwtToken) {
       return <IsNotAuthenticated />;
@@ -35,7 +47,13 @@ export default function Wishlist() {
       return (
          <div className="flex flex-col min-h-screen justify-center items-center my-16">
             <Image src={raccoonHeart} width={300} height={300} alt="No raccoon found!" />
-            <h1 className="text-2xl text-light ">No items in your wishlist yet!</h1>
+            <h1 className="text-2xl text-light ">Your wishlist is empty!</h1>
+            <p className="text-center">
+               Let's change that!{" "}
+               <Link href={`${href}`} className="text-light hover:cursor-pointer">
+                  Browse our products!
+               </Link>
+            </p>
          </div>
       );
    }

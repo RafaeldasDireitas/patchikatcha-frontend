@@ -8,6 +8,7 @@ import Link from "next/link";
 import { loginValidation } from "@/zod/zod";
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
+import { redirection } from "@/endpoints/redirection";
 
 export default function LoginForm({ setIsLoginForm }: any) {
    const globalStore = useGlobalStore();
@@ -27,7 +28,7 @@ export default function LoginForm({ setIsLoginForm }: any) {
    const userCountry = globalStore.userGeo.userCountry;
 
    if (isAuthenticated) {
-      redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
+      redirect(redirection.url);
    }
 
    const emailHandler = (e: any) => {

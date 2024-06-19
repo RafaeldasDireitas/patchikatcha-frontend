@@ -8,7 +8,7 @@ import FetchCreateCheckoutSession from "./FetchCreateCheckoutSession";
 import IsNotAuthenticated from "../components/IsNotAuthenticated";
 import FetchIsEmailConfirmed from "../profile/FetchIsEmailConfirmed";
 
-const stripePromise = loadStripe("pk_test_51Onkz6Lwv2BbZpNwCznBgyiBZjWKIEQUJZPyyzbaLha0vf4Eu55o9h7fN0O9jMotkYsR6kgZtSYLq4lcbkntkRaD00g5Dird6V");
+const stripePromise = loadStripe("pk_live_51Onkz6Lwv2BbZpNwUQ14JQ6IOqKRHlIj4Gy07KXm67vzjLKE7MwAMSTJBOpLkAhsrYhPxfsurNJXvmDP8t5fxouU00hx3eE6NV");
 
 export default function Checkout() {
    const [clientSecret, setClientSecret] = useState("");

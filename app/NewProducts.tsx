@@ -6,6 +6,7 @@ import Skeleton from "./components/Skeleton";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import FetchNewProducts from "./FetchNewProducts";
 import { ProductInDbType } from "@/types/ProductInDbType";
+import { motion } from "framer-motion";
 
 export default function NewProducts() {
    const [newProducts, setNewProducts] = useState<ProductInDbType[]>();
@@ -48,23 +49,24 @@ export default function NewProducts() {
    }
 
    return (
-      <div className="lg:p-12 flex flex-col justify-center items-center relative">
+      <div className="lg:p-4 flex flex-col justify-center items-center relative">
          <h1 className="text-3xl lg:text-start text-center text-dark">New Products</h1>
-         <p className="my-2 lg:text-start text-center mx-4 lg:mx-0">
-            Here is just a little description that is a little bit bigger than normal body copy.
-         </p>
+         <p className="my-2 lg:text-start text-center mx-4 lg:mx-0">Discover our latest additions to our ever-growing catalogue of cute items! </p>
          <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
             {newProducts.map((product, key) => {
                return (
-                  <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                     <ProductCard
-                        key={key + key}
-                        title={product.title}
-                        price={product.price}
-                        image={product.image}
-                        secondImage={product.secondImage}
-                     ></ProductCard>
-                  </Link>
+                  <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: key * 0.1 }}>
+                     <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
+                        <ProductCard
+                           key={key + key}
+                           productId={product.productId}
+                           title={product.title}
+                           price={product.price}
+                           image={product.image}
+                           secondImage={product.secondImage}
+                        ></ProductCard>
+                     </Link>
+                  </motion.div>
                );
             })}
          </div>

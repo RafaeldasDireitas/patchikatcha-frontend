@@ -16,7 +16,11 @@ export default function faq() {
                <AccordionTrigger className="">Do you ship worldwide?</AccordionTrigger>
                <AccordionContent>
                   We currently only ship within the EU. However, we have ideas to also offer worldwide shipping in the future. You can follow our
-                  Instagram (linked) to stay up to date.
+                  <Link href={"https://www.instagram.com/patchikatcha/"} className="text-light">
+                     {" "}
+                     Instagram
+                  </Link>{" "}
+                  to stay up to date.
                </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -92,7 +96,20 @@ export default function faq() {
                <AccordionTrigger className="">I haven't received any confirmation email for my order.</AccordionTrigger>
                <AccordionContent>
                   Please allow a few minutes for our confirmation email to send and check your spam folder. If you still don't see your confirmation
-                  mail, contact us at (email)
+                  mail, contact us at patchikatcha@gmail.com
+               </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-12">
+               <AccordionTrigger className="">I would like to change a part of my order. How can I do that?</AccordionTrigger>
+               <AccordionContent>
+                  Please contact us at patchikatcha@gmail.com or{" "}
+                  <span>
+                     <Link href={"contact-us"} className="hover:underline text-light hover:cursor-pointer">
+                        contact us
+                     </Link>
+                  </span>{" "}
+                  within a 24 hours time frame after your initial order. After that time period has passed, we cannot change your order anymore.
                </AccordionContent>
             </AccordionItem>
          </Accordion>

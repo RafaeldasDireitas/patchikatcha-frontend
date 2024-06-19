@@ -109,6 +109,10 @@
    background-image: url("../public/hero_bear.png");
 }
 
+.bg-clothing-main-page {
+   background-image: url("../public/card-image-test.png");
+}
+
 .bg-product-card {
    background-color: rgba(188, 108, 37, 0.23);
 }
@@ -124,6 +128,10 @@ hr {
 }
 
 p {
+   font-weight: 500;
+}
+
+li {
    font-weight: 500;
 }
 

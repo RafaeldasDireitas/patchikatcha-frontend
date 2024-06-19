@@ -3,6 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import FetchAddProductToDb from "../FetchAddProductToDb";
 import { useGlobalStore } from "@/zustand/globalstore";
+import { categories } from "@/data/CategoriesObject";
 
 export default function AddProductToDb() {
    const globalStore = useGlobalStore();
@@ -100,8 +101,13 @@ export default function AddProductToDb() {
                <SelectValue placeholder="Tag" />
             </SelectTrigger>
             <SelectContent>
-               <SelectItem value="Hoodies">Hoodies</SelectItem>
-               <SelectItem value="Mugs">Mugs</SelectItem>
+               {categories.flatMap((category) =>
+                  category.content.map((content, key) => (
+                     <SelectItem key={key + key} value={content}>
+                        {content}
+                     </SelectItem>
+                  ))
+               )}
             </SelectContent>
          </Select>
          <Select onValueChange={categoryTagHandler} defaultValue={categoryTag}>
@@ -109,8 +115,11 @@ export default function AddProductToDb() {
                <SelectValue placeholder="Category Tag" />
             </SelectTrigger>
             <SelectContent>
-               <SelectItem value="Clothing">Hoodies</SelectItem>
-               <SelectItem value="Accessories">Mugs</SelectItem>
+               {categories.flatMap((category, key) => (
+                  <SelectItem key={key + key} value={category.title}>
+                     {category.title}
+                  </SelectItem>
+               ))}
             </SelectContent>
          </Select>
          <button className="btn btn-circle w-60 bg-button-background hover:bg-button-focused text-white my-1 border-none" onClick={createProduct}>

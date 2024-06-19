@@ -3,7 +3,7 @@ export type CartType = {
    name: string;
    description: string;
    quantity: number;
-   size: number;
+   size?: number | null;
    color: number;
    image: string;
    base_price: number;

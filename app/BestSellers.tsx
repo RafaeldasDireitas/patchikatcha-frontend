@@ -1,28 +1,14 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 import FetchBestSellers from "./FetchBestSellers";
 import { BestSellerType } from "@/types/BestSellerType";
 import Link from "next/link";
-import ProductCard from "./components/ProductCard";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Skeleton from "./components/Skeleton";
+import Image from "next/image";
 
 export default function BestSellers() {
    const [bestSellers, setBestSellers] = useState<BestSellerType[]>();
    const productListRef: any = useRef(null);
-
-   const scrollLeft = () => {
-      if (productListRef.current) {
-         productListRef.current.scrollBy({ left: -300, behavior: "smooth" });
-      }
-   };
-
-   const scrollRight = () => {
-      if (productListRef.current) {
-         productListRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      }
-   };
 
    useEffect(() => {
       FetchBestSellers({ setBestSellers });
@@ -30,59 +16,48 @@ export default function BestSellers() {
 
    if (!bestSellers) {
       return (
-         <div className="lg:p-12 flex flex-col justify-center items-center relative mt-8 lg:mt-0">
-            <h1 className="text-3xl lg:text-start text-center text-dark">Best Sellers</h1>
-            <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center">
-               Here is just a little description that is a little bit bigger than normal body copy.
-            </p>
-
-            <div className="flex flex-row overflow-x-auto w-full justify-center gap-8 lg:p-12 my-8">
-               <Skeleton widthInPx={320} heightInPx={322} />
-               <div className="lg:flex hidden gap-8">
-                  <Skeleton widthInPx={320} heightInPx={322} />
-                  <Skeleton widthInPx={320} heightInPx={322} />
-                  <Skeleton widthInPx={320} heightInPx={322} />
-               </div>
+         <div className="p-12">
+            <div className="hidden lg:grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2">
+               <Skeleton widthInPx={650} heightInPx={650} />
+               <Skeleton widthInPx={650} heightInPx={650} />
+            </div>
+            <div className="lg:hidden grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2">
+               <Skeleton widthInPx={264} heightInPx={264} />
+               <Skeleton widthInPx={264} heightInPx={264} />
             </div>
          </div>
       );
    }
 
    return (
-      <div className="lg:p-12 flex flex-col justify-center items-center relative mt-8 lg:mt-0">
-         <h1 className="text-3xl lg:text-start text-center text-dark">Best Sellers</h1>
-         <p className="my-2 mx-4 lg:mx-0 lg:text-start text-center">
-            Here is just a little description that is a little bit bigger than normal body copy.
-         </p>
-         <div ref={productListRef} className="flex flex-row px-6 lg:px-0 overflow-x-auto hide-scroll w-full lg:gap-8 lg:p-12 mt-4 lg:mt-0">
-            {bestSellers &&
-               bestSellers.map((product, key) => {
-                  return (
-                     <Link key={key + key} href={{ pathname: `/product/${product.title}`, query: { productId: product.productId } }}>
-                        <ProductCard
-                           key={key + key}
-                           title={product.title}
-                           price={product.price}
-                           image={product.image}
-                           secondImage={product.secondImage}
-                        />
-                     </Link>
-                  );
-               })}
-         </div>
-         <button
-            className="btn absolute hidden lg:flex left-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
-            onClick={scrollLeft}
-         >
-            <FaArrowLeft />
-         </button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-2 md:gap-4 p-12">
+         {bestSellers.map((bestSeller, key) => {
+            const productIVA1 = bestSellers && bestSeller.price * 0.23;
 
-         <button
-            className="btn absolute flex right-4 z-50 btn-circle bg-button-background hover:bg-button-focused text-white border-none"
-            onClick={scrollRight}
-         >
-            <FaArrowRight />
-         </button>
+            const basePrice = productIVA1 && bestSeller.price + productIVA1;
+
+            const adjustedPrice = basePrice && Math.floor(basePrice / 100) + 0.99;
+
+            const formattedPrice = basePrice && adjustedPrice?.toFixed(2) + " €";
+
+            return (
+               <Link key={key + key} href={{ pathname: `/product/${bestSeller.title}`, query: { productId: bestSeller.productId } }}>
+                  <div className="items-end relative">
+                     <Image
+                        className="rounded-xl hover:opacity-90 hover:cursor-pointer duration-200"
+                        src={bestSeller.image}
+                        width={650}
+                        height={650}
+                        alt="Epic duck"
+                     />
+                     <div className="absolute bottom-0 left-0">
+                        <h1 className="text-xl lg:text-3xl text-dark m-2 lg:m-4">{bestSeller.title}</h1>
+                        <h2 className="text-xl lg:text-3xl text-dark m-2 lg:m-4">{formattedPrice}</h2>
+                     </div>
+                  </div>
+               </Link>
+            );
+         })}
       </div>
    );
 }

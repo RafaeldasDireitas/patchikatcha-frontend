@@ -4,6 +4,7 @@ import bearPyjama from "@/public/bear_pyjama_party.png";
 import { useEffect, useState } from "react";
 import { categories } from "@/data/CategoriesObject";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Hero() {
    const [href, setHref] = useState("");
@@ -34,18 +35,20 @@ export default function Hero() {
                      the perfect gift or a little treat for yourself, our items are sure to warm your heart!{" "}
                   </p>
                   <div className="flex lg:justify-start xl:justify-start justify-center">
-                     <Link href={`${href}`}>
-                        <button className="btn flex bg-button-background hover:bg-button-focused border-none items-center rounded-3xl px-5 py-3 mr-3 text-base text-white">
-                           Shop Now
-                           <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                 fillRule="evenodd"
-                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                 clipRule="evenodd"
-                              ></path>
-                           </svg>
-                        </button>
-                     </Link>
+                     <motion.div transition={{}} whileHover={{ rotateY: 30 }}>
+                        <Link href={`${href}`}>
+                           <button className="btn flex bg-button-background hover:bg-button-focused border-none items-center rounded-3xl px-5 py-3 mr-3 text-base text-white">
+                              Shop Now
+                              <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    fillRule="evenodd"
+                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                 ></path>
+                              </svg>
+                           </button>
+                        </Link>
+                     </motion.div>
                   </div>
                </div>
                <div className="hidden lg:flex">
